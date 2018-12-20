@@ -1,0 +1,71 @@
+// ICONS.
+%icons {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'base';
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  speak: none;
+  text-transform: none;
+}
+
+[class^='icon-'],
+[class*=' icon-'] {
+  &:before {
+    @extend %icons;
+  }
+}
+
+.icon-user:before {
+  content: "\e910";
+}
+.icon-zoom-out:before {
+  content: "\e90e";
+}
+.icon-zoom-in:before {
+  content: "\e90f";
+}
+.icon-twitter:before {
+  content: "\e90d";
+}
+.icon-linkedin:before {
+  content: "\e90c";
+}
+.icon-search:before {
+  content: "\e904";
+}
+.icon-pinterest:before {
+  content: "\e911";
+}
+.icon-instagram:before {
+  content: "\e901";
+}
+.icon-facebook:before {
+  content: "\e900";
+}
+.icon-youtube:before {
+  content: "\e905";
+}
+.icon-cart:before {
+  content: "\e90a";
+}
+.icon-location:before {
+  content: "\e902";
+}
+.icon-arrow-right:before {
+  content: "\e909";
+}
+.icon-arrow-left:before {
+  content: "\e903";
+}
+.icon-arrow-bottom:before {
+  content: "\e906";
+}
+.icon-heart:before {
+  content: "\e907";
+}
+.icon-check:before {
+  content: "\e908";
+}
