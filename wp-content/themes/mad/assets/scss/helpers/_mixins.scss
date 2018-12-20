@@ -128,3 +128,64 @@
     }
   }
 }
+
+// animation slide
+@mixin animation_slide($items ,$duration, $fade: .5s) {
+  position: absolute;
+  $total : $items * $duration + ($items - 1) * $fade;
+
+  &:first-child {
+    animation: animation_slide1 $total linear infinite;
+    opacity: 1;
+  }
+
+  &:not(:first-child) {
+    animation: animation_slide2 $total linear infinite;
+    opacity: 0;
+  }
+
+  @for $i from 2 through $item {
+    &:nth-child(#{$i}) {
+      animation-delay: (($duration * ($i - 1)) + $fade * ($i - 2)) + s;
+    }
+  }
+
+  $duration_percel : ($duration * 100) / $total;
+  $fade_percel : ($fade * 100) / $total;
+
+  @keyframes animation_slide1 {
+    0% {
+      opacity: 1;
+    }
+    ($duration_percel) + % {
+      opacity: 1;
+    }
+    ($duration_percel + $fade_percel)% {
+      opacity: 0;
+    }
+    (100 - $fade_percel)% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes animation_slide2 {
+    2% {
+      opacity: 0;
+    }
+    ($fade_percel)% {
+      opacity: 1;
+    }
+    ($duration_percel + $fade_percel)% {
+      opacity: 1;
+    }
+    ($duration_percel + ($fade_percel * 2))% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
