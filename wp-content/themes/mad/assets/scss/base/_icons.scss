@@ -18,6 +18,24 @@
   }
 }
 
+.icon-youtube:before {
+  content: "\e900";
+}
+.icon-pinterest:before {
+  content: "\e901";
+}
+.icon-facebook:before {
+  content: "\e902";
+}
+.icon-instagram:before {
+  content: "\e903";
+}
+.icon-arrow:before {
+  content: "\e904";
+}
+.icon-share:before {
+  content: "\e90b";
+}
 .icon-user:before {
   content: "\e910";
 }
@@ -34,38 +52,17 @@
   content: "\e90c";
 }
 .icon-search:before {
-  content: "\e904";
-}
-.icon-pinterest:before {
-  content: "\e911";
-}
-.icon-instagram:before {
-  content: "\e901";
-}
-.icon-facebook:before {
-  content: "\e900";
-}
-.icon-youtube:before {
-  content: "\e905";
-}
-.icon-cart:before {
-  content: "\e90a";
-}
-.icon-location:before {
-  content: "\e902";
-}
-.icon-arrow-right:before {
-  content: "\e909";
-}
-.icon-arrow-left:before {
-  content: "\e903";
-}
-.icon-arrow-bottom:before {
-  content: "\e906";
-}
-.icon-heart:before {
   content: "\e907";
 }
+.icon-cart:before {
+  content: "\e912";
+}
+.icon-location:before {
+  content: "\e913";
+}
+.icon-heart:before {
+  content: "\e917";
+}
 .icon-check:before {
-  content: "\e908";
+  content: "\e918";
 }

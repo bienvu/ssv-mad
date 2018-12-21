@@ -38,4 +38,12 @@
   &--white {
     background-color: $white;
   }
+
+  &--gray {
+    background: $gray;
+  }
+
+  &--light-gray {
+    background: $light-gray;
+  }
 }

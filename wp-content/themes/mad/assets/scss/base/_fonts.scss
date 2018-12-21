@@ -3,10 +3,11 @@
 // @import url("//fonts.googleapis.com/css?family=Roboto:300,400,500,700");
 
 // Icon Font
-@include font-face(base, 'fonts/base');
+@include font-face(base, 'fonts/mad');
 
 // For example:
-// @include font-face(SourceSansPro, fonts/SourceSansPro-Bold, 700, normal);
-// @include font-face(SourceSansPro, fonts/SourceSansPro-BoldItalic, 700, italic);
-// @include font-face(SourceSansPro, fonts/SourceSansPro-Regular, 400, normal);
-// @include font-face(SourceSansPro, fonts/SourceSansPro-Italic, 400, italic);
+@include font-face("Muli", fonts/Muli-Light, 300, normal);
+@include font-face("Muli", fonts/Muli-SemiBold, 600, normal);
+@include font-face("Muli", fonts/Muli-Regular, 400, normal);
+@include font-face("Miller-Display", fonts/Miller-DisplayLight, 300, normal);
+@include font-face("Miller-Display", fonts/Miller-DisplayRoman, 400, normal);

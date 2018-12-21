@@ -4,20 +4,20 @@ input[type='submit'] {
 }
 
 %form-text {
-  @include roboto;
+  @include muli;
   appearance: none;
-  background-color: $silver;
+  background-color: $light-gray;
   border-radius: 0;
   border: 0;
   box-shadow: inherit;
   box-sizing: border-box;
   color: $text-color;
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 300;
   padding: 10px 15px;
-  height: 40px;
   transition: all .3s ease-in-out;
   width: 100%;
+  line-height: 1.571;
   letter-spacing: 0;
   cursor: pointer;
 
@@ -87,7 +87,7 @@ input[type="tel"],
 input[type="url"],
 input[type="email"],
 input[type="password"],
-input[type="hidden"] {
+input[type="checkbox"] {
   @extend %form-text;
 }
 
