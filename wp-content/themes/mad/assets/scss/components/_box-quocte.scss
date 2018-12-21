@@ -1,4 +1,4 @@
-.box-video {
+.box-quocte {
   position: relative;
 
   &__video {
@@ -12,8 +12,7 @@
     line-height: 0;
 
     img {
-      max-width: 314px;
-      height: auto;
+      width: 314px;
 
       @media only screen and (max-width: 767px) {
         max-width: 250px;
@@ -22,70 +21,16 @@
   }
 
   .quocte {
+    @include animation_slide(3, 3s, 2s);
     max-width: 500px;
-    // position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
-    // &:first-child {
-    //   // animation: animated 15s linear infinite;
-    //   opacity: 1;
-    // }
-
-    // &:not(:first-child) {
-    //   // animation: animated2 15s linear infinite;
-    //   opacity: 0;
-    // }
-
-    // @for $i from 2 through 3 {
-    //   &:nth-child(#{$i}) {
-    //     animation-delay: ((3 * ($i - 1)) + 2 * ($i - 2)) + s;
-    //   }
-    // }
-    
-    @include animation_slide(3, 3s, 2s);
 
     &__author {
       text-align: right;
     }
   }
-
-  // @keyframes animated {
-  //   0% {
-  //     opacity: 1;
-  //   }
-  //   20% {
-  //     opacity: 1;
-  //   }
-  //   33.33% {
-  //     opacity: 0;
-  //   }
-  //   86.67% {
-  //     opacity: 0;
-  //   }
-  //   100% {
-  //     opacity: 1;
-  //   }
-  // }
-
-  // @keyframes animated2 {
-  //   2% {
-  //     opacity: 0;
-  //   }
-  //   13.33% {
-  //     opacity: 1;
-  //   }
-  //   33.33% {
-  //     opacity: 1;
-  //   }
-  //   46.66% {
-  //     opacity: 0;
-  //   }
-  //   100% {
-  //     opacity: 0;
-  //   }
-  // }
 }
 
 .quocte {
