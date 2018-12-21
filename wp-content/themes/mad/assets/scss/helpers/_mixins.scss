@@ -132,7 +132,7 @@
 // animation slide
 @mixin animation_slide($items ,$duration, $fade: .5s) {
   position: absolute;
-  $total : $items * $duration + ($items - 1) * $fade;
+  $total : $items * $duration + $items * $fade;
 
   &:first-child {
     animation: animation_slide1 $total linear infinite;
@@ -144,9 +144,9 @@
     opacity: 0;
   }
 
-  @for $i from 2 through $item {
+  @for $i from 2 through $items {
     &:nth-child(#{$i}) {
-      animation-delay: (($duration * ($i - 1)) + $fade * ($i - 2)) + s;
+      animation-delay: (($duration * ($i - 1)) + $fade * ($i - 2));
     }
   }
 
@@ -157,13 +157,13 @@
     0% {
       opacity: 1;
     }
-    ($duration_percel) + % {
+    #{$duration_percel}% {
       opacity: 1;
     }
-    ($duration_percel + $fade_percel)% {
+    #{$duration_percel + $fade_percel}% {
       opacity: 0;
     }
-    (100 - $fade_percel)% {
+    #{100 - $fade_percel}% {
       opacity: 0;
     }
     100% {
@@ -175,13 +175,13 @@
     2% {
       opacity: 0;
     }
-    ($fade_percel)% {
+    #{$fade_percel}% {
       opacity: 1;
     }
-    ($duration_percel + $fade_percel)% {
+    #{$duration_percel + $fade_percel}% {
       opacity: 1;
     }
-    ($duration_percel + ($fade_percel * 2))% {
+    #{$duration_percel + ($fade_percel * 2)}% {
       opacity: 0;
     }
     100% {
