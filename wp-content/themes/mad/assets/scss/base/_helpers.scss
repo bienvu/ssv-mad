@@ -61,3 +61,37 @@
     }
   }
 }
+
+.hidden-on-mobile {
+  @media only screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+.hidden-on-desktop {
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.bg-logo {
+  background-image: url('/images/ma_logo_white.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+.block-logo {
+  position: relative;
+  ;
+
+  &:before {
+    content: "";
+    @extend .bg-logo;
+    position: absolute;
+    right: -7%;
+    top: -30%;
+    width: 48.39%;
+    height: 82.26%; 
+  }
+}
