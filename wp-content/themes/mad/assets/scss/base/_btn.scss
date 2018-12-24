@@ -1,30 +1,74 @@
 %btn,
 .btn {
-  @include roboto;
+  @include muli;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  font-size: 12px;
+  letter-spacing: 0;
   appearance: none;
   background-image: none;
   border-radius: 0;
-  border: rem(1px) solid $btn-color;
   box-shadow: none;
   display: inline-block;
   text-transform: uppercase;
-  font-size: 14px;
-  line-height: 1;
-  min-width: rem(100px);
   outline: none;
-  padding: rem(15px 30px);
+  padding:11px 23.25px 10px;
   text-align: center;
   text-shadow: none;
   transition: all .3s ease;
-  background-color: $btn-color;
-  color: $white;
+  text-decoration: none;
+  background-color: $btn-bg;
+  color: $btn-color;
+  border: 1px solid $btn-bg;
   cursor: pointer;
   outline: 0;
+  min-width: 165px;
 
   &:active,
   &:hover {
-    background-color: $btn-color-hover;
-    border-color: $btn-color-hover;
+    background-color: $btn-color;
+    border: 1px solid $btn-bg;
+    color: $btn-bg;
+  }
+
+  &--small{
+    min-width: 150px;
+  }
+
+  &--large{
+    min-width: 188px;
+  }
+
+  &--full{
+    width: 100%;
+  }
+
+  &--max{
+    width: 223px;
+  }
+
+  &--gray {
+    background-color: $gray;
+    border: 1px solid $gray;
     color: $white;
+    
+    &:active,
+    &:hover {
+      background-color: $white;
+      color: $gray;
+    }
+  }
+
+  &--white {
+    border: 1px solid $white;
+    color: $white;
+    background: transparent;
+    
+    &:active,
+    &:hover {
+      background: $white;
+      color: #433e40;
+    }
   }
 }

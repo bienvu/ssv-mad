@@ -16,34 +16,29 @@
     </div>
 
     <div class="form-item form-type-textfield form-item-name">
-      <label for="edit-name" class="form-required">Text Input Normal</label>
-      <input type="text" id="edit-name" name="name" value="" size="60" maxlength="255" class="form-text required" placeholder="Input text">
+      <label for="edit-name" class="form-required"></label>
+      <input type="text" id="edit-name" name="name" value="" size="60" maxlength="255" class="form-text required" placeholder="Name*">
     </div>
-    <div class="form-item form-type-textfield form-item-name">
-      <label for="edit-name2" class="form-required">Text Input Focused</label>
-      <input type="text" id="edit-name" name="name" value="" size="60" maxlength="255" class="form-text required focused" placeholder="Input text">
-    </div>
-
     <div class="form-item form-type-textfield form-item-email form-item--error">
-      <label for="edit-email" class="form-required">Text Input Error</label>
-      <input type="text" id="edit-email" name="email" value="" size="60" maxlength="254" class="form-email required error" placeholder="Input text">
+      <label for="edit-email" class="form-required"></label>
+      <input type="text" id="edit-email" name="email" value="" size="60" maxlength="254" class="form-email required" placeholder="Email*">
     </div>
 
     <div class="form-item form-type-textfield form-item-subject">
-      <label for="edit-subject" class="form-required">Text Input Disabled</label>
-      <input type="text" id="edit-subject" name="subject" value="" size="60" maxlength="255" class="form-text required" disabled placeholder="Input text">
+      <label for="edit-subject" class="form-required"></label>
+      <input type="tel" id="edit-phone" name="phone" value="" size="60" maxlength="255" class="form-phone required" disabled placeholder="Phone">
     </div>
 
     <div class="form-item form-type-textarea form-item-message">
-      <label for="edit-message" class="form-required">Text area</label>
+      <label for="edit-message" class="form-required"></label>
       <div class="form-textarea-wrapper">
-        <textarea id="edit-message" name="message" rows="5" cols="60" class="form-textarea required resize-vertical"></textarea>
+        <textarea id="edit-message" name="message" class="form-textarea required resize-vertical" placeholder="Message"></textarea>
       </div>
     </div>
     <div class="form-item form-type-textarea form-item-message">
-      <label for="edit-message" class="form-required">Text area Focused</label>
+      <label for="edit-message" class="form-required"></label>
       <div class="form-textarea-wrapper">
-        <textarea id="edit-message" name="message" rows="5" cols="60" class="form-textarea required resize-vertical focused"></textarea>
+        <textarea id="edit-message" name="message" class="form-textarea required resize-vertical focused" placeholder="To help prevent spam, please type the word ‘artistry’."></textarea>
       </div>
     </div>
 
@@ -53,6 +48,10 @@
       </legend>
       <div class="fieldset-wrapper">
         <div id="edit-months" class="webform-options-display-one-column form-checkboxes">
+          <div class="form-item form-type-checkbox form-item-months-start">
+            <input type="checkbox" id="edit-months-start" value="start" class="form-checkbox">
+            <label for="edit-months-start" class="option">Subscribe to news</label>
+          </div>
           <div class="form-item form-type-checkbox form-item-months-focused">
             <input type="checkbox" id="edit-months-focused" name="months[Focused]" value="Focused" class="form-checkbox focused">
             <label for="edit-months-focused" class="option">Checkbox Focused</label>

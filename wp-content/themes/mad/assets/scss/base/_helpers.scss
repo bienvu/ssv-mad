@@ -38,4 +38,26 @@
   &--white {
     background-color: $white;
   }
+
+  &--gray {
+    background: $gray;
+  }
+
+  &--light-gray {
+    background: $light-gray;
+  }
+
+  //hidden-on-mobile
+  .hidden-on-mobile {
+    @media only screen and (max-width: $mobileOnly) {
+      display: none;
+    }
+  }
+
+  //hidden-on-desktop
+  .hidden-on-desktop {
+    @media only screen and (min-width: $tablet) {
+      display: none;
+    }
+  }
 }

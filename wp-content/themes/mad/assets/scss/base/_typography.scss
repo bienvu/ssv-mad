@@ -7,32 +7,56 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 700;
-  margin-bottom: rem(15px);
+  @include miller-display;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  margin-bottom: 25px;
 }
 
-h1 {
-  font-size: rem(36px);
+h1,
+.h1 {
+  font-size: 37px;
+  margin-bottom: 42px;
 }
 
-h2 {
-  font-size: rem(30px);
+h2,
+.h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+
+  &--section {
+    margin-bottom: 47px;
+  }
 }
 
-h3 {
-  font-size: rem(24px);
+h3,
+.h3 {
+  font-size: 28px;
+  margin-bottom: 27px;
+
+  &--second {
+    margin-bottom: 22px;
+  }
+  
 }
 
-h4 {
-  font-size: rem(16px);
+h4,
+.h4 {
+  font-size: 21px;
+  margin-bottom: 24px;
 }
 
-h5 {
-  font-size: rem(14px);
+h5,
+.h5 {
+  font-size: 18px;
+  margin-bottom: 20px;
 }
 
-h6 {
-  font-size: rem(12px);
+h6,
+.h6 {
+  font-size: 16px;
+  margin-bottom: 15px;
 }
 
 %link,
@@ -62,7 +86,7 @@ a {
 }
 
 p {
-  margin-bottom: rem(15px);
+  margin-bottom: 21px;
 }
 
 em {
@@ -101,8 +125,11 @@ samp {
 
 ol,
 ul {
-  padding-left: rem(18px);
-  margin-bottom: rem(15px);
+  margin-bottom: 15px;
+}
+
+li {
+  list-style: none;
 }
 
 label {
