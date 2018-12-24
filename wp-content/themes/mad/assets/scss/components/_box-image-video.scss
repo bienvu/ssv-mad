@@ -1,17 +1,21 @@
 .box-image-video {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
 
-  &__wrap {
-    display: flex;
-    flex-wrap: wrap;
-  }
   &__content {
-    overflow: hidden;
-    background: red;
-    z-index: 1;
+    padding: 20px 0;
 
     @media  only screen and (min-width: 768px) {
+      position: absolute;
+      top: 0;
+      left: 0;
       max-height: 411px;
       width: 31.26%;
+      padding: 20px;
+      z-index: 1;
+      overflow-y: auto;
+      background: $white;
     }
 
     @media  only screen and (min-width: 1024px) {
@@ -19,8 +23,16 @@
     }
 
     @media  only screen and (min-width: 1280px) {
-      max-height: inherit;
+      max-height: 665px;
       width: 431px;
+    }
+
+    .container {
+      @media  only screen and (min-width: 768px) {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
     }
   }
 
@@ -32,10 +44,12 @@
 
       @media  only screen and (min-width: 768px) {
         width: calc(100% - 1px - 31.26%);
+        margin-left: 31.26%;
       }
 
       @media  only screen and (min-width: 1280px) {
         width: calc(100% - 1px - 431px);
+        margin-left: 431px;
       }
 
       .box-image-video__item:first-child {
@@ -74,18 +88,5 @@
   }
   
   &__description {
-    padding: 20px 40px 20px 20px;
-    max-height: 100%;
-    width: calc(100% + 20px);
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-
-  &--mobile {
-    display: block;
-
-    @media only screen and (min-width: 768px) {
-      display: none;
-    }
   }
 }

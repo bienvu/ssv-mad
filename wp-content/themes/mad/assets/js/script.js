@@ -60,19 +60,5 @@
     //     scrollTop: $next
     //   }, 'slow');
     // });
-    
-    // js margin
-    $(window).load(function(event) {
-      $margin = $('.js-margin').height() - $('.js-margin').children().children().height() + 1;
-      $('.js-margin').next().css('margin-top', '-' + $margin + 'px');
-    });
-
-    $(window).resize(function(event) {
-      setTimeout(function () {
-        $margin = $('.js-margin').height() - $('.js-margin').children().children().height() + 1;
-        $('.js-margin').next().css('margin-top', '-' + $margin + 'px');
-      }, 100);
-    });
-  });
 
 }(this, this.document, this.jQuery));
