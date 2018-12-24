@@ -16,10 +16,12 @@ h6 {
 
 h1 {
   font-size: 37px;
+  margin-bottom: 40px;
 }
 
 h2 {
   font-size: 32px;
+  margin-bottom: 35px;
 }
 
 h3 {
@@ -32,11 +34,13 @@ h4 {
 }
 
 h5 {
-  font-size: rem(14px);
+  font-size: 14px;
+  margin-bottom: 20px;
 }
 
 h6 {
-  font-size: rem(12px);
+  font-size: 12px;
+  margin-bottom: 15px;
 }
 
 %link,
@@ -73,14 +77,42 @@ em {
   font-style: italic;
 }
 
-b,
-strong {
-  font-weight: 700;
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+sup {
+  vertical-align: super;
+}
+
+small {
+  font-size: smaller;
+}
+
+abbr {
+  border-bottom: 1px dotted $text-color;
+  cursor: help;
+}
+
+tt,
+code,
+kbd,
+samp {
+  font-family: monospace;
 }
 
 ol,
 ul {
   margin-bottom: 15px;
+}
+
+li {
+  list-style: none;
+}
+
+label {
+  font-weight: 500;
 }
 
 blockquote {
@@ -95,4 +127,12 @@ blockquote {
   &:after {
     content: '\201d';
   }
+}
+
+iframe {
+  max-width: 100%;
+}
+
+figure {
+  line-height: 0;
 }

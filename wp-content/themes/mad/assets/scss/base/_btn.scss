@@ -37,7 +37,7 @@
     min-width: 165px;
   }
 
-  &--center {
+  &--small{
     min-width: 150px;
   }
 
@@ -67,11 +67,12 @@
 
   &--white {
     border: 1px solid $white;
-    background: $white;
+    background: transparent;
     
     &:active,
     &:hover {
-      border: none;
+      border: 1px solid $white;
+      background: $white;
     }
   }
 }
