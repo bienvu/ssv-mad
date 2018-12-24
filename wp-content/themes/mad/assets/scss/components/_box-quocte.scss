@@ -1,0 +1,57 @@
+.box-quocte {
+  position: relative;
+
+  &__video {
+    video {
+      height: 500px;
+      width: 100%;
+    }
+  }
+
+  &__image {
+    line-height: 0;
+
+    img {
+      width: 314px;
+
+      @media only screen and (max-width: 767px) {
+        width: 250px;
+      }
+    }
+  }
+
+  .quocte {
+    @include animation_slide(3, 3s, 2s);
+    max-width: inherit;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &__author {
+      text-align: right;
+    }
+
+    @media only screen and (min-width: 768px) {
+      max-width: 500px;
+    }
+  }
+}
+
+.quocte {
+  @extend .text--center;
+
+  &__content {
+    p:first-child:before {
+      content: "“";
+    }
+
+    p:last-child:after {
+      content: "”";
+    }
+
+    p:last-child {
+      margin: 0;
+    }
+  }
+}
