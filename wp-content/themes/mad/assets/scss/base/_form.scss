@@ -5,43 +5,53 @@ input[type='submit'] {
 
 %form-text {
   @include muli;
+  font-weight: 300px;
   appearance: none;
   background-color: $light-gray;
   border-radius: 0;
   border: 0;
   box-shadow: inherit;
   box-sizing: border-box;
-  color: $text-color;
+  color: $primary-color;
   font-size: 14px;
-  font-weight: 300;
-  padding: 9px 15px 4px 13px;
+  padding: 9px 13px 5px;
   transition: all .3s ease-in-out;
-  width: 100%;
-  line-height: 1.571;
+  min-width: 249px;
+  line-height: 1.5714;
   letter-spacing: 0;
   cursor: pointer;
+  
+  &--full {
+    width: 100%;
+    min-width: inherit;
+  }
+  
+  &--white {
+    background-color: $white;
+    color: $primary-color;
+  }
 
   &::-ms-clear {
     display: none;
   }
 
   &::-webkit-input-placeholder {
-    color: lighten($text-color, 10%);
+    color: $primary-color;
     opacity: 1;
   }
 
   &::-moz-placeholder {
-    color: lighten($text-color, 10%);
+    color: $primary-color;
     opacity: 1;
   }
 
   &:-ms-input-placeholder {
-    color: lighten($text-color, 10%);
+    color: $primary-color;
     opacity: 1;
   }
 
   &:-moz-placeholder {
-    color: lighten($text-color, 10%);
+    color: $primary-color;
     opacity: 1;
   }
 
@@ -120,7 +130,7 @@ textarea {
 
 .form-item,
 .form-actions {
-  margin:rem(0 0 26px);
+  margin:rem(0 0 11px);
 
   &.form-type-checkbox,
   &.form-type-radio {
@@ -186,17 +196,17 @@ select {
 input[type="checkbox"],
 input[type="radio"] {
   opacity: 0;
-  z-index: 12;
 
   + label{
     @include muli;
-    font-weight: 400;
+    font-weight: 300;
     font-size: 12px;
+    line-height: 1.3333;
     cursor: pointer;
     display: block;
     position: relative;
     overflow: hidden;
-    padding: 15px 0 2px 23px;
+    padding-left: 25px;
     letter-spacing: 0;
     color: $primary-color;
 
@@ -211,8 +221,9 @@ input[type="radio"] {
       position: absolute;
       left: 0;
       top: 50%;
-      width: 14px;
-      height: 14px;
+      transform: translateY(-50%);
+      width: 15px;
+      height: 15px;
       border-radius: 0;
       background: $light-gray;
     }
@@ -222,7 +233,8 @@ input[type="radio"] {
       position: absolute;
       width: 7px;
       height: 7px;
-      top: 20px;
+      top: 50%;
+      transform: translateY(-50%);
       left: 4px;
       border-radius: 0;
       background: $primary-color;

@@ -9,70 +9,66 @@
   appearance: none;
   background-image: none;
   border-radius: 0;
-  border: 0;
   box-shadow: none;
   display: inline-block;
   text-transform: uppercase;
   outline: none;
-  padding:11px 23px 10px 23px;
+  padding:11px 23.25px 10px;
   text-align: center;
   text-shadow: none;
   transition: all .3s ease;
   text-decoration: none;
   background-color: $btn-bg;
-  color: $white;
+  color: $btn-color;
   border: 1px solid $btn-bg;
   cursor: pointer;
   outline: 0;
-  min-width: 188px;
+  min-width: 165px;
 
   &:active,
   &:hover {
-    background-color: $white;
-    border: 1px solid $primary-color;
-    color: $primary-color;
-  }
-
-  &--nornal {
-    min-width: 165px;
+    background-color: $btn-color;
+    border: 1px solid $btn-bg;
+    color: $btn-bg;
   }
 
   &--small{
     min-width: 150px;
   }
 
-  &--with-icon {
-    padding: 12px 45px 10px 79px;
+  &--large{
+    min-width: 188px;
+  }
 
-    span {
-      position: relative;
-      @extend .icon-share;
+  &--full{
+    width: 100%;
+  }
 
-      &:before {
-        @extend %icons;
-        position: absolute;
-        left: -30px;
-        top: 7px;
-        font-size: 17px;
-        transform: translate(0, -50%);
-        color: $white;
-      }
-    }
+  &--max{
+    width: 223px;
   }
 
   &--gray {
-    background: $gray;
+    background-color: $gray;
     border: 1px solid $gray;
+    color: $white;
+    
+    &:active,
+    &:hover {
+      background-color: $white;
+      color: $gray;
+    }
   }
 
   &--white {
     border: 1px solid $white;
+    color: $white;
     background: transparent;
     
     &:active,
     &:hover {
-      border: 1px solid $white;
       background: $white;
+      color: #433e40;
     }
   }
 }
