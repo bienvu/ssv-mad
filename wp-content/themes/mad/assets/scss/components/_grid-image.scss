@@ -1,0 +1,61 @@
+$margin: 15px;
+
+.grid-image {
+  padding: 20px 0;
+
+  .container {
+    @media only screen and (min-width: 1366px) {
+      max-width: 1318px;
+    }
+  }
+  
+  &__list {
+    @include grid(3, 20px, 20px, 13px, 13px);
+  }
+
+  &__item {
+    position: relative;
+
+    &:hover {
+      .grid-image__content {
+        background: rgba($black, .55);
+        opacity: 1;
+      }
+    }
+  }
+
+  &__image {
+    line-height: 0;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    opacity: 0;
+  }
+
+  &__title {
+    text-align: center;
+    width: 100%;
+    @extend .h3;
+
+    @media only screen and (min-width: $tablet) {
+      margin-bottom: 59px;
+    }
+  }
+
+  &__link {
+  }
+}

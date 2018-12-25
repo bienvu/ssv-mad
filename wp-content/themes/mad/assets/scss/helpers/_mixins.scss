@@ -103,11 +103,11 @@
 }
 
 // grid
-@mixin grid($cols: 2, $margin-right: 10px, $margin-bottom: $margin-right, $center: center) {
+@mixin grid($cols: 2, $margin-right: 10px, $margin-bottom: $margin-right, $margin-right-desktop: $margin-right, $margin-bottom-desktop: $margin-bottom, $align: center) {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: $center;
+  justify-content: $align;
 
   > div {
     margin-bottom: $margin-bottom;
@@ -123,11 +123,11 @@
     }
 
     @media only screen and (min-width: 768px) {
-      width: calc((100% - (#{$margin-right} * (#{$cols} - 1) + 1px)) / #{$cols});
-      margin: 0 $margin-right $margin-bottom 0;
+      width: calc((100% - (#{$margin-right-desktop} * (#{$cols} - 1) + 1px)) / #{$cols});
+      margin: 0 $margin-right-desktop $margin-bottom-desktop 0;
 
       &:nth-of-type(2n) {
-        margin-right: $margin-right;
+        margin-right: $margin-right-desktop;
       }
 
       &:nth-of-type(#{$cols}n) {
