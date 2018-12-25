@@ -138,62 +138,74 @@
 }
 
 // animation slide
-@mixin animation_slide($items ,$duration, $fade: .5s) {
-  position: absolute;
-  $total : $items * $duration + $items * $fade;
+$j : 1;
+@mixin animation_slide($items ,$duration, $fade: .5s, $delay: 0s) {
+  > div {
+    position: absolute;
+    $total : $items * $duration + $items * $fade;
 
-  &:first-child {
-    animation: animation_slide1 $total linear infinite;
-    opacity: 1;
-  }
-
-  &:not(:first-child) {
-    animation: animation_slide2 $total linear infinite;
-    opacity: 0;
-  }
-
-  @for $i from 2 through $items {
-    &:nth-child(#{$i}) {
-      animation-delay: (($duration * ($i - 1)) + $fade * ($i - 2));
-    }
-  }
-
-  $duration_percel : ($duration * 100) / $total;
-  $fade_percel : ($fade * 100) / $total;
-
-  @keyframes animation_slide1 {
-    0% {
+    &:first-child {
+      animation-name: animation_slide#{$j};
+      animation-duration: $total;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-delay: $delay;
       opacity: 1;
     }
-    #{$duration_percel}% {
-      opacity: 1;
-    }
-    #{$duration_percel + $fade_percel}% {
-      opacity: 0;
-    }
-    #{100 - $fade_percel}% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
 
-  @keyframes animation_slide2 {
-    2% {
+    &:not(:first-child) {
+      animation-name: animation_slide#{$j + 1};
+      animation-duration: $total;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
       opacity: 0;
     }
-    #{$fade_percel}% {
-      opacity: 1;
+
+    @for $i from 2 through $items {
+      &:nth-child(#{$i}) {
+        animation-delay: (($duration * ($i - 1)) + $fade * ($i - 2)) + $delay;
+      }
     }
-    #{$duration_percel + $fade_percel}% {
-      opacity: 1;
+
+    $duration_percel : ($duration * 100) / $total;
+    $fade_percel : ($fade * 100) / $total;
+
+    @keyframes animation_slide#{$j} {
+      0% {
+        opacity: 1;
+      }
+      #{$duration_percel}% {
+        opacity: 1;
+      }
+      #{$duration_percel + $fade_percel}% {
+        opacity: 0;
+      }
+      #{100 - $fade_percel}% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
     }
-    #{$duration_percel + ($fade_percel * 2)}% {
-      opacity: 0;
+
+    @keyframes animation_slide#{$j + 1} {
+      2% {
+        opacity: 0;
+      }
+      #{$fade_percel}% {
+        opacity: 1;
+      }
+      #{$duration_percel + $fade_percel}% {
+        opacity: 1;
+      }
+      #{$duration_percel + ($fade_percel * 2)}% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
+      }
     }
-    100% {
-      opacity: 0;
-    }
+
+    $j: ($j + 2) !global;
   }
 }

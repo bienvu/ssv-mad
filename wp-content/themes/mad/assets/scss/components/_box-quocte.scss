@@ -28,7 +28,6 @@
   }
 
   .quocte {
-    @include animation_slide(3, 3s, 2s);
     max-width: inherit;
     width: 100%;
     top: 50%;
@@ -42,6 +41,10 @@
     @media only screen and (min-width: 768px) {
       max-width: 500px;
     }
+  }
+
+  &__animation {
+    @include animation_slide(3, 3s, 2s);
   }
 }
 

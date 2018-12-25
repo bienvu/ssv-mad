@@ -150,6 +150,16 @@ blockquote {
   }
 }
 
+q {
+  &:before {
+    content: "“";
+  }
+
+  &:after {
+    content: "”";
+  }
+}
+
 iframe,
 img {
   max-width: 100%;
