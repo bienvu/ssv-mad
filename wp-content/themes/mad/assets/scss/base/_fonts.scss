@@ -1,13 +1,10 @@
 // FONTS
 // Google Font Import
-// @import url("//fonts.googleapis.com/css?family=Roboto:300,400,500,700");
+@import url('https://fonts.googleapis.com/css?family=Muli:300,400,400i,600');
 
 // Icon Font
 @include font-face(base, 'fonts/mad');
 
 // For example:
-@include font-face("Muli", fonts/Muli-Light, 300, normal);
-@include font-face("Muli", fonts/Muli-SemiBold, 600, normal);
-@include font-face("Muli", fonts/Muli-Regular, 400, normal);
 @include font-face("Miller-Display", fonts/Miller-DisplayLight, 300, normal);
 @include font-face("Miller-Display", fonts/Miller-DisplayRoman, 400, normal);
