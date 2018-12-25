@@ -59,6 +59,6 @@
     //   $('html, body').animate({
     //     scrollTop: $next
     //   }, 'slow');
-    // });
+  });
 
-}(this, this.document, this.jQuery));
+})(this, this.document, this.jQuery);
