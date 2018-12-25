@@ -6,9 +6,31 @@
   }
 
   &__content {
+    margin-bottom: 40px;
+
     p {
       &:last-of-type {
         margin-bottom: 0;
+      }
+    }
+  }
+
+  &__link {
+    display: flex;
+    flex-wrap: wrap;
+
+    .btn {
+      margin-bottom: 20px;
+      width: 100%;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+      @media only screen and (min-width: $tablet) {
+        margin-right: 17px;
+        margin-bottom: 0;
+        width: auto;
       }
     }
   }
