@@ -1,0 +1,73 @@
+.box-image-text {
+  &__wrap {
+    padding: 20px 0;
+    position: relative;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 15px;
+      left: 0;
+      height: 1px;
+      width: 100%;
+      background: $gray;
+    }
+
+    &:last-of-type {
+      border-bottom: 1px solid $gray;
+    }
+  }
+
+  &__list {
+    display: flex;
+    overflow-x: scroll;
+    margin: 0 -2.5px;
+
+    @media only screen and (min-width: $tablet) {
+      margin: 0 -13px;
+    }
+
+    @media only screen and (min-width: $tablet) and (max-width: $desktopWideLarge) {
+      margin: 0 -5px;
+    }
+
+    @media only screen and (min-width: $desktopWideLarge) {
+      margin: 0 -81px;
+    }
+  }
+
+  &__title {
+    padding-top: 21px;
+  }
+
+  &__content {
+    margin-bottom: 46px;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  &__image {
+    line-height: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 100%;
+      height: auto;
+      padding: 0 2.5px;
+
+      @media only screen and (min-width: $desktopWideLarge) {
+        padding: 0 13px;
+        width: calc((100% - 1px) / 3);
+      }
+
+      @media only screen and (min-width: $tablet) and (max-width: $desktopWideLarge) {
+        padding: 0 5px;
+        width: 50%;
+      }
+    }
+  }
+}
