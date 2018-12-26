@@ -2,7 +2,7 @@
 %icons {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: 'base';
+  font-family: 'mad';
   font-style: normal;
   font-variant: normal;
   font-weight: normal;
@@ -18,6 +18,12 @@
   }
 }
 
+.icon-mad_logo:before {
+  content: "\e908";
+}
+.icon-search:before {
+  content: "\e91d";
+}
 .icon-enlarge:before {
   content: "\e906";
 }
@@ -36,8 +42,14 @@
 .icon-instagram:before {
   content: "\e904";
 }
-.icon-arrow:before {
+.icon-arrow-down:before {
   content: "\e905";
+}
+.icon-arrow-left:before {
+  content: "\e90a";
+}
+.icon-arrow-right:before {
+  content: "\e909";
 }
 .icon-share:before {
   content: "\e90b";
@@ -57,7 +69,7 @@
 .icon-linkedin:before {
   content: "\e90c";
 }
-.icon-search:before {
+.icon-search1:before {
   content: "\e907";
 }
 .icon-cart:before {
