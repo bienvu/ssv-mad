@@ -1,17 +1,7 @@
 .box-image-text {
   &__wrap {
-    padding: 20px 0;
-    position: relative;
-
-    &:before {
-      content: "";
-      position: absolute;
-      top: 15px;
-      left: 0;
-      height: 1px;
-      width: 100%;
-      background: $gray;
-    }
+    padding: 41px 0 20px;
+    border-top: 1px solid $gray;
 
     &:last-of-type {
       border-bottom: 1px solid $gray;
@@ -20,16 +10,8 @@
 
   &__list {
     display: flex;
-    overflow-x: scroll;
+    overflow-x: auto;
     margin: 0 -2.5px;
-
-    @media only screen and (min-width: $tablet) {
-      margin: 0 -13px;
-    }
-
-    @media only screen and (min-width: $tablet) and (max-width: $desktopWideLarge) {
-      margin: 0 -5px;
-    }
 
     @media only screen and (min-width: $desktopWideLarge) {
       margin: 0 -81px;
@@ -37,7 +19,6 @@
   }
 
   &__title {
-    padding-top: 21px;
   }
 
   &__content {
@@ -59,14 +40,13 @@
       height: auto;
       padding: 0 2.5px;
 
+      @media only screen and (min-width: $tablet) {
+        width: 50%;
+      }
+
       @media only screen and (min-width: $desktopWideLarge) {
         padding: 0 13px;
         width: calc((100% - 1px) / 3);
-      }
-
-      @media only screen and (min-width: $tablet) and (max-width: $desktopWideLarge) {
-        padding: 0 5px;
-        width: 50%;
       }
     }
   }
