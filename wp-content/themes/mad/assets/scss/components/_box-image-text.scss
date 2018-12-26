@@ -1,0 +1,53 @@
+.box-image-text {
+  &__wrap {
+    padding: 41px 0 20px;
+    border-top: 1px solid $gray;
+
+    &:last-of-type {
+      border-bottom: 1px solid $gray;
+    }
+  }
+
+  &__list {
+    display: flex;
+    overflow-x: auto;
+    margin: 0 -2.5px;
+
+    @media only screen and (min-width: $desktopWideLarge) {
+      margin: 0 -81px;
+    }
+  }
+
+  &__title {
+  }
+
+  &__content {
+    margin-bottom: 46px;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  &__image {
+    line-height: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 100%;
+      height: auto;
+      padding: 0 2.5px;
+
+      @media only screen and (min-width: $tablet) {
+        width: 50%;
+      }
+
+      @media only screen and (min-width: $desktopWideLarge) {
+        padding: 0 13px;
+        width: calc((100% - 1px) / 3);
+      }
+    }
+  }
+}
