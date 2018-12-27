@@ -1,0 +1,83 @@
+.grid-content {
+  padding: 20px 0;
+
+  &__wrap {
+    display: flex;
+    width: 100%;
+    margin: 0 -19px 0 0;
+    overflow: auto;
+
+    @media only screen and (min-width: $desktop) {
+      display: block;
+      margin: 0;
+      overflow: visible;
+    }
+  }
+
+  &__list {
+    width: 100%;
+    padding: 0 19px;
+    flex: 0 0 auto;
+
+    @media only screen and (min-width: $mobileLandScape) {
+      width: 50%;
+    }
+
+    @media only screen and (min-width: $desktop) {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 30px;
+      padding: 30px 0 0;
+      width: 100%;
+      border-top: 1px solid $light-gray;
+    }
+  }
+
+  &__image {
+    line-height: 0;
+    margin-bottom: 20px;
+
+    @media only screen and (min-width: $desktop) {
+      width: 35%;
+      padding-right: 19px;
+      margin-bottom: 0;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__body {
+    @media only screen and (min-width: $desktop) {
+      width: 65%;
+      padding-left: 27px;
+      margin-top: 37px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 21px;
+  }
+
+  &__content {
+    margin-bottom: 21px;
+
+    p:last-of-type {
+      margin: 0;
+    }
+
+    .read-more {
+      text-decoration: underline;
+      text-transform: capitalize;
+    }
+  }
+
+  &__name {
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: auto;
+  }
+}
