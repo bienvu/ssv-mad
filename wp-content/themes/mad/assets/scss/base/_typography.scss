@@ -66,8 +66,7 @@ h6,
   transition: all .3s ease;
   cursor: pointer;
 
-  &:active,
-  &:hover {
+  &:active{
     color: $link-color-hover;
   }
 

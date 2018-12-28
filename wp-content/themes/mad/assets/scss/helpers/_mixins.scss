@@ -137,6 +137,33 @@
   }
 }
 
+@mixin grid-padding($cols: 2, $padding-mobile : 20px, $padding-desktop: $padding-mobile, $align: center) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: $align;
+  margin: 0 -#{$padding-mobile};
+
+  @media only screen and (min-width: $tablet) {
+    margin: 0 -#{$padding-desktop};
+  }
+
+  > div,
+  > li {
+    width: 100%;
+    padding: $padding-mobile;
+
+    @media only screen and (min-width: $mobileLandScape) {
+      width: calc(100% / 2);
+    }
+
+    @media only screen and (min-width: $tablet) {
+      width: calc(100% / #{$cols});
+      padding: $padding-desktop;
+    }
+  }
+}
+
 // animation slide
 $j : 1;
 @mixin animation_slide($items ,$duration, $fade: .5s, $delay: 0s) {

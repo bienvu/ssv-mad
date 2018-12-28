@@ -132,6 +132,10 @@
       nextArrow: '<span class="slick-next">Next</span>',
       adaptiveHeight: true
     });
+    // js masonry
+    $(window).load(function() {
+      $('.js-masonry').masonry();
+    });
 
   });
 })(this, this.document, this.jQuery);
