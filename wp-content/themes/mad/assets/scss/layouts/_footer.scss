@@ -183,4 +183,33 @@
       padding: 20px 0;
     }
   }
+
+  &__fixed {
+    position: fixed;
+    width: 100%;
+    background-color: $gray;
+    text-transform: uppercase;
+    text-align: center;
+    left: 0;
+    bottom: -35px;
+    transition: .5s;
+
+    @media only screen and (min-width: $tablet) {
+      display: none;
+    }
+
+    &.is-show {
+      bottom: 0;
+    }
+
+    a {
+      padding: 10px;
+      display: block;
+      color: $white;
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
 }

@@ -54,11 +54,12 @@
     // });
 
     //scroll to next section
-    // $('.js-scroll-down').click(function() {
-    //   var $next = $(this).parent().parent().next().offset().top;
-    //   $('html, body').animate({
-    //     scrollTop: $next
-    //   }, 'slow');
+    $('.js-scroll-down').click(function() {
+      var $next = $(this).parent().next().offset().top;
+      $('html, body').animate({
+        scrollTop: $next
+      }, 'slow');
+    });
     
     // js header, sticky appear from 40px
     if($('.js-header').length) {
@@ -112,6 +113,24 @@
         $('.header__menu').slideDown('slow');
         $('.header__menu').addClass('is-show');
       }
+    });
+
+    // js footer
+    $(document).scroll(function(event) {
+      setTimeout(function () {
+        if($(this).scrollTop() > 80) {
+          $('.js-footer').addClass('is-show');
+        } else {
+          $('.js-footer').removeClass('is-show');
+        }
+      }, 100)
+    });
+
+    // js slide
+    $('.js-slide').slick({
+      prevArrow: '<span class="slick-prev">Previous</span>',
+      nextArrow: '<span class="slick-next">Next</span>',
+      adaptiveHeight: true
     });
 
   });
