@@ -5,7 +5,7 @@ input[type='submit'] {
 
 %form-text {
   @include muli;
-  font-weight: 300px;
+  font-weight: 300;
   appearance: none;
   background-color: $light-gray;
   border-radius: 0;
@@ -19,7 +19,6 @@ input[type='submit'] {
   min-width: 249px;
   line-height: 1.5714;
   letter-spacing: 0;
-  cursor: pointer;
   
   &--full {
     width: 100%;
@@ -97,7 +96,8 @@ input[type="tel"],
 input[type="url"],
 input[type="email"],
 input[type="password"],
-input[type="hidden"] {
+input[type="hidden"],
+input[type="search"] {
   @extend %form-text;
 }
 

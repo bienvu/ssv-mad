@@ -1,6 +1,228 @@
-// Navigation.
-.nav {
+.main-menu {
+  > ul{
+    @media only screen and (min-width: 1366px) {
+      display: flex;
+    }
+
+    > li {
+      @media only screen and (min-width: 1366px) {
+        margin-left: 15px;
+      }
+
+      &:hover {
+        @media only screen and (min-width: 1366px) {
+          .main-menu__wrap {
+            opacity: 1;
+            visibility: visible;
+          }
+
+          > a {
+            border-color: #d6d6d6;
+          }
+        }
+      }
+
+      a {
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 1;
+        letter-spacing: 0;
+        display: inline-block;
+        padding: 15px 0;
+        width: 100%;
+        border-bottom: 1px solid #d6d6d6;
+        position: relative;
+        text-transform: uppercase;
+
+        i {
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translateY(-50%);
+          padding: 0 0 0 15px;
+
+          @media only screen and (min-width: 1366px) {
+            display: none;
+          }
+
+          &:before {
+            font-size: 17px;
+          }
+        }
+      }
+
+      > a {
+        @media only screen and (min-width: 1366px) {
+          position: relative;
+          border-color: transparent;
+
+          &:before {
+            content: "";
+            width: 100%;
+            top: 100%;
+            left: 0;
+            height: 41px;
+            background-color: transparent;
+            position: absolute;
+          }
+        }
+      }
+    }
+  }
+
+  .sub-menu {
+    margin-bottom: 20px;
+
+    @media only screen and (min-width: 1366px) {
+      width: 30%;
+    }
+
+    > li {
+      @media only screen and (min-width: 1366px) {
+        &:hover {
+          > .main-menu__image {
+            display: block;
+          }
+
+          .sub-menu__wrap {
+            visibility: visible;
+            opacity: 1;
+
+            + .main-menu__image {
+              display: none;
+            }
+          }
+
+          > a {
+            border-color: $black;
+
+            i {
+              display: inline;
+
+              &:before {
+                color: $black;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &__wrap {
+      position: absolute;
+      background-color: $white;
+      top: 0;
+      left: 100%;
+      width: 100%;
+      height: 100vh;
+      z-index: 1;
+      transition: .5s;
+      overflow: hidden auto;
+
+       @media only screen and (min-width: 1366px) {
+        top: 0;
+        right: 0;
+        left: inherit;
+        width: 70%;
+        height: auto;
+        overflow: visible;
+        opacity: 0;
+        visibility: hidden;
+       }
+
+      &.is-show {
+        left: 0%;
+      }
+
+      .sub-menu > li:hover > a > i {
+        display: none;
+      }
+    }
+  }
+
+  &__wrap {
+    position: absolute;
+    background-color: $white;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    transition: .5s;
+    overflow: hidden auto;
+
+    @media only screen and (min-width: 1366px) {
+      left: 0;
+      top: 100%;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &.is-show {
+      left: 0%;
+    }
+  }
+
+  &__body {
+    @media only screen and (min-width: 1366px) {
+      position: relative;
+    }
+  }
+
+  &__top {
+    @media only screen and (min-width: 1366px) {
+      display: none;
+    }
+  }
+
+  &__image {
+    display: none;
+
+    @media only screen and (min-width: 1366px) {
+      // display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 70%;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__back {
+    > span {
+      display: inline-block;
+    }
+  }
+
+  .header__top {
+    @media only screen and (min-width: 1366px) {
+      display: none;
+    }
+  }
+}
+
+.menu-second {
+  @extend %text--small;
+
   ul {
-    margin-bottom: rem(10px);
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+      width: 50%;
+
+      @media only screen and (min-width: $desktop) {
+        width: 100%;
+      }
+
+      a {
+        display: inline-block;
+        padding: 5px 5px 5px 0;
+      }
+    }
   }
 }

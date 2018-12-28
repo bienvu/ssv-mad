@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Muli:300,400,400i,600');
 
 // Icon Font
-@include font-face(base, 'fonts/mad');
+@include font-face('mad', 'fonts/mad');
 
 // For example:
 @include font-face("Miller-Display", fonts/Miller-DisplayLight, 300, normal);

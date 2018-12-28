@@ -1,0 +1,31 @@
+$margin: 11px;
+
+.fsubs {
+  .form-item {
+    margin-bottom: $margin;
+
+    &:last-of-type {
+      @media only screen and (min-width: 768px) {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .form-actions {
+    @media only screen and (min-width: 768px) {
+      margin-bottom: 0;
+    }
+  }
+
+  .form-list {
+    @media only screen and (min-width: 768px) {
+      margin-bottom: 0;
+    }
+
+    .form-item {
+      @media only screen and (min-width: 768px) {
+        margin-bottom: $margin;
+      }
+    }
+  }
+}
