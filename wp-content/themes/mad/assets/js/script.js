@@ -61,4 +61,16 @@
     //   }, 'slow');
   });
 
+  //js read more
+  $('.js-read-more').click(function(e) {
+    e.preventDefault();
+    if($(this).parent().parent().find('.read-more').hasClass('is-show')) {
+      $(this).parent().parent().find('.read-more').removeClass('is-show');
+      $(this).text('READ MORE');
+    }else {
+      $(this).parent().parent().find('.read-more').addClass('is-show');
+      $(this).text('READ LESS');
+    }
+  });
+
 })(this, this.document, this.jQuery);
