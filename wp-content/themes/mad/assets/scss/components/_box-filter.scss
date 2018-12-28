@@ -1,0 +1,47 @@
+.box-filter {
+  padding: 30px 0;
+
+  &__list {
+    @media only screen and (min-width: $desktop) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__item {
+    margin-bottom: 20px;
+    text-align: center;
+
+    @media only screen and (min-width: $desktop) {
+      margin: 0 20px 0 0;
+    }
+
+    &:last-of-type {
+      margin: 0;
+    }
+
+    .btn {
+      @media only screen and (max-width: $tabletOnly) {
+        min-width: 335px;
+      }
+
+      @media only screen and (max-width: $mobilePortraitOnly) {
+        width: 100%;
+        min-width: inherit;
+      }
+
+      &.is-active {
+        background-color: $btn-color;
+        border: 1px solid $btn-bg;
+        color: $btn-bg;
+
+        &:hover {
+          background-color: $btn-bg;
+          border: 1px solid $btn-bg;
+          color: $btn-color;
+        }
+      }
+    }
+  }
+}
