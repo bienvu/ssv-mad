@@ -24,7 +24,11 @@
 @import 'base/helpers';
 
 // Vendors
-//@import 'vendors/chosen';
+@import 'vendors/slick';
+
+// Components vendors
+@import 'components/vendors/social.scss';
+@import 'components/vendors/box-form.scss';
 
 // Components
 @import 'components/box-text';
@@ -40,6 +44,7 @@
 @import 'components/vendors/social.scss';
 @import 'components/vendors/box-form.scss';
 @import 'components/box-contact';
+@import 'components/banner';
 
 // Layouts
 @import 'layouts/layout';
