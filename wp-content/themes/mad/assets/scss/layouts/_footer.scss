@@ -1,0 +1,186 @@
+.footer {
+  $width-tablet: 50%;
+
+  @extend %text--small;
+  background-color: rgba($gray, .1);
+
+  > .container {
+    @media only screen and (max-width: $mobileOnly) {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      max-width: inherit;
+    }
+  }
+
+  &__image {
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba($gray, .25);
+
+    @media only screen and (min-width: $tablet) {
+      border: 0;
+    }
+
+    p {
+      a {
+        display: inline-block;
+      }
+
+      &:last-of-type {
+        margin: 0;
+        line-height: 0;
+      }
+    }
+  }
+
+  &__contact {
+    padding: 20px 0 0 0;
+
+    @media only screen and (min-width: $tablet) {
+      width: $width-tablet;
+      border-bottom: 1px solid rgba($gray, .25);
+      border-right: 1px solid rgba($gray, .25);
+    }
+
+    @media only screen and (min-width: $desktop) {
+      width: 25%;
+      border: 0;
+      order: 4;
+    }
+
+    .container {
+      @media only screen and (min-width: $tablet) {
+        max-width: inherit;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+
+  &__subscribe {
+    padding: 20px 0 0 0;
+
+    @media only screen and (min-width: $tablet) {
+      width: $width-tablet;
+      border-bottom: 1px solid rgba($gray, .25);
+    }
+
+    @media only screen and (min-width: $desktop) {
+      width: 25%;
+      border-bottom: 0;
+      border-right: 1px solid rgba($gray, .25);
+    }
+
+    .container {
+      @media only screen and (min-width: $tablet) {
+        max-width: inherit;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+    }
+
+    .fsubs {
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba($gray, .25);
+
+      @media only screen and (min-width: $tablet) {
+        border: 0;
+      }
+
+      .form-item {
+        input { 
+          @extend %form-text--white;
+          width: 100%;
+          min-width: inherit;
+
+          @media only screen and (min-width: $tablet) {
+            max-width: 249px;
+          }
+        }
+      }
+
+      .form-actions {
+        .btn {
+          @media only screen and (min-width: $tablet) {
+            width: auto;
+          }
+        }
+      }
+    }
+  }
+
+  &__social {
+    @media only screen and (min-width: $tablet) {
+      width: $width-tablet;
+      border-right: 1px solid rgba($gray, .25);
+    }
+
+    @media only screen and (min-width: $desktop) {
+      width: 25%;
+      border-bottom: 0;
+    }
+
+    .container {
+      @media only screen and (min-width: $tablet) {
+        max-width: inherit;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+    }
+
+    .soc {
+      border-bottom: 1px solid rgba($gray, .25);
+
+      @media only screen and (min-width: $tablet) {
+        border: 0;
+      }
+    }
+  }
+
+  &__menu {
+    @media only screen and (min-width: $tablet) {
+      width: $width-tablet;
+    }
+
+    @media only screen and (min-width: $desktop) {
+      width: 25%;
+      border-bottom: 0;
+      border-right: 1px solid rgba($gray, .25);
+    }
+
+    .container {
+      @media only screen and (min-width: $tablet) {
+        max-width: inherit;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+    }
+
+    padding: 20px 0;
+  }
+
+  &__bottom {
+    padding: 20px 0;
+    background-color: $white;
+
+    @media only screen and (min-width: $mobileLandScape) {
+      text-align: center;
+    }
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  &__wrap {
+    @media only screen and (min-width: $tablet) {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px 0;
+    }
+  }
+}

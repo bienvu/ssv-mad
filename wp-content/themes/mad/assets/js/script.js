@@ -61,8 +61,10 @@
     //   }, 'slow');
     
     // js header, sticky appear from 40px
-    if($('.js-header').offset().top >= 40) {
-      $('.js-header').addClass('is-sticky');
+    if($('.js-header').length) {
+      if($('.js-header').offset().top >= 40) {
+        $('.js-header').addClass('is-sticky');
+      }
     }
 
     $(document).scroll(function(event) {
