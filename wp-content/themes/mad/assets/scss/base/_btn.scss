@@ -25,6 +25,10 @@
   outline: 0;
   min-width: 165px;
 
+  @media only screen and (min-width: $desktopSupperWideLarge) {
+    font-size: 17px;
+  }
+
   &:active,
   &:hover {
     background-color: $btn-color;
