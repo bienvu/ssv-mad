@@ -23,6 +23,10 @@ html {
   font-smoothing: antialiased;
   font-weight: 300;
   line-height: $base-line-height;
+
+  @media only screen and (min-width: $desktopSupperWideLarge) {
+    $base-font-size: 19px;
+  }
 }
 
 body {
