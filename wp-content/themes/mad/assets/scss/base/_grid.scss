@@ -5,6 +5,7 @@ $container: 960px;
 $containerWide: 1144px;
 $containerWideLarge: 1144px;
 $containerSuperWide: 1280px;
+$containerSupperWideLarge: 1608px;
 
 .container {
   max-width: 100%;
@@ -32,5 +33,9 @@ $containerSuperWide: 1280px;
 
   @media (min-width: $desktopSupperWide) {
     max-width: $containerSuperWide;
+  }
+
+  @media (min-width: $desktopSupperWideLarge) {
+    max-width: $containerSupperWideLarge;
   }
 }
