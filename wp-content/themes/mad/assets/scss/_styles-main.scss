@@ -25,6 +25,7 @@
 
 // Vendors
 @import 'vendors/slick';
+@import 'vendors/lightgallery/lightgallery';
 
 // Components vendors
 @import 'components/vendors/social.scss';
@@ -44,6 +45,7 @@
 @import 'components/box-filter';
 @import 'components/masonry';
 @import 'components/pagination';
+@import 'components/box-gallery';
 
 // Layouts
 @import 'layouts/layout';

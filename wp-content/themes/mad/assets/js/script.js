@@ -137,5 +137,13 @@
       $('.js-masonry').masonry();
     });
 
+    // js gallery
+    if($('.js-lightbox-product').length) {
+      $('.js-lightbox-product .slick-track').lightGallery({
+        mode: 'lg-fade',
+        download: false
+      });
+    }
+
   });
 })(this, this.document, this.jQuery);
