@@ -77,4 +77,11 @@
       border: 1px solid $white;
     }
   }
+
+  &--icon {
+    &:before {
+      line-height: 10px;
+      vertical-align: middle;
+    }
+  }
 }
