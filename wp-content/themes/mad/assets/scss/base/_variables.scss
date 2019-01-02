@@ -24,9 +24,5 @@ $desktopSupperWideLarge: 1920px;
 $base-font-size: 14px;
 $base-line-height: 1.5714;
 
-@media only screen and (min-width: $desktopSupperWideLarge) {
-  $base-font-size: 19px;
-}
-
 // Add global paths
 $image-path: '../../images/';

@@ -25,7 +25,7 @@ html {
   line-height: $base-line-height;
 
   @media only screen and (min-width: $desktopSupperWideLarge) {
-    $base-font-size: 19px;
+    font-size: 19px;
   }
 }
 
