@@ -1,0 +1,43 @@
+.pager {
+  span {
+    display: none;
+  }
+
+  ul {
+    display: flex;
+    justify-content: center;
+  }
+
+  li {
+    a {
+      padding: 0 2.5px 2px;
+      display: inline-block;
+      margin-right: 18px;
+
+      &.next {
+        margin-right: 33px;
+      }
+
+      &.prev {
+        margin-left: 10px;
+      }
+    }
+
+    &.custom-pager {
+      a {
+        padding: 0;
+      }
+    }
+
+    &.current {
+      a {
+        border-bottom: 1px solid $black;
+      }
+    }
+  }
+
+  .icon-arrow-right,
+  .icon-arrow-left {
+    font-size: 10px;
+  }
+}

@@ -1,0 +1,93 @@
+.box-gallery {
+  .container {
+    @media only screen and (min-width: $desktop) {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      max-width: 100%;
+    }
+  }
+
+  &__item {
+    position: relative;
+    cursor: pointer;
+
+    i {
+      font-size: 0;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      cursor: pointer;
+
+      &:before {
+        font-size: 20px;
+        color: $white;
+      }
+    }
+  }
+
+  &__image {
+    line-height: 0;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__wrap {
+    @media only screen and (min-width: $desktop) {
+      display: flex;
+    }
+  }
+
+  &__left {
+    @media only screen and (min-width: $desktop) {
+      width: 65.18%;
+    }
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      width: 65.3125%;
+    }
+  }
+
+  &__right {
+    @media only screen and (min-width: $desktop) {
+      width: calc(100% - 65.18%);
+      padding-left: 30px;
+      max-width: 446px;
+    }
+
+    @media only screen and (min-width: $desktop) {
+      width: calc(100% - 65.3125%);
+    }
+  }
+
+  &__link {
+    .btn--icon {
+      &:before {
+        font-size: 20px;
+        margin-right: 10px;
+      }
+    }
+
+    .btn {
+      margin-right: 19px;
+      margin-top: 19px;
+
+      @media only screen and (max-width: $mobileOnly) {
+        width: 100%;
+      }
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__content {
+    p:last-of-type {
+      margin: 0;
+    }
+  }
+}

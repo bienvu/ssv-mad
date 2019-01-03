@@ -26,6 +26,7 @@
   min-width: 165px;
 
   @media only screen and (min-width: $desktopSupperWideLarge) {
+    padding: 16px 23.25px 15px;
     font-size: 17px;
   }
 
@@ -75,6 +76,13 @@
       background: $white;
       color: #433e40;
       border: 1px solid $white;
+    }
+  }
+
+  &--icon {
+    &:before {
+      line-height: 10px;
+      vertical-align: middle;
     }
   }
 }

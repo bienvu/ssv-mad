@@ -18,6 +18,12 @@
   }
 }
 
+.icon-fullscreen_exit:before {
+  content: "\e911";
+}
+.icon-fullscreen:before {
+  content: "\e914";
+}
 .icon-mad_logo:before {
   content: "\e908";
 }
