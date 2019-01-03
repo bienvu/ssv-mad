@@ -1,16 +1,19 @@
 .main-menu {
   > ul{
-    @media only screen and (min-width: 1366px) {
+    @media only screen and (min-width: $desktopWideLarge) {
       display: flex;
     }
 
     > li {
-      @media only screen and (min-width: 1366px) {
-        margin-left: 15px;
+      @media only screen and (min-width: $desktopWideLarge) {
+        margin-left: 27px;
+      }
+      @media only screen and (min-width: $desktopSupperWideLarge) {
+        margin-left: 31px;
       }
 
       &:hover {
-        @media only screen and (min-width: 1366px) {
+        @media only screen and (min-width: $desktopWideLarge) {
           .main-menu__wrap {
             opacity: 1;
             visibility: visible;
@@ -18,6 +21,16 @@
 
           > a {
             border-color: #d6d6d6;
+
+            &:before {
+              content: "";
+              width: 100%;
+              top: 100%;
+              left: 0;
+              height: 41px;
+              background-color: transparent;
+              position: absolute;
+            }
           }
         }
       }
@@ -28,7 +41,7 @@
         line-height: 1;
         letter-spacing: 0;
         display: inline-block;
-        padding: 15px 0;
+        padding: 12px 0;
         width: 100%;
         border-bottom: 1px solid #d6d6d6;
         position: relative;
@@ -41,30 +54,28 @@
           transform: translateY(-50%);
           padding: 0 0 0 15px;
 
-          @media only screen and (min-width: 1366px) {
+          @media only screen and (min-width: $desktopWideLarge) {
             display: none;
           }
 
           &:before {
             font-size: 17px;
+
+            @media only screen and (min-width: $desktopSupperWideLarge) {
+              font-size: 28px;
+            }
           }
         }
       }
 
       > a {
-        @media only screen and (min-width: 1366px) {
+        @media only screen and (min-width: $desktopWideLarge) {
           position: relative;
           border-color: transparent;
+        }
 
-          &:before {
-            content: "";
-            width: 100%;
-            top: 100%;
-            left: 0;
-            height: 41px;
-            background-color: transparent;
-            position: absolute;
-          }
+        @media only screen and (min-width: $desktopSupperWideLarge) {
+          font-size: 15px;
         }
       }
     }
@@ -73,15 +84,16 @@
   .sub-menu {
     margin-bottom: 20px;
 
-    @media only screen and (min-width: 1366px) {
+    @media only screen and (min-width: $desktopWideLarge) {
       width: 30%;
     }
 
     > li {
-      @media only screen and (min-width: 1366px) {
+      @media only screen and (min-width: $desktopWideLarge) {
         &:hover {
           > .main-menu__image {
-            display: block;
+            visibility: visible;
+            opacity: 1;
           }
 
           .sub-menu__wrap {
@@ -95,6 +107,7 @@
 
           > a {
             border-color: $black;
+            color: $primary-color;
 
             i {
               display: inline;
@@ -104,6 +117,20 @@
               }
             }
           }
+        }
+      }
+
+      .main-menu__image {
+        a {
+          padding: 0;
+          border: 0;
+          line-height: 0;
+        }
+      }
+
+      > a {
+        @media only screen and (min-width: $desktopWideLarge) {
+          padding: 12px 0;
         }
       }
     }
@@ -119,7 +146,7 @@
       transition: .5s;
       overflow: hidden auto;
 
-       @media only screen and (min-width: 1366px) {
+       @media only screen and (min-width: $desktopWideLarge) {
         top: 0;
         right: 0;
         left: inherit;
@@ -128,6 +155,14 @@
         overflow: visible;
         opacity: 0;
         visibility: hidden;
+        margin-top: 14px;
+        padding-left: 7px;
+        background-color: ($white, .95);
+       }
+
+       @media only screen and (min-width: $desktopSupperWideLarge) {
+          margin-top: 20px;
+          padding-left: 11px;
        }
 
       &.is-show {
@@ -136,6 +171,44 @@
 
       .sub-menu > li:hover > a > i {
         display: none;
+      }
+    }
+
+    &__body {
+      li {
+        @media only screen and (min-width: $desktopWideLarge) {
+          margin-bottom: 17px;
+          padding-right: 55px;
+        }
+
+        @media only screen and (min-width: $desktopSupperWideLarge) {
+          margin-bottom: 25px;
+          padding-right: 85px;
+        }
+
+        a {
+          @media only screen and (min-width: $desktopWideLarge) {
+            @include muli;
+            text-transform: capitalize;
+            color: $primary-color;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1.5714;
+            border-color: transparent;
+            padding: 2px 0;
+          }
+
+          @media only screen and (min-width: $desktopSupperWideLarge) {
+            font-size: 19px;
+            line-height: 1.5789;
+          }
+        }
+
+        &:hover {
+          a {
+            border-color: $black;
+          }
+        }
       }
     }
   }
@@ -151,11 +224,26 @@
     transition: .5s;
     overflow: hidden auto;
 
-    @media only screen and (min-width: 1366px) {
+    @media only screen and (min-width: $desktopWideLarge) {
       left: 0;
       top: 100%;
       opacity: 0;
       visibility: hidden;
+      height: auto;
+      padding-top: 20px;
+      padding-bottom: 7px;
+      min-height: 410px;
+      background-color: rgba($white, .95);
+
+      .container {
+        max-width: 1085px;
+      }
+    }
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      .container {
+        max-width: 1524px;
+      }
     }
 
     &.is-show {
@@ -164,13 +252,42 @@
   }
 
   &__body {
-    @media only screen and (min-width: 1366px) {
+    @media only screen and (min-width: $desktopWideLarge) {
       position: relative;
+    }
+
+    > .sub-menu {
+      @media only screen and (min-width: $desktopWideLarge) {
+        > li {
+          padding-right: 103px;
+
+          > a {
+            @include miller-display;
+            font-weight: 400;
+            font-size: 21px;
+            color: #808080;
+            transition: .5s;
+            text-transform: capitalize;
+          }
+        } 
+      }
+
+      @media only screen and (min-width: $desktopSupperWideLarge) {
+        > li {
+          padding-right: 145px;
+
+          > a {
+            font-size: 29px;
+            padding: 18px 0;
+            
+          }
+        } 
+      }
     }
   }
 
   &__top {
-    @media only screen and (min-width: 1366px) {
+    @media only screen and (min-width: $desktopWideLarge) {
       display: none;
     }
   }
@@ -178,12 +295,16 @@
   &__image {
     display: none;
 
-    @media only screen and (min-width: 1366px) {
-      // display: block;
+    @media only screen and (min-width: $desktopWideLarge) {
       position: absolute;
       top: 0;
       right: 0;
       width: 70%;
+      padding: 0 3px;
+      display: block;
+      opacity: 0;
+      visibility: hidden;
+      transition: .5s;
     }
 
     img {
@@ -199,7 +320,7 @@
   }
 
   .header__top {
-    @media only screen and (min-width: 1366px) {
+    @media only screen and (min-width: $desktopWideLarge) {
       display: none;
     }
   }
@@ -215,13 +336,31 @@
     li {
       width: 50%;
 
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopWideLarge) {
         width: 100%;
+      }
+
+      @media only screen and (min-width: $desktopSupperWideLarge) {
+        margin-bottom: 3.5px;
+      }
+
+      &:nth-of-type(2n) {
+        padding-left: 11px;
+
+        @media only screen and (min-width: $desktopWideLarge) {
+          order: 1;
+          padding: 0;
+        }
       }
 
       a {
         display: inline-block;
-        padding: 5px 5px 5px 0;
+        padding: 5px 5px 4px 0;
+
+        @media only screen and (min-width: $desktopSupperWideLarge) {
+          font-size: 17px;
+          line-height: 1.3241;
+        }
       }
     }
   }
