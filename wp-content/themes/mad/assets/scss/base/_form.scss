@@ -210,6 +210,11 @@ input[type="radio"] {
     letter-spacing: 0;
     color: $primary-color;
 
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      font-size: 19px;
+      line-height: 1.421;
+    }
+
     &:focus,
     &:hover,
     &:active{
