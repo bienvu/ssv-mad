@@ -19,6 +19,12 @@ input[type='submit'] {
   min-width: 249px;
   line-height: 1.5714;
   letter-spacing: 0;
+
+  @media only screen and (min-width: $desktopSupperWideLarge) {
+    font-size: 19px;
+    line-height: 1.421;
+    padding: 15px 18px 8px;
+  }
   
   &--full {
     width: 100%;

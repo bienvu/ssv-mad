@@ -3,10 +3,18 @@
 
   &__title {
     margin-bottom: 24px;
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      margin-bottom: 33px;
+    }
   }
 
   &__content {
     margin-bottom: 40px;
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      margin-bottom: 47px;
+    }
 
     p {
       &:last-of-type {
@@ -19,18 +27,23 @@
     display: flex;
     flex-wrap: wrap;
 
+    @media only screen and (min-width: $tablet) {
+      margin-right: 17px;
+      margin-bottom: 0;
+      width: auto;
+    }
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      max-width: 320px;
+      margin-right: 30px;
+    }
+
     .btn {
       margin-bottom: 20px;
       width: 100%;
 
       &:last-of-type {
         margin-bottom: 0;
-      }
-
-      @media only screen and (min-width: $tablet) {
-        margin-right: 17px;
-        margin-bottom: 0;
-        width: auto;
       }
     }
   }

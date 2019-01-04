@@ -1,0 +1,101 @@
+.lightbox-form {
+  padding: 30px 0;
+
+  &__wrap {
+    margin: auto;
+
+    @media only screen and (min-width: $desktopWideLarge) {
+      max-width: 922px;
+    }
+  }
+
+  &__title {
+    @media only screen and (min-width: $tablet) {
+      margin-bottom: 33px;
+    }
+  }
+
+  &__body {
+    padding: 0 32px;
+
+    @media only screen and (min-width: $tablet) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__left {
+    margin-bottom: 30px;
+
+    @media only screen and (min-width: $tablet) {
+      width: 50%;
+      padding-right: 14px;
+      margin-bottom: 0;
+    }
+  }
+
+  &__right {
+    @media only screen and (min-width: $tablet) {
+      width: 50%;
+      padding-left: 17px
+    }
+  }
+
+  &__image {
+    margin-bottom: 31px;
+    line-height: 0;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__content {
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  &__subtitle {
+    br {
+      display: none;
+
+      @media only screen and (min-width: $desktopWideLarge) {
+        display: block;
+      }
+
+      @media only screen and (min-width: $desktopSupperWideLarge) {
+        display: none;
+      }
+    }
+  }
+
+  .form-item {
+    @extend %form-text--full;
+    margin-bottom: 11px;
+
+    input,
+    textarea {
+      width: 100%;
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  .form-list {
+    &:first-of-type {
+      margin-bottom: -8px;
+    }
+  }
+
+  .form-actions {
+    margin-bottom: 0;
+  }
+
+  .form-item.form-type-checkbox {
+    margin-bottom: 30px;
+  }
+}
