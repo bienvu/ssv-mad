@@ -32,7 +32,11 @@
         margin-right: 50px;
 
         &:last-of-type {
-          margin: 0;
+          margin: -10px 0 0;
+        }
+
+        &:nth-of-type(2) {
+          margin-top: -10px;
         }
       }
 
@@ -61,6 +65,14 @@
     @media only screen and (min-width: $desktopSupperWideLarge) {
       margin-top: 13px;
     }
+
+    .box-contact__title {
+      &:last-of-type {
+        @media only screen and (min-width: $desktopSupperWideLarge) {
+          margin-bottom: 35px;
+        }
+      }
+    }
   }
   
   &__right {
@@ -74,6 +86,10 @@
     img {
       width: 100%;
       height: auto;
+
+      @media only screen and (min-width: $desktop) {
+        min-height: 687px;
+      }
 
       @media only screen and (min-width: $desktopSupperWideLarge) {
         max-height: 963px;
@@ -108,10 +124,10 @@
   &__center {
     background: $light-gray;
     text-align: center;
-    padding: 32px 34px 20px;
+    padding: 32px 40px 20px;
 
     @media only screen and (min-width: $desktopSupperWideLarge) {
-      padding: 48px 69px 16px;
+      padding: 48px 69px 31px;
     }
   }
 
@@ -142,13 +158,11 @@
     }
   }
 
-  .text-semibold {
-    font-weight: 600;
-  }
-
   .form-list {
-     @media only screen and (min-width: $desktopSupperWideLarge) {
-      margin-top: -15px;
+    textarea {
+      @media only screen and (min-width: $desktopSupperWideLarge) {
+        min-height: 151px;
+      }
     }
 
     input,
@@ -162,6 +176,14 @@
 
     &:first-of-type {
       margin-bottom: 30px;
+
+      @media only screen and (min-width: $desktop) {
+        margin-bottom: 16px;
+      }
+
+      @media only screen and (min-width: $desktopSupperWideLarge) {
+        margin-bottom: 20px;
+      }
     }
 
     .form-item {
@@ -171,7 +193,15 @@
     }
 
     .form-type-checkbox {
-      margin-bottom: 26px;
+      margin-bottom: 22px;
+
+      @media only screen and (min-width: $desktop) {
+        margin-bottom: 31px;
+      }
+
+      @media only screen and (min-width: $desktopSupperWideLarge) {
+        margin-bottom: 36px;
+      }
     }
   }
 

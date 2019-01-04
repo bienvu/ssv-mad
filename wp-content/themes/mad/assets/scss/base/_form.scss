@@ -19,6 +19,12 @@ input[type='submit'] {
   min-width: 249px;
   line-height: 1.5714;
   letter-spacing: 0;
+
+  @media only screen and (min-width: $desktopSupperWideLarge) {
+    font-size: 19px;
+    line-height: 1.421;
+    padding: 15px 18px 8px;
+  }
   
   &--full {
     width: 100%;
@@ -37,21 +43,25 @@ input[type='submit'] {
   &::-webkit-input-placeholder {
     color: $primary-color;
     opacity: 1;
+    text-transform: capitalize;
   }
 
   &::-moz-placeholder {
     color: $primary-color;
     opacity: 1;
+    text-transform: capitalize;
   }
 
   &:-ms-input-placeholder {
     color: $primary-color;
     opacity: 1;
+    text-transform: capitalize;
   }
 
   &:-moz-placeholder {
     color: $primary-color;
     opacity: 1;
+    text-transform: capitalize;
   }
 
   &:focus {
@@ -213,6 +223,7 @@ input[type="radio"] {
     @media only screen and (min-width: $desktopSupperWideLarge) {
       font-size: 19px;
       line-height: 1.421;
+      padding-left: 30px;
     }
 
     &:focus,
@@ -244,6 +255,12 @@ input[type="radio"] {
       border-radius: 0;
       background: $primary-color;
       box-sizing: border-box;
+
+      @media only screen and (min-width: $desktopSupperWideLarge) {
+        width: 10px;
+        height: 9px;
+        left: 2px;
+      }
     }
 
     &.reverse:before {

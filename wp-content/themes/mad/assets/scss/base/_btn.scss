@@ -39,6 +39,10 @@
 
   &--small{
     min-width: 150px;
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      min-width: 212px;
+    }
   }
 
   &--large{
@@ -51,6 +55,11 @@
 
   &--max{
     width: 223px;
+  }
+
+  &--no-change {
+    font-size: 14px;
+    padding: 12px 24px 12px 26px;
   }
 
   &--gray {
