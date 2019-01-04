@@ -2,8 +2,12 @@
   padding: 30px 0;
 
   .container {
-    @media only screen and (min-width: 1366px) {
+    @media only screen and (min-width: $desktopWideLarge) {
       max-width: 1306px;
+    }
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      min-width: 1836px;
     }
   }
 
@@ -28,7 +32,44 @@
         margin-right: 50px;
 
         &:last-of-type {
-          margin: 0;
+          margin: -10px 0 0;
+        }
+
+        &:nth-of-type(2) {
+          margin-top: -10px;
+        }
+      }
+
+      @media only screen and (min-width: $desktopSupperWideLarge) {
+        width: calc((100% - 141px) / 3);
+        margin-right: 70px;
+
+        &:last-of-type {
+          margin-right: 0;
+        }
+
+        &:first-of-type {
+          margin-right: 70px;
+        }
+      }
+    }
+  }
+
+  &__left {
+    margin-bottom: 30px;
+
+    @media only screen and (min-width: $tablet) {
+      margin-bottom: 0;
+    }
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      margin-top: 13px;
+    }
+
+    .box-contact__title {
+      &:last-of-type {
+        @media only screen and (min-width: $desktopSupperWideLarge) {
+          margin-bottom: 35px;
         }
       }
     }
@@ -45,23 +86,53 @@
     img {
       width: 100%;
       height: auto;
+
+      @media only screen and (min-width: $desktop) {
+        min-height: 725px;
+      }
+
+      @media only screen and (min-width: $desktopWide) {
+        min-height: 705px;
+      }
+
+      @media only screen and (min-width: $desktopSupperWideLarge) {
+        max-height: 963px;
+      }
     }
   }
 
+  &__list {
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      margin-top: -15px;
+    }
+  }
+ 
   &__title {
     @media only screen and (min-width: $tablet) {
      font-size: 21px;
+    }
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      font-size: 29px;
     }
   }
 
   &__content {
     margin-bottom: 25px;
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      margin-bottom: 49px;
+    }
   }
 
   &__center {
     background: $light-gray;
     text-align: center;
-    padding: 32px 34px 20px;
+    padding: 32px 40px 20px;
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      padding: 48px 69px 31px;
+    }
   }
 
   &__item {
@@ -69,10 +140,19 @@
     margin-bottom: 32px;
     padding-bottom: 29px;
 
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      margin-bottom: 44px;
+      padding-bottom: 41px;
+    }
+
     &:last-of-type {
       border: none;
       padding: 0;
       margin-bottom: 20px;
+
+      @media only screen and (min-width: $desktopSupperWideLarge) {
+        margin-bottom: 40px;
+      }
     }
 
     p {
@@ -82,11 +162,13 @@
     }
   }
 
-  .text-semibold {
-    font-weight: 600;
-  }
-
   .form-list {
+    textarea {
+      @media only screen and (min-width: $desktopSupperWideLarge) {
+        min-height: 151px;
+      }
+    }
+
     input,
     textarea {
       @extend %form-text--full;
@@ -97,7 +179,15 @@
     }
 
     &:first-of-type {
-      margin-bottom: 15px;
+      margin-bottom: 30px;
+
+      @media only screen and (min-width: $desktop) {
+        margin-bottom: 16px;
+      }
+
+      @media only screen and (min-width: $desktopSupperWideLarge) {
+        margin-bottom: 20px;
+      }
     }
 
     .form-item {
@@ -107,11 +197,27 @@
     }
 
     .form-type-checkbox {
-      margin-bottom: 15px;
+      margin-bottom: 22px;
+
+      @media only screen and (min-width: $desktop) {
+        margin-bottom: 31px;
+      }
+
+      @media only screen and (min-width: $desktopSupperWideLarge) {
+        margin-bottom: 36px;
+      }
     }
   }
 
   .form-actions {
     margin-bottom: 0;
+
+    button {
+      @media only screen and (min-width: $desktopSupperWideLarge) {
+        max-width: 232px;
+        padding: 14px 23.25px;
+        width: 100%;
+      }
+    }
   }
 }
