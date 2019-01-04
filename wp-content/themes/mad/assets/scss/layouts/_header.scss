@@ -316,10 +316,9 @@
     }
 
     .header__image {
-      margin-top: -5px;
-
       @media only screen and (min-width: $desktopWideLarge) {
         width: 100px;
+        margin-top: -5px;
         overflow: hidden;
       }
 
