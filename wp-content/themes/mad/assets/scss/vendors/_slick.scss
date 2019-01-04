@@ -117,17 +117,29 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 25px;
+    font-size: 43px;
     color: #fff;
+
+    @media only screen and (max-width: $mobileOnly) {
+      font-size: 20px;
+    }
   }
 }
 
 .slick-prev {
     @extend .icon-arrow-left;
-    left: 0;
+    left: 12px;
+
+    @media only screen and (max-width: $mobileOnly) {
+      left: 0;
+    }
 }
 
 .slick-next {
     @extend .icon-arrow-right;
-    right: 0;
+    right: 12px;
+
+    @media only screen and (max-width: $mobileOnly) {
+      right: 0;
+    }
 }

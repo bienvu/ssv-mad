@@ -39,8 +39,12 @@
     }
 
     .btn {
-      margin-bottom: 20px;
-      width: 100%;
+      margin-right: 20px;
+      
+      @media only screen and (max-width: $mobileOnly) {
+        margin-bottom: 20px;
+        width: 100%;
+      }
 
       &:last-of-type {
         margin-bottom: 0;

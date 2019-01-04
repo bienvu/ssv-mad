@@ -1,11 +1,26 @@
 .lightbox-form {
   padding: 30px 0;
+  background-color: $white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  @media only screen and (max-width: $mobileOnly) {
+    width: 100%;
+    overflow: auto;
+    max-height: 100%;
+    position: static;
+    transform: none;
+  }
 
   &__wrap {
-    margin: auto;
+    @media only screen and (min-width: $tablet) {
+      min-width: 700px;
+    }
 
-    @media only screen and (min-width: $desktopWideLarge) {
-      max-width: 922px;
+    @media only screen and (min-width: $desktop) {
+      min-width: 922px;
     }
   }
 

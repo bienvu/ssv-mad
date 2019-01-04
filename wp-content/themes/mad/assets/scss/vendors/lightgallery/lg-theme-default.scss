@@ -13,6 +13,7 @@
         top: 50%;
         z-index: $zindex-controls;
         border: 0;
+        min-width: inherit;
 
         &.disabled {
             pointer-events: none;

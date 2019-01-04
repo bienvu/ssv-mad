@@ -83,23 +83,26 @@
       $(this).parent().next().addClass('is-show');
     });
 
-  //js read more
-  $('.js-read-more').click(function(e) {
-    e.preventDefault();
-    if($(this).parent().parent().find('.read-more').hasClass('is-show')) {
-      $(this).parent().parent().find('.read-more').removeClass('is-show');
-      $(this).text('READ MORE');
-    }else {
-      $(this).parent().parent().find('.read-more').addClass('is-show');
-      $(this).text('READ LESS');
+    //js read more
+    if($('.js-read-more').length) {
+      $('.js-read-more').click(function(e) {
+        e.preventDefault();
+        if($(this).parent().parent().find('.read-more').hasClass('is-show')) {
+          $(this).parent().parent().find('.read-more').removeClass('is-show');
+          $(this).text('READ MORE');
+        }else {
+          $(this).parent().parent().find('.read-more').addClass('is-show');
+          $(this).text('READ LESS');
+        }
+      });
     }
-  });
 
-    // js back on menu
-    $('.js-back').children().click(function(event) {
-      console.log()
-      $(this).parents('.is-show').first().removeClass('is-show');
-    });
+      // js back on menu
+    if($('.js-back').length) {
+      $('.js-back').children().click(function(event) {
+        $(this).parents('.is-show').first().removeClass('is-show');
+      });
+    }
 
     // js menu bar
     $('.menu-bars').click(function(event) {
@@ -127,14 +130,19 @@
     });
 
     // js slide
-    $('.js-slide').slick({
-      prevArrow: '<span class="slick-prev">Previous</span>',
-      nextArrow: '<span class="slick-next">Next</span>',
-      adaptiveHeight: true
-    });
+    if($('.js-slide').length) {
+      $('.js-slide').slick({
+        prevArrow: '<span class="slick-prev">Previous</span>',
+        nextArrow: '<span class="slick-next">Next</span>',
+        adaptiveHeight: true
+      });
+    }
+    
     // js masonry
     $(window).load(function() {
-      $('.js-masonry').masonry();
+      if($('.js-masonry').length) {
+        $('.js-masonry').masonry();
+      }
     });
 
     // js gallery
@@ -142,6 +150,22 @@
       $('.js-lightbox-product .slick-track').lightGallery({
         mode: 'lg-fade',
         download: false
+      });
+    }
+
+    // js lightbox form
+    if($('.js-lightbox-form').length) {
+      $('.js-lightbox-form').click(function(event) {
+        $('.is-lightbox-form').toggleClass('active');
+        $('body').toggleClass('no-scroll');
+      });
+    }
+    
+    if($('.is-lightbox-form').length) {
+      $('.is-lightbox-form').click(function(event) {
+        if($(this).is(event.target)) {
+          $(this).toggleClass('active');
+        }
       });
     }
 
