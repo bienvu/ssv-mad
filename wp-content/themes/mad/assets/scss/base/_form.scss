@@ -37,21 +37,25 @@ input[type='submit'] {
   &::-webkit-input-placeholder {
     color: $primary-color;
     opacity: 1;
+    text-transform: capitalize;
   }
 
   &::-moz-placeholder {
     color: $primary-color;
     opacity: 1;
+    text-transform: capitalize;
   }
 
   &:-ms-input-placeholder {
     color: $primary-color;
     opacity: 1;
+    text-transform: capitalize;
   }
 
   &:-moz-placeholder {
     color: $primary-color;
     opacity: 1;
+    text-transform: capitalize;
   }
 
   &:focus {

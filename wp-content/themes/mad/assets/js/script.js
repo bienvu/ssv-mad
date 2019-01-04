@@ -64,7 +64,7 @@
     // js header, sticky appear from 40px
     if($('.js-header').length) {
       if($('.js-header').offset().top >= 40) {
-        $('.js-header').addClass('is-sticky');
+        // $('.js-header').addClass('is-sticky');
       }
     }
 
