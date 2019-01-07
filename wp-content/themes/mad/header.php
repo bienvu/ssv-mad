@@ -42,7 +42,7 @@
 					</div>
 					<div class="header__content">
 						<div class="primary-menu">
-							<?php ssv_navigation('primary-menu','Main Menu','has-icon'); ?>
+							<?php mad_navigation('','Main Menu','header-menu'); ?>
 						</div>
 						<div class="box-search">
 							<?php get_template_part('templates/searchform'); ?>

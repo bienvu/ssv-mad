@@ -1,7 +1,7 @@
 <?php
 /*
  *  Author: Sentius Group
- *  URL: sentiustdigital.com | @ssvtheme
+ *  URL: sentiustdigital.com | @madtheme
  *  Custom functions, support, custom post types and more.
  */
 
@@ -11,10 +11,10 @@ require get_template_directory() . '/inc/init.php';
   Functions
 \*------------------------------------*/
 // Navigation
-function ssv_navigation($menuclass, $name, $themelocaltion='') {
+function mad_navigation($menuclass, $name, $themelocation='') {
   wp_nav_menu(
   array(
-    'theme_location'  => $themelocaltion,
+    'theme_location'  => $themelocation,
     'menu'            => $name,
     'container'       => '',
     'container_class' => '$menuclass',
@@ -35,18 +35,30 @@ function ssv_navigation($menuclass, $name, $themelocaltion='') {
 }
 
 // Add i tag after a in navigation
-function ssv_add_arrow( $item_output, $item, $depth, $args ){
+function mad_add_arrow( $title, $item, $args, $depth ){
     //Only add class to 'top level' items on the 'primary' menu.
     $hasChildren = (in_array('menu-item-has-children', $item->classes));
 
-    if('has-icon' == $args->theme_location && $hasChildren && $depth == 0 ){
-        $item_output .='<i class="js-show-menu icon-arrow-right"></i>';
+    if('header-menu' == $args->theme_location && $hasChildren && $item->menu_item_parent ){
+        $title .= '<i class="icon-arrow-right"></i>';
     }
+    return $title;
+}
+
+//custom menu item has children
+function custom_menu_item($item_output, $item, $depth, $args) {
+    //Only add class to 'top level' items on the 'primary' menu.
+    $hasChildren = (in_array('menu-item-has-children', $item->classes));
+
+    if('header-menu' == $args->theme_location && $hasChildren) {
+        $item_output .= '123';
+    }
+
     return $item_output;
 }
 
 // Set class for menu dropdown
-function ssv_ssv_menu_set_dropdown( $sorted_menu_items, $args ) {
+function mad_menu_set_dropdown( $sorted_menu_items, $args ) {
     $last_top = 0;
     foreach ( $sorted_menu_items as $key => $obj ) {
         // it is a top lv item?
@@ -61,15 +73,30 @@ function ssv_ssv_menu_set_dropdown( $sorted_menu_items, $args ) {
 }
 
 // Add style to header.
-function ssv_add_styles() {
+function mad_add_styles() {
     wp_register_style('styles', get_template_directory_uri() . '/assets/css/styles.css', array(), '1.0', 'all');
     wp_enqueue_style('styles');
 }
 
 // Add script to footer.
-function ssv_add_scripts() {
+function mad_add_scripts() {
     global $wp_query;
     if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
+      // jquery
+      wp_enqueue_script('jquery');
+
+      // script library
+      wp_register_script('slick', get_template_directory_uri() . '/assets/js/lib/slick.min.js', array(), '1.0.0'); // slick
+      wp_enqueue_script('slick');
+      wp_register_script('masonry', get_template_directory_uri() . '/assets/js/lib/masonry.pkgd.min.js', array(), '1.0.0'); // masonry
+      wp_enqueue_script('masonry');
+      wp_register_script('lightgallery', get_template_directory_uri() . '/assets/js/lib/lightgallery/jquery.lightgallery.min.js', array(), '1.0.0'); // light gallery
+      wp_enqueue_script('lightgallery');
+      wp_register_script('lightgallery-share', get_template_directory_uri() . '/assets/js/lib/lightgallery/lg-share.min.js', array(), '1.0.0'); // lightgallery share
+      wp_enqueue_script('lightgallery-share');
+      wp_register_script('lightgallery-zoom', get_template_directory_uri() . '/assets/js/lib/lightgallery/lg-zoom.min.js', array(), '1.0.0'); // light gallery zoom
+      wp_enqueue_script('lightgallery-zoom');
+
       // Script.
       wp_register_script('script', get_template_directory_uri() . '/assets/js/script.js', array(), '1.0.0'); // Custom scripts
       wp_enqueue_script('script');
@@ -77,7 +104,7 @@ function ssv_add_scripts() {
 }
 
 // Remove Injected classes, ID's and Page ID's from Navigation <li> items
-function ssv_css_attributes_filter( $var ) {
+function mad_css_attributes_filter( $var ) {
     return is_array($var) ? array() : '';
 }
 
@@ -104,7 +131,7 @@ function add_slug_to_body_class($classes) {
 }
 
 // Pagination for paged posts, Page 1, Page 2, Page 3, with Next and Previous Links, No plugin
-function ssv_pagination() {
+function mad_pagination() {
     global $wp_query;
     $big = 999999999;
     echo paginate_links(array(
@@ -116,19 +143,19 @@ function ssv_pagination() {
 }
 
 // Custom Excerpts
-function ssv_index($length) // Create 20 Word Callback for Index page Excerpts, call using ssv_excerpt('ssv_index');
+function mad_index($length) // Create 20 Word Callback for Index page Excerpts, call using mad_excerpt('mad_index');
 {
     return 20;
 }
 
-// Create 40 Word Callback for Custom Post Excerpts, call using ssv_excerpt('ssv_custom_post');
-function ssv_custom_post($length)
+// Create 40 Word Callback for Custom Post Excerpts, call using mad_excerpt('mad_custom_post');
+function mad_custom_post($length)
 {
     return 40;
 }
 
 // Create the Custom Excerpts callback
-function ssv_excerpt($length_callback = '', $more_callback = '')
+function mad_excerpt($length_callback = '', $more_callback = '')
 {
     global $post;
     if (function_exists($length_callback)) {
@@ -145,13 +172,13 @@ function ssv_excerpt($length_callback = '', $more_callback = '')
 }
 
 // Remove 'text/css' from our enqueued stylesheet
-function ssv_style_remove($tag)
+function mad_style_remove($tag)
 {
     return preg_replace('~\s+type=["\'][^"\']++["\']~', '', $tag);
 }
 
 // Remove thumbnail width and height dimensions that prevent fluid images in the_thumbnail
-function ssv_remove_thumbnail_dimensions( $html )
+function mad_remove_thumbnail_dimensions( $html )
 {
     $html = preg_replace('/(width|height)=\"\d*\"\s/', "", $html);
     return $html;
@@ -164,9 +191,9 @@ function ssv_remove_thumbnail_dimensions( $html )
 /*------------*\
     Actions
 \*------------*/
-add_action('wp_enqueue_scripts', 'ssv_add_styles'); // Add Theme Stylesheet
-add_action('init', 'ssv_pagination'); // Add our sentius Pagination
-add_action('wp_footer', 'ssv_add_scripts'); // Add Custom Scripts to wp_head
+add_action('wp_enqueue_scripts', 'mad_add_styles'); // Add Theme Stylesheet
+add_action('init', 'mad_pagination'); // Add our sentius Pagination
+add_action('wp_footer', 'mad_add_scripts'); // Add Custom Scripts to wp_head
 
 // Remove Actions
 remove_action('wp_head', 'feed_links_extra', 3); // Display the links to the extra feeds such as category feeds
@@ -188,16 +215,17 @@ remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 add_filter('body_class', 'add_slug_to_body_class'); // Add slug to body class (Starkers build)
 add_filter('widget_text', 'do_shortcode'); // Allow shortcodes in Dynamic Sidebar
 add_filter('widget_text', 'shortcode_unautop'); // Remove <p> tags in Dynamic Sidebars (better!)
-add_filter('nav_menu_item_id', 'ssv_css_attributes_filter', 100, 1); // Remove Navigation <li> injected ID (Commented out by default)
-add_filter('page_css_class', 'ssv_css_attributes_filter', 100, 1); // Remove Navigation <li> Page ID's (Commented out by default)
-add_filter( 'wp_nav_menu_objects', 'ssv_menu_set_dropdown', 10, 2 );
-add_filter( 'walker_nav_menu_start_el', 'ssv_add_arrow',10,4);
+add_filter('nav_menu_item_id', 'mad_css_attributes_filter', 100, 1); // Remove Navigation <li> injected ID (Commented out by default)
+add_filter('page_css_class', 'mad_css_attributes_filter', 100, 1); // Remove Navigation <li> Page ID's (Commented out by default)
+add_filter( 'wp_nav_menu_objects', 'mad_menu_set_dropdown', 10, 2 );
+add_filter( 'nav_menu_item_title', 'mad_add_arrow',10,4);
+add_filter( 'walker_nav_menu_start_el', 'custom_menu_item',10,4);
 // add_filter('the_category', 'remove_category_rel_from_category_list'); // Remove invalid rel attribute
 add_filter('the_excerpt', 'shortcode_unautop'); // Remove auto <p> tags in Excerpt (Manual Excerpts only)
 add_filter('the_excerpt', 'do_shortcode'); // Allows Shortcodes to be executed in Excerpt (Manual Excerpts only)
-add_filter('style_loader_tag', 'ssv_style_remove'); // Remove 'text/css' from enqueued stylesheet
-// add_filter('post_thumbnail_html', 'ssv_remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to thumbnails
-// add_filter('image_send_to_editor', 'ssv_remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to post images
+add_filter('style_loader_tag', 'mad_style_remove'); // Remove 'text/css' from enqueued stylesheet
+// add_filter('post_thumbnail_html', 'mad_remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to thumbnails
+// add_filter('image_send_to_editor', 'mad_remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to post images
 // Remove Filters
 remove_filter('the_excerpt', 'wpautop'); // Remove <p> tags from Excerpt altogether
 

@@ -3,13 +3,13 @@
 		<!-- section -->
 		<section>
 
-			<h1><?php _e( 'Latest Posts', 'ssvtheme' ); ?></h1>
+			<h1><?php _e( 'Latest Posts', 'madtheme' ); ?></h1>
 
 			<?php get_template_part('loop'); ?>
 
 			<!-- pagination -->
 				<div class="pagination">
-					<?php ssv_pagination(); ?>
+					<?php mad_pagination(); ?>
 				</div>
 			<!-- /pagination -->
 

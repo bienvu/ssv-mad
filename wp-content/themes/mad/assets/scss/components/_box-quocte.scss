@@ -44,7 +44,11 @@
   }
 
   &__animation {
-    @include animation_slide(3, 3s, 2s);
+    @for $i from 2 through 6 {
+      &.slide-#{$i} {
+        @include animation_slide($i, 3s, 2s);
+      }
+    }
   }
 }
 
