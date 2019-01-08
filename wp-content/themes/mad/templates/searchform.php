@@ -1,6 +1,11 @@
 <!-- search -->
-<form class="search form-search" method="get" action="<?php echo home_url(); ?>" role="search">
-	<input class="search-input form-search__input" type="search" name="s" placeholder="<?php _e( 'search', 'ssvtheme' ); ?>">
-	<button class="search-submit form-search__submit" type="submit" role="button"><i class="icon-search"></i><?php _e( 'Search', 'ssvtheme' ); ?></button>
+<form method="get" action="<?php echo home_url(); ?>" role="search" class="search form-search">
+  <div class="form-header__submit">
+    <button class="search-submit icon-search" type="submit" role="button"><?php _e( 'Search', 'ssvtheme' ); ?></button>
+  </div>
+  
+  <div class="form-header__input">
+    <input type="search" placeholder="<?php _e( 'SEARCH', 'ssvtheme' ); ?>" class="search-input" name="s">
+  </div>
 </form>
 <!-- /search -->

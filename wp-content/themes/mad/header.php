@@ -35,18 +35,58 @@
 
 		<!-- wrapper -->
 		<div class="wrapper">
-			<header class="header">
-				<div class="container">
-				  <div class="header__logo">
-						<a href="/"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo_image.svg" alt="Rise and Shine" class="logo-img"></a>
-					</div>
-					<div class="header__content">
-						<div class="primary-menu">
-							<?php mad_navigation('','Main Menu','header-menu'); ?>
-						</div>
-						<div class="box-search">
-							<?php get_template_part('templates/searchform'); ?>
-						</div>
-					</div>
-				</div>
+			<header class="header js-header">
+			  <div class="header__wrap">
+			    <div class="container">
+			      <div class="header__body">
+			        <div class="header__logo">
+			          <div class="container">
+			            <div class="header__logo__wrap">
+			              <div class="header__image">
+			                <a class="icon-mad_logo" href="<?php echo home_url(); ?>">logo</a>
+			              </div>
+			              
+			              <div class="header__right">
+			                <ul>
+			                  <li class="form-header">
+			                    <?php get_template_part('templates/searchform'); ?>
+			                  </li>
+			                  <li><a href="" class="btn"><?php _e( 'Book a Consultation', 'madtheme' ); ?></a></li> 
+			                </ul>
+
+			                <span class="menu-bars">
+			                  <span class="menu-bars__row"></span>
+			                  <span class="menu-bars__row"></span>
+			                  <span class="menu-bars__row"></span>
+			                </span>
+			              </div>
+			            </div>
+			          </div>
+			        </div>
+
+			        <div class="header__menu">
+			          <div class="container">
+			            <div class="header__menu__wrap">
+			              <div class="header__top">
+			                <ul>
+			                  <li class="form-header">
+			                    <?php get_template_part('templates/searchform'); ?>
+			                  </li>
+			                  <li class="text"><a href="" class=""><?php $siteWideData = get_field('sitewide', 'option'); echo $siteWideData['header_text']; ?></a></li>
+			                  <li><a href="" class="btn btn--large btn--no-change"><?php _e( 'Book a Consultation', 'madtheme' ); ?></a></li>
+			                </ul>
+			              </div>
+
+			              <div class="main-menu">
+			              	<?php mad_navigation('','Main Menu','header-menu', new header_nav_walker); ?>
+			              </div>
+			            </div>
+			          </div>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+
+			  <div class="header__fixed">header fixed</div>
 			</header>
+

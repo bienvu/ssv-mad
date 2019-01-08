@@ -10,66 +10,16 @@ require get_template_directory() . '/inc/init.php';
 /*------------------------------------*\
   Functions
 \*------------------------------------*/
-// Navigation
-function mad_navigation($menuclass, $name, $themelocation='') {
-  wp_nav_menu(
-  array(
-    'theme_location'  => $themelocation,
-    'menu'            => $name,
-    'container'       => '',
-    'container_class' => '$menuclass',
-    'container_id'    => '',
-    'menu_class'      => $menuclass,
-    'menu_id'         => '',
-    'echo'            => true,
-    'fallback_cb'     => 'wp_page_menu',
-    'before'          => '',
-    'after'           => '',
-    'link_before'     => '',
-    'link_after'      => '',
-    'items_wrap'      => '<ul>%3$s</ul>',
-    'depth'           => 0,
-    'walker'          => ''
-    )
-  );
-}
 
-// Add i tag after a in navigation
-function mad_add_arrow( $title, $item, $args, $depth ){
-    //Only add class to 'top level' items on the 'primary' menu.
-    $hasChildren = (in_array('menu-item-has-children', $item->classes));
+// cover template part to string
+function mad_string_termplate_part()
+{
+  ob_start();
+  get_template_part('templates/searchform');
+  $return = ob_get_contents();
+  ob_end_clean();
 
-    if('header-menu' == $args->theme_location && $hasChildren && $item->menu_item_parent ){
-        $title .= '<i class="icon-arrow-right"></i>';
-    }
-    return $title;
-}
-
-//custom menu item has children
-function custom_menu_item($item_output, $item, $depth, $args) {
-    //Only add class to 'top level' items on the 'primary' menu.
-    $hasChildren = (in_array('menu-item-has-children', $item->classes));
-
-    if('header-menu' == $args->theme_location && $hasChildren) {
-        $item_output .= '123';
-    }
-
-    return $item_output;
-}
-
-// Set class for menu dropdown
-function mad_menu_set_dropdown( $sorted_menu_items, $args ) {
-    $last_top = 0;
-    foreach ( $sorted_menu_items as $key => $obj ) {
-        // it is a top lv item?
-        if ( 0 == $obj->menu_item_parent ) {
-            // set the key of the parent
-            $last_top = $key;
-        } else {
-            $sorted_menu_items[$last_top]->classes['dropdown'] = 'menu-expend';
-        }
-    }
-    return $sorted_menu_items;
+  return $return;
 }
 
 // Add style to header.
@@ -217,9 +167,6 @@ add_filter('widget_text', 'do_shortcode'); // Allow shortcodes in Dynamic Sideba
 add_filter('widget_text', 'shortcode_unautop'); // Remove <p> tags in Dynamic Sidebars (better!)
 add_filter('nav_menu_item_id', 'mad_css_attributes_filter', 100, 1); // Remove Navigation <li> injected ID (Commented out by default)
 add_filter('page_css_class', 'mad_css_attributes_filter', 100, 1); // Remove Navigation <li> Page ID's (Commented out by default)
-add_filter( 'wp_nav_menu_objects', 'mad_menu_set_dropdown', 10, 2 );
-add_filter( 'nav_menu_item_title', 'mad_add_arrow',10,4);
-add_filter( 'walker_nav_menu_start_el', 'custom_menu_item',10,4);
 // add_filter('the_category', 'remove_category_rel_from_category_list'); // Remove invalid rel attribute
 add_filter('the_excerpt', 'shortcode_unautop'); // Remove auto <p> tags in Excerpt (Manual Excerpts only)
 add_filter('the_excerpt', 'do_shortcode'); // Allows Shortcodes to be executed in Excerpt (Manual Excerpts only)

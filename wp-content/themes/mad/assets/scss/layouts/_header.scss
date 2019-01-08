@@ -10,7 +10,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: $white;
+    background-color: rgba($white , .9);
     box-shadow: 0 5px 20px 0 rgba($black, .2);
     z-index: 1;
 
@@ -236,6 +236,7 @@
       display: block !important;
       overflow: visible;
       margin-top: 9px;
+      background-color: transparent;
     }
 
     &__wrap {
@@ -260,6 +261,7 @@
 
   &__fixed {
     height: $height-mobile;
+    font-size: 0;
 
     @media only screen and (min-width: $tablet) {
       height: $height-tablet;
@@ -365,7 +367,7 @@
               order: 2;
 
               .form-header__submit {
-                button {
+                [type="submit"] {
                   position: static;
                   transform: none;
                 }
@@ -452,7 +454,7 @@
   }
 
   &__submit {
-    button {
+    [type="submit"] {
       font-size: 0;
       padding: 0;
       border: 0;
