@@ -20,6 +20,12 @@
 
       // Box Contact
       get_template_part( 'templates/components/box-contact' );
+
+      // Box Html
+      get_template_part( 'templates/components/box-html' );
+
+      // Box Image Text
+      get_template_part( 'templates/components/box-image-text' );
     endwhile;
   endif;
 ?>

@@ -48,6 +48,10 @@
 
   &--large{
     min-width: 188px;
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      min-width: 265px;
+    }
   }
 
   &--full{
