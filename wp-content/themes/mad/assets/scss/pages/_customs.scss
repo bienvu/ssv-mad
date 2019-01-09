@@ -1,0 +1,16 @@
+.home {
+  .header__fixed {
+    display: none;
+  }
+}
+
+.page-title {
+  text-align: center;
+  background-color: $light-gray;
+  margin: 0;
+  padding: 66.5px 0;
+
+  @media only screen and (min-width: $desktopSupperWideLarge) {
+    padding: 94px 0;
+  }
+}

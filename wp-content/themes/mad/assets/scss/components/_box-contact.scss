@@ -157,6 +157,11 @@
       @extend %form-text--full;
     }
 
+    [type="submit"] {
+      @extend .btn;
+      width: auto;
+    }
+
     input[type="checkbox"] {
       display: none;
     }
