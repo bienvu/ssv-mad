@@ -1,6 +1,6 @@
 .box-image-text {
   &__item {
-    padding: 41px 0 20px;
+    padding: 46px 0 48px;
     border-top: 1px solid $gray;
 
     &:last-of-type {
@@ -8,8 +8,7 @@
     }
 
     @media only screen and (min-width: $desktopSupperWideLarge) {
-      padding-bottom: 71px;
-      margin-bottom: 70px;
+      padding: 70px 0 68px;
     }
   }
 
@@ -19,22 +18,26 @@
     margin: 0 -2.5px;
 
     @media only screen and (min-width: $desktopWideLarge) {
-      margin: 0 -81px;
+      margin: 0 -86px;
     }
 
     @media only screen and (min-width: $desktopSupperWideLarge) {
-      margin: 0 -130px;
+      margin: 0 -123px;
     }
   }
 
   &__title {
+    @media only screen and (min-width: $tablet) {
+      margin-bottom: 23px;
+    }
+
     @media only screen and (min-width: $desktopSupperWideLarge) {
-      margin-bottom: 32px;
+      margin-bottom: 31px;
     }
   }
 
   &__content {
-    margin-bottom: 46px;
+    margin-bottom: 44px;
 
     @media only screen and (min-width: $desktopSupperWideLarge) {
       margin-bottom: 70px;
@@ -50,6 +53,15 @@
     width: 100%;
     display: flex;
     align-items: center;
+    margin: 0 -2.5px;
+
+    @media only screen and (min-width: $desktopWideLarge) {
+      margin: 0 -6px;
+    }
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+        margin: 0 -8px;
+      }
 
     img {
       width: 100%;
@@ -61,8 +73,12 @@
       }
 
       @media only screen and (min-width: $desktopWideLarge) {
-        padding: 0 9px;
+        padding: 0 6px;
         width: calc((100% - 1px) / 3);
+      }
+
+      @media only screen and (min-width: $desktopSupperWideLarge) {
+        padding: 0 8px;
       }
     }
   }

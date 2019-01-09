@@ -1,8 +1,12 @@
 .box-text {
-  padding: 50px 0;
+  padding: 45px 0 48px;
+
+  @media only screen and (min-width: $desktopSupperWideLarge) {
+    padding: 61px 0 70px;
+  }
 
   &__title {
-    margin-bottom: 24px;
+    margin-bottom: 22px;
 
     @media only screen and (min-width: $desktopSupperWideLarge) {
       margin-bottom: 33px;
@@ -10,10 +14,10 @@
   }
 
   &__content {
-    margin-bottom: 40px;
+    margin-bottom: 37px;
 
     @media only screen and (min-width: $desktopSupperWideLarge) {
-      margin-bottom: 47px;
+      margin-bottom: 68px;
     }
 
     p {
@@ -39,6 +43,10 @@
 
     .btn {
       margin-right: 20px;
+
+      @media only screen and (min-width: $desktopSupperWideLarge) {
+        margin-right: 26px;
+      }
       
       @media only screen and (max-width: $mobileOnly) {
         margin-bottom: 20px;

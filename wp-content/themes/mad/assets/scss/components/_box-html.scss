@@ -1,0 +1,13 @@
+.box-html {
+  padding: 44px 0 46px;
+
+  @media only screen and (min-width: $desktopSupperWideLarge) {
+    padding: 65px 0 71px;
+  }
+
+  p {
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
