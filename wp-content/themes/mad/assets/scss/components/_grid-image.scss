@@ -27,7 +27,7 @@ $margin: 15px;
 
     &:hover {
       .grid-image__content {
-        background: rgba($black, .55);
+        background-color: rgba($black, .55);
         opacity: 1;
       }
     }
@@ -75,6 +75,16 @@ $margin: 15px;
   &__link {
     @media only screen and (min-width: $desktopSupperWideLarge) {
       padding-top: 27px;
+    }
+  }
+
+  &--no-link {
+    .grid-image__item {
+      &:hover {
+        .grid-image__content {
+          background-color: transparent;
+        }
+      }
     }
   }
 }
