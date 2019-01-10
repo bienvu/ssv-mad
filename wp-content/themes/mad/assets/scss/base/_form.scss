@@ -14,7 +14,7 @@ input[type='submit'] {
   box-sizing: border-box;
   color: $primary-color;
   font-size: 14px;
-  padding: 9px 13px 5px;
+  padding: 9px 11px 5px;
   transition: all .3s ease-in-out;
   min-width: 249px;
   line-height: 1.5714;
@@ -249,6 +249,12 @@ input[type="radio"] {
       border-radius: 0;
       background: $primary-color;
       box-sizing: border-box;
+
+      @media only screen and (min-width: $desktopSupperWideLarge) {
+        width: 10px;
+        height: 9px;
+        left: 2px;
+      }
     }
 
     &.reverse:before {
