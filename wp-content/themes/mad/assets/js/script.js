@@ -153,6 +153,9 @@
       });
     }
 
+    //js form
+    $('.wpcf7-quiz').attr('placeholder','To help prevent spam, please type the word ‘artistry’.');
+
     // js lightbox form
     if($('.js-lightbox-form').length) {
       $('.js-lightbox-form').click(function(event) {

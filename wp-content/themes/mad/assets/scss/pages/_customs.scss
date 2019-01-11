@@ -10,6 +10,11 @@
   margin: 0;
   padding: 61.5px 0 69.5px;
 
+  @media only screen and (max-width: $tabletOnly) {
+    font-size: 28px;
+    padding: 28.5px 0 25.5px;
+  }
+
   @media only screen and (min-width: $desktopSupperWideLarge) {
     padding: 87px 0 98px;
   }
