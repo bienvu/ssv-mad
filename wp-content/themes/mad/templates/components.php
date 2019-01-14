@@ -26,6 +26,9 @@
 
       // Box Image Text
       get_template_part( 'templates/components/box-image-text' );
+
+      //Box Text
+      get_template_part( 'templates/components/box-text' );
     endwhile;
   endif;
 ?>
