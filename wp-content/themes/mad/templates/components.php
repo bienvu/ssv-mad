@@ -26,6 +26,12 @@
 
       // Box Image Text
       get_template_part( 'templates/components/box-image-text' );
+
+      // Box Image Text
+      get_template_part( 'templates/components/box-text' );
+
+      // Grid Image
+      get_template_part( 'templates/components/grid-image' );
     endwhile;
   endif;
 ?>
