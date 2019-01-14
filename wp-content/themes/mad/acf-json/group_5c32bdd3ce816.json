@@ -669,7 +669,7 @@
                                 "id": ""
                             },
                             "choices": {
-                                "order-list": "Order List"
+                                "box-image-text--order-list": "Order List"
                             },
                             "default_value": [],
                             "allow_null": 1,
@@ -1064,5 +1064,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1547433038
+    "modified": 1547436917
 }
