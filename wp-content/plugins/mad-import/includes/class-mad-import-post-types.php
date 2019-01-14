@@ -66,7 +66,7 @@ class Mad_Import_Post_Types {
 
 		do_action( 'mad_import_register_post_type' );
 
-		$supports   = array( 'title', 'editor', 'excerpt', 'thumbnail', 'custom-fields' );
+		$supports   = array( 'title', 'editor', 'custom-fields' );
 		
 		$labels[] = array(
 			'name'               => __( 'Products', 'ssvmad' ),

@@ -157,19 +157,6 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
 	}
 
 	/**
-	 * Prepare a single product for create or update.
-	 *
-	 * @param  array $data     Item data.
-	 * @return WC_Product|WP_Error
-	 */
-	protected function get_product_object( $data ) {
-		$id = isset( $data['id'] ) ? absint( $data['id'] ) : 0;
-		$product = new Mad_Import_Product_Simple( $id );
-
-		return apply_filters( 'mad_import_product_import_get_product_object', $product, $data );
-	}
-
-	/**
 	 * Process a single item and save.
 	 *
 	 * @throws Exception If item cannot be processed.
@@ -208,6 +195,26 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
 
     $meta_id = update_post_meta( $id, 'weight', $data['weight'] );
 
+    if($data['featured_image']) {
+
+    	$upload = $this->set_image_data($data['featured_image']);
+    	$images = $this->set_field_image(array($upload), $id);
+
+    	update_field('featured_image', $images[0], $id);
+    }
+
+    if(!empty($data['gallery'])) {
+    	foreach ($data['gallery'] as $image) {
+    		if($image) {
+		    	$gallery[] = $this->set_image_data($image);
+		    }
+    	}
+
+    	$images = $this->set_field_image($gallery, $id);
+
+    	update_field('field_5c3d4ed7e94a8', $images, $id);
+    }
+
 		return array(
 			'id'      => $id,
       'updated' => $updated
@@ -220,22 +227,95 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
 	 * @param WC_Product $product Product instance.
 	 * @param array      $data    Item data.
 	 */
-	// protected function set_image_data( &$product, $data ) {
-	// 	// Image URLs need converting to IDs before inserting.
-	// 	if ( isset( $data['raw_image_id'] ) ) {
-	// 		$product->set_image_id( $this->get_attachment_id_from_url( $data['raw_image_id'], $product->get_id() ) );
-	// 	}
+	protected function set_image_data( $image_name = '' ) {
+		$upload_arr = wp_upload_dir();
+		$image_url = $upload_arr['url'].'/import/'.$image_name;
 
-	// 	// Gallery image URLs need converting to IDs before inserting.
-	// 	if ( isset( $data['raw_gallery_image_ids'] ) ) {
-	// 		$gallery_image_ids = array();
+		// return if file exits
+		if(file_exists($upload_arr['path'].'/'.$image_name)) {
+			$upload['file'] = $upload_arr['path'].'/'.$image_name;
+			$upload['url']  = $upload_arr['url'].'/'.$image_name;
 
-	// 		foreach ( $data['raw_gallery_image_ids'] as $image_id ) {
-	// 			$gallery_image_ids[] = $this->get_attachment_id_from_url( $image_id, $product->get_id() );
-	// 		}
-	// 		$product->set_gallery_image_ids( $gallery_image_ids );
-	// 	}
-	// }
+			$type = strtolower(end(explode('.', $image_name)));
+
+			switch ($type) {
+				case 'jpg':
+					$upload['type'] = 'image/jpeg';
+					break;
+				case 'png':
+					$upload['type'] = 'image/png';
+					break;
+			}
+			return $upload;
+		}
+
+		$response = wp_safe_remote_get(
+	    $image_url, array(
+	      'timeout' => 10,
+	    )
+	  );
+
+		if ( is_wp_error( $response ) ) {
+        return new WP_Error( 'mad_import_rest_invalid_remote_image_url', sprintf( __( 'Error getting remote image %s.', 'ssvmad' ), $image_url ) . ' ' . sprintf( __( 'Error: %s.', 'ssvmad' ), $response->get_error_message() ), array( 'status' => 400 ) );
+    } elseif ( 200 !== wp_remote_retrieve_response_code( $response ) ) {
+        return new WP_Error( 'mad_import_rest_invalid_remote_image_url', sprintf( __( 'Error getting remote image %s.', 'ssvmad' ), $image_url ), array( 'status' => 400 ) );
+    }
+
+		$upload = wp_upload_bits( $image_name, '', wp_remote_retrieve_body( $response ) );
+
+		// Get filesize.
+    $filesize = filesize( $upload['file'] );
+
+    if ( 0 == $filesize ) {
+        @unlink( $upload['file'] );
+        unset( $upload );
+
+        return new WP_Error( 'mad_import_rest_image_upload_file_error', __( 'Zero size file downloaded.', 'ssvmad' ), array( 'status' => 400 ) );
+    }
+
+    return $upload;
+	}
+
+	protected function set_field_image($gallery, $id) {
+		global $wpdb;
+    $images = array();
+
+		foreach ($gallery as $key => $value) {
+      if(!file_exists($value['file'])) {
+        new WP_Error( 'mad_import_function_exits', __( 'file not exists.', 'ssvmad' ), array( 'status' => 400 ) );
+        continue;
+      }
+
+      $image_id = $wpdb->get_var($wpdb->prepare("SELECT ID from $wpdb->posts WHERE guid = %s", $value['url']));
+
+      if(empty($image_id)) {
+        $wp_upload_dir = wp_upload_dir();
+
+        // Prepare an array of post data for the attachment.
+        $attach_id = wp_insert_attachment( array(
+          'guid'           => $wp_upload_dir['url'] . '/' . basename( $value['file'] ), 
+          'post_mime_type' => $value['type'],
+          'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $value['file'] ) ),
+          'post_content'   => '',
+          'post_status'    => 'inherit',
+        ), $value['file'], $id );
+        // Make sure that this file is included, as wp_generate_attachment_metadata() depends on it.
+        require_once( ABSPATH . 'wp-admin/includes/image.php' );
+        // Generate the metadata for the attachment, and update the database record.
+        $attach_data = wp_generate_attachment_metadata( $attach_id, $value['url'] );
+        wp_update_attachment_metadata( $attach_id, $attach_data );
+
+        // sava gallery ids
+        $images[] = $attach_id;
+        unset($attach_id);
+      } else {
+        $images[] = $image_id;
+      }
+    }
+    unset($image_id);
+
+    return $images;
+	}
 
 	/**
 	 * Append meta data.

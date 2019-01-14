@@ -1,7 +1,7 @@
 /*global ajaxurl, wc_product_import_params */
-alert('enter 1');
+
 ;(function ( $, window ) {
-alert('enter 2');
+
 	/**
 	 * productImportForm handles the import process.
 	 */
