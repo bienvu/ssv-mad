@@ -5,9 +5,9 @@
     @include miller-display;
     font-weight: 400;
     font-size: 20px;
-    line-height: 1;
+    line-height: 1.2;
     letter-spacing: 0;
-    padding: 20px 0;
+    padding: 20px 0 10px;
 
     @media only screen and (min-width: $desktopWide) {
       position: absolute;
@@ -21,6 +21,11 @@
   }
 
   &__content {
+    @media only screen and (min-width: $tablet) {
+      padding: 1px 10px;
+      margin-bottom: 11px;
+    }
+
     @media only screen and (min-width: $desktopWide) {
       float: right;
       max-width: 400px;
@@ -30,6 +35,12 @@
     br {
       @media only screen and (max-width: $tabletOnly) {
         display: none;
+      }
+    }
+
+    p {
+      @media only screen and (max-width: $tabletOnly) {
+        margin-bottom: 0
       }
     }
   }
@@ -74,6 +85,17 @@
       .author {
         @media only screen and (min-width: $desktopWide) {
           display: none;
+        }
+
+        @media only screen and (max-width: $tabletOnly) {
+          margin-top: 0;
+          padding: 0 10px;
+        }
+
+        img {
+          @media only screen and (max-width: $tabletOnly) {
+            width: 18%;
+          }
         }
       }
     }
