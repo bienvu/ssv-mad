@@ -1,7 +1,8 @@
 <?php
   if(get_row_layout() == 'box_image_text'):
+    $modifier = get_sub_field('modifier');
 ?>
-    <div class="box-image-text">
+    <div class="box-image-text <?php echo $modifier; ?>">
       <div class="container">
         <?php
           if(have_rows('item')):
