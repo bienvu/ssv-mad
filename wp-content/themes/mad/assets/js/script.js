@@ -119,15 +119,22 @@
     });
 
     // js footer
-    $(document).scroll(function(event) {
-      setTimeout(function () {
-        if($(this).scrollTop() > 80) {
-          $('.js-footer').addClass('is-show');
-        } else {
-          $('.js-footer').removeClass('is-show');
+    setTimeout(function() {
+      var $lastScrollTop = 0;
+      $(window).on('scroll',function(event) {
+        $st = $(this).scrollTop();
+        if($st > 240) {
+          if($st >= $lastScrollTop ) {
+            $('.js-footer').addClass('is-show');
+            console.log('123');
+          } else {
+            $('.js-footer').removeClass('is-show');
+          }
+
+          $lastScrollTop = $st;
         }
-      }, 100)
-    });
+      });
+    }, 1000);
 
     // js slide
     if($('.js-slide').length) {

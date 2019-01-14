@@ -2,7 +2,6 @@
   // loop through the rows of data
   if(have_rows('components')):
     while ( have_rows('components') ): the_row(); 
-
       // Banner
       get_template_part('templates/components/banner');
 
@@ -27,8 +26,15 @@
       // Box Image Text
       get_template_part( 'templates/components/box-image-text' );
 
-      //Box Text
+      // Box Image Text
       get_template_part( 'templates/components/box-text' );
+
+      // Grid Image
+      get_template_part( 'templates/components/grid-image' );
+
+      // Box Video
+      get_template_part( 'templates/components/box-video' );
+      
     endwhile;
   endif;
 ?>
