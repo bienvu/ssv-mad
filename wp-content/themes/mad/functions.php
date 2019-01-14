@@ -134,6 +134,18 @@ function mad_remove_thumbnail_dimensions( $html )
     return $html;
 }
 
+// Add this to the functions.php file of your WordPress theme
+// It filters the mime types using the upload_mimes filter hook
+// Add as many keys/values to the $mimes Array as needed
+
+function my_custom_upload_mimes($mimes = array()) {
+
+  // Add a key and value for the CSV file type
+  $mimes['csv'] = "text/csv";
+
+  return $mimes;
+}
+
 /*------------------------------------*\
     Actions + Filters + ShortCodes
 \*------------------------------------*/
@@ -144,6 +156,7 @@ function mad_remove_thumbnail_dimensions( $html )
 add_action('wp_enqueue_scripts', 'mad_add_styles'); // Add Theme Stylesheet
 add_action('init', 'mad_pagination'); // Add our sentius Pagination
 add_action('wp_footer', 'mad_add_scripts'); // Add Custom Scripts to wp_head
+add_action('upload_mimes', 'my_custom_upload_mimes'); // add csv file upload
 
 // Remove Actions
 remove_action('wp_head', 'feed_links_extra', 3); // Display the links to the extra feeds such as category feeds
