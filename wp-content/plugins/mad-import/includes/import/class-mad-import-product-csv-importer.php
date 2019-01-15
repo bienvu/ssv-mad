@@ -123,6 +123,64 @@ class Mad_Import_Product_CSV_Importer extends Mad_Import_Product_Importer {
 		return $string;
 	}
 
+  /**
+   * Get formatting callback.
+   *
+   * @return array
+   */
+  protected function get_formating_callback() {
+
+    /**
+     * Columns not mentioned here will get parsed with 'wc_clean'.
+     * column_name => callback.
+     */
+    $data_formatting = array(
+      'gallery'            => array( $this, 'parse_images_field' ),
+    );
+
+    $callbacks = array();
+
+    // Figure out the parse function for each column.
+    foreach ( $this->get_mapped_keys() as $index => $heading ) {
+      $callback = 'wc_clean';
+
+      if ( isset( $data_formatting[ $heading ] ) ) {
+        $callback = $data_formatting[ $heading ];
+      }
+
+      $callbacks[] = $callback;
+    }
+
+    return $callbacks;
+  }
+
+
+
+  /**
+   * Parse images list from a CSV. Images can be filenames or URLs.
+   *
+   * @param  string $value Field value.
+   * @return array
+   */
+  public function parse_images_field( $value ) {
+    if ( empty( $value ) ) {
+      return array();
+    }
+
+    $images = array();
+    $value = explode(',', $value);
+
+    foreach ( $value as $image ) {
+      if ( stristr( $image, '://' ) ) {
+        $images[] = esc_url_raw( $image );
+      } else {
+        $images[] = sanitize_file_name( $image );
+      }
+    }
+
+    return $images;
+  }
+
 	/**
 	 * Set file mapped keys.
 	 */
@@ -138,6 +196,7 @@ class Mad_Import_Product_CSV_Importer extends Mad_Import_Product_Importer {
    * Map and format raw data to known fields.
    */
   protected function set_parsed_data() {
+    $parse_functions = $this->get_formating_callback();
     $mapped_keys     = $this->get_mapped_keys();
     $use_mb          = function_exists( 'mb_convert_encoding' );
 
@@ -172,7 +231,7 @@ class Mad_Import_Product_CSV_Importer extends Mad_Import_Product_Importer {
           $value = wp_check_invalid_utf8( $value, true );
         }
 
-        $data[ $mapped_keys[ $id ] ] = $value;
+        $data[ $mapped_keys[ $id ] ] = call_user_func( $parse_functions[ $id ], $value );
       }
 
       $this->parsed_data[] = $data;
