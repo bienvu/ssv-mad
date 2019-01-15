@@ -1,8 +1,12 @@
 .box-social {
-  padding: 7px 0;
+  padding: 50px 0 48px;
 
   &__title {
-    margin-bottom: 44px;
+    margin-bottom: 30px;
+
+    @media only screen and (min-width: $tablet) {
+      margin-bottom: 46px;
+    }
   }
 
   &__list {
@@ -14,7 +18,7 @@
   }
 
   &__item {
-    width: 60%;
+    width: 80%;
     position: relative;
     margin-bottom: 20px;
 
@@ -25,7 +29,7 @@
     }
 
     @media only screen and (min-width: $tablet) {
-      width: 25.5%;
+      width: 28.4%;
     }
   }
 
@@ -40,12 +44,21 @@
 
   &__icon {
     position: absolute;
-    top: 18px;
-    left: 40px;
+    top: 30px;
+    left: 50px;
+
+    @media only screen and (min-width: $mobileLandScape) {
+      top: 15px;
+      left: 40px;
+    }
 
     .icon-facebook,
     .icon-instagram {
-      font-size: 25px;
+      font-size: 30px;
+
+      @media only screen and (min-width: $mobileLandScape) {
+        font-size: 25px;
+      }
     }
 
     a {

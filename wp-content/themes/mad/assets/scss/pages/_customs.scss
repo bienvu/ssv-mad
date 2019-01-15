@@ -19,3 +19,98 @@
     padding: 87px 0 98px;
   }
 }
+
+.mark-alexander-design {
+  .box-image-text__item {
+    border: none;
+  }
+
+  .box-image-text {
+    @media only screen and (min-width: $desktopWideLarge) {
+      padding: 5px 0 4px;
+    }
+  }
+
+  .box-html {
+    @media only screen and (min-width: $desktopWideLarge) {
+      padding: 44px 0 42px;
+    }
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      padding: 65px 0;
+    }
+
+    .box-text__body {
+      text-align: center;
+
+      @media only screen and (min-width: $desktopWideLarge) {
+        padding: 0 183px;
+      }
+
+      h3 {
+        @media only screen and (min-width: $desktopWideLarge) {
+          margin-bottom: 32px;
+        }
+      }
+    }
+  }
+
+  .box-image-text__content {
+    @media only screen and (min-width: $desktopWideLarge) {
+      margin-bottom: 49px;
+    }
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      margin-bottom: 75px;
+    }
+  }
+
+  .box-image-text__image {
+    margin: 0;
+  }
+
+  .box-text {
+    @media only screen and (min-width: $desktopWideLarge) {
+      padding: 0 0 27px;
+    }
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      padding: 0 0 52px;
+    }
+
+    &:last-of-type {
+      @media only screen and (max-width: $tabletOnly) {
+        display: none;
+      }
+
+      @media only screen and (min-width: $desktopWideLarge) {
+        padding: 70px 0 49px;
+      }
+
+      @media only screen and (min-width: $desktopSupperWideLarge) {
+        display: none;
+      }
+    }
+
+    .btn {
+      @media only screen and (max-width: $tabletOnly) {
+        max-width: 335px;
+      }
+    }
+  }
+}
+
+.thank-you {
+  .box-html {
+    background: $light-gray;
+
+    @media only screen and (min-width: $tablet) {
+      padding: 47px 0 55px;
+    }
+  }
+
+  .page-title {
+    display: none;
+  }
+}
+
