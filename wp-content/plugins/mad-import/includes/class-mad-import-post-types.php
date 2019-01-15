@@ -21,6 +21,7 @@ class Mad_Import_Post_Types {
 	public static function init() {
 		add_action( 'init', array( __CLASS__, 'register_taxonomies' ), 5 );
     add_action( 'init', array( __CLASS__, 'register_post_types' ), 5 );
+    add_action( 'init', array( __CLASS__, 'register_custom_field' ), 5 );
 		add_action( 'init', array( __CLASS__, 'support_jetpack_omnisearch' ) );
 		add_filter( 'rest_api_allowed_post_types', array( __CLASS__, 'rest_api_allowed_post_types' ) );
 	}
@@ -42,14 +43,12 @@ class Mad_Import_Post_Types {
 
 		register_taxonomy(
 			'product_filter',
-			array( 'product' ),
+			array( 'product', 'work' ),
 			array(
-				'hierarchical'      => false,
-				'show_ui'           => false,
-				'show_in_nav_menus' => false,
+				'hierarchical'      => true,
+				'show_ui'           => true,
 				'query_var'         => is_admin(),
-				'rewrite'           => false,
-				'public'            => false,
+				'label'        => __( 'Product Filter', 'ssvmad' ),
 			)
 		);
 
@@ -85,7 +84,7 @@ class Mad_Import_Post_Types {
 		);
 		
 		$labels[] = array(
-			'name'               => __( 'works', 'ssvmad' ),
+			'name'               => __( 'work', 'ssvmad' ),
 			'singular_name'      => __( 'work', 'ssvmad' ),
 			'add_new'            => _x( 'Add New', 'ssvmad', 'ssvmad' ),
 			'add_new_item'       => __( 'Add New', 'ssvmad' ),
@@ -126,7 +125,7 @@ class Mad_Import_Post_Types {
 			'labels'              => $labels[1],
 			'hierarchical'        => false,
 			'description'         => 'description',
-			'taxonomies'          => array('category'),
+			'taxonomies'          => array('product_filter'),
 			'public'              => true,
 			'show_ui'             => true,
 			'show_in_menu'        => true,
@@ -171,6 +170,148 @@ class Mad_Import_Post_Types {
 
 		return $post_types;
 	}
+  /*
+    register custom field
+   */
+  public static function register_custom_field()
+  {
+    if( function_exists('acf_add_local_field_group') ) {
+      /*
+      custom field post type work
+       */
+      if(empty(acf_get_fields('mad_import_work_123'))) {
+        acf_add_local_field_group(
+          array(
+            'key' => 'mad_import_work_123',
+            'title' => 'Work Field',
+            'location' => array (
+              array (
+                array (
+                  'param' => 'post_type',
+                  'operator' => '==',
+                  'value' => 'work',
+                ),
+              ),
+            ),
+          )
+        );
+        /*add field weight if empty*/
+        if(empty(acf_get_fields('mad_import_work_weight_123'))) {
+          acf_add_local_field(array(
+            'key' => 'mad_import_work_weight_123',
+            'label' => 'Weight',
+            'name' => 'work_weight',
+            'type' => 'text',
+            'parent' => 'mad_import_work_123'
+          ));
+        }
+        /*add field featured image if empty*/
+        if(empty(acf_get_fields('mad_import_work_featured_image_123'))) {
+          acf_add_local_field(array(
+            'key' => 'mad_import_work_featured_image_123',
+            'label' => 'Featured Image',
+            'name' => 'work_featured_image',
+            'type' => 'image',
+            'parent' => 'mad_import_work_123'
+          ));
+        }
+        /*add field gallery if empty*/
+        if(empty(acf_get_fields('mad_import_work_gallery_123'))) {
+          acf_add_local_field(array(
+            'key' => 'mad_import_work_gallery_123',
+            'label' => 'Gallery',
+            'name' => 'work_gallery',
+            'type' => 'gallery',
+            'parent' => 'mad_import_work_123'
+          ));
+        }
+      }
+
+      /*
+      custom field post type product
+       */
+      if(empty(acf_get_fields('mad_import_product_123'))) {
+        acf_add_local_field_group(
+          array(
+            'key' => 'mad_import_product_123',
+            'title' => 'Product Field',
+            'location' => array (
+              array (
+                array (
+                  'param' => 'post_type',
+                  'operator' => '==',
+                  'value' => 'product',
+                ),
+              ),
+            ),
+          )
+        );
+        /*add field weight if empty*/
+        if(empty(acf_get_fields('mad_import_product_weight_123'))) {
+          acf_add_local_field(array(
+            'key' => 'mad_import_product_weight_123',
+            'label' => 'Weight',
+            'name' => 'product_weight',
+            'type' => 'text',
+            'parent' => 'mad_import_product_123'
+          ));
+        }
+        /*add field featured image if empty*/
+        if(empty(acf_get_fields('mad_import_product_featured_image_123'))) {
+          acf_add_local_field(array(
+            'key' => 'mad_import_product_featured_image_123',
+            'label' => 'Featured Image',
+            'name' => 'product_featured_image',
+            'type' => 'image',
+            'parent' => 'mad_import_product_123'
+          ));
+        }
+        /*add field gallery if empty*/
+        if(empty(acf_get_fields('mad_import_product_gallery_123'))) {
+          acf_add_local_field(array(
+            'key' => 'mad_import_product_gallery_123',
+            'label' => 'Gallery',
+            'name' => 'product_gallery',
+            'type' => 'gallery',
+            'parent' => 'mad_import_product_123'
+          ));
+        }
+        /*add field Sku if empty*/
+        if(empty(acf_get_fields('mad_import_product_sku_123'))) {
+          acf_add_local_field(array(
+            'key' => 'mad_import_product_sku_123',
+            'label' => 'Sku',
+            'name' => 'product_sku',
+            'type' => 'text',
+            'parent' => 'mad_import_product_123'
+          ));
+        }
+        /*add field Sku if empty*/
+        if(empty(acf_get_fields('mad_import_product_sku_123'))) {
+          acf_add_local_field(array(
+            'key' => 'mad_import_product_sku_123',
+            'label' => 'Sku',
+            'name' => 'product_sku',
+            'type' => 'text',
+            'parent' => 'mad_import_product_123'
+          ));
+        }
+        /*add field You may also like if empty*/
+        if(empty(acf_get_fields('mad_import_product_related_123'))) {
+          acf_add_local_field(array(
+            'key' => 'mad_import_product_related_123',
+            'label' => 'You may also like',
+            'name' => 'product_realted',
+            'type' => 'post_object',
+            'parent' => 'mad_import_product_123',
+            'post_type' => 'product',
+            'multiple' => true,
+            'return_format' => 'id'
+          ));
+        }
+      }
+    }
+  }
 }
 
 Mad_Import_Post_types::init();

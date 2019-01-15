@@ -91,6 +91,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 		} );
 	</script>
 	<div class="wc-actions">
-		<a class="button button-primary" href="<?php echo esc_url( admin_url( 'edit.php?post_type=product' ) ); ?>"><?php esc_html_e( 'View products', 'woocommerce' ); ?></a>
+		<a class="button button-primary" href="<?php echo esc_url( admin_url( 'edit.php?post_type=product' ) ); ?>"><?php esc_html_e( 'View products', 'ssvmad' ); ?></a><a class="button button-primary" href="<?php echo esc_url( admin_url( 'edit.php?post_type=work' ) ); ?>"><?php esc_html_e( 'View Works', 'ssvmad' ); ?></a>
 	</div>
 </div>

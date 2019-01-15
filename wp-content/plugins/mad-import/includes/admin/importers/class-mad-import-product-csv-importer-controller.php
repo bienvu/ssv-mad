@@ -67,11 +67,27 @@ class Mad_Import_Product_CSV_Importer_Controller {
 
 
 	/**
-	 * Whether to skip existing products.
+	 * post type
 	 *
-	 * @var bool
+	 * 
 	 */
 	protected $type = '';
+
+
+	/**
+	 * related product
+	 *
+	 * 
+	 */
+	protected $related = array();
+
+
+	/**
+	 * list sku by id
+	 *
+	 * 
+	 */
+	protected $list_sku = array();
 
 	/**
 	 * Get importer instance.
@@ -433,6 +449,8 @@ class Mad_Import_Product_CSV_Importer_Controller {
 				'update_existing' => $this->update_existing,
 				'delimiter'       => $this->delimiter,
         'post_type'       => $this->type,
+        'list_sku'        => array(0),
+        'related'       	=> array(0),
 			)
 		);
 		wp_enqueue_script( 'mad-import-product-import' );
@@ -479,20 +497,6 @@ class Mad_Import_Product_CSV_Importer_Controller {
 	 * @return array
 	 */
 	protected function auto_map_columns( $raw_headers, $num_indexes = true ) {
-		$weight_unit    = get_option( 'mad_import_weight_unit' );
-		if (empty($weight_unit)) {
-			update_option( 'mad_import_weight_unit', 'kg' );
-			$weight_unit    = get_option( 'mad_import_weight_unit' );
-		}
-
-		$dimension_unit = get_option( 'mad_import_dimension_unit' );
-		if (empty($dimension_unit)) {
-			update_option( 'mad_import_dimension_unit', 'cm' );
-			$weight_unit    = get_option( 'mad_import_weight_unit' );
-		}
-
-		include dirname( __FILE__ ) . '/mappings/mappings.php';
-
 		/*
 		 * @hooked wc_importer_generic_mappings - 10
 		 * @hooked wc_importer_wordpress_mappings - 10
@@ -502,12 +506,15 @@ class Mad_Import_Product_CSV_Importer_Controller {
 			apply_filters(
 				'mad_import_csv_product_import_mapping_default_columns', array(
 					/* translators: %s: Weight unit */
-					sprintf( __( 'Weight (%s)', 'ssvmad' ), $weight_unit ) => 'weight',
+					__( 'Weight', 'ssvmad' ) => 'weight',
 					__( 'Title', 'ssvmad' )           => 'title',
 					__( 'Description', 'ssvmad' )    => 'description',
 					__( 'Featured Image', 'ssvmad' )    => 'featured_image',
 					__( 'Gallery', 'ssvmad' )    => 'gallery',
-					__( 'Category', 'ssvmad' )    => 'category',
+          __( 'Category', 'ssvmad' )    => 'category',
+          __( 'SKU', 'ssvmad' )    => 'sku',
+          __( 'You may also like', 'ssvmad' )    => 'related',
+					__( 'Classic/contemporary filter', 'ssvmad' )    => 'filter',
 				)
 			)
 		);
@@ -526,34 +533,6 @@ class Mad_Import_Product_CSV_Importer_Controller {
 		return apply_filters( 'mad_import_csv_product_import_mapped_columns', $headers, $raw_headers );
 	}
 
-	/**
-	 * Sanitize special column name regex.
-	 *
-	 * @param  string $value Raw special column name.
-	 * @return string
-	 */
-	// protected function sanitize_special_column_name_regex( $value ) {
-	// 	return '/' . str_replace( array( '%d', '%s' ), '(.*)', trim( quotemeta( $value ) ) ) . '/';
-	// }
-
-	// /**
-	//  * Get special columns.
-	//  *
-	//  * @param  array $columns Raw special columns.
-	//  * @return array
-	//  */
-	// protected function get_special_columns( $columns ) {
-	// 	$formatted = array();
-
-	// 	foreach ( $columns as $key => $value ) {
-	// 		$regex = $this->sanitize_special_column_name_regex( $key );
-
-	// 		$formatted[ $regex ] = $value;
-	// 	}
-
-	// 	return $formatted;
-	// }
-
 	// /**
 	//  * Get mapping options.
 	//  *
@@ -561,12 +540,6 @@ class Mad_Import_Product_CSV_Importer_Controller {
 	//  * @return array
 	//  */
 	protected function get_mapping_options( $item = '' ) {
-		// Get index for special column names.
-		$index = $item;
-
-		// Available options.
-		$weight_unit    = get_option( 'woocommerce_weight_unit' );
-		$dimension_unit = get_option( 'woocommerce_dimension_unit' );
 
 		$options        = array(
 			'weight'                 => __( 'Weight', 'ssvmad' ),
@@ -574,7 +547,10 @@ class Mad_Import_Product_CSV_Importer_Controller {
 			'description'									 => __( 'Description', 'ssvmad' ),
 			'featured_image'									 => __( 'Featured Image', 'ssvmad' ),
 			'gallery'									 => __( 'Gallery', 'ssvmad' ),
-			'category'									 => __( 'Category', 'ssvmad' ),
+      'category'                   => __( 'Category', 'ssvmad' ),
+      'sku'                  => __( 'Sku', 'ssvmad' ),
+      'related'                  => __( 'You may also like', 'ssvmad' ),
+			'filter'									 => __( 'Classic/contemporary filter', 'ssvmad' ),
 		);
 
 		return apply_filters( 'mad_import_csv_product_import_mapping_options', $options, $item );

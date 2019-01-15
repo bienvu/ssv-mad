@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</tr>
 			</thead>
 			<tbody>
-				<?php echo "$headers: ";var_dump($headers);echo "</br>$mapped_items: ";var_dump($mapped_items); foreach ( $headers as $index => $name ) : ?>
+				<?php foreach ( $headers as $index => $name ) : ?>
 					<?php $mapped_value = $mapped_items[ $index ]; ?>
 					<tr>
 						<td class="wc-importer-mapping-table-name">

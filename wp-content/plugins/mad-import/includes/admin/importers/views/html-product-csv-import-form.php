@@ -56,7 +56,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</table>
 	</section>
 
-  <input type="radio" name="type" value="product">Product
+  <input type="radio" name="type" value="product" checked="checked">Product
   <input type="radio" name="type" value="work">Work
 
 	<div class="wc-actions">

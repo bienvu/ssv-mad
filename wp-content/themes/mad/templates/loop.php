@@ -1,39 +1,30 @@
-<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+<div class="masonry-wrap">
+  <div class="container">
+    <ul class="masonry js-masonry">
+      <?php if (have_posts()): while (have_posts()) : the_post(); $image = get_field('featured_image'); ?>
+      <li>
+        <div>
+          <div class="masonry__image">
+            <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
+          </div>
+          <div class="masonry__bg">
+            <h2 class="masonry__title"><a href="#"><?php the_title(); ?></a></h2>
 
-	<!-- article -->
-	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<!-- post thumbnail -->
-			<?php if ( has_post_thumbnail()) : // Check if thumbnail exists ?>
-				<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-					<?php the_post_thumbnail(array(120,120)); // Declare pixel size you need inside the array ?>
-				</a>
-			<?php endif; ?>
-			<!-- /post thumbnail -->
+            <div class="masonry__link"><a href="" class="btn btn--small"><?php _e( 'View Project', 'default' ); ?> </a></div>
+          </div>
+        </div>
+      </li>
+      <?php endwhile; ?>
 
-			<!-- post title -->
-			<h3>
-				<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
-			</h3>
-			<!-- /post title -->
+      <?php else: ?>
 
-			<!-- post details -->
-			<span class="date"><?php the_time('F j, Y'); ?> <?php the_time('g:i a'); ?></span>
-			<!-- <span class="author"><?php _e( 'Published by', 'ssvtheme' ); ?> <?php the_author_posts_link(); ?></span> -->
-			<span class="comments"><?php if (comments_open( get_the_ID() ) ) comments_popup_link( __( 'Leave your thoughts', 'ssvtheme' ), __( '1 Comment', 'ssvtheme' ), __( '% Comments', 'ssvtheme' )); ?></span>
-			<!-- /post details -->
+        <!-- article -->
+        <article>
+          <h3><?php _e( 'Sorry, nothing to display.', 'ssvtheme' ); ?></h3>
+        </article>
+        <!-- /article -->
 
-			<?php ssv_excerpt('ssv_index'); // Build your custom callback length in functions.php ?>
-	</article>
-	<!-- /article -->
-
-<?php endwhile; ?>
-
-<?php else: ?>
-
-	<!-- article -->
-	<article>
-		<h3><?php _e( 'Sorry, nothing to display.', 'ssvtheme' ); ?></h3>
-	</article>
-	<!-- /article -->
-
-<?php endif; ?>
+      <?php endif; ?>
+    </ul>
+  </div>
+</div>
