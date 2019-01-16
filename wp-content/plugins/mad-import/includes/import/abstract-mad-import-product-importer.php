@@ -129,9 +129,9 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
 	 *
 	 * @return array
 	 */
-	// public function get_params() {
-	// 	return $this->params;
-	// }
+	public function get_params() {
+		return $this->params;
+	}
 
 	/**
 	 * Get file pointer position from the last read.
@@ -163,22 +163,42 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
 	 * @param  array $data Raw CSV data.
 	 * @return array|WC_Error
 	 */
-	protected function process_item( $data ) {
+	protected function process_item( $data, $post_type ) {
 		global $wpdb;
-    $id = $wpdb->get_var($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_value = %s AND meta_key = 'weight' ", $data['weight']));
-
-    $term_id = term_exists($data['category'], 'category');
-
-    if( empty($term_id) ) {
-      $term_id = wp_insert_term( $data['category'], 'category' );
+    if($post_type == 'work') {
+      $id = $wpdb->get_var($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_value = %s AND meta_key = 'work_weight' ", $data['weight']));
     }
+    elseif ($post_type == 'product') {
+      $id = $wpdb->get_var($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_value = %s AND meta_key = 'product_sku' ", $data['sku']));
+    }
+
+    if ($data['category']) {
+      foreach ($data['category'] as $key => $value) {
+        if($post_type == 'product') {
+          $term_id = term_exists($value, 'category');
+
+          if(empty($term_id)) {
+            $term_parent = !empty($data['category'][$key-1]) ? $data['category'][$key-1] : 0;
+            $term_id = wp_insert_term($value, 'category', array('parent' => $term_parent));
+          }
+        } elseif ($post_type == 'work') {
+          $term_id = term_exists($value, 'product_filter');
+
+          if(empty($term_id)) {
+            $term_parent = !empty($data['category'][$key-1]) ? $data['category'][$key-1] : 0;
+            $term_id = wp_insert_term($value, 'product_filter', array('parent' => $term_parent));
+          }
+        }
+      }
+    }
+
+    unset($term_parent);
 
     if(empty($id)) {
       $id = wp_insert_post(array(
         'post_title' => $data['title'],
         'post_content' => $data['description'],
-        'post_type' => $this->type,
-        'post_category' => array( $term_id['term_id'] ),
+        'post_type' => $post_type,
         'post_status'  => 'publish'
       ));
     } else {
@@ -186,38 +206,116 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
         'ID' => $id,
         'post_title' => $data['title'],
         'post_content' => $data['description'],
-        'post_type' => $this->type,
-        'post_category' => array( $term_id['term_id'] ),
+        'post_type' => $post_type,
       ));
 
       $updated = 'updated';
     }
 
-    $meta_id = update_post_meta( $id, 'weight', $data['weight'] );
+    // instert term last to post
+    if($post_type == 'product') {
+      $ffdf = wp_set_post_terms( $id, $term_id['term_id'], 'category' );
+    } elseif($post_type == 'work') {
+      $ffdf = wp_set_post_terms( $id, $term_id['term_id'], 'product_filter' );
+    }
+    
 
-    if($data['featured_image']) {
-
-    	$upload = $this->set_image_data($data['featured_image']);
-    	$images = $this->set_field_image(array($upload), $id);
-
-    	update_field('featured_image', $images[0], $id);
+    // update weight
+    if(!empty($data['weight'])) {
+      if($post_type == 'product') {
+        update_field( 'mad_import_product_weight_123', $data['weight'], $id );
+      } elseif ($post_type == 'work') {
+        update_field( 'mad_import_work_weight_123', $data['weight'], $id );
+      }
+    } else {
+      if($post_type == 'work') {
+        return new WP_Error( 'mad_import_weight',  __( 'Weight not found in post type work.', 'ssvmad' ) . ' ' . sprintf( __( 'Error: %s.', 'ssvmad' ), $response->get_error_message() ), array( 'status' => 400 ) );
+      }
     }
 
+    // update SKU
+    if(!empty($data['sku'])) {
+      if($post_type == 'product') {
+        update_field( 'mad_import_product_sku_123', $data['sku'], $id );
+      }
+    } else {
+      if($post_type == 'product') {
+        return new WP_Error( 'mad_import_sku',  __( 'SKU not found in post type product.', 'ssvmad' ) . ' ' . sprintf( __( 'Error: %s.', 'ssvmad' ), $response->get_error_message() ), array( 'status' => 400 ) );
+      }
+    }
+    // update Featured image
+    if(!empty($data['featured_image'])) {
+
+    	$upload = $this->set_image_data($data['featured_image']);
+      // checl featured image exit or error
+      if(!($upload[0] instanceof WP_Error)) {
+        $images = $this->set_field_image(array($upload), $id);
+
+        if($post_type == 'product') {
+          update_field( 'mad_import_product_featured_image_123', $images[0], $id );
+        } elseif ($post_type == 'work') {
+          update_field( 'mad_import_work_featured_image_123', $images[0], $id );
+        }
+      }
+    }
+    // update gallery
     if(!empty($data['gallery'])) {
     	foreach ($data['gallery'] as $image) {
     		if($image) {
 		    	$gallery[] = $this->set_image_data($image);
 		    }
     	}
+      // check gallery exits or error
+      $i = 1;
+      foreach ($gallery as $value) {
+        if ($value instanceof WP_Error) {
+          $i = 0;
+        }
+      }
+      // check $i = 1 => gallery processing success
+      if($i) {
+        $images = $this->set_field_image($gallery, $id);
 
-    	$images = $this->set_field_image($gallery, $id);
+        if($post_type == 'product') {
+          update_field( 'mad_import_product_gallery_123', $images, $id );
+        } elseif ($post_type == 'work') {
+          update_field( 'mad_import_work_gallery_123', $images, $id );
+        }
+      }
 
-    	update_field('field_5c3d4ed7e94a8', $images, $id);
+      unset($i);
     }
+    // update you may also like
+    if(!empty($data['related'])) {
+      if($post_type == 'product') {
+        foreach ($data['related'] as $image) {
+          if($image) {
+            $related[$id] = $data['related'];
+          }
+        }
+      }
+    }
+    // update filter post type product
+    if(!empty($data['filter'])) {
+      if($post_type == 'product') {
+        $term_id = term_exists($data['filter'], 'product_filter');
+
+        if(empty($term_id)) {
+          $term_id = wp_insert_term($data['filter'], 'product_filter');
+        }
+
+        // insert term for post
+        wp_set_post_terms( $id, $term_id, 'product_filter' );
+      }
+    }
+    // save sku by id
+    $list_sku[$data['sku']] = $id;
 
 		return array(
 			'id'      => $id,
-      'updated' => $updated
+      'updated' => $updated,
+      'related' => $related,
+      'list_sku'     => $list_sku
 		);
 	}
 
@@ -247,7 +345,9 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
 					break;
 			}
 			return $upload;
-		}
+		} elseif (empty(file_exists($upload_arr['path'].'/import/'.$image_name))) {
+      return new WP_Error( 'mad_import_image_not_found', sprintf( __( 'Image Not Found: %s.', 'ssvmad' ), $image_url ), array( 'status' => 400 ) );
+    }
 
 		$response = wp_safe_remote_get(
 	    $image_url, array(
@@ -281,12 +381,33 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
     $images = array();
 
 		foreach ($gallery as $key => $value) {
-      if(!file_exists($value['file'])) {
-        new WP_Error( 'mad_import_function_exits', __( 'file not exists.', 'ssvmad' ), array( 'status' => 400 ) );
-        continue;
+      $file_name = current(explode('.',basename( $value['file'] )));
+      if($this->type == 'work') {
+        $file_arr = explode('-', $file_name);
+      } elseif ($this->type == 'product') {
+        $file_arr = explode('_', $file_name);
       }
+      
+      $position = end($file_arr);
+      if($this->type == 'work') {
+        if (preg_match('~[0-9]+~', $position)) {
+          if (prev($file_arr) == 'Featured') {
+            array_pop($file_arr);
+          }
+        }
+      }
+      
+			unset($position);
 
-      $image_id = $wpdb->get_var($wpdb->prepare("SELECT ID from $wpdb->posts WHERE guid = %s", $value['url']));
+      if($this->type == 'work') {
+        $file_name  = implode($file_arr, '-');
+      } elseif ($this->type == 'product') {
+        $file_name  = implode($file_arr, '_');
+      }
+			
+			$file_query = dirname($value['url']).'/'.$file_name."%";
+
+      $image_id = $wpdb->get_var($wpdb->prepare("SELECT ID from $wpdb->posts WHERE guid LIKE %s", $file_query));
 
       if(empty($image_id)) {
         $wp_upload_dir = wp_upload_dir();
@@ -316,390 +437,6 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
 
     return $images;
 	}
-
-	/**
-	 * Append meta data.
-	 *
-	 * @param WC_Product $product Product instance.
-	 * @param array      $data    Item data.
-	 */
-	// protected function set_meta_data( &$product, $data ) {
-	// 	if ( isset( $data['meta_data'] ) ) {
-	// 		foreach ( $data['meta_data'] as $meta ) {
-	// 			$product->update_meta_data( $meta['key'], $meta['value'] );
-	// 		}
-	// 	}
-	// }
-
-	/**
-	 * Set product data.
-	 *
-	 * @param WC_Product $product Product instance.
-	 * @param array      $data    Item data.
-	 * @throws Exception If data cannot be set.
-	 */
-	// protected function set_product_data( &$product, $data ) {
-	// 	if ( isset( $data['raw_attributes'] ) ) {
-	// 		$attributes          = array();
-	// 		$default_attributes  = array();
-	// 		$existing_attributes = $product->get_attributes();
-
-	// 		foreach ( $data['raw_attributes'] as $position => $attribute ) {
-	// 			$attribute_id = 0;
-
-	// 			// Get ID if is a global attribute.
-	// 			if ( ! empty( $attribute['taxonomy'] ) ) {
-	// 				$attribute_id = $this->get_attribute_taxonomy_id( $attribute['name'] );
-	// 			}
-
-	// 			// Set attribute visibility.
-	// 			if ( isset( $attribute['visible'] ) ) {
-	// 				$is_visible = $attribute['visible'];
-	// 			} else {
-	// 				$is_visible = 1;
-	// 			}
-
-	// 			// Get name.
-	// 			$attribute_name = $attribute_id ? wc_attribute_taxonomy_name_by_id( $attribute_id ) : $attribute['name'];
-
-	// 			// Set if is a variation attribute based on existing attributes if possible so updates via CSV do not change this.
-	// 			$is_variation = 0;
-
-	// 			if ( $existing_attributes ) {
-	// 				foreach ( $existing_attributes as $existing_attribute ) {
-	// 					if ( $existing_attribute->get_name() === $attribute_name ) {
-	// 						$is_variation = $existing_attribute->get_variation();
-	// 						break;
-	// 					}
-	// 				}
-	// 			}
-
-	// 			if ( $attribute_id ) {
-	// 				if ( isset( $attribute['value'] ) ) {
-	// 					$options = array_map( 'wc_sanitize_term_text_based', $attribute['value'] );
-	// 					$options = array_filter( $options, 'strlen' );
-	// 				} else {
-	// 					$options = array();
-	// 				}
-
-	// 				// Check for default attributes and set "is_variation".
-	// 				if ( ! empty( $attribute['default'] ) && in_array( $attribute['default'], $options, true ) ) {
-	// 					$default_term = get_term_by( 'name', $attribute['default'], $attribute_name );
-
-	// 					if ( $default_term && ! is_wp_error( $default_term ) ) {
-	// 						$default = $default_term->slug;
-	// 					} else {
-	// 						$default = sanitize_title( $attribute['default'] );
-	// 					}
-
-	// 					$default_attributes[ $attribute_name ] = $default;
-	// 					$is_variation                          = 1;
-	// 				}
-
-	// 				if ( ! empty( $options ) ) {
-	// 					$attribute_object = new WC_Product_Attribute();
-	// 					$attribute_object->set_id( $attribute_id );
-	// 					$attribute_object->set_name( $attribute_name );
-	// 					$attribute_object->set_options( $options );
-	// 					$attribute_object->set_position( $position );
-	// 					$attribute_object->set_visible( $is_visible );
-	// 					$attribute_object->set_variation( $is_variation );
-	// 					$attributes[] = $attribute_object;
-	// 				}
-	// 			} elseif ( isset( $attribute['value'] ) ) {
-	// 				// Check for default attributes and set "is_variation".
-	// 				if ( ! empty( $attribute['default'] ) && in_array( $attribute['default'], $attribute['value'], true ) ) {
-	// 					$default_attributes[ sanitize_title( $attribute['name'] ) ] = $attribute['default'];
-	// 					$is_variation = 1;
-	// 				}
-
-	// 				$attribute_object = new WC_Product_Attribute();
-	// 				$attribute_object->set_name( $attribute['name'] );
-	// 				$attribute_object->set_options( $attribute['value'] );
-	// 				$attribute_object->set_position( $position );
-	// 				$attribute_object->set_visible( $is_visible );
-	// 				$attribute_object->set_variation( $is_variation );
-	// 				$attributes[] = $attribute_object;
-	// 			}
-	// 		}
-
-	// 		$product->set_attributes( $attributes );
-
-	// 		// Set variable default attributes.
-	// 		if ( $product->is_type( 'variable' ) ) {
-	// 			$product->set_default_attributes( $default_attributes );
-	// 		}
-	// 	}
-	// }
-
-	/**
-	 * Set variation data.
-	 *
-	 * @param WC_Product $variation Product instance.
-	 * @param array      $data    Item data.
-	 * @return WC_Product|WP_Error
-	 * @throws Exception If data cannot be set.
-	 */
-	// protected function set_variation_data( &$variation, $data ) {
-	// 	$parent = false;
-
-	// 	// Check if parent exist.
-	// 	if ( isset( $data['parent_id'] ) ) {
-	// 		$parent = wc_get_product( $data['parent_id'] );
-
-	// 		if ( $parent ) {
-	// 			$variation->set_parent_id( $parent->get_id() );
-	// 		}
-	// 	}
-
-	// 	// Stop if parent does not exists.
-	// 	if ( ! $parent ) {
-	// 		return new WP_Error( 'woocommerce_product_importer_missing_variation_parent_id', __( 'Variation cannot be imported: Missing parent ID or parent does not exist yet.', 'woocommerce' ), array( 'status' => 401 ) );
-	// 	}
-
-	// 	if ( isset( $data['raw_attributes'] ) ) {
-	// 		$attributes        = array();
-	// 		$parent_attributes = $this->get_variation_parent_attributes( $data['raw_attributes'], $parent );
-
-	// 		foreach ( $data['raw_attributes'] as $attribute ) {
-	// 			$attribute_id = 0;
-
-	// 			// Get ID if is a global attribute.
-	// 			if ( ! empty( $attribute['taxonomy'] ) ) {
-	// 				$attribute_id = $this->get_attribute_taxonomy_id( $attribute['name'] );
-	// 			}
-
-	// 			if ( $attribute_id ) {
-	// 				$attribute_name = wc_attribute_taxonomy_name_by_id( $attribute_id );
-	// 			} else {
-	// 				$attribute_name = sanitize_title( $attribute['name'] );
-	// 			}
-
-	// 			if ( ! isset( $parent_attributes[ $attribute_name ] ) || ! $parent_attributes[ $attribute_name ]->get_variation() ) {
-	// 				continue;
-	// 			}
-
-	// 			$attribute_key   = sanitize_title( $parent_attributes[ $attribute_name ]->get_name() );
-	// 			$attribute_value = isset( $attribute['value'] ) ? current( $attribute['value'] ) : '';
-
-	// 			if ( $parent_attributes[ $attribute_name ]->is_taxonomy() ) {
-	// 				// If dealing with a taxonomy, we need to get the slug from the name posted to the API.
-	// 				$term = get_term_by( 'name', $attribute_value, $attribute_name );
-
-	// 				if ( $term && ! is_wp_error( $term ) ) {
-	// 					$attribute_value = $term->slug;
-	// 				} else {
-	// 					$attribute_value = sanitize_title( $attribute_value );
-	// 				}
-	// 			}
-
-	// 			$attributes[ $attribute_key ] = $attribute_value;
-	// 		}
-
-	// 		$variation->set_attributes( $attributes );
-	// 	}
-	// }
-
-	/**
-	 * Get variation parent attributes and set "is_variation".
-	 *
-	 * @param  array      $attributes Attributes list.
-	 * @param  WC_Product $parent     Parent product data.
-	 * @return array
-	 */
-	// protected function get_variation_parent_attributes( $attributes, $parent ) {
-	// 	$parent_attributes = $parent->get_attributes();
-	// 	$require_save      = false;
-
-	// 	foreach ( $attributes as $attribute ) {
-	// 		$attribute_id = 0;
-
-	// 		// Get ID if is a global attribute.
-	// 		if ( ! empty( $attribute['taxonomy'] ) ) {
-	// 			$attribute_id = $this->get_attribute_taxonomy_id( $attribute['name'] );
-	// 		}
-
-	// 		if ( $attribute_id ) {
-	// 			$attribute_name = wc_attribute_taxonomy_name_by_id( $attribute_id );
-	// 		} else {
-	// 			$attribute_name = sanitize_title( $attribute['name'] );
-	// 		}
-
-	// 		// Check if attribute handle variations.
-	// 		if ( isset( $parent_attributes[ $attribute_name ] ) && ! $parent_attributes[ $attribute_name ]->get_variation() ) {
-	// 			// Re-create the attribute to CRUD save and generate again.
-	// 			$parent_attributes[ $attribute_name ] = clone $parent_attributes[ $attribute_name ];
-	// 			$parent_attributes[ $attribute_name ]->set_variation( 1 );
-
-	// 			$require_save = true;
-	// 		}
-	// 	}
-
-	// 	// Save variation attributes.
-	// 	if ( $require_save ) {
-	// 		$parent->set_attributes( array_values( $parent_attributes ) );
-	// 		$parent->save();
-	// 	}
-
-	// 	return $parent_attributes;
-	// }
-
-	/**
-	 * Get attachment ID.
-	 *
-	 * @param  string $url        Attachment URL.
-	 * @param  int    $product_id Product ID.
-	 * @return int
-	 * @throws Exception If attachment cannot be loaded.
-	 */
-	// public function get_attachment_id_from_url( $url, $product_id ) {
-	// 	if ( empty( $url ) ) {
-	// 		return 0;
-	// 	}
-
-	// 	$id         = 0;
-	// 	$upload_dir = wp_upload_dir( null, false );
-	// 	$base_url   = $upload_dir['baseurl'] . '/';
-
-	// 	// Check first if attachment is inside the WordPress uploads directory, or we're given a filename only.
-	// 	if ( false !== strpos( $url, $base_url ) || false === strpos( $url, '://' ) ) {
-	// 		// Search for yyyy/mm/slug.extension or slug.extension - remove the base URL.
-	// 		$file = str_replace( $base_url, '', $url );
-	// 		$args = array(
-	// 			'post_type'   => 'attachment',
-	// 			'post_status' => 'any',
-	// 			'fields'      => 'ids',
-	// 			'meta_query'  => array( // @codingStandardsIgnoreLine.
-	// 				'relation' => 'OR',
-	// 				array(
-	// 					'key'     => '_wp_attached_file',
-	// 					'value'   => '^' . $file,
-	// 					'compare' => 'REGEXP',
-	// 				),
-	// 				array(
-	// 					'key'     => '_wp_attached_file',
-	// 					'value'   => '/' . $file,
-	// 					'compare' => 'LIKE',
-	// 				),
-	// 				array(
-	// 					'key'     => '_wc_attachment_source',
-	// 					'value'   => '/' . $file,
-	// 					'compare' => 'LIKE',
-	// 				),
-	// 			),
-	// 		);
-	// 	} else {
-	// 		// This is an external URL, so compare to source.
-	// 		$args = array(
-	// 			'post_type'   => 'attachment',
-	// 			'post_status' => 'any',
-	// 			'fields'      => 'ids',
-	// 			'meta_query'  => array( // @codingStandardsIgnoreLine.
-	// 				array(
-	// 					'value' => $url,
-	// 					'key'   => '_wc_attachment_source',
-	// 				),
-	// 			),
-	// 		);
-	// 	}
-
-	// 	$ids = get_posts( $args ); // @codingStandardsIgnoreLine.
-
-	// 	if ( $ids ) {
-	// 		$id = current( $ids );
-	// 	}
-
-	// 	// Upload if attachment does not exists.
-	// 	if ( ! $id && stristr( $url, '://' ) ) {
-	// 		$upload = wc_rest_upload_image_from_url( $url );
-
-	// 		if ( is_wp_error( $upload ) ) {
-	// 			throw new Exception( $upload->get_error_message(), 400 );
-	// 		}
-
-	// 		$id = wc_rest_set_uploaded_image_as_attachment( $upload, $product_id );
-
-	// 		if ( ! wp_attachment_is_image( $id ) ) {
-	// 			/* translators: %s: image URL */
-	// 			throw new Exception( sprintf( __( 'Not able to attach "%s".', 'woocommerce' ), $url ), 400 );
-	// 		}
-
-	// 		// Save attachment source for future reference.
-	// 		update_post_meta( $id, '_wc_attachment_source', $url );
-	// 	}
-
-	// 	if ( ! $id ) {
-	// 		/* translators: %s: image URL */
-	// 		throw new Exception( sprintf( __( 'Unable to use image "%s".', 'woocommerce' ), $url ), 400 );
-	// 	}
-
-	// 	return $id;
-	// }
-
-	/**
-	 * Get attribute taxonomy ID from the imported data.
-	 * If does not exists register a new attribute.
-	 *
-	 * @param  string $raw_name Attribute name.
-	 * @return int
-	 * @throws Exception If taxonomy cannot be loaded.
-	 */
-	// public function get_attribute_taxonomy_id( $raw_name ) {
-	// 	global $wpdb, $wc_product_attributes;
-
-	// 	// These are exported as labels, so convert the label to a name if possible first.
-	// 	$attribute_labels = wp_list_pluck( wc_get_attribute_taxonomies(), 'attribute_label', 'attribute_name' );
-	// 	$attribute_name   = array_search( $raw_name, $attribute_labels, true );
-
-	// 	if ( ! $attribute_name ) {
-	// 		$attribute_name = wc_sanitize_taxonomy_name( $raw_name );
-	// 	}
-
-	// 	$attribute_id = wc_attribute_taxonomy_id_by_name( $attribute_name );
-
-	// 	// Get the ID from the name.
-	// 	if ( $attribute_id ) {
-	// 		return $attribute_id;
-	// 	}
-
-	// 	// If the attribute does not exist, create it.
-	// 	$attribute_id = wc_create_attribute( array(
-	// 		'name'         => $raw_name,
-	// 		'slug'         => $attribute_name,
-	// 		'type'         => 'select',
-	// 		'order_by'     => 'menu_order',
-	// 		'has_archives' => false,
-	// 	) );
-
-	// 	if ( is_wp_error( $attribute_id ) ) {
-	// 		throw new Exception( $attribute_id->get_error_message(), 400 );
-	// 	}
-
-	// 	// Register as taxonomy while importing.
-	// 	$taxonomy_name = wc_attribute_taxonomy_name( $attribute_name );
-	// 	register_taxonomy(
-	// 		$taxonomy_name,
-	// 		apply_filters( 'woocommerce_taxonomy_objects_' . $taxonomy_name, array( 'product' ) ),
-	// 		apply_filters( 'woocommerce_taxonomy_args_' . $taxonomy_name, array(
-	// 			'labels'       => array(
-	// 				'name' => $raw_name,
-	// 			),
-	// 			'hierarchical' => true,
-	// 			'show_ui'      => false,
-	// 			'query_var'    => true,
-	// 			'rewrite'      => false,
-	// 		) )
-	// 	);
-
-	// 	// Set product attributes global.
-	// 	$wc_product_attributes = array();
-
-	// 	foreach ( wc_get_attribute_taxonomies() as $taxonomy ) {
-	// 		$wc_product_attributes[ wc_attribute_taxonomy_name( $taxonomy->attribute_name ) ] = $taxonomy;
-	// 	}
-
-	// 	return $attribute_id;
-	// }
 
 	/**
 	 * Memory exceeded
@@ -782,23 +519,4 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
 	protected function explode_values_formatter( $value ) {
 		return trim( str_replace( '::separator::', ',', $value ) );
 	}
-
-	/**
-	 * The exporter prepends a ' to fields that start with a - which causes
-	 * issues with negative numbers. This removes the ' if the input is still a valid
-	 * number after removal.
-	 *
-	 * @since 3.3.0
-	 * @param string $value A numeric string that may or may not have ' prepended.
-	 * @return string
-	 */
-	// protected function unescape_negative_number( $value ) {
-	// 	if ( 0 === strpos( $value, "'-" ) ) {
-	// 		$unescaped = trim( $value, "'" );
-	// 		if ( is_numeric( $unescaped ) ) {
-	// 			return $unescaped;
-	// 		}
-	// 	}
-	// 	return $value;
-	// }
 }

@@ -97,7 +97,6 @@ class Mad_Import_Admin_Importers {
 			exit;
 		}
     
-		// include_once MAD_IMPORT_ABSPATH . 'includes/import/class-mad-import-product-csv-importer.php';
 		include_once MAD_IMPORT_ABSPATH . 'includes/admin/importers/class-mad-import-product-csv-importer-controller.php';
 
 		$importer = new Mad_Import_Product_CSV_Importer_Controller();
@@ -110,7 +109,6 @@ class Mad_Import_Admin_Importers {
 	public function register_importers() {
 		if ( defined( 'WP_LOAD_IMPORTERS' ) ) {
 			register_importer( 'mad_import_product_csv', __( 'Mad Import products (CSV)', 'ssvmad' ), __( 'Import <strong>products</strong> to your store via a csv file.', 'ssvmad' ), array( $this, 'product_importer' ) );
-			register_importer( 'mad_import_tax_rate_csv', __( 'Mad Import tax rates (CSV)', 'ssvmad' ), __( 'Import <strong>tax rates</strong> to your store via a csv file.', 'ssvmad' ), array( $this, 'tax_rates_importer' ) );
 		}
 	}
 
@@ -138,6 +136,8 @@ class Mad_Import_Admin_Importers {
 			'lines'           => apply_filters( 'woocommerce_product_import_batch_size', 5 ),
 			'parse'           => true,
       'post_type'       => isset( $_POST['post_type'] ) ? wc_clean( wp_unslash( $_POST['post_type'] ) ) : '',
+      'list_sku'       => isset( $_POST['list_sku'] ) ? (array) wc_clean( wp_unslash( $_POST['list_sku'] ) ) : '',
+      'related'       => isset( $_POST['related'] ) ? (array) wc_clean( wp_unslash( $_POST['related'] ) ) : '',
 		);
 
 		// Log failures.
@@ -153,6 +153,11 @@ class Mad_Import_Admin_Importers {
 		$error_log        = array_merge( $error_log, $results['failed'], $results['skipped'] );
 
 		if ( 100 === $percent_complete ) {
+			// save related
+			$results['related'] = array_merge($params['related'], $results['related']);
+			$results['list_sku'] = array_merge($params['list_sku'], $results['list_sku']);
+			$importer->import_related($results['related'], $results['list_sku']);
+
 			// @codingStandardsIgnoreStart.
 			$wpdb->delete( $wpdb->postmeta, array( 'meta_key' => '_original_id' ) );
 			$wpdb->delete( $wpdb->posts, array(
@@ -207,6 +212,8 @@ class Mad_Import_Admin_Importers {
 					'failed'     => count( $results['failed'] ),
 					'updated'    => count( $results['updated'] ),
 					'skipped'    => count( $results['skipped'] ),
+					'related'		 => array_merge($params['related'], $results['related']),
+					'list_sku'	 => array_merge($params['list_sku'], $results['list_sku']),
 				)
 			);
 		}

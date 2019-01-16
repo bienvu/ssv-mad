@@ -121,6 +121,7 @@ final class Mad_Import {
   public function __construct() {
     $this->define_constants();
     $this->includes();
+    add_action('admin_enqueue_scripts', array($this, 'mad_import_admin_style' ));
 
     do_action( 'mad_import_loaded' );
   }
@@ -174,30 +175,13 @@ final class Mad_Import {
     /**
      * Interfaces.
      */
-    // include_once MAD_IMPORT_ABSPATH . 'includes/interfaces/class-mad-import-coupon-data-store-interface.php';
-    // include_once MAD_IMPORT_ABSPATH . 'includes/interfaces/class-mad-import-object-data-store-interface.php';
-    // include_once MAD_IMPORT_ABSPATH . 'includes/interfaces/class-mad-import-importer-interface.php';
-    // include_once MAD_IMPORT_ABSPATH . 'includes/interfaces/class-mad-import-product-data-store-interface.php';
-
-    /**
-     * Abstract classes.
-     */
-    // include_once MAD_IMPORT_ABSPATH . 'includes/abstracts/abstract-mad-import-data.php';
-    // include_once MAD_IMPORT_ABSPATH . 'includes/abstracts/abstract-mad-import-product.php';
+    include_once MAD_IMPORT_ABSPATH . 'includes/interfaces/class-mad-import-importer-interface.php';
 
     /**
      * Core classes.
      */
     include_once MAD_IMPORT_ABSPATH . 'includes/mad-import-core-functions.php';
     include_once MAD_IMPORT_ABSPATH . 'includes/class-mad-import-post-types.php';
-    // include_once MAD_IMPORT_ABSPATH . 'includes/legacy/class-mad-import-legacy-api.php';
-
-    /**
-     * Data stores - used to store and retrieve CRUD object data from the database.
-     */
-    // include_once MAD_IMPORT_ABSPATH . 'includes/class-mad-import-data-store.php';
-    // include_once MAD_IMPORT_ABSPATH . 'includes/data-stores/class-mad-import-data-store-wp.php';
-    // include_once MAD_IMPORT_ABSPATH . 'includes/data-stores/class-mad-import-product-data-store-cpt.php';
 
     if ( $this->is_request( 'admin' ) ) {
       include_once MAD_IMPORT_ABSPATH . 'includes/admin/class-mad-import-admin.php';
@@ -212,5 +196,11 @@ final class Mad_Import {
       add_theme_support( 'post-thumbnails' );
     }
     add_post_type_support( 'product', 'thumbnail' );
+  }
+
+  public function mad_import_admin_style()
+  {
+    wp_register_style('mad_import_admin_styles', MAD_IMPORT_DIRNAME . 'assets/css/main.css', array(), '1.0', 'all');
+    wp_enqueue_style('mad_import_admin_styles');
   }
 }

@@ -51,7 +51,9 @@ class Mad_Import_Product_CSV_Importer extends Mad_Import_Product_Importer {
 
 		$this->params    = wp_parse_args( $params, $default_args );
 		$this->file      = $file;
-    $this->type = $this->params['post_type'];
+    $this->type      = $this->params['post_type'];
+    $this->list_sku  = $this->params['list_sku'];
+    $this->related   = $this->params['related'];
 
 		if ( isset( $this->params['mapping']['from'], $this->params['mapping']['to'] ) ) {
 			$this->params['mapping'] = array_combine( $this->params['mapping']['from'], $this->params['mapping']['to'] );
@@ -136,6 +138,9 @@ class Mad_Import_Product_CSV_Importer extends Mad_Import_Product_Importer {
      */
     $data_formatting = array(
       'gallery'            => array( $this, 'parse_images_field' ),
+      'category'           => array( $this, 'parse_category_field' ),
+      'related'           => array( $this, 'parse_images_field' ),
+      'featured_image'    => array( $this, 'parse_skip_field' ),
     );
 
     $callbacks = array();
@@ -153,8 +158,18 @@ class Mad_Import_Product_CSV_Importer extends Mad_Import_Product_Importer {
 
     return $callbacks;
   }
-
-
+  /**
+   * Just skip current field.
+   *
+   * By default is applied wc_clean() to all not listed fields
+   * in self::get_formating_callback(), use this method to skip any formating.
+   *
+   * @param  string $value Field value.
+   * @return string
+   */
+  public function parse_skip_field( $value ) {
+    return $value;
+  }
 
   /**
    * Parse images list from a CSV. Images can be filenames or URLs.
@@ -179,6 +194,33 @@ class Mad_Import_Product_CSV_Importer extends Mad_Import_Product_Importer {
     }
 
     return $images;
+  }
+
+  /**
+   * Parse category list from a CSV. return array
+   *
+   * @param  string $value Field value.
+   * @return array
+   */
+  public function parse_category_field( $value ) {
+    if ( empty( $value ) ) {
+      return array();
+    }
+
+    $categorys = array();
+    $value = explode('>', $value);
+
+    foreach ( $value as $category ) {
+      $category = wc_clean( wp_unslash( strtolower(trim($category)) ) );
+      $category_arr = explode(" ", $category);
+
+      foreach ($category_arr as $key => $value_child) {
+        $category_arr[$key] = trim($value_child);
+      }
+      $categorys[] = implode('_', $category_arr);
+    }
+
+    return $categorys;
   }
 
 	/**
@@ -238,30 +280,80 @@ class Mad_Import_Product_CSV_Importer extends Mad_Import_Product_Importer {
     }
   }
 
-	public function import() {
+  public function import() {
     
-		$this->start_time = time();
+    $this->start_time = time();
     $post_type = $this->type;
-		$index            = 0;
+    $index            = 0;
 
-    if($post_type == 'work') {
-      foreach ( $this->parsed_data as $parsed_data_key => $parsed_data ) {
-        do_action( 'mad_import_product_import_before_import', $parsed_data );
+    foreach ( $this->parsed_data as $parsed_data_key => $parsed_data ) {
+      do_action( 'mad_import_product_import_before_import', $parsed_data );
 
-        $result = $this->process_item( $parsed_data );
+      $result = $this->process_item( $parsed_data, $post_type );
 
-        if ( is_wp_error( $result ) ) {
-          $data['failed'][] = $result;
-        } elseif ( $result['updated'] ) {
-          $data['updated'][] = $result['id'];
-        } else {
-          $data['imported'][] = $result['id'];
-        }
-
-        $index ++;
+      if ( is_wp_error( $result ) ) {
+        $data['failed'][] = $result;
+      } elseif ( $result['updated'] ) {
+        $data['updated'][] = $result['id'];
+      } else {
+        $data['imported'][] = $result['id'];
       }
+
+      // save relateds import last
+      $data['related'][] = $result['related'];
+      $data['list_sku'][]     = $result['list_sku'];
+
+      $index++;
     }
 
-		return $data;
+    return $data;
+  }
+  // import related
+	public function import_related($related, $list_sku) {
+    // remove element first
+    array_shift($related);
+    array_shift($list_sku);
+    
+    $skus = array();
+    $relateds = array();
+    // process sku
+    foreach ($list_sku as $value) {
+      foreach ($value as $sku => $id) {
+        if(empty($sku)) {
+          continue;
+        }
+        
+        $skus[$sku] = $id;
+      }
+    }
+    unset($list_sku);
+    // process related
+    foreach ($related as $value) {
+      foreach ($value as $id => $sku) {
+        if(empty($sku)) {
+          continue;
+        }
+
+        $relateds[$id] = $sku;
+      }
+    }
+    unset($related);
+    // processing related by sku
+    foreach ($relateds as $id => $value) {
+      $related_id = array();
+      foreach ($value as $id_child => $sku) {
+        $id_by_sku = !empty($skus[$sku]) ? $skus[$sku] : '';
+
+        if(!empty($id_by_sku)) {
+          $related_id[] = $id_by_sku;
+        }
+      }
+
+      // update field
+      update_field( 'mad_import_product_related_123', $related_id, $id);
+    }
+
+    unset($relateds);
+    unset($skus);
 	}
 }
