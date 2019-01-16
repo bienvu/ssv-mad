@@ -133,7 +133,7 @@ class Mad_Import_Admin_Importers {
 			'start_pos'       => isset( $_POST['position'] ) ? absint( $_POST['position'] ) : 0, // PHPCS: input var ok.
 			'mapping'         => isset( $_POST['mapping'] ) ? (array) wc_clean( wp_unslash( $_POST['mapping'] ) ) : array(), // PHPCS: input var ok.
 			'update_existing' => isset( $_POST['update_existing'] ) ? (bool) $_POST['update_existing'] : false, // PHPCS: input var ok.
-			'lines'           => apply_filters( 'woocommerce_product_import_batch_size', 5 ),
+			'lines'           => apply_filters( 'woocommerce_product_import_batch_size', 1 ),
 			'parse'           => true,
       'post_type'       => isset( $_POST['post_type'] ) ? wc_clean( wp_unslash( $_POST['post_type'] ) ) : '',
       'list_sku'       => isset( $_POST['list_sku'] ) ? (array) wc_clean( wp_unslash( $_POST['list_sku'] ) ) : '',

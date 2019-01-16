@@ -84,15 +84,15 @@ class Mad_Import_Post_Types {
 		);
 		
 		$labels[] = array(
-			'name'               => __( 'work', 'ssvmad' ),
-			'singular_name'      => __( 'work', 'ssvmad' ),
+			'name'               => __( 'Work', 'ssvmad' ),
+			'singular_name'      => __( 'Work', 'ssvmad' ),
 			'add_new'            => _x( 'Add New', 'ssvmad', 'ssvmad' ),
 			'add_new_item'       => __( 'Add New', 'ssvmad' ),
-			'edit_item'          => __( 'Edit work', 'ssvmad' ),
-			'new_item'           => __( 'New work', 'ssvmad' ),
+			'edit_item'          => __( 'Edit Work', 'ssvmad' ),
+			'new_item'           => __( 'New Work', 'ssvmad' ),
 			'view_item'          => __( 'View work', 'ssvmad' ),
 			'all_items'					 => __( 'View All', 'ssvmad' ),
-			'search_items'       => __( 'Search works', 'ssvmad' ),
+			'search_items'       => __( 'Search Works', 'ssvmad' ),
 			'not_found'          => __( 'No works found', 'ssvmad' ),
 			'not_found_in_trash' => __( 'No works found in Trash', 'ssvmad' ),
 			'parent_item_colon'  => __( 'Parent work:', 'ssvmad' ),
