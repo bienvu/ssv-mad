@@ -53,6 +53,12 @@
     //   $('html,body').animate({scrollTop: $(aid).offset().top - 20 },'slow');
     // });
 
+    // js height box gallery
+    if($('.js-height').length) {
+      $height = $('.js-height').width() * 1320 / 2000;console.log($('.js-height').width());
+      $('.js-height').css('property', 'value');
+    }
+
     //scroll to next section
     $('.js-scroll-down').click(function() {
       var $next = $(this).parent().next().offset().top;
@@ -136,12 +142,23 @@
       });
     }, 1000);
 
+
+    // js pagingInfo for js-slider
+    var $status = $('.paginginfo');
+    var $slickElement = $('.js-pagination');
+
+    $slickElement.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+      //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
+      var i = (currentSlide ? currentSlide : 0) + 1;
+      $status.html('<span>' + i + '</span>/' + slick.slideCount);
+    });
+
     // js slide
     if($('.js-slide').length) {
       $('.js-slide').slick({
         prevArrow: '<span class="slick-prev">Previous</span>',
         nextArrow: '<span class="slick-next">Next</span>',
-        adaptiveHeight: true
+        adaptiveHeight: true,
       });
     }
     

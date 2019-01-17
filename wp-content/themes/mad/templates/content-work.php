@@ -11,9 +11,9 @@
             <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
           </div>
           <div class="masonry__bg">
-            <h2 class="masonry__title"><a href="#"><?php the_title(); ?></a></h2>
+            <h2 class="masonry__title"><a href="<?php echo get_post_permalink(); ?>"><?php the_title(); ?></a></h2>
 
-            <div class="masonry__link"><a href="" class="btn btn--small"><?php _e( 'View Project', 'default' ); ?> </a></div>
+            <div class="masonry__link"><a href="<?php echo get_post_permalink(); ?>" class="btn btn--small"><?php _e( 'View Project', 'default' ); ?> </a></div>
           </div>
         </div>
       </li>
@@ -28,6 +28,6 @@
         <!-- /article -->
 
       <?php endif; ?>
-    </div>
-  </ul>
+    </ul>
+  </div>
 </div>

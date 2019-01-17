@@ -10,10 +10,11 @@ get_header();
   <section>
     <?php
       get_template_part('templates/components/box-filter');
-      get_template_part('templates/loop');
+      get_template_part('templates/content-work');
     ?>
 
     <?php get_template_part('templates/pagination'); ?>
+    <?php echo do_shortcode( '[block id="box-text-with-link"]' ); ?>
   </section>
 </main>
 <?php get_footer(); ?>
