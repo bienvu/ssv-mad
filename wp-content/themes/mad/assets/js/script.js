@@ -146,11 +146,13 @@
     }
     
     // js masonry
-    $(window).load(function() {
-      if($('.js-masonry').length) {
-        $('.js-masonry').masonry();
-      }
+    $(window).on("load", function() {
+      $('.masonry').masonry({
+        itemSelector: '.masonry__item',
+        horizontalOrder: false
+      });
     });
+
 
     // js gallery
     if($('.js-lightbox-product').length) {

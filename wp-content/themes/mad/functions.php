@@ -28,23 +28,38 @@ function mad_add_styles() {
     wp_enqueue_style('styles');
 }
 
+/**
+ * Function alter main query of category page.
+ */
+function alter_main_query_archive_page($query) {
+    //gets the global query var object
+    global $wp_query;
+    if ($query->is_main_query() && is_archive()) {
+        $query->set('post_type', 'work');
+        $query->set('posts_per_page', 15);
+        $query->set('meta_key', 'weight');
+        $query->set('orderby', array('meta_value_num' => 'ASC', 'ID' => 'ASC'));
+    }
+}
+
 // Add script to footer.
 function mad_add_scripts() {
     global $wp_query;
     if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
-      // jquery
-      wp_enqueue_script('jquery');
-
-      // script library
-      wp_register_script('slick', get_template_directory_uri() . '/assets/js/lib/slick.min.js', array(), '1.0.0'); // slick
+      // slick
+      wp_register_script('slick', get_template_directory_uri() . '/assets/js/lib/slick.min.js', array(), '1.0.0'); 
       wp_enqueue_script('slick');
-      wp_register_script('masonry', get_template_directory_uri() . '/assets/js/lib/masonry.pkgd.min.js', array(), '1.0.0'); // masonry
-      wp_enqueue_script('masonry');
-      wp_register_script('lightgallery', get_template_directory_uri() . '/assets/js/lib/lightgallery/jquery.lightgallery.min.js', array(), '1.0.0'); // light gallery
+      // masonry
+      wp_register_script('masonry222', get_template_directory_uri() . '/assets/js/lib/masonry.pkgd.min.js', array(), '2.0.0');
+      wp_enqueue_script('masonry222');
+      // light gallery
+      wp_register_script('lightgallery', get_template_directory_uri() . '/assets/js/lib/lightgallery/jquery.lightgallery.min.js', array(), '1.0.0'); 
       wp_enqueue_script('lightgallery');
-      wp_register_script('lightgallery-share', get_template_directory_uri() . '/assets/js/lib/lightgallery/lg-share.min.js', array(), '1.0.0'); // lightgallery share
+      // lightgallery share
+      wp_register_script('lightgallery-share', get_template_directory_uri() . '/assets/js/lib/lightgallery/lg-share.min.js', array(), '1.0.0'); 
       wp_enqueue_script('lightgallery-share');
-      wp_register_script('lightgallery-zoom', get_template_directory_uri() . '/assets/js/lib/lightgallery/lg-zoom.min.js', array(), '1.0.0'); // light gallery zoom
+      // light gallery zoom
+      wp_register_script('lightgallery-zoom', get_template_directory_uri() . '/assets/js/lib/lightgallery/lg-zoom.min.js', array(), '1.0.0'); 
       wp_enqueue_script('lightgallery-zoom');
 
       // Script.
@@ -88,7 +103,10 @@ function mad_pagination() {
         'base' => str_replace($big, '%#%', get_pagenum_link($big)),
         'format' => '?paged=%#%',
         'current' => max(1, get_query_var('paged')),
-        'total' => $wp_query->max_num_pages
+        'total' => $wp_query->max_num_pages,
+        'prev_text' => '<span class="icon-arrow-left"></span>',
+        'next_text' => '<span class="icon-arrow-right"></span>',
+        'type' => 'list'
     ));
 }
 
@@ -157,6 +175,7 @@ add_action('wp_enqueue_scripts', 'mad_add_styles'); // Add Theme Stylesheet
 add_action('init', 'mad_pagination'); // Add our sentius Pagination
 add_action('wp_footer', 'mad_add_scripts'); // Add Custom Scripts to wp_head
 add_action('upload_mimes', 'my_custom_upload_mimes'); // add csv file upload
+add_action('pre_get_posts','alter_main_query_archive_page');
 
 // Remove Actions
 remove_action('wp_head', 'feed_links_extra', 3); // Display the links to the extra feeds such as category feeds

@@ -1,43 +1,49 @@
 .pager {
-  span {
-    display: none;
-  }
-
+  padding: 35px 0 47px;
   ul {
     display: flex;
     justify-content: center;
+    align-items: center;
   }
 
   li {
+    margin-right: 16px;
+
+    &:nth-of-type {
+      margin: 0;
+    }
+
+    .icon-arrow-right,
+    .icon-arrow-left {
+      &:before {
+        font-size: 15px;
+      }
+    }
+
+    span,
     a {
-      padding: 0 2.5px 2px;
+      padding: 4.2px;
       display: inline-block;
-      margin-right: 18px;
+      font-size: 19px;
+      line-height: 1.578947;
+      border-bottom: 1px solid transparent;
+
+      &.next,
+      &.prev {
+        margin-bottom: 3px;
+      }
 
       &.next {
-        margin-right: 33px;
+        margin-left: 14px;
       }
 
       &.prev {
-        margin-left: 10px;
+        margin-right: 14px;
       }
     }
 
-    &.custom-pager {
-      a {
-        padding: 0;
-      }
+    span.current {
+      border-bottom: 1px solid $black;
     }
-
-    &.current {
-      a {
-        border-bottom: 1px solid $black;
-      }
-    }
-  }
-
-  .icon-arrow-right,
-  .icon-arrow-left {
-    font-size: 10px;
   }
 }
