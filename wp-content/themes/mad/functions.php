@@ -34,7 +34,7 @@ function mad_add_styles() {
 function alter_main_query_archive_page($query) {
     //gets the global query var object
     global $wp_query;
-    if ($query->is_main_query() && is_archive()) {
+    if ($query->is_main_query() && is_archive() && !is_admin()) {
         $query->set('post_type', 'work');
         $query->set('posts_per_page', 15);
         $query->set('meta_key', 'weight');

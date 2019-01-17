@@ -101,7 +101,7 @@ class Mad_Import_Post_Types {
 	
 		$args[] = array(
 			'labels'              => $labels[0],
-			'hierarchical'        => false,
+			'hierarchical'        => true,
 			'description'         => 'description',
 			'taxonomies'          => array('category', 'product_filter'),
 			'public'              => true,
@@ -123,7 +123,7 @@ class Mad_Import_Post_Types {
 	
 		$args[] = array(
 			'labels'              => $labels[1],
-			'hierarchical'        => false,
+			'hierarchical'        => true,
 			'description'         => 'description',
 			'taxonomies'          => array('product_filter'),
 			'public'              => true,
