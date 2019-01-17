@@ -1,8 +1,11 @@
 <div class="masonry-wrap">
   <div class="container">
-    <ul class="masonry js-masonry">
-      <?php if (have_posts()): while (have_posts()) : the_post(); $image = get_field('featured_image'); ?>
-      <li>
+    <ul class="masonry js-mas">
+      <?php if (have_posts()): while (have_posts()) : the_post(); 
+        $image = get_field('featured_image');
+        $custom_mansonry_class = $image['sizes']['large-height'] > $image['sizes']['large-width'] ? 'masonry__item--2rows' : '';
+      ?>
+      <li class="masonry__item <?php echo $custom_mansonry_class; ?>">
         <div>
           <div class="masonry__image">
             <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
@@ -25,6 +28,6 @@
         <!-- /article -->
 
       <?php endif; ?>
-    </ul>
-  </div>
+    </div>
+  </ul>
 </div>

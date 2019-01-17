@@ -1,10 +1,20 @@
+.masonry-wrap {
+  .container {
+    @media only screen and (min-width: $desktopSupperLarge) {
+      margin: 0 34px;
+      padding: 0;
+      max-width: 1852px;
+    }
+  }
+}
+
 .masonry {
-  $margin: 10px;
-  
-  @include grid-padding(3, 10px);
+  margin-left: -16px;
 
   li {
     cursor: pointer;
+    width: calc((100% - 1px) / 3);
+    padding: 0 0 17px 16px;
 
     > div {
       position: relative;
@@ -36,10 +46,14 @@
 
     img {
       width: 100%;
+      height: auto;
     }
   }
 
   &__title {
+    padding: 0 20px;
+    text-align: center;
+    
     a {
       color: $white;
 

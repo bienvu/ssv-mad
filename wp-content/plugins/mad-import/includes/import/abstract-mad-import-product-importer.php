@@ -174,25 +174,67 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
 
     if ($data['category']) {
       foreach ($data['category'] as $key => $value) {
+        $category_name = "";
+        $category_slug = "";
+        $category_name = explode('_', $value);
+        $category_name = ucwords(implode($category_name, " "));
+        $category_slug = explode('&', $value);
+        $category_slug = implode($category_slug, "");
         if($post_type == 'product') {
-          $term_id = term_exists($value, 'category');
+          $term_id = term_exists($category_slug, 'category');
 
           if(empty($term_id)) {
-            $term_parent = !empty($data['category'][$key-1]) ? $data['category'][$key-1] : 0;
-            $term_id = wp_insert_term($value, 'category', array('parent' => $term_parent));
+            $term_id_parent = !empty(term_exists($data['category'][$key-1])) ? term_exists($data['category'][$key-1]) : 0;
+            $term_id = wp_insert_term(
+              $category_name,
+              'category',
+              array(
+                'parent' => $term_id_parent['term_id'],
+                'slug'   => $category_slug,
+              )
+            );
+          } else {
+            $term_id_parent = !empty(term_exists($data['category'][$key-1], 'category')) ? term_exists($data['category'][$key-1], 'category') : 0;
+            $term_id = wp_update_term(
+              $term_id['term_id'],
+              'category',
+              array(
+                'parent' => $term_id_parent['term_id'],
+                'slug'   => $category_slug,
+              )
+            );
           }
         } elseif ($post_type == 'work') {
-          $term_id = term_exists($value, 'product_filter');
+          $term_id = term_exists($category_slug, 'product_filter');
 
           if(empty($term_id)) {
-            $term_parent = !empty($data['category'][$key-1]) ? $data['category'][$key-1] : 0;
-            $term_id = wp_insert_term($value, 'product_filter', array('parent' => $term_parent));
+            $term_id_parent = !empty(term_exists($data['category'][$key-1], 'product_filter')) ? term_exists($data['category'][$key-1], 'product_filter') : 0;
+            $term_id = wp_insert_term(
+              $category_name,
+              'product_filter',
+              array(
+                'parent' => $term_id_parent['term_id'],
+                'slug'   => $category_slug,
+              )
+            );
+          } else {
+            $term_id_parent = !empty(term_exists($data['category'][$key-1], 'product_filter')) ? term_exists($data['category'][$key-1], 'product_filter') : 0;
+            $term_id = wp_update_term(
+              $term_id['term_id'],
+              'product_filter',
+              array(
+                'parent' => $term_id_parent['term_id'],
+                'slug'   => $category_slug,
+              )
+            );
           }
         }
       }
     }
 
     unset($term_parent);
+    unset($category_name);
+    unset($category_slug);
 
     if(empty($id)) {
       $id = wp_insert_post(array(
@@ -214,9 +256,9 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
 
     // instert term last to post
     if($post_type == 'product') {
-      $ffdf = wp_set_post_terms( $id, $term_id['term_id'], 'category' );
+      wp_set_post_terms( $id, $term_id['term_id'], 'category' );
     } elseif($post_type == 'work') {
-      $ffdf = wp_set_post_terms( $id, $term_id['term_id'], 'product_filter' );
+      wp_set_post_terms( $id, $term_id['term_id'], 'product_filter' );
     }
     
 

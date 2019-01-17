@@ -84,15 +84,15 @@ class Mad_Import_Post_Types {
 		);
 		
 		$labels[] = array(
-			'name'               => __( 'work', 'ssvmad' ),
-			'singular_name'      => __( 'work', 'ssvmad' ),
+			'name'               => __( 'Work', 'ssvmad' ),
+			'singular_name'      => __( 'Work', 'ssvmad' ),
 			'add_new'            => _x( 'Add New', 'ssvmad', 'ssvmad' ),
 			'add_new_item'       => __( 'Add New', 'ssvmad' ),
-			'edit_item'          => __( 'Edit work', 'ssvmad' ),
-			'new_item'           => __( 'New work', 'ssvmad' ),
+			'edit_item'          => __( 'Edit Work', 'ssvmad' ),
+			'new_item'           => __( 'New Work', 'ssvmad' ),
 			'view_item'          => __( 'View work', 'ssvmad' ),
 			'all_items'					 => __( 'View All', 'ssvmad' ),
-			'search_items'       => __( 'Search works', 'ssvmad' ),
+			'search_items'       => __( 'Search Works', 'ssvmad' ),
 			'not_found'          => __( 'No works found', 'ssvmad' ),
 			'not_found_in_trash' => __( 'No works found in Trash', 'ssvmad' ),
 			'parent_item_colon'  => __( 'Parent work:', 'ssvmad' ),
@@ -200,7 +200,7 @@ class Mad_Import_Post_Types {
           acf_add_local_field(array(
             'key' => 'mad_import_work_weight_123',
             'label' => 'Weight',
-            'name' => 'work_weight',
+            'name' => 'weight',
             'type' => 'text',
             'parent' => 'mad_import_work_123'
           ));
@@ -210,7 +210,7 @@ class Mad_Import_Post_Types {
           acf_add_local_field(array(
             'key' => 'mad_import_work_featured_image_123',
             'label' => 'Featured Image',
-            'name' => 'work_featured_image',
+            'name' => 'featured_image',
             'type' => 'image',
             'parent' => 'mad_import_work_123'
           ));
@@ -220,7 +220,7 @@ class Mad_Import_Post_Types {
           acf_add_local_field(array(
             'key' => 'mad_import_work_gallery_123',
             'label' => 'Gallery',
-            'name' => 'work_gallery',
+            'name' => 'gallery',
             'type' => 'gallery',
             'parent' => 'mad_import_work_123'
           ));
@@ -251,7 +251,7 @@ class Mad_Import_Post_Types {
           acf_add_local_field(array(
             'key' => 'mad_import_product_weight_123',
             'label' => 'Weight',
-            'name' => 'product_weight',
+            'name' => 'weight',
             'type' => 'text',
             'parent' => 'mad_import_product_123'
           ));
@@ -261,7 +261,7 @@ class Mad_Import_Post_Types {
           acf_add_local_field(array(
             'key' => 'mad_import_product_featured_image_123',
             'label' => 'Featured Image',
-            'name' => 'product_featured_image',
+            'name' => 'featured_image',
             'type' => 'image',
             'parent' => 'mad_import_product_123'
           ));
@@ -271,7 +271,7 @@ class Mad_Import_Post_Types {
           acf_add_local_field(array(
             'key' => 'mad_import_product_gallery_123',
             'label' => 'Gallery',
-            'name' => 'product_gallery',
+            'name' => 'gallery',
             'type' => 'gallery',
             'parent' => 'mad_import_product_123'
           ));
@@ -281,17 +281,7 @@ class Mad_Import_Post_Types {
           acf_add_local_field(array(
             'key' => 'mad_import_product_sku_123',
             'label' => 'Sku',
-            'name' => 'product_sku',
-            'type' => 'text',
-            'parent' => 'mad_import_product_123'
-          ));
-        }
-        /*add field Sku if empty*/
-        if(empty(acf_get_fields('mad_import_product_sku_123'))) {
-          acf_add_local_field(array(
-            'key' => 'mad_import_product_sku_123',
-            'label' => 'Sku',
-            'name' => 'product_sku',
+            'name' => 'sku',
             'type' => 'text',
             'parent' => 'mad_import_product_123'
           ));
