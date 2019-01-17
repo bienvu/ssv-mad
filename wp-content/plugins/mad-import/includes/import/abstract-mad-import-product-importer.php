@@ -166,10 +166,10 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
 	protected function process_item( $data, $post_type ) {
 		global $wpdb;
     if($post_type == 'work') {
-      $id = $wpdb->get_var($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_value = %s AND meta_key = 'work_weight' ", $data['weight']));
+      $id = $wpdb->get_var($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_value = %s AND meta_key = 'weight' ", $data['weight']));
     }
     elseif ($post_type == 'product') {
-      $id = $wpdb->get_var($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_value = %s AND meta_key = 'product_sku' ", $data['sku']));
+      $id = $wpdb->get_var($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_value = %s AND meta_key = 'sku' ", $data['sku']));
     }
 
     if ($data['category']) {
@@ -368,26 +368,21 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
 	 * @param array      $data    Item data.
 	 */
 	protected function set_image_data( $image_name = '' ) {
+    global $wpdb;
 		$upload_arr = wp_upload_dir();
 		$image_url = $upload_arr['url'].'/import/'.$image_name;
 
 		// return if file exits
 		if(file_exists($upload_arr['path'].'/'.$image_name)) {
-			$upload['file'] = $upload_arr['path'].'/'.$image_name;
-			$upload['url']  = $upload_arr['url'].'/'.$image_name;
+      $image_uri = $upload_arr['url'].'/'.$image_name;
+      $image_id = $wpdb->get_var($wpdb->prepare("SELECT ID from $wpdb->posts WHERE guid = %s", $image_uri));
 
-			$type = strtolower(end(explode('.', $image_name)));
+      if($image_id) {
+        wp_delete_attachment($image_id);
+      }
+		}
 
-			switch ($type) {
-				case 'jpg':
-					$upload['type'] = 'image/jpeg';
-					break;
-				case 'png':
-					$upload['type'] = 'image/png';
-					break;
-			}
-			return $upload;
-		} elseif (empty(file_exists($upload_arr['path'].'/import/'.$image_name))) {
+    if (empty(file_exists($upload_arr['path'].'/import/'.$image_name))) {
       return new WP_Error( 'mad_import_image_not_found', sprintf( __( 'Image Not Found: %s.', 'ssvmad' ), $image_url ), array( 'status' => 400 ) );
     }
 
@@ -424,6 +419,7 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
 
 		foreach ($gallery as $key => $value) {
       $file_name = current(explode('.',basename( $value['file'] )));
+      $extension = end(explode('.',basename( $value['file'])));
       if($this->type == 'work') {
         $file_arr = explode('-', $file_name);
       } elseif ($this->type == 'product') {
@@ -447,9 +443,9 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
         $file_name  = implode($file_arr, '_');
       }
 			
-			$file_query = dirname($value['url']).'/'.$file_name."%";
+			$file_query = dirname($value['url']).'/'.$file_name.'.'.$extension;
 
-      $image_id = $wpdb->get_var($wpdb->prepare("SELECT ID from $wpdb->posts WHERE guid LIKE %s", $file_query));
+      $image_id = $wpdb->get_var($wpdb->prepare("SELECT ID from $wpdb->posts WHERE guid = %s", $file_query));
 
       if(empty($image_id)) {
         $wp_upload_dir = wp_upload_dir();
