@@ -55,8 +55,20 @@
 
     // js height box gallery
     if($('.js-height').length) {
-      $height = $('.js-height').width() * 1320 / 2000;console.log($('.js-height').width());
-      $('.js-height').css('property', 'value');
+      $(this).find('.box-gallery__item').each(function(index, el) {
+        if(!$(this).hasClass('height-large')) {
+          $height = $(this).height();
+          $('.height-large').css('height', $height);
+          return false;
+        }
+      });
+    }
+
+    // js light box product icon
+    if($('.js-lightbox-product-icon').length) {
+      $('.js-lightbox-product-icon').click(function(event) {
+        $('.js-lightbox-product .slick-active').trigger('click');
+      });
     }
 
     //scroll to next section
@@ -66,13 +78,6 @@
         scrollTop: $next
       }, 'slow');
     });
-    
-    // js header, sticky appear from 40px
-    if($('.js-header').length) {
-      if($('.js-header').offset().top >= 40) {
-        // $('.js-header').addClass('is-sticky');
-      }
-    }
 
     $(document).scroll(function(event) {
       setTimeout(function () {
@@ -85,7 +90,7 @@
     });
 
     // js menu mobile
-    $('li > a > i').click(function(event) {
+    $('li > span > i').click(function(event) {
       $(this).parent().next().addClass('is-show');
     });
 
@@ -150,8 +155,17 @@
     $slickElement.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
       //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
       var i = (currentSlide ? currentSlide : 0) + 1;
-      $status.html('<span>' + i + '</span>/' + slick.slideCount);
+      $status.html( i + '<span> / ' + slick.slideCount + '</span>');
     });
+
+    // js slide product
+    if($('.js-slide-product').length) {
+      $('.js-slide-product').slick({
+        prevArrow: '<span class="slick-prev">Previous</span>',
+        nextArrow: '<span class="slick-next">Next</span>',
+        adaptiveHeight: true,
+      });
+    }
 
     // js slide
     if($('.js-slide').length) {
@@ -161,15 +175,14 @@
         adaptiveHeight: true,
       });
     }
-    
+
     // js masonry
-    $(window).on("load", function() {
-      $('.masonry').masonry({
+    var $grid = $('.js-mas').imagesLoaded( function() {
+      // init Masonry after all images have loaded
+      $grid.masonry({
         itemSelector: '.masonry__item',
-        horizontalOrder: false
       });
     });
-
 
     // js gallery
     if($('.js-lightbox-product').length) {

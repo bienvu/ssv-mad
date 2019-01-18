@@ -1,6 +1,18 @@
 .box-gallery {
+  padding: 30px 0;
+
+  @media only screen and (min-width: $desktop) {
+    padding-top: 0;
+    padding-bottom: 50px;
+  }
+
+  @media only screen and (min-width: $desktopSupperLarge) {
+    padding-top: 56px;
+    padding-bottom: 68px;
+  }
+
   .container {
-    @media only screen and (min-width: $desktopOnly) {
+    @media only screen and (min-width: $desktop) {
       width: 100%;
       max-width: inherit;
       margin: 0;
@@ -8,25 +20,29 @@
   }
   &__title {
     line-height: 1.2;
+    margin-bottom: 23px;
+
+    @media only screen and (max-width: $tabletOnly) {
+      display: none;
+    }
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      margin-bottom: 33px;
+    }
   }
 
   &__item {
     position: relative;
     cursor: pointer;
 
-    i {
-      font-size: 0;
-      position: absolute;
-      bottom: 21px;
-      right: 21px;
-      cursor: pointer;
+    &.height-large {
+      .box-gallery__image {
+        text-align: center;
+        height: 100%;
 
-      &:before {
-        font-size: 30px;
-        color: $white;
-
-        @media only screen and (max-width: $mobileOnly) {
-          font-size: 20px;
+        img {
+          height: 100%;
+          width: auto;
         }
       }
     }
@@ -48,31 +64,81 @@
   }
 
   &__left {
-    margin-bottom: 26px;
+    margin-bottom: 24px;
     position: relative;
 
-    @media only screen and (min-width: $desktop) {
-      width: 65.18%;
+    i {
+      font-size: 0;
+      position: absolute;
+      bottom: 19px;
+      right: 19px;
+      cursor: pointer;
+
+      @media only screen and (min-width: $desktopSupperLarge) {
+        bottom: 24px;
+        right: 16px;
+      }
+
+      &:before {
+        font-size: 36px;
+        color: $white;
+
+        @media only screen and (max-width: $mobileOnly) {
+          font-size: 20px;
+        }
+
+        @media only screen and (min-width: $desktopSupperLarge) {
+          font-size: 42px;
+        }
+      }
+    }
+
+    @media only screen and (min-width: $desktop) and (max-width: $desktopwideOnly) {
+      width: 65%;
+    }
+
+    @media only screen and (min-width: $desktopWide) {
+      width: 75.695%;
       margin-bottom: 0;
     }
 
     @media only screen and (min-width: $desktopSupperWideLarge) {
-      width: 65.3125%;
+      width: 75.625%;
     }
   }
 
   &__right {
-    @media only screen and (min-width: $desktop) {
-      width: calc(100% - 65.18%);
+    > a {
+      @media only screen and (max-width: $tabletOnly) {
+        display: none;
+      }
+    }
+
+    @media only screen and (min-width: $desktop) and (max-width: $desktopwideOnly) {
+      width: 65%;
+    }
+
+    @media only screen and (min-width: $desktopWide) {
+      width: calc(100% - 75.695%);
     }
 
     @media only screen and (min-width: $desktopSupperWideLarge) {
-      width: calc(100% - 65.3125%);
-      max-width: 600px;
+      width: calc(100% - 75.625%);
+    }
+
+    .back-to {
+      margin: 10px 0 30px;
+      display: inline-block;
+
+      @media only screen and (min-width: $desktopSupperLarge) {
+        margin: 16px 0 42px;
+      }
     }
   }
 
   &__link {
+    margin-top: -5px;
+
     .btn--icon {
       &:before {
         font-size: 20px;
@@ -93,6 +159,15 @@
         display: block;
       }
 
+      @media only screen and (min-width: $desktop) {
+        margin-top: 15px;
+        margin-right: 0;
+      }
+
+      @media only screen and (min-width: $desktopSupperLarge) {
+        margin-top: 21px;
+      }
+
       &:last-of-type {
         margin-right: 0;
       }
@@ -100,12 +175,16 @@
   }
 
   &__content {
-    @media only screen and (min-width: $tablet) {
-      margin-bottom: 25px;
+    @media only screen and (min-width: $desktop) {
+      margin-bottom: 23px;
     }
 
     p:last-of-type {
       margin: 0;
+    }
+
+    a {
+      text-decoration: underline;
     }
   }
 
@@ -136,10 +215,21 @@
 
   .paginginfo {
     position: absolute;
-    bottom: 20px;
+    bottom: 14px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
+    color: $white;
+    font-size: 14px;
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      font-size: 19px;
+      bottom: 22px;
+    }
+
+    span {
+      opacity: .5;
+    }
   }
 
   &--image-right {
@@ -148,12 +238,24 @@
     }
 
     .box-gallery__right {
-      @media only screen and (max-width: $desktopWideLarge) {
+      @media only screen and (min-width: $desktop) {
+        padding-left: calc((100% - 960px) / 2);
+        padding-right: 33px;
+      }
+
+      @media only screen and (min-width: $desktopWide) {
+        padding-left: calc((100% - 1144px) / 2);
+        padding-right: 33px;
+      }
+
+      @media only screen and (min-width: $desktopWideLarge) {
         padding-left: calc((100% - 1306px) / 2);
+        padding-right: 33px;
       }
 
       @media only screen and (min-width: $desktopSupperWideLarge) {
         padding-left: calc((100% - 1836px) / 2);
+        padding-right: 62px;
       }
     }
   }

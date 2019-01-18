@@ -1,5 +1,6 @@
 // Texts
-.text {
+.text,
+%text {
   &--center {
     text-align: center;
   }
@@ -25,14 +26,19 @@
       @extend %link--white;
     }
   }
-}
 
-%text {
-  // small
+  &--bold {
+    font-weight: 600;
+  }
+
   &--small {
     font-size: 12px;
     line-height: 1.333333333;
     letter-spacing: 0;
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      font-size: 16.86px;
+    }
   }
 }
 
@@ -77,8 +83,14 @@
   }
 }
 
+.hidden-on-tablet {
+  @media only screen and (min-width: $tablet) {
+    display: none;
+  }
+}
+
 .hidden-on-desktop {
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: $desktop) {
     display: none;
   }
 }
@@ -92,7 +104,6 @@
 
 .block-logo {
   position: relative;
-  ;
 
   &:before {
     content: "";
@@ -107,6 +118,11 @@
 
 .no-scroll {
   overflow: hidden;
+  
+  > div {
+    height: 100vh;
+    overflow: hidden;
+  }
 }
 
 .scroll-down {

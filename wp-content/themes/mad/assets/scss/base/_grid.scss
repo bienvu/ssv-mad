@@ -7,6 +7,12 @@ $containerWideLarge: 1144px;
 $containerSuperWide: 1280px;
 $containerSupperWideLarge: 1608px;
 
+// container 2
+$containerMarginDesktop2: 30px;
+$containerdesktopWideLarge2: 1306px;
+$containerMarginDesktopSupperLarge2: 42px;
+$containerdesktopSupperWideLarge2: 1836px;
+
 .container {
   max-width: 100%;
   margin-left: $containerMarginMobile;
@@ -31,7 +37,7 @@ $containerSupperWideLarge: 1608px;
     max-width: $containerWideLarge;
   }
 
-  @media (min-width: $desktopSupperWide) {
+  @media (min-width: $desktopSupperLarge) {
     max-width: $containerSuperWide;
   }
 

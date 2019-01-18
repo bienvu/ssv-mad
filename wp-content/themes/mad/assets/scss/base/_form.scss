@@ -20,7 +20,7 @@ input[type='submit'] {
   line-height: 1.5714;
   letter-spacing: 0;
 
-  @media only screen and (min-width: $desktopSupperWideLarge) {
+  @media only screen and (min-width: $desktopSupperLarge) {
     font-size: 19px;
     line-height: 1.421;
     padding: 15px 18px 8px;
@@ -222,7 +222,7 @@ input[type="radio"] {
     color: $primary-color;
     text-transform: capitalize;
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $desktopSupperLarge) {
       font-size: 19px;
       line-height: 1.5789;
       padding-left: 32px;
@@ -258,7 +258,7 @@ input[type="radio"] {
       background: $primary-color;
       box-sizing: border-box;
 
-      @media only screen and (min-width: $desktopSupperWideLarge) {
+      @media only screen and (min-width: $desktopSupperLarge) {
         width: 10px;
         height: 9px;
         left: 2px;
@@ -266,14 +266,14 @@ input[type="radio"] {
     }
 
     &.reverse:before {
-      @media only screen and (max-width: 767px) {
+      @media only screen and (max-width: $mobileOnly) {
         left: inherit;
         right: 0;
       }
     }
 
     &.reverse:after {
-      @media only screen and (max-width: 767px) {
+      @media only screen and (max-width: $mobileOnly) {
         left: inherit;
         right: 0;
       }

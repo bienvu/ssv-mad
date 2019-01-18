@@ -59,7 +59,11 @@
   }
 
   &--max{
-    width: 223px;
+    min-width: 223px;
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      min-width: 314px;
+    }
   }
 
   &--no-change {

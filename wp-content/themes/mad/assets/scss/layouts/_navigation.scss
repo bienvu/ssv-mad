@@ -1,51 +1,70 @@
 .main-menu {
   > ul{
-    @media only screen and (min-width: $desktopWideLarge) {
+    @media only screen and (min-width: $desktop) {
       display: flex;
     }
 
     > li {
-      @media only screen and (min-width: $desktopWideLarge) {
+      @media only screen and (min-width: $desktop) {
         margin-left: 27px;
       }
-      @media only screen and (min-width: $desktopSupperWideLarge) {
+
+      @media only screen and (min-width: $desktop) and (max-width: $desktopOnly) {
+        margin-left: 15px;
+      }
+
+      @media only screen and (min-width: $desktopSupperLarge) {
         margin-left: 31px;
       }
 
+      &:first-of-type {
+        @media only screen and (min-width: $desktop) {
+          margin-left: 0;         
+        }
+      }
+
       &:hover {
-        @media only screen and (min-width: $desktopWideLarge) {
+        @media only screen and (min-width: $desktop) {
           .main-menu__wrap {
             opacity: 1;
             visibility: visible;
           }
 
-          > a {
-            border-color: #d6d6d6;
+          > span {
+            > a {
+              border-color: #d6d6d6;
 
-            &:before {
-              content: "";
-              width: 100%;
-              top: 100%;
-              left: 0;
-              height: 41px;
-              background-color: transparent;
-              position: absolute;
+              &:before {
+                content: "";
+                width: 100%;
+                top: 100%;
+                left: 0;
+                height: 41px;
+                background-color: transparent;
+                position: absolute;
+              }
             }
           }
         }
       }
-
-      a {
-        font-weight: 400;
-        font-size: 13px;
-        line-height: 1;
-        letter-spacing: 0;
-        display: inline-block;
-        padding: 12px 0;
-        width: 100%;
-        border-bottom: 1px solid #d6d6d6;
+      
+      span {
         position: relative;
-        text-transform: uppercase;
+
+        a {
+          font-weight: 400;
+          font-size: 13px;
+          line-height: 1;
+          display: inline-block;
+          padding: 12px 0;
+          width: 100%;
+          border-bottom: 1px solid #d6d6d6;
+          text-transform: uppercase;
+
+          @media only screen and (min-width: $desktop) and (max-width: $desktopOnly) {
+            font-size: 12px;
+          }
+        }
 
         i {
           position: absolute;
@@ -54,28 +73,29 @@
           transform: translateY(-50%);
           padding: 0 0 0 15px;
 
-          @media only screen and (min-width: $desktopWideLarge) {
+          @media only screen and (min-width: $desktop) {
             display: none;
           }
 
           &:before {
             font-size: 17px;
 
-            @media only screen and (min-width: $desktopSupperWideLarge) {
+            @media only screen and (min-width: $desktopSupperLarge) {
               font-size: 28px;
             }
           }
         }
       }
+      
+      > span {
+        > a {
+          @media only screen and (min-width: $desktop) {
+            border-color: transparent;
+          }
 
-      > a {
-        @media only screen and (min-width: $desktopWideLarge) {
-          position: relative;
-          border-color: transparent;
-        }
-
-        @media only screen and (min-width: $desktopSupperWideLarge) {
-          font-size: 15px;
+          @media only screen and (min-width: $desktopSupperLarge) {
+            font-size: 15px;
+          }
         }
       }
     }
@@ -84,12 +104,12 @@
   .sub-menu {
     margin-bottom: 20px;
 
-    @media only screen and (min-width: $desktopWideLarge) {
+    @media only screen and (min-width: $desktop) {
       width: 30%;
     }
 
     > li {
-      @media only screen and (min-width: $desktopWideLarge) {
+      @media only screen and (min-width: $desktop) {
         &:hover {
           > .main-menu__image {
             visibility: visible;
@@ -104,16 +124,18 @@
               display: none;
             }
           }
+          
+          > span {
+            > a {
+              border-color: $black;
+              color: $primary-color;
 
-          > a {
-            border-color: $black;
-            color: $primary-color;
+              i {
+                display: inline;
 
-            i {
-              display: inline;
-
-              &:before {
-                color: $black;
+                &:before {
+                  color: $black;
+                }
               }
             }
           }
@@ -121,16 +143,20 @@
       }
 
       .main-menu__image {
-        a {
-          padding: 0;
-          border: 0;
-          line-height: 0;
+        span {
+          a {
+            padding: 0;
+            border: 0;
+            line-height: 0;
+          }
         }
       }
-
-      > a {
-        @media only screen and (min-width: $desktopWideLarge) {
-          padding: 12px 0;
+      
+      > span {
+        > a {
+          @media only screen and (min-width: $desktop) {
+            padding: 12px 0;
+          }
         }
       }
     }
@@ -146,7 +172,7 @@
       transition: .5s;
       overflow: hidden auto;
 
-       @media only screen and (min-width: $desktopWideLarge) {
+       @media only screen and (min-width: $desktop) {
         top: 0;
         right: 0;
         left: inherit;
@@ -160,7 +186,7 @@
         background-color: transparent;
        }
 
-       @media only screen and (min-width: $desktopSupperWideLarge) {
+       @media only screen and (min-width: $desktopSupperLarge) {
           margin-top: 20px;
           padding-left: 11px;
        }
@@ -169,44 +195,48 @@
         left: 0%;
       }
 
-      .sub-menu > li:hover > a > i {
+      .sub-menu > li:hover > span > a > i {
         display: none;
       }
     }
 
     &__body {
       li {
-        @media only screen and (min-width: $desktopWideLarge) {
+        @media only screen and (min-width: $desktop) {
           margin-bottom: 17px;
           padding-right: 55px;
         }
 
-        @media only screen and (min-width: $desktopSupperWideLarge) {
+        @media only screen and (min-width: $desktopSupperLarge) {
           margin-bottom: 25px;
           padding-right: 85px;
         }
+        
+        span {
+          a {
+            @media only screen and (min-width: $desktop) {
+              @include muli;
+              text-transform: capitalize;
+              color: $primary-color;
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 1.5714;
+              border-color: transparent;
+              padding: 2px 0;
+            }
 
-        a {
-          @media only screen and (min-width: $desktopWideLarge) {
-            @include muli;
-            text-transform: capitalize;
-            color: $primary-color;
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 1.5714;
-            border-color: transparent;
-            padding: 2px 0;
-          }
-
-          @media only screen and (min-width: $desktopSupperWideLarge) {
-            font-size: 19px;
-            line-height: 1.5789;
+            @media only screen and (min-width: $desktopSupperLarge) {
+              font-size: 19px;
+              line-height: 1.5789;
+            }
           }
         }
 
         &:hover {
-          a {
-            border-color: $black;
+          span {
+            a {
+              border-color: $black;
+            }
           }
         }
       }
@@ -221,10 +251,10 @@
     width: 100%;
     height: 100vh;
     z-index: 1;
-    transition: .5s;
+    transition: .3s;
     overflow: hidden auto;
 
-    @media only screen and (min-width: $desktopWideLarge) {
+    @media only screen and (min-width: $desktop) {
       left: 0;
       top: 100%;
       opacity: 0;
@@ -234,14 +264,18 @@
       padding-bottom: 7px;
       min-height: 410px;
       background-color: rgba($white, .95);
-
-      .container {
-        max-width: 1085px;
-      }
     }
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
-      .container {
+    .container {
+      @media only screen and (min-width: $desktop) {
+        max-width: 900px;
+      }
+
+      @media only screen and (min-width: $desktopWideLarge) {
+        max-width: 1085px;
+      }
+
+      @media only screen and (min-width: $desktopSupperLarge) {
         max-width: 1524px;
       }
     }
@@ -252,34 +286,47 @@
   }
 
   &__body {
-    @media only screen and (min-width: $desktopWideLarge) {
+    @media only screen and (min-width: $desktop) {
       position: relative;
     }
 
     > .sub-menu {
-      @media only screen and (min-width: $desktopWideLarge) {
+      @media only screen and (min-width: $desktop) {
         > li {
           padding-right: 103px;
-
-          > a {
-            @include miller-display;
-            font-weight: 400;
-            font-size: 21px;
-            color: #808080;
-            transition: .5s;
-            text-transform: capitalize;
+          cursor: pointer;
+          
+          > span {
+            > a {
+              @include miller-display;
+              font-weight: 400;
+              font-size: 21px;
+              color: #808080;
+              transition: .5s;
+              text-transform: capitalize;
+            }
           }
-        } 
+
+          &:hover {
+            > span {
+              i {
+                display: block;
+              }
+            }
+          }
+        }
       }
 
-      @media only screen and (min-width: $desktopSupperWideLarge) {
+      @media only screen and (min-width: $desktopSupperLarge) {
         > li {
           padding-right: 145px;
-
-          > a {
-            font-size: 29px;
-            padding: 18px 0;
-            
+          
+          > span {
+            > a {
+              font-size: 29px;
+              padding: 18px 0;
+              
+            }
           }
         } 
       }
@@ -287,7 +334,7 @@
   }
 
   &__top {
-    @media only screen and (min-width: $desktopWideLarge) {
+    @media only screen and (min-width: $desktop) {
       display: none;
     }
   }
@@ -295,7 +342,7 @@
   &__image {
     display: none;
 
-    @media only screen and (min-width: $desktopWideLarge) {
+    @media only screen and (min-width: $desktop) {
       position: absolute;
       top: 0;
       right: 0;
@@ -320,7 +367,7 @@
   }
 
   .header__top {
-    @media only screen and (min-width: $desktopWideLarge) {
+    @media only screen and (min-width: $desktop) {
       display: none;
     }
   }
@@ -336,30 +383,32 @@
     li {
       width: 50%;
 
-      @media only screen and (min-width: $desktopWideLarge) {
+      @media only screen and (min-width: $desktop) {
         width: 100%;
       }
 
-      @media only screen and (min-width: $desktopSupperWideLarge) {
+      @media only screen and (min-width: $desktopSupperLarge) {
         margin-bottom: 3.5px;
       }
 
       &:nth-of-type(2n) {
         padding-left: 11px;
 
-        @media only screen and (min-width: $desktopWideLarge) {
+        @media only screen and (min-width: $desktop) {
           order: 1;
           padding: 0;
         }
       }
+      
+      span {
+        a {
+          display: inline-block;
+          padding: 5px 5px 4px 0;
 
-      a {
-        display: inline-block;
-        padding: 5px 5px 4px 0;
-
-        @media only screen and (min-width: $desktopSupperWideLarge) {
-          font-size: 17px;
-          line-height: 1.3241;
+          @media only screen and (min-width: $desktopSupperLarge) {
+            font-size: 17px;
+            line-height: 1.3241;
+          }
         }
       }
     }

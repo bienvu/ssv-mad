@@ -22,7 +22,7 @@
                 <div class="banner__description">
                   <div class="container">
                     <div class="banner__content">
-                      <?php echo $description; ?>
+                      <q><?php echo $description; ?></q>
                     </div>
 
                     <div class="author">

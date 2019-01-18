@@ -1,19 +1,33 @@
 .masonry-wrap {
   .container {
-    @media only screen and (min-width: $desktopSupperLarge) {
-      margin: 0 34px;
-      padding: 0;
-      max-width: 1852px;
+    @media only screen and (min-width: $desktop) and (max-width: $desktopOnly) {
+      max-width: 100%;
+      margin-left: $containerMarginDesktop2;
+      margin-right: $containerMarginDesktop2;
+    }
+
+    @media only screen and (min-width: $desktopWideLarge) {
+      max-width: $containerdesktopWideLarge2;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) and (max-width: $desktopSupperWideLargeOnly) {
+      max-width: 100%;
+      margin-left: $containerMarginDesktopSupperLarge2;
+      margin-right: $containerMarginDesktopSupperLarge2;        
+    }
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      max-width: $containerdesktopSupperWideLarge2;
     }
   }
 }
 
 .masonry {
-  margin-left: -16px;
+  margin-left: -0.93%;
 
   li {
     cursor: pointer;
-    width: calc((100% - 2.7907% * 2 - 1px) / 3);
+    width: calc((100% - 1px) / 3);
 
     > div {
       position: relative;
