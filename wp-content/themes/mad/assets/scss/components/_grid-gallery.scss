@@ -150,7 +150,7 @@
         @include animation_slide(3, 2s, .5s, 4s);
       }
 
-      &.delay-4 {
+      &.delay-6 {
         @include animation_slide(3, 2s, .5s, 6s);
       }
     }
@@ -166,7 +166,7 @@
         @include animation_slide(4, 2s, .5s, 4s);
       }
 
-      &.delay-4 {
+      &.delay-6 {
         @include animation_slide(4, 2s, .5s, 6s);
       }
     }

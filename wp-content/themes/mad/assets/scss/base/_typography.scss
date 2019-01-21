@@ -169,27 +169,14 @@ label {
   font-weight: 700;
 }
 
-blockquote {
-  p {
-    display: inline;
-  }
-
-  &:before {
+blockquote,
+q {
+  p:first-of-type:before {
     content: '\201c';
   }
 
-  &:after {
+  p:last-of-type:after {
     content: '\201d';
-  }
-}
-
-q {
-  &:before {
-    content: "“";
-  }
-
-  &:after {
-    content: "”";
   }
 }
 

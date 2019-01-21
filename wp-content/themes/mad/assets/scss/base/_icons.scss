@@ -18,6 +18,12 @@
   }
 }
 
+.icon-enlarge:before {
+  content: "\e90c";
+}
+.icon-close:before {
+  content: "\e915";
+}
 .icon-fullscreen_exit:before {
   content: "\e911";
 }
@@ -29,9 +35,6 @@
 }
 .icon-search:before {
   content: "\e91d";
-}
-.icon-enlarge:before {
-  content: "\e906";
 }
 .icon-Mouse-1:before {
   content: "\e900";
@@ -64,7 +67,7 @@
   content: "\e910";
 }
 .icon-zoom-out:before {
-  content: "\e90e";
+  content: "\e916";
 }
 .icon-zoom-in:before {
   content: "\e90f";
@@ -73,7 +76,7 @@
   content: "\e90d";
 }
 .icon-linkedin:before {
-  content: "\e90c";
+  content: "\e90e";
 }
 .icon-search1:before {
   content: "\e907";

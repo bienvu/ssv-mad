@@ -374,8 +374,8 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
 
 		// return if file exits
 		if(file_exists($upload_arr['path'].'/'.$image_name)) {
-      $image_uri = $upload_arr['url'].'/'.$image_name;
-      $image_id = $wpdb->get_var($wpdb->prepare("SELECT ID from $wpdb->posts WHERE guid = %s", $image_uri));
+      $image_uri = '%/'.$image_name;
+      $image_id = $wpdb->get_var($wpdb->prepare("SELECT ID from $wpdb->posts WHERE guid LIKE %s", $image_uri));
 
       if($image_id) {
         wp_delete_attachment($image_id);

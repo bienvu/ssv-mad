@@ -43,7 +43,10 @@
 			          <div class="container">
 			            <div class="header__logo__wrap">
 			              <div class="header__image">
-			                <a class="icon-mad_logo" href="<?php echo home_url(); ?>">logo</a>
+			                <a href="<?php echo home_url(); ?>">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/mad_logo.svg" alt="" class="hidden-when-sticky">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ma_logo_black.svg" class="sticky">
+                      </a>
 			              </div>
 			              
 			              <div class="header__right">
@@ -72,8 +75,8 @@
 			                  <li class="form-header">
 			                    <?php get_template_part('templates/searchform'); ?>
 			                  </li>
-			                  <li class="text"><a href="" class=""><?php $siteWideData = get_field('sitewide', 'option'); echo $siteWideData['header_text']; ?></a></li>
-			                  <li><a href="" class="btn btn--large btn--no-change"><?php _e( 'Book a Consultation', 'madtheme' ); ?></a></li>
+			                  <li class="text"><span><?php $siteWideData = get_field('sitewide', 'option'); echo $siteWideData['header_text']; ?></span></li>
+			                  <li><a href="" class="btn btn--large"><?php _e( 'Book a Consultation', 'madtheme' ); ?></a></li>
 			                </ul>
 			              </div>
 

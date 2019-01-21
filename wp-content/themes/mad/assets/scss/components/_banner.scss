@@ -8,6 +8,7 @@
     line-height: 1.2;
     letter-spacing: 0;
     padding: 20px 0 10px;
+    pointer-events: none;
 
     @media only screen and (min-width: $desktopWide) {
       position: absolute;

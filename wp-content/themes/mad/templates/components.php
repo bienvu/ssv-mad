@@ -35,6 +35,9 @@
 
       // Box Video
       get_template_part( 'templates/components/box-video' );
+
+      // Grid Gallery
+      get_template_part( 'templates/components/grid-gallery' );
     endwhile;
   endif;
 ?>

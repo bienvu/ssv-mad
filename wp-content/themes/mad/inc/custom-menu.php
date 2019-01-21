@@ -24,14 +24,17 @@
   }
 
   // Add i tag after a in navigation
-  function mad_add_arrow( $title, $item, $args, $depth ){
+  function mad_add_arrow( $item_output, $item, $depth, $args ){
     //Only add class to 'top level' items on the 'header' menu.
     $hasChildren = (in_array('menu-item-has-children', $item->classes));
 
-    if('header-menu' == $args->theme_location && $hasChildren ){
-      $title .= '<i class="icon-arrow-right"></i>';
+    if('header-menu' == $args->theme_location && ( $hasChildren || $depth == 1 ) ){
+      $item_output = '<span>'.$item_output.'<i class="icon-arrow-right"></i></span>';
+    } else {
+      $item_output = '<span>'.$item_output.'</span>';
     }
-    return $title;
+
+    return $item_output;
   }
 
   //custom menu item has children
@@ -137,6 +140,6 @@
       }
   }
 
-  add_filter( 'nav_menu_item_title', 'mad_add_arrow',10,4);
+  add_filter( 'walker_nav_menu_start_el', 'mad_add_arrow',10,4);
   add_filter( 'walker_nav_menu_start_el', 'custom_menu_item',10,4);
 ?>

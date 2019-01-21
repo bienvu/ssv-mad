@@ -11,9 +11,9 @@ require get_template_directory() . '/inc/custom-menu.php';
 require get_template_directory() . '/inc/post-type-blocks.php';
 
 /**
- * Add post type product
+ * Add post type
  */
-// require get_template_directory() . '/inc/post-type-product.php';
+require get_template_directory() . '/inc/register-post-type.php';
 
 /**
  * Add Theme Support
