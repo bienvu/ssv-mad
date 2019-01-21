@@ -57,6 +57,10 @@
 			                  <li><a href="" class="btn"><?php _e( 'Book a Consultation', 'madtheme' ); ?></a></li> 
 			                </ul>
 
+			                <div class="header__phone">
+			                	<a href="tel: 1300133326"><i class="icon-phone"></i></a>
+			                </div>
+
 			                <span class="menu-bars">
 			                  <span class="menu-bars__row"></span>
 			                  <span class="menu-bars__row"></span>

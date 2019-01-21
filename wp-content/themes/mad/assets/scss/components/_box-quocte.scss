@@ -1,9 +1,18 @@
 .box-quocte {
   position: relative;
   overflow: hidden;
+  height: 205px;
+
+  @media only screen and (min-width: $tablet) {
+    height: 420px;
+  }
   
-  @media only screen and (min-width: 1374px) {
+  @media only screen and (min-width: $desktop) {
     height: 755px;
+  }
+  
+  @media only screen and (min-width: $desktopSupperLarge) {
+    height: 106px;
   }
 
   &__video {
@@ -22,7 +31,7 @@
     img {
       width: 314px;
 
-      @media only screen and (max-width: 767px) {
+      @media only screen and (max-width: $mobileOnly) {
         width: 250px;
       }
     }
@@ -39,7 +48,7 @@
       text-align: right;
     }
 
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: $tablet) {
       max-width: 500px;
     }
   }
@@ -57,6 +66,22 @@
   @extend .text--center;
 
   &__content {
+    @include miller-display;
+    font-size: 20px;
+    line-height: 1.2;
+
+    @media only screen and (min-width: $tablet) {
+      font-size: 37px;
+    }
+
+    @media only screen and (min-width: $desktop) {
+      font-size: 46px;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      font-size: 65px;
+    }
+
     p:first-child:before {
       content: "“";
     }

@@ -9,31 +9,33 @@
     </video>
   </div>
   
-  <div class="container">
-    <div class="box-quocte__animation slide-<?php echo $total; ?>">
-      <?php if(have_rows('item')): $i = 0; ?>
-        <?php while(have_rows('item')): the_row(); $i++; ?>
-          <?php
-            $comment = get_sub_field('comment');
-            $author  = get_sub_field('author');
-          ?>
+  <div class="box-quocte__body">
+    <div class="container">
+      <div class="box-quocte__animation slide-<?php echo $total; ?>">
+        <?php if(have_rows('item')): $i = 0; ?>
+          <?php while(have_rows('item')): the_row(); $i++; ?>
+            <?php
+              $comment = get_sub_field('comment');
+              $author  = get_sub_field('author');
+            ?>
 
-          <div class="quocte">
-            <?php if($comment): ?>
-              <div class="quocte__content"><?php echo $comment; ?></div>
-            <?php endif; ?>
-            
-            <?php if($author): ?>
-              <div class="quocte__author"><?php echo $author; ?></div>
+            <div class="quocte">
+              <?php if($comment): ?>
+                <div class="quocte__content"><?php echo $comment; ?></div>
+              <?php endif; ?>
+              
+              <?php if($author): ?>
+                <div class="quocte__author"><?php echo $author; ?></div>
 
-            <?php else: ?>
-              <div class="box-quocte__image">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/mad_logo.svg" alt="">
-              </div>
-            <?php endif; ?>
-          </div>
-        <?php endwhile; ?>
-      <?php endif; ?>
+              <?php else: ?>
+                <div class="box-quocte__image">
+                  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/mad_logo.svg" alt="">
+                </div>
+              <?php endif; ?>
+            </div>
+          <?php endwhile; ?>
+        <?php endif; ?>
+      </div>
     </div>
   </div>
 </div>

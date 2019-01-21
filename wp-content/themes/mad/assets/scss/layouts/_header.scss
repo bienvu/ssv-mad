@@ -1,5 +1,5 @@
 .header{
-  $height-mobile: 86px;
+  $height-mobile: 66px;
   $height-tablet: 140px;
   $height-sticky: 86px;
   $height-between-desktop-desktopOnly: 100px;
@@ -47,9 +47,10 @@
   }
   
   &__right {
+    display: flex;
+    align-items: center;
+
     @media only screen and (min-width: $tablet) {
-      display: flex;
-      align-items: center;
       margin-top: 2px;
     }
 
@@ -95,13 +96,19 @@
   }
 
   &__image {
+    @media only screen and (max-width: $mobileOnly) {
+      margin-top: 6px;
+    }
+
     a {
       line-height: 0;
 
       img {
+        width: 200px;
+        height: auto;
+
         @media only screen and (min-width: $tablet) {
           width: 336px;
-          height: auto;
         }
 
         @media only screen and (min-width: $desktop) and (max-width: $desktopOnly) {
@@ -119,7 +126,26 @@
     }
   }
 
+  &__phone {
+    margin-top: 7px;
+
+    i:before {
+      font-size: 23px;
+    }
+
+    @media only screen and (min-width: $tablet) {
+      display: none;
+    }
+  }
+
   &__logo {
+    .container {
+      @media only screen and (max-width: $tabletOnly) {
+        max-width: 100%;
+        margin: 0;
+      }
+    }
+
     &__wrap {
       display: flex;
       align-items: center;
