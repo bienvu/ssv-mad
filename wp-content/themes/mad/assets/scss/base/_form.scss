@@ -44,24 +44,28 @@ input[type='submit'] {
     color: $primary-color;
     opacity: 1;
     text-transform: capitalize;
+    white-space:pre-line; 
   }
 
   &::-moz-placeholder {
     color: $primary-color;
     opacity: 1;
     text-transform: capitalize;
+    white-space:pre-line;  
   }
 
   &:-ms-input-placeholder {
     color: $primary-color;
     opacity: 1;
     text-transform: capitalize;
+    white-space:pre-line;  
   }
 
   &:-moz-placeholder {
     color: $primary-color;
     opacity: 1;
     text-transform: capitalize;
+    white-space:pre-line;  
   }
 
   &:focus {
@@ -135,7 +139,7 @@ input[type=number] {
 textarea {
   @extend %form-text;
   height: auto;
-  max-height: 100px;
+  max-height: 105px;
 }
 
 .form-item,
@@ -146,6 +150,10 @@ textarea {
   &.form-type-radio {
     margin-bottom: rem(8px);
   }
+}
+
+.form-item {
+  line-height: 0;
 }
 
 .form-type-checkbox,
@@ -217,10 +225,14 @@ input[type="radio"] {
     display: block;
     position: relative;
     overflow: hidden;
-    padding-left: 25px;
+    padding-left: 23px;
     letter-spacing: 0;
     color: $primary-color;
     text-transform: capitalize;
+
+    @media only screen and (min-width: $tablet) {
+      padding-left: 25px;
+    }
 
     @media only screen and (min-width: $desktopSupperLarge) {
       font-size: 19px;

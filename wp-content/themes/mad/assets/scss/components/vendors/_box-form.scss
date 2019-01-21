@@ -45,7 +45,11 @@ $margin: 11px;
   }
 
   &__description {
-    margin-bottom: 26px;
+    margin-bottom: 28px;
+
+    @media only screen and (min-width: $tablet) {
+      margin-bottom: 26px;
+    }
 
     @media only screen and (min-width: $desktopSupperWideLarge) {
       margin-bottom: 35px;

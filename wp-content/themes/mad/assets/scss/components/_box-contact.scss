@@ -1,23 +1,46 @@
 .box-contact {
+  margin-bottom: 30px;
+
   @media only screen and (min-width: $tablet) {
-    padding: 31px 0 27px;
+    padding: 32px 0 20px;
+    margin: 0;
   }
 
   @media only screen and (min-width: $desktop) {
-    padding: 52px 0 47px;
+    padding: 49px 0 44px;
   }
 
-  @media only screen and (min-width: $desktopSupperWideLarge) {
-    padding: 59px 0 74px;
+  @media only screen and (min-width: $desktopSupperLarge) {
+    padding: 55px 0 71px;
   }
 
   .container {
+    @media only screen and (min-width: $desktop) and (max-width: $desktopOnly) {
+      max-width: 100%;
+      margin-left: $containerMarginDesktop2;
+      margin-right: $containerMarginDesktop2;
+    }
+
     @media only screen and (min-width: $desktopWideLarge) {
-      max-width: 1306px;
+      max-width: $containerdesktopWideLarge2;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) and (max-width: $desktopSupperWideLargeOnly) {
+      max-width: 100%;
+      margin-left: $containerMarginDesktopSupperLarge2;
+      margin-right: $containerMarginDesktopSupperLarge2;        
     }
 
     @media only screen and (min-width: $desktopSupperWideLarge) {
-      min-width: 1836px;
+      max-width: $containerdesktopSupperWideLarge2;
+    }
+  }
+
+  > .container {
+    @media only screen and (max-width: $mobileOnly) {
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
     }
   }
 
@@ -30,47 +53,82 @@
       width: 100%;
 
       @media only screen and (min-width: $tablet) {
-        width: calc((100% - 31px) / 2);
+        width: calc( 100% / 2 );
       }
 
       @media only screen and (min-width: $desktop) {
-        width: calc((100% - 101px) / 3);
+        &.box-contact__center {
+          width: 30.63%;
+        }
+
+        &.box-contact__right {
+          width: 34.69%;
+        }
+
+        &.box-contact__left {
+          width: calc(100% - 30.63% - 34.69% );
+        }
       }
 
-      @media only screen and (min-width: $desktopSupperWideLarge) {
-        width: calc((100% - 141px) / 3);
+      @media only screen and (min-width: $desktopSupperLarge) {
+        &.box-contact__center {
+          width: 30.63%;
+        }
+
+        &.box-contact__right {
+          width: 34.69%;
+        }
+
+        &.box-contact__left {
+          width: calc(100% - 30.63% - 34.69% );
+        }
       }
     }
   }
 
   &__left {
-    margin-bottom: 30px;
+    padding: 27px 0 30px;
+
+    .container {
+      @media only screen and (min-width: $tablet) {
+        max-width: 100%;
+        margin: 0;
+      }
+    }
 
     @media only screen and (min-width: $tablet) {
-      margin-bottom: 0;
-      margin-right: 30px;
+      margin: 0 0 0 -1px;
+      padding: 0 16px 0 0;
     }
 
     @media only screen and (min-width: $desktop) {
-      margin-right: 50px;
+      padding-right: 52px;
     }
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
-      margin-top: 13px;
-      margin-right: 70px;
+    @media only screen and (min-width: $desktopSupperLarge) {
+      margin-top: 15px;
+      padding-right: 75px;
     }
 
     .box-contact__title {
       &:first-of-type {
-        @media only screen and (min-width: $desktopSupperWideLarge) {
+        @media only screen and (min-width: $desktopSupperLarge) {
           margin-bottom: 31px;
         }
       }
 
       &:last-of-type {
-        @media only screen and (min-width: $desktopSupperWideLarge) {
+        @media only screen and (min-width: $desktopSupperLarge) {
           margin-bottom: 35px;
         }
+      }
+    }
+
+    .box-contact__item {
+      margin-bottom: 19px;
+
+      @media only screen and (min-width: $desktopSupperLarge) {
+        margin-bottom: 30px;
       }
     }
   }
@@ -82,10 +140,12 @@
     @media only screen and (min-width: $desktop) {
       display: block;
       margin: -10px 0 0;
+      padding-left: 55px;
     }
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $desktopSupperLarge) {
       margin: 0;
+      padding-left: 77px;
     }
 
     img {
@@ -99,89 +159,151 @@
       margin-top: -8px;
     }
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $desktopSupperLarge) {
       margin-top: -15px;
     }
   }
  
   &__title {
+    margin-bottom: 22px;
+
     @media only screen and (min-width: $tablet) {
-     margin-bottom: 20px;
+     margin-bottom: 21px;
     }
 
-    @media only screen and (min-width: $desktopWideLarge) {
-      margin-bottom: 21px;
+    @media only screen and (min-width: $desktop) {
+      margin-bottom: 23px;
       font-size: 21px;
     }
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $desktopSupperLarge) {
       font-size: 29px;
       margin-bottom: 34px;
     }
   }
 
-  &__content {
-    margin-bottom: 22px;
+  &__subtitle {
+    @extend .text--normal;
+    margin-bottom: -1px;
+  }
 
-    @media only screen and (min-width: $desktop) {
-      margin-bottom: 26px;
+  &__content {
+    margin-bottom: 23px;
+
+    @media only screen and (min-width: $tablet) {
+      margin-bottom: 22px;
     }
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $desktop) {
+      margin-bottom: 30px;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
       margin-bottom: 46px;
     }
 
-    @media only screen and (max-width: $tabletOnly) {
-      p {
+    p {
+      margin-bottom: 21px;
+
+      @media only screen and (min-width: $tablet) {
         margin-bottom: 20px;
+      }
+
+      @media only screen and (min-width: $desktopSupperLarge) {
+        margin-bottom: 30px;
+      }
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+      span {
+        margin: 0 8px;
+
+        @media only screen and (min-width: $desktopSupperLarge) {
+          margin: 0 10px;
+        }
       }
     }
 
-    p {
-      &:last-of-type {
-        margin-bottom: 0;
+    strong {
+      @media only screen and (min-width: $tablet) {
+        font-weight: 300;
       }
     }
   }
 
   &__center {
     text-align: center;
-    background: #fff;
+    background-color: $light-gray;
+    padding: 35px 38px 3px;
+
+    .container {
+      @media only screen and (min-width: $tablet) {
+        max-width: 100%;
+        margin: 0;
+      }
+    }
+
+    @media only screen and (max-width: $mobileOnly) {
+      // margin: 0 -20px;
+    }
     
     @media only screen and (min-width: $tablet) {
       padding: 0 15px 35px;
+      background-color: $white;
     }
 
     @media only screen and (min-width: $desktop) {
       margin-top: -10px;
-      margin-right: 50px;
-      padding: 36px 40px 13px;
+      padding: 33px 40px 4px;
       background: $light-gray;
     }
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
-      padding: 46px 69px 31px;
-      margin-right: 70px;
+    @media only screen and (min-width: $desktopSupperLarge) {
+      padding: 46px 69px 16px;
       margin-top: 0;
     }
 
     .box-contact__title {
       @media only screen and (min-width: $tablet) {
-        margin-left: 34px;
+        margin-left: 47px;
       }
 
-      @media only screen and (min-width: $desktopWideLarge) {
-        margin-left: 6px;
+      @media only screen and (min-width: $desktop) {
+        margin-left: 5px;
       }
     }
 
     .box-contact__content {
-      @media only screen and (min-width: $desktopWideLarge) {
-        margin-left: 14px;
-      }
+      margin-bottom: 20px;
 
       @media only screen and (min-width: $tablet) {
-        margin-left: 34px;
+        margin-left: 41px;
+      }
+
+      @media only screen and (min-width: $desktop) {
+        margin-left: 5px;
+        margin-bottom: 27px;
+      }
+
+      @media only screen and (min-width: $desktopSupperLarge) {
+        margin-left: 0;
+        margin-bottom: 45px;
+      }
+    }
+
+    .box-contact__item {
+      margin-bottom: 31px;
+
+      @media only screen and (min-width: $tablet) {
+        margin: 0 52px 29px 48px;
+        padding-bottom: 31px;
+      }
+
+      @media only screen and (min-width: $desktopSupperLarge) {
+        padding-bottom: 42px;
+        margin: 0 0 46px 0 ;
       }
     }
   }
@@ -189,17 +311,17 @@
   &__item {
     border-bottom: 1px solid $gray;
     margin-bottom: 30px;
-    padding-bottom: 9px;
+    padding-bottom: 29px;
 
     @media only screen and (min-width: $tablet) {
-      margin-left: 38px;
+      // margin-left: 38px;
     }
     
     @media only screen and (min-width: $desktop) {
-      margin-left: 10px;
+      // margin-left: 10px;
     }
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $desktopSupperLarge) {
       margin-bottom: 44px;
       padding-bottom: 11px;
     }
@@ -207,11 +329,6 @@
     &:last-of-type {
       border: none;
       padding: 0;
-      margin-bottom: 20px;
-
-      @media only screen and (min-width: $desktopSupperWideLarge) {
-        margin-bottom: 40px;
-      }
     }
 
     p {
@@ -222,80 +339,96 @@
   }
 
   .form-list {
-    textarea {
-      @media only screen and (min-width: $desktopSupperWideLarge) {
-        min-height: 151px;
-      }
+    margin-bottom: 20px;
+
+    @media only screen and (min-width: $tablet) {
+      margin-bottom: 15px;
     }
 
-    input,
-    textarea {
-      @extend %form-text--full;
+    @media only screen and (min-width: $desktop) {
+      margin-bottom: 21px;
     }
 
-    [type="submit"] {
-      @extend .btn;
-      width: auto;
-
-      @media only screen and (max-width: $tabletOnly) {
-        width: 100%;
-      }
+    @media only screen and (min-width: $desktopSupperLarge) {
+      margin-bottom: 27px;
     }
 
-    input[type="checkbox"] {
-      display: none;
-    }
-
-    &:nth-of-type(2) {
-      @media only screen and (min-width: $tablet) {
-        margin: 24px 0 11px;
-      }
-
-      @media only screen and (min-width: $desktopWideLarge) {
-        margin: 29px 0 20px;
-      }
-
-      @media only screen and (min-width: $desktopSupperWideLarge) {
-        margin: 40px 0 20px;
-      }
+    &:nth-last-of-type(2) {
+      margin: 0;
     }
 
     .form-item {
-      @media only screen and (max-width: $tabletOnly) {
-        margin: 0 0 1rem;
+      margin-bottom: 20px;
 
-        input {
-          padding: 9px 16px 5px;
-        }
-      }
-
-      &:last-of-type {
-        margin-bottom: 0;
-        text-transform: capitalize;
-
-        @media only screen and (min-width: $desktopSupperWideLarge) {
-          margin-top: -12px;
-        }
-      }
-    }
-
-    .form-type-checkbox {
       @media only screen and (min-width: $tablet) {
-        margin-bottom: 10px;
+        margin-bottom: 15px;
       }
 
       @media only screen and (min-width: $desktop) {
-        margin-bottom: 22px;
+        margin-bottom: 11px;
       }
 
-      @media only screen and (min-width: $desktopSupperWideLarge) {
-        margin-bottom: 36px;
+      @media only screen and (min-width: $desktopSupperLarge) {
+        margin-bottom: 17px;
+      }
+
+      &:last-of-type {
+        margin: 0;
+      }
+
+      input[name="quiz"] {
+        @media only screen and (max-width: $tabletOnly ) {
+          font-size: 12px;
+          line-height: 1.833333333;
+        }
+
+        @media only screen and (min-width: $desktop ) and (max-width: 1251px) {
+          
+        }
+      }
+
+      input,
+      textarea,
+      input[name="quiz"] {
+        width: 100%;
+
+        @media only screen and (min-width: $tablet) {
+          padding-left: 14px;
+        }
+
+        @media only screen and (min-width: $desktopSupperLarge) {
+          padding: 16px 19px 8px;
+        }
+      }
+
+      input[type="checkbox"] {
+        display: none;
+      }
+
+      textarea {
+        @media only screen and (min-width: $desktopSupperLarge) {
+          min-height: 148px;
+        }
       }
     }
   }
 
   .form-actions {
     margin-bottom: 0;
+
+    @media only screen and (min-width: $desktop) {
+      margin-top: 30px;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      margin-top: 35px;
+    }
+
+    input[type="submit"] {
+      @media only screen and (max-width: $tabletOnly) {
+        width: 100%;
+      }
+    }
   }
 
   .wpcf7-quiz-label {

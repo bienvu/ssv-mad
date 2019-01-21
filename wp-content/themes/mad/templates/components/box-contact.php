@@ -10,9 +10,11 @@
       <div class="box-contact__wrap">
         <?php  if($content_left): ?>
           <div class="box-contact__left">
-            <?php
-              echo $content_left;
-              echo do_shortcode( '[contact-form-7 id="'.$form->ID.'" title="'.$form->post_title.'"]' ); ?>
+            <div class="container">
+              <?php
+                echo $content_left;
+                echo do_shortcode( '[contact-form-7 id="'.$form->ID.'" title="'.$form->post_title.'"]' ); ?>
+            </div>
           </div>
         <?php
           endif;
