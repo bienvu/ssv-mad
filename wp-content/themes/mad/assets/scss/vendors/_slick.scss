@@ -98,8 +98,6 @@
 
 .slick-prev,
 .slick-next {
-  min-width: 43px;
-  min-height: 43px;
   position: absolute;
   display: inline-block;
   top: 50%;
@@ -112,13 +110,13 @@
     @extend %icons;
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateY(-50%);
     font-size: 43px;
     color: #fff;
 
     @media only screen and (max-width: $mobileOnly) {
       font-size: 20px;
+      font-weight: bold;
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {
@@ -132,7 +130,8 @@
     left: 12px;
 
     @media only screen and (max-width: $mobileOnly) {
-      left: 0;
+      left: 11px;
+      margin-top: -3px;
     }
 }
 
@@ -141,7 +140,8 @@
     right: 12px;
 
     @media only screen and (max-width: $mobileOnly) {
-      right: 0;
+      right: 21px;
+      margin-top: -3px;
     }
 }
 
