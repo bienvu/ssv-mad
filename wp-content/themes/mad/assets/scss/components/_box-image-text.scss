@@ -1,5 +1,10 @@
 .box-image-text {
   &__item {
+    margin-bottom: 49px;
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      margin-bottom: 67px;
+    }
   }
 
   &__body {
@@ -70,7 +75,7 @@
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {
-      margin-bottom: 70px;
+      margin-bottom: 0;
     }
 
     p {
@@ -102,6 +107,11 @@
         padding: 0;
         width: calc((100% - 13px) / 3);
         margin: 0 6px 0 0;
+      }
+
+      @media only screen and (min-width: $desktop) {
+        width: calc((100% - 27px) / 3);
+        margin: 0 13px 0 0;
       }
 
       @media only screen and (min-width: $desktopSupperLarge) {
@@ -203,16 +213,16 @@
       border: none;
       
       @media only screen and (min-width: $tablet) {
-        padding-top: 26px;
+        padding: 26px 0;
         padding-bottom: 0;
       }
       
       @media only screen and (min-width: $desktop) {
-        padding-top: 46px;
+        padding: 46px 0;
       }
       
       @media only screen and (min-width: $desktopSupperLarge) {
-        padding-top: 64px;
+        padding: 64px 0;
       }
     }
 
@@ -222,9 +232,10 @@
       }
     }
 
-    .box-image-text__content {
-      @media only screen and (min-width: $desktop) {
-        margin-bottom: 49px;
+    .box-image-text__item {
+
+      &:last-of-type {
+        margin: 0;
       }
     }
   }

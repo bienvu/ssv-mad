@@ -771,6 +771,30 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_5c46b7be4626e",
+                            "label": "Class Modifier",
+                            "name": "class_modifier",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "border-top": "Border Top"
+                            },
+                            "default_value": [],
+                            "allow_null": 1,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
                             "key": "field_5c35ac09ab754",
                             "label": "Title",
                             "name": "title",
@@ -829,9 +853,9 @@
                             "sub_fields": [
                                 {
                                     "key": "field_5c35ac8fab757",
-                                    "label": "Link",
-                                    "name": "link",
-                                    "type": "link",
+                                    "label": "Item",
+                                    "name": "item",
+                                    "type": "group",
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -840,7 +864,51 @@
                                         "class": "",
                                         "id": ""
                                     },
-                                    "return_format": "array"
+                                    "layout": "block",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_5c46cd7272956",
+                                            "label": "Link",
+                                            "name": "link",
+                                            "type": "link",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "return_format": "array"
+                                        },
+                                        {
+                                            "key": "field_5c46cd8c72957",
+                                            "label": "Class",
+                                            "name": "class",
+                                            "type": "select",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "choices": {
+                                                "hidden-on-mobile": "Hidden On Mobile",
+                                                "hidden-on-tablet": "Hidden On Tablet",
+                                                "hidden-on-desktop": "Hidden On Desktop",
+                                                "hidden-on-desktoponly": "Hidden On Desktop Only"
+                                            },
+                                            "default_value": [],
+                                            "allow_null": 1,
+                                            "multiple": 0,
+                                            "ui": 0,
+                                            "return_format": "value",
+                                            "ajax": 0,
+                                            "placeholder": ""
+                                        }
+                                    ]
                                 }
                             ]
                         }
@@ -1190,5 +1258,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1548126901
+    "modified": 1548144223
 }

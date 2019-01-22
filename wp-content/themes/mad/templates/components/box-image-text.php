@@ -1,6 +1,6 @@
 <?php
   if(get_row_layout() == 'box_image_text'):
-    $modifier = 'box-image-text--'.get_sub_field('modifier');
+    $modifier = (get_sub_field('modifier')) ? 'box-image-text--'.get_sub_field('modifier') : "";
 ?>
     <div class="box-image-text <?php echo $modifier; ?>">
       <?php

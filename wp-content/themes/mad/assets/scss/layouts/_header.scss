@@ -352,12 +352,6 @@
       }
     }
 
-    .header__fixed {
-      @media only screen and (min-width: $desktop) {
-        height: $height-sticky;
-      }
-    }
-
     .header__logo {
       &__wrap {
         @media only screen and (min-width: $desktop) {

@@ -7,7 +7,7 @@
       <?php if($url): ?>
         <div class="container">
           <div class="box-video__video">
-            <video autoplay="autoplay" loop="loop" >
+            <video autoplay="autoplay" loop="loop" muted="muted">
               <source src="<?php echo $url; ?>" type="video/mp4">
             </video>
           </div>

@@ -271,7 +271,7 @@
       }
 
       @media only screen and (min-width: $desktop) {
-        margin-left: 5px;
+        margin-left: 0px;
       }
     }
 
@@ -283,7 +283,7 @@
       }
 
       @media only screen and (min-width: $desktop) {
-        margin-left: 5px;
+        margin-left: 0px;
         margin-bottom: 27px;
       }
 
@@ -297,19 +297,19 @@
       margin-bottom: 31px;
 
       @media only screen and (min-width: $tablet) {
-        margin: 0 52px 29px 48px;
+        margin: 0 48px 29px 48px;
         padding-bottom: 31px;
       }
 
       @media only screen and (min-width: $desktopSupperLarge) {
         padding-bottom: 42px;
-        margin: 0 0 46px 0 ;
+        margin: 0 55px 46px;
       }
     }
   }
 
   &__item {
-    border-bottom: 1px solid $gray;
+    border-bottom: 1px solid #d6d6d6;
     margin-bottom: 30px;
     padding-bottom: 29px;
 
