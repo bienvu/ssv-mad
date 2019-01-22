@@ -4,7 +4,7 @@
   @extend %text--small;
   background-color: rgba($gray, .1);
 
-  @media only screen and (min-width: $desktopSupperWideLarge) {
+  @media only screen and (min-width: $desktopSupperLarge) {
     font-size: 17px;
     line-height: 1.3241;
   }
@@ -17,26 +17,32 @@
       max-width: inherit;
     }
 
-    @media only screen and (min-width: $desktopWideLarge) {
+    @media only screen and (min-width: $desktop) {
       max-width: 1306px;
     }
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $desktopSupperLarge) {
       max-width: 1836px;
     }
   }
 
   &__description {
-    margin-bottom: 23px;
+    margin-bottom: 18px;
+    padding-right: 67px;
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $tablet) {
+      margin-bottom: 23px;
+      padding-right: 0;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
       margin-bottom: 31px;
     }
 
     p {
       margin-bottom: 10px;
 
-      @media only screen and (min-width: $desktopSupperWideLarge) {
+      @media only screen and (min-width: $desktopSupperLarge) {
         margin-bottom: 15px;
       }
 
@@ -47,36 +53,45 @@
   }
 
   &__link {
-    margin-top: 17px;
+    margin-top: 27px;
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $tablet) {
+      margin-top: 17px;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
       margin-top: 22px;
     }
 
     .btn {
-      @media only screen and (min-width: $desktopSupperWideLarge) {
+      @media only screen and (min-width: $desktopSupperLarge) {
         min-width: 260px;
       }
     }
   }
 
   &__image {
-    padding-bottom: 20px;
+    padding-bottom: 31px;
     border-bottom: 1px solid rgba($gray, .25);
+    height: auto;
 
     @media only screen and (min-width: $tablet) {
       border: 0;
       padding-bottom: 39px;
     }
 
-    @media only screen and (min-width: $desktopWideLarge) {
+    @media only screen and (min-width: $desktop) {
       padding-bottom: 25px;
     }
 
     p {
-      margin-bottom: 7px;
+      margin-bottom: 5px;
 
-      @media only screen and (min-width: $desktopSupperWideLarge) {
+      @media only screen and (min-width: $tablet) {
+        margin-bottom: 7px;
+      }
+
+      @media only screen and (min-width: $desktopSupperLarge) {
         margin-bottom: 11px;
       }
 
@@ -88,7 +103,9 @@
         display: inline-block;
 
         img {
-          @media only screen and (min-width: $desktopSupperWideLarge) {
+          width: 222px;
+
+          @media only screen and (min-width: $desktopSupperLarge) {
             width: 313px;
             height: auto;
           }
@@ -103,7 +120,7 @@
   }
 
   &__contact {
-    padding: 20px 0;
+    padding: 37px 0 0 0;
 
     @media only screen and (min-width: $tablet) {
       width: $width-tablet;
@@ -112,14 +129,14 @@
       padding: 26px 73px 0 10px;
     }
 
-    @media only screen and (min-width: $desktopWideLarge) {
+    @media only screen and (min-width: $desktop) {
       width: 23.8%;
       border: 0;
       order: 4;
       padding: 0 31px 0 31px;
     }
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $desktopSupperLarge) {
       padding: 0 43px;
     }
 
@@ -134,7 +151,7 @@
   }
 
   &__subscribe {
-    padding: 20px 0;
+    padding: 28px 0 0;
 
     @media only screen and (min-width: $tablet) {
       width: $width-tablet;
@@ -142,14 +159,14 @@
       padding: 27px 60px 0 31px;
     }
 
-    @media only screen and (min-width: $desktopWideLarge) {
+    @media only screen and (min-width: $desktop) {
       width: 24%;
       border-bottom: 0;
       border-right: 1px solid rgba($gray, .25);
       padding: 0 20px 0 9px;;
     }
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $desktopSupperLarge) {
       padding: 0 25px 0 13px;
     }
 
@@ -170,7 +187,7 @@
         border: 0;
       }
 
-      @media only screen and (min-width: $desktopWideLarge) {
+      @media only screen and (min-width: $desktop) {
         padding: 0;
       }
 
@@ -186,7 +203,7 @@
             max-width: 249px;
           }
 
-          @media only screen and (min-width: $desktopSupperWideLarge) {
+          @media only screen and (min-width: $desktopSupperLarge) {
             font-size: 16.88px;
             line-height: 1.3335;
             max-width: 351px;
@@ -196,7 +213,16 @@
       }
 
       .form-actions {
-        .btn {
+        margin-top: 20px;
+
+        @media only screen and (min-width: $desktopSupperLarge) {
+          margin-top: 30px;
+        }
+
+        input[type="submit"] {
+          @extend .btn--gray;
+          @extend .btn--small;
+
           @media only screen and (max-width: $mobileOnly) {
             width: 100%;
           }
@@ -212,13 +238,13 @@
       padding: 28px 90px 0 9px;
     }
 
-    @media only screen and (min-width: $desktopWideLarge) {
+    @media only screen and (min-width: $desktop) {
       width: 26%;
       border-bottom: 0;
       padding: 0px 55px 0 37px;
     }
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $desktopSupperLarge) {
       padding: 0 52px;
     }
 
@@ -233,7 +259,7 @@
 
     .soc {
       border-bottom: 1px solid rgba($gray, .25);
-      padding: 20px 0;
+      padding: 27px 0 37px;
 
       @media only screen and (min-width: $tablet) {
         border: 0;
@@ -243,28 +269,28 @@
   }
 
   &__menu {
-    padding: 20px 0;
+    padding: 17px 0 29px;
 
     @media only screen and (min-width: $tablet) {
       width: $width-tablet;
       padding: 27px 0px 0px 31px;
     }
 
-    @media only screen and (min-width: $desktopWideLarge) {
+    @media only screen and (min-width: $desktop) {
       width: 26.2%;
       border-bottom: 0;
       border-right: 1px solid rgba($gray, .25);
       padding: 0 31px;
     }
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $desktopSupperLarge) {
       padding: 0 45px;
     }
 
     .footer__title {
       margin-bottom: 20px;
 
-      @media only screen and (min-width: $desktopSupperWideLarge) {
+      @media only screen and (min-width: $desktopSupperLarge) {
         margin-bottom: 30px;
       }
     }
@@ -280,27 +306,39 @@
   }
 
   &__bottom {
-    padding: 20px 71px 26px;
     background-color: $white;
-    font-weight: 300;
-    font-size: 11px;
-    line-height: 1.63636;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #787878;
+    padding: 26px 0 20px;
+
+    @media only screen and (min-width: $tablet) {
+      padding: 20px 71px 5px;
+      font-size: 11px;
+      line-height: 1.63636;
+    }
 
     @media only screen and (min-width: $mobileLandScape) {
       text-align: center;
     }
 
-    @media only screen and (min-width: $desktopWideLarge) {
-      padding: 21px 71px 30px 68px;
+    @media only screen and (min-width: $desktop) {
+      padding: 24px 71px 24px 68px;
+
+      br {
+        display: none;
+      }
     }
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $desktopSupperLarge) {
       font-size: 15px;
       padding: 32px 0px 41px;
     }
 
     a {
       text-decoration: underline;
+      color: inherit;
     }
 
     p {
@@ -316,7 +354,7 @@
         &:nth-of-type(3) {
           margin: 0 1px 0 2px;
           
-          @media only screen and (min-width: $desktopWideLarge) {
+          @media only screen and (min-width: $desktop) {
             margin: 0 1px 0 5px;
           }
         }
@@ -335,17 +373,17 @@
       padding: 23px 0 34px;
     }
 
-    @media only screen and (min-width: $desktopWideLarge) {
-      padding: 50px 0 42px;
+    @media only screen and (min-width: $desktop) {
+      padding: 50px 0 39px;
     }
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $desktopSupperLarge) {
       padding: 71px 0 61px 0;
     }
   }
 
   &__title {
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $desktopSupperLarge) {
       margin-bottom: 36px;
     }
   }

@@ -40,6 +40,21 @@
       font-size: 16.86px;
     }
   }
+
+  &--normal {
+    @include muli;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    color: $text-color;
+    font-size: $base-font-size; // Don't modify static unit.
+    font-smoothing: antialiased;
+    line-height: $base-line-height;
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      font-size: 19px;
+      line-height: 1.5789;
+    }
+  }
 }
 
 // Backgrounds

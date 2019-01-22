@@ -17,12 +17,10 @@
                     <?php echo $footer_contact['body']; ?>
                   </div>
 
-                  <?php if($footer_contact['image']): ?>
-                    <div class="footer__image">
-                      <p><a href="<?php echo $footer_contact['link']['url']; ?>" target="<?php echo $footer_contact['link']['target']; ?>"><?php _e('Click through to', 'madtheme') ?></a></p>
-                      <p><a href="<?php echo $footer_contact['link']['url']; ?>" target="<?php echo $footer_contact['link']['target']; ?>"><img src="<?php echo $footer_contact['image']['url']; ?>" alt=""></a></p>
-                    </div>
-                  <?php endif; ?>
+                  <div class="footer__image">
+                    <p><a href="<?php echo $footer_contact['link']['url']; ?>" target="<?php echo $footer_contact['link']['target']; ?>"><?php _e('Click through to', 'madtheme') ?></a></p>
+                    <p><a href="<?php echo $footer_contact['link']['url']; ?>" target="<?php echo $footer_contact['link']['target']; ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/frenchtables_logo.svg" alt=""></a></p>
+                  </div>
                 </div>
               </div>
               

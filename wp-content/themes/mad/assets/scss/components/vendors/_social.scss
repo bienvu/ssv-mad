@@ -11,7 +11,7 @@ $font-size: 28px;
       list-style-type: none;
       margin-right: 13px;
 
-      @media only screen and (min-width: $desktopSupperWideLarge) {
+      @media only screen and (min-width: $desktopSupperLarge) {
         margin-right: 19px;
       }
 
@@ -21,7 +21,7 @@ $font-size: 28px;
         &:before {
           font-size: $font-size;
 
-          @media only screen and (min-width: $desktopSupperWideLarge) {
+          @media only screen and (min-width: $desktopSupperLarge) {
             font-size: 37px;
           }
         }
@@ -30,9 +30,14 @@ $font-size: 28px;
   }
 
   &__des {
+    padding-right: 72px;
     margin-bottom: $margin;
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $desktop) {
+      padding-right: 0;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
       margin-bottom: 42px;
     }
     
