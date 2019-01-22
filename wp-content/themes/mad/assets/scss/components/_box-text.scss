@@ -1,8 +1,8 @@
 .box-text {
-  padding: 26px 0 30px 0;
+  padding: 30px 0 30px 0;
 
   @media only screen and (min-width: $tablet) {
-    padding: 26px 0 30px;
+    padding: 24px 0;
   }
 
   @media only screen and (min-width: $desktop) {
@@ -78,22 +78,41 @@
       &:last-of-type {
         margin-bottom: 0;
       }
+
+      &:nth-last-of-type(2) {
+        margin-bottom: 0;
+      }
     }
+  }
+
+  &__body {
+    padding-top: 24px;
   }
 
   &--border-top {
     @media only screen and (min-width: $desktop) {
-      padding-top: 0;
+      padding-top: 50px;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      padding-top: 69px;
     }
 
     .box-text__body {
-      padding-top: 44px;
       border-top: 1px solid $gray;
+
+      @media only screen and (min-width: $desktop) {
+        padding-top: 46px;
+      }
     }
 
     .box-text__content {
       @media only screen and (min-width: $desktop) {
         margin-bottom: 38px;
+      }
+
+      @media only screen and (min-width: $desktopSupperLarge) {
+        margin-bottom: 45px;
       }
     }
 

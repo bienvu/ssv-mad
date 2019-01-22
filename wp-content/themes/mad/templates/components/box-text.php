@@ -20,7 +20,7 @@
         
         <?php if(have_rows('multilink')): ?>
           <div class="box-text__link">
-            <?php while(have_rows('multilink')): the_row(); $item = get_sub_field('item'); if($item): ?>
+            <?php while(have_rows('multilink')): the_row(); $item = get_sub_field('item'); if($item['link']): ?>
               <a href="<?php echo $item['link']['url']; ?>" class="btn btn--large <?php if($item['class']) { echo $item['class']; } ?>" blank="<?php echo $item['link']['blank'] ?>"><?php echo $item['link']['title']; ?></a>
             <?php
                 endif;

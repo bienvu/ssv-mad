@@ -1,8 +1,12 @@
 .box-html {
-  padding: 28px 0 17px;
+  padding: 15px 0 46px;
 
   @media only screen and (min-width: $tablet) {
-    padding: 44px 0 46px;
+    padding: 24px 0;
+  }
+
+  @media only screen and (min-width: $desktop) {
+    padding: 45px 0;
   }
 
   @media only screen and (min-width: $desktopSupperWideLarge) {
