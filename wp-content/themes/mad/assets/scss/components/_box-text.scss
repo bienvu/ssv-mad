@@ -99,7 +99,7 @@
     }
 
     .box-text__body {
-      border-top: 1px solid $gray;
+      border-top: 1px solid rgba($gray, .25);
 
       @media only screen and (min-width: $desktop) {
         padding-top: 46px;

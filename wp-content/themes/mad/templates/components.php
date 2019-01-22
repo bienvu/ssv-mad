@@ -7,7 +7,7 @@
       get_template_part('templates/components/banner');
 
       // Box Quocte
-      get_template_part( 'templates/components/box-quocte' );
+      get_template_part( 'templates/components/box-quocte-animation' );
 
       // Block Reference
       get_template_part( 'templates/components/block-reference' );
@@ -38,6 +38,15 @@
 
       // Grid Gallery
       get_template_part( 'templates/components/grid-gallery' );
+
+      // Grid Content
+      get_template_part( 'templates/components/grid-content' );
+
+      // Box Quocte
+      get_template_part( 'templates/components/box-quocte' );
+
+      // Box Image
+      get_template_part( 'templates/components/box-image' );
     endwhile;
   endif;
 ?>

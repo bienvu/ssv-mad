@@ -1,41 +1,22 @@
 <?php if(get_row_layout() == 'box_quocte'):
-  $video = get_sub_field('video');
-  $total = count(get_sub_field('item'));
+  $body = get_sub_field('body');
+  $author = get_sub_field('author');
+  $class_modifier = get_sub_field('class_modifier');
 ?>
-<div class="box-quocte">
-  <div class="box-quocte__video">
-    <video autoplay="autoplay" loop="loop" >
-        <source src="<?php echo $video; ?>" type="video/mp4">
-    </video>
-  </div>
-  
-  <div class="box-quocte__body">
+<div class="box-quocte-default-default <?php if($class_modifier) { echo $class_modifier; } ?>">
+  <div class="box-quocte-default__body">
     <div class="container">
-      <div class="box-quocte__animation slide-<?php echo $total; ?>">
-        <?php if(have_rows('item')): $i = 0; ?>
-          <?php while(have_rows('item')): the_row(); $i++; ?>
-            <?php
-              $comment = get_sub_field('comment');
-              $author  = get_sub_field('author');
-            ?>
+      <?php if($body): ?>
+        <div class="box-quocte-default__content">
+          <?php echo $body; ?>
+        </div>
+      <?php endif; ?>
 
-            <div class="quocte">
-              <?php if($comment): ?>
-                <div class="quocte__content"><?php echo $comment; ?></div>
-              <?php endif; ?>
-              
-              <?php if($author): ?>
-                <div class="quocte__author"><?php echo $author; ?></div>
-
-              <?php else: ?>
-                <div class="box-quocte__image">
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/mad_logo.svg" alt="">
-                </div>
-              <?php endif; ?>
-            </div>
-          <?php endwhile; ?>
-        <?php endif; ?>
-      </div>
+      <?php if($author): ?>
+        <div class="box-quocte-default__author">
+          <?php echo $author; ?>
+        </div>
+      <?php endif; ?>
     </div>
   </div>
 </div>

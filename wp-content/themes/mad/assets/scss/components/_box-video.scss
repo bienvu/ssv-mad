@@ -1,0 +1,44 @@
+.box-video {
+  &__video {
+    line-height: 0;
+    overflow: hidden;
+    height: auto;
+
+    video {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  > .container {
+    @media only screen and (min-width: $tablet) {
+      max-width: 100%;
+      margin: 0;
+      order: 2;
+    }
+  }
+
+  @media only screen and (min-width: $tablet) {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+  }
+
+  &__body {
+    @media only screen and (min-width: $tablet) {
+      padding: 24px 0;
+    }
+
+    @media only screen and (min-width: $desktop) {
+      padding: 45px 0;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      padding: 66px 0;
+    }
+
+    p:last-of-type {
+      margin: 0;
+    }
+  }
+}
