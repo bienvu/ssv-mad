@@ -103,7 +103,7 @@
 }
 
 // grid
-@mixin grid($cols: 2, $margin-right: 10px, $margin-bottom: $margin-right, $margin-right-desktop: $margin-right, $margin-bottom-desktop: $margin-bottom, $align: center) {
+@mixin grid($cols: 2, $margin-right: 10px, $margin-bottom: $margin-right, $margin-right-tablet: $margin-right, $margin-bottom-tablet: $margin-bottom,$margin-right-desktop: $margin-right, $margin-bottom-desktop: $margin-bottom,$margin-right-desktopSupperLarge: $margin-right, $margin-bottom-desktopSupperLarge: $margin-bottom, $align: center) {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -124,11 +124,37 @@
     }
 
     @media only screen and (min-width: 768px) {
+      width: calc((100% - (#{$margin-right-tablet} * (#{$cols} - 1) + 1px)) / #{$cols});
+      margin: 0 $margin-right-tablet $margin-bottom-tablet 0;
+
+      &:nth-of-type(2n) {
+        margin-right: $margin-right-tablet;
+      }
+
+      &:nth-of-type(#{$cols}n) {
+        margin-right: 0;
+      }
+    }
+
+    @media only screen and (min-width: 1024px) {
       width: calc((100% - (#{$margin-right-desktop} * (#{$cols} - 1) + 1px)) / #{$cols});
       margin: 0 $margin-right-desktop $margin-bottom-desktop 0;
 
       &:nth-of-type(2n) {
         margin-right: $margin-right-desktop;
+      }
+
+      &:nth-of-type(#{$cols}n) {
+        margin-right: 0;
+      }
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      width: calc((100% - (#{$margin-right-desktopSupperLarge} * (#{$cols} - 1) + 1px)) / #{$cols});
+      margin: 0 $margin-right-desktopSupperLarge $margin-bottom-desktopSupperLarge 0;
+
+      &:nth-of-type(2n) {
+        margin-right: $margin-right-desktopSupperLarge;
       }
 
       &:nth-of-type(#{$cols}n) {

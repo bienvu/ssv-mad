@@ -110,6 +110,12 @@
   }
 }
 
+.hidden-on-desktoponly {
+  @media only screen and (max-width: $tabletOnly) {
+    display: none;
+  }
+}
+
 .bg-logo {
   background-image: url('/images/ma_logo_white.svg');
   background-repeat: no-repeat;

@@ -1,5 +1,9 @@
 .box-html {
-  padding: 44px 0 46px;
+  padding: 28px 0 17px;
+
+  @media only screen and (min-width: $tablet) {
+    padding: 44px 0 46px;
+  }
 
   @media only screen and (min-width: $desktopSupperWideLarge) {
     padding: 65px 0 71px;
@@ -8,6 +12,34 @@
   p {
     &:last-of-type {
       margin-bottom: 0;
+    }
+  }
+
+  &__quocte {
+    text-align: center;
+
+    @media only screen and (min-width: $tablet) {
+      margin-top: -6px;
+      padding: 0 38px;
+    }
+
+    @media only screen and (min-width: $desktop) {
+      margin-top: 0;
+      padding: 9px 0 64px;
+      border-bottom: 1px solid $gray;
+    }
+
+    blockquote {
+      @include miller-display;
+      font-size: 28px;
+      line-height: 1.2;
+      font-weight: 400;
+      margin-bottom: 19px;
+
+      @media only screen and (min-width: $desktopSupperLarge) {
+        font-size: 40px;
+        margin-bottom: 27px;
+      }
     }
   }
 }

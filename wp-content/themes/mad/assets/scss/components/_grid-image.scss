@@ -1,25 +1,42 @@
 $margin: 15px;
 
 .grid-image {
-  padding: 20px 0 10px;
+  padding: 0 0 10px;
+
+  @media only screen and (min-width: $tablet) {
+    padding: 0;
+  }
 
   .container {
     @media only screen and (min-width: $tablet) {
-      max-width: 708px;
-      margin: auto;
+      max-width: 100%;
+      margin: 0;
+    }
+
+    @media only screen and (min-width: $desktop) and (max-width: $desktopOnly) {
+      max-width: 100%;
+      margin-left: $containerMarginDesktop2;
+      margin-right: $containerMarginDesktop2;
     }
 
     @media only screen and (min-width: $desktopWideLarge) {
-      max-width: 1318px;
+      max-width: $containerdesktopWideLarge2;
+      margin: auto;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) and (max-width: $desktopSupperWideLargeOnly) {
+      max-width: 100%;
+      margin-left: $containerMarginDesktopSupperLarge2;
+      margin-right: $containerMarginDesktopSupperLarge2;        
     }
 
     @media only screen and (min-width: $desktopSupperWideLarge) {
-      max-width: 1850px;
+      max-width: $containerdesktopSupperWideLarge2;
     }
   }
   
   &__list {
-    @include grid(3, 20px, 20px, 13px, 13px);
+    @include grid(3, 8px, 8px, 6px, 6px, 13px, 13px, 16px, 16px);
   }
 
   &__item {
@@ -117,10 +134,16 @@ $margin: 15px;
   }
 
   &--no-link {
-    .grid-image__item {
+    .grid-image__content {
       &:hover {
-        .grid-image__content {
-          background-color: transparent;
+        .grid-image__title,
+        .grid-image__link {
+          opacity: 0;
+        }
+
+        &:before,
+        &:after {
+          display: none;
         }
       }
     }

@@ -10,22 +10,30 @@
   text-align: center;
   background-color: $light-gray;
   margin: 0;
-  padding: 27px 0 26px;
+  padding: 26px 20px 29px;
 
   @media only screen and (min-width: $tablet) {
-    padding: 28.5px 0 25.5px;
+    padding: 25px 20px 30px;
   }
 
   @media only screen and (min-width: $desktop) {
-    padding: 63px 0 70px;
+    padding: 59px 20px 67px;
   }
 
   @media only screen and (min-width: $desktopSupperLarge) {
-    padding: 87px 0 98px;
-    margin-top: 62px;
+    padding: 84px 20px 92px;
+    margin-top: 59px;
   }
 }
 
 div.wpcf7 .ajax-loader {
   display: none;
+}
+
+.mark-alexander-design {
+  .box-html {
+    @media only screen and (min-width: $desktop) {
+      padding-bottom: 0;
+    }
+  }
 }

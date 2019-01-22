@@ -9,7 +9,7 @@ h5,
 h6 {
   @include miller-display;
   font-weight: 400;
-  line-height: 1;
+  line-height: 1.2;
   letter-spacing: 0;
   margin-bottom: 25px;
 }
@@ -74,7 +74,11 @@ h3,
 h4,
 .h4 {
   font-size: 21px;
-  margin-bottom: 24px;
+  margin-bottom: 21px;
+
+  @media only screen and (min-width: $tablet) {
+    margin-bottom: 24px;
+  }
 
   @media only screen and (min-width: $desktopSupperLarge) {
     font-size: 29px;

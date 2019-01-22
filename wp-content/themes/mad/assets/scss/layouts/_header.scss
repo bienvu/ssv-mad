@@ -26,6 +26,7 @@
 
       @media only screen and (min-width: $desktopWideLarge) {
         max-width: $containerdesktopWideLarge2;
+        margin: auto;
       }
 
       @media only screen and (min-width: $desktopSupperLarge) and (max-width: $desktopSupperWideLargeOnly) {
