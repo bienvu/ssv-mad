@@ -30,20 +30,6 @@
   }
 
   &__content {
-    margin-bottom: 19px;
-
-    @media only screen and (min-width: $tablet) {
-      margin-bottom: 37px;
-    }
-
-    @media only screen and (min-width: $desktop) {
-      margin-bottom: 38px;
-    }
-
-    @media only screen and (min-width: $desktopSupperLarge) {
-      margin-bottom: 68px;
-    }
-
     p {
       &:last-of-type {
         margin-bottom: 0;
@@ -54,15 +40,22 @@
   &__link {
     display: flex;
     flex-wrap: wrap;
+    margin-top: 19px;
 
     @media only screen and (min-width: $tablet) {
       margin-right: 17px;
       margin-bottom: 0;
+      margin-top: 37px;
       width: auto;
+    }
+
+    @media only screen and (min-width: $desktop) {
+      margin-top: 38px;
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {
       margin-right: 30px;
+      margin-top: 68px;
     }
 
     .btn {

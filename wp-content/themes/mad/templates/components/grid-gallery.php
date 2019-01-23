@@ -206,7 +206,7 @@
     <div class="grid-gallery--mobile">
       <div class="container">
         <?php if($content_cener ): ?>
-          <div class="grid-gallery__quote hidden-on-desktop">
+          <div class="grid-gallery__quote hidden-on-tablet">
             <q><?php echo $content_cener; ?></q>
           </div>
         <?php endif; ?>
