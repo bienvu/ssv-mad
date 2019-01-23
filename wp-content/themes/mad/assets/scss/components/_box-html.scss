@@ -18,36 +18,4 @@
       margin-bottom: 0;
     }
   }
-
-  &__quocte {
-    text-align: center;
-
-    @media only screen and (min-width: $tablet) {
-      margin-top: -6px;
-      padding: 32px 0 38px;
-    }
-
-    @media only screen and (min-width: $desktop) {
-      margin-top: 0;
-      padding: 51px 0 64px;
-      border-bottom: 1px solid $gray;
-    }
-
-    @media only screen and (min-width: $desktopSupperLarge) {
-      padding: 48px 0 64px;
-    }
-
-    blockquote {
-      @include miller-display;
-      font-size: 28px;
-      line-height: 1.2;
-      font-weight: 400;
-      margin-bottom: 19px;
-
-      @media only screen and (min-width: $desktopSupperLarge) {
-        font-size: 40px;
-        margin-bottom: 27px;
-      }
-    }
-  }
 }

@@ -1,12 +1,6 @@
 $margin: 15px;
 
 .grid-image {
-  padding: 0 0 10px;
-
-  @media only screen and (min-width: $tablet) {
-    padding: 0;
-  }
-
   .container {
     @media only screen and (min-width: $tablet) {
       max-width: 100%;

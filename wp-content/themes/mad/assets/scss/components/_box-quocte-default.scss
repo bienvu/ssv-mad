@@ -1,0 +1,49 @@
+.box-quocte-default {
+  text-align: center;
+  padding: 39px 0 15px;
+
+  @media only screen and (min-width: $tablet) {
+    padding: 39px 33px 22px;
+  }
+
+  @media only screen and (min-width: $desktop) {
+    padding: 53px 0 21px;
+  }
+
+  @media only screen and (min-width: $desktopSupperLarge) {
+    padding: 75px 0 21px;
+  }
+
+  blockquote {
+    @include miller-display;
+    font-size: 28px;
+    line-height: 1.2;
+    font-weight: 400;
+    margin-bottom: 19px;
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      font-size: 40px;
+      margin-bottom: 27px;
+    }
+
+    p:last-of-type {
+      margin: 0;
+    }
+  }
+
+  &__body {
+    margin: auto;
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      // max-width: 960px;
+    }
+  }
+
+  &__author {
+    text-transform: uppercase;
+
+    p:last-of-type {
+      margin: 0;
+    }
+  }
+}

@@ -22,6 +22,20 @@
                   <?php echo $body; ?>
                 </div>
               <?php endif; ?>
+
+              <?php 
+                if(have_rows('multilink')): ?>
+                  <div class="box-image-text__link">
+                    <?php  while(have_rows('multilink')): the_row();
+                        $link    = get_sub_field('link');
+                        $class    = get_sub_field('class');
+                        if($link): ?>
+                          <a href="<?php echo $link['url']; ?>" class="btn btn--large <?php if($class) { echo $class; } ?>" blank="<?php echo $link['blank'] ?>"><?php echo $link['title']; ?></a>
+                        <?php 
+                          endif;
+                            endwhile; ?>
+                  </div>
+              <?php endif; ?>
             </div>
           </div>
           

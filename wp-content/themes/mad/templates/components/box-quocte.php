@@ -3,18 +3,21 @@
   $author = get_sub_field('author');
   $class_modifier = get_sub_field('class_modifier');
 ?>
-<div class="box-quocte-default-default <?php if($class_modifier) { echo $class_modifier; } ?>">
-  <div class="box-quocte-default__body">
-    <div class="container">
+<div class="box-quocte-default <?php if($class_modifier) { echo $class_modifier; } ?>">
+  <div class="container">
+    <div class="box-quocte-default__body">
+    
       <?php if($body): ?>
         <div class="box-quocte-default__content">
-          <?php echo $body; ?>
+          <blockquote>
+            <?php echo $body; ?>
+          </blockquote>
         </div>
       <?php endif; ?>
 
       <?php if($author): ?>
         <div class="box-quocte-default__author">
-          <?php echo $author; ?>
+          <p><strong><?php echo $author; ?></strong></p>
         </div>
       <?php endif; ?>
     </div>
