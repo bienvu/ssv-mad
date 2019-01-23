@@ -98,11 +98,11 @@
     if($('.js-read-more').length) {
       $('.js-read-more').click(function(e) {
         e.preventDefault();
-        if($(this).parent().parent().find('.read-more').hasClass('is-show')) {
-          $(this).parent().parent().find('.read-more').removeClass('is-show');
+        if($(this).parent().parent().parent().parent().hasClass('is-show')) {
+          $(this).parent().parent().parent().parent().removeClass('is-show');
           $(this).text('READ MORE');
         }else {
-          $(this).parent().parent().find('.read-more').addClass('is-show');
+          $(this).parent().parent().parent().parent().addClass('is-show');
           $(this).text('READ LESS');
         }
       });

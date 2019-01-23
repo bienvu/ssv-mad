@@ -2,6 +2,7 @@
   $body = get_sub_field('body');
   $author = get_sub_field('author');
   $class_modifier = get_sub_field('class_modifier');
+  $class_modifier = ($class_modifier) ? 'box-quocte-default--'.$class_modifier : "";
 ?>
 <div class="box-quocte-default <?php if($class_modifier) { echo $class_modifier; } ?>">
   <div class="container">

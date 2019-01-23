@@ -1,0 +1,58 @@
+.box-image {
+  display: none;
+  
+  @media only screen and (min-width: $desktop) {
+    display: block;
+    margin-top: -5px;
+    margin-bottom: 21px;
+  }
+
+  @media only screen and (min-width: $desktopSupperLarge) {
+    margin-top: -7px;
+    margin-bottom: 28px;
+  }
+
+  &__title {
+    text-align: center;
+
+    @media only screen and (min-width: $desktop) {
+      margin-bottom: 40px;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      margin-bottom: 57px;
+    }
+  }
+
+  &__body {
+    line-height: 0;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .container {
+    @media only screen and (min-width: $desktop) and (max-width: $desktopOnly) {
+      max-width: 100%;
+      margin-left: $containerMarginDesktop2;
+      margin-right: $containerMarginDesktop2;
+    }
+
+    @media only screen and (min-width: $desktopWideLarge) {
+      max-width: $containerdesktopWideLarge2;
+      margin: auto;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) and (max-width: $desktopSupperWideLargeOnly) {
+      max-width: 100%;
+      margin-left: $containerMarginDesktopSupperLarge2;
+      margin-right: $containerMarginDesktopSupperLarge2;        
+    }
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      max-width: $containerdesktopSupperWideLarge2;
+    }
+  }
+}

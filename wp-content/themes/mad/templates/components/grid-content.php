@@ -1,7 +1,7 @@
 <?php if(get_row_layout() == 'grid_content'): ?>
   <div class="grid-content">
     <div class="container">
-      <div class="grid-content__wrap">
+      <div class="grid-content__wrap js-slick-content">
         <?php 
           if(have_rows('item')):
             while(have_rows('item')): the_row();
@@ -28,7 +28,7 @@
                 
                 <?php if($extend): ?>
                   <p class="read-more"><?php echo $extend; ?></p>
-                  <p><a href="" class="js-read-more"><?php echo __e('read more ...', 'ssvmad'); ?></a></p>
+                  <p><a href="" class="js-read-more"><?php echo _e('read more ...', 'ssvmad'); ?></a></p>
                 <?php endif; ?>
               </div>
             <?php endif; ?>

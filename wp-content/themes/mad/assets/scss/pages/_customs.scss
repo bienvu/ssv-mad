@@ -10,18 +10,18 @@
   text-align: center;
   background-color: $light-gray;
   margin: 0;
-  padding: 25px 20px;
+  padding: 24px 20px;
 
   @media only screen and (min-width: $tablet) {
-    padding: 25px 20px 30px;
+    padding: 24px 20px;
   }
 
   @media only screen and (min-width: $desktop) {
-    padding: 59px 20px 67px;
+    padding: 63px 20px;
   }
 
   @media only screen and (min-width: $desktopSupperLarge) {
-    padding: 84px 20px 92px;
+    padding: 88px 20px;
     margin-top: 59px;
   }
 }
