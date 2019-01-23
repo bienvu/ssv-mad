@@ -2,16 +2,16 @@
   margin-bottom: 30px;
 
   @media only screen and (min-width: $tablet) {
-    padding: 32px 0 20px;
+    padding: 32px 0 30px;
     margin: 0;
   }
 
   @media only screen and (min-width: $desktop) {
-    padding: 49px 0 44px;
+    padding: 50px 0 45px;
   }
 
   @media only screen and (min-width: $desktopSupperLarge) {
-    padding: 55px 0 71px;
+    padding: 54px 0 72px;
   }
 
   .container {
@@ -102,12 +102,12 @@
     }
 
     @media only screen and (min-width: $desktop) {
-      padding-right: 52px;
+      padding-right: 53px;
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {
       margin-top: 15px;
-      padding-right: 75px;
+      padding-right: 73px;
     }
 
     .box-contact__title {
@@ -140,12 +140,12 @@
     @media only screen and (min-width: $desktop) {
       display: block;
       margin: -10px 0 0;
-      padding-left: 55px;
+      padding-left: 53px;
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {
       margin: 0;
-      padding-left: 77px;
+      padding-left: 74px;
     }
 
     img {
@@ -250,7 +250,7 @@
     }
     
     @media only screen and (min-width: $tablet) {
-      padding: 0 15px 35px;
+      padding: 0 15px 25px;
       background-color: $white;
     }
 
@@ -279,7 +279,7 @@
       margin-bottom: 20px;
 
       @media only screen and (min-width: $tablet) {
-        margin-left: 41px;
+        margin-left: 47px;
       }
 
       @media only screen and (min-width: $desktop) {
@@ -297,8 +297,12 @@
       margin-bottom: 31px;
 
       @media only screen and (min-width: $tablet) {
-        margin: 0 48px 29px 48px;
+        margin: 0 0 29px 47px;
         padding-bottom: 31px;
+      }
+
+      @media only screen and (min-width: $desktop) {
+        margin: 0 48px 29px 48px;
       }
 
       @media only screen and (min-width: $desktopSupperLarge) {
@@ -397,7 +401,7 @@
         }
 
         @media only screen and (min-width: $desktopSupperLarge) {
-          padding: 16px 19px 8px;
+          // padding: 16px 19px 8px;
         }
       }
 

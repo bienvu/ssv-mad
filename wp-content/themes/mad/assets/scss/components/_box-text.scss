@@ -87,6 +87,10 @@
 
   &__body {
     padding-top: 24px;
+
+    @media only screen and (min-width: $tablet) {
+      padding: 0;
+    }
   }
 
   &--border-top {
