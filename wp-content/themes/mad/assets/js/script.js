@@ -100,10 +100,10 @@
         e.preventDefault();
         if($(this).parent().parent().parent().parent().hasClass('is-show')) {
           $(this).parent().parent().parent().parent().removeClass('is-show');
-          $(this).text('READ MORE');
+          $(this).text('Read More...');
         }else {
           $(this).parent().parent().parent().parent().addClass('is-show');
-          $(this).text('READ LESS');
+          $(this).text('Read Less');
         }
       });
     }

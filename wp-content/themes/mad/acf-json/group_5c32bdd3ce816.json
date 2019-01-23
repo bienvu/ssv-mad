@@ -1288,7 +1288,7 @@
                                     "key": "field_5c46f2092c980",
                                     "label": "Summary",
                                     "name": "summary",
-                                    "type": "textarea",
+                                    "type": "wysiwyg",
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -1298,16 +1298,16 @@
                                         "id": ""
                                     },
                                     "default_value": "",
-                                    "placeholder": "",
-                                    "maxlength": "",
-                                    "rows": "",
-                                    "new_lines": ""
+                                    "tabs": "all",
+                                    "toolbar": "full",
+                                    "media_upload": 1,
+                                    "delay": 0
                                 },
                                 {
                                     "key": "field_5c46f2912c981",
                                     "label": "Extend",
                                     "name": "extend",
-                                    "type": "textarea",
+                                    "type": "wysiwyg",
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -1317,10 +1317,10 @@
                                         "id": ""
                                     },
                                     "default_value": "",
-                                    "placeholder": "",
-                                    "maxlength": "",
-                                    "rows": "",
-                                    "new_lines": ""
+                                    "tabs": "all",
+                                    "toolbar": "full",
+                                    "media_upload": 1,
+                                    "delay": 0
                                 },
                                 {
                                     "key": "field_5c46f2a62c982",
@@ -1528,5 +1528,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1548215247
+    "modified": 1548235270
 }

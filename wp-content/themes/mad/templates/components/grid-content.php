@@ -24,11 +24,11 @@
             
             <?php if($summary): ?>
               <div class="grid-content__content">
-                <p><?php echo $summary; ?></p>
+                <?php echo $summary; ?>
                 
                 <?php if($extend): ?>
-                  <p class="read-more"><?php echo $extend; ?></p>
-                  <p><a href="" class="js-read-more"><?php echo _e('read more ...', 'ssvmad'); ?></a></p>
+                  <div class="read-more"><?php echo $extend; ?></div>
+                  <p><a href="" class="js-read-more"><?php echo _e('Read More...', 'ssvmad'); ?></a></p>
                 <?php endif; ?>
               </div>
             <?php endif; ?>
