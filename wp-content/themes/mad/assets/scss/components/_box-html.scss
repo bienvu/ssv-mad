@@ -1,5 +1,5 @@
 .box-html {
-  padding: 15px 0 46px;
+  padding: 25px 0;
 
   @media only screen and (min-width: $tablet) {
     padding: 24px 0;
@@ -9,8 +9,8 @@
     padding: 45px 0;
   }
 
-  @media only screen and (min-width: $desktopSupperWideLarge) {
-    padding: 65px 0 71px;
+  @media only screen and (min-width: $desktopSupperLarge) {
+    padding: 65px 0;
   }
 
   p {

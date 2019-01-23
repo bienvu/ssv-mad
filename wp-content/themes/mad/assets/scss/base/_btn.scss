@@ -49,6 +49,14 @@
   &--large{
     min-width: 188px;
 
+    @media only screen and (min-width: $tablet) {
+      min-width: 335px;
+    }
+
+    @media only screen and (min-width: $desktop) {
+      min-width: 188px;
+    }
+
     @media only screen and (min-width: $desktopSupperLarge) {
       min-width: 265px;
     }

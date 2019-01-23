@@ -2,10 +2,8 @@
   if(get_row_layout() == 'box_text'):
     $title = get_sub_field('title');
     $body  = get_sub_field('body');
-    $class = get_sub_field('class_modifier');
-    $class = ($class) ? 'box-text--'.$class : "";
 ?>
-  <div class="box-text <?php if($class) { echo $class; } ?>">
+  <div class="box-text">
     <div class="container">
       <div class="box-text__body">
         <?php if($title): ?>

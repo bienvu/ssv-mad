@@ -3,32 +3,72 @@
     margin-bottom: 30px;
 
     @media only screen and (min-width: $desktop) {
-      margin-bottom: 50px;
+      margin-bottom: 49px;
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {
-      margin-bottom: 69px;
+      margin-bottom: 66px;
     }
-
+    
     &:last-of-type {
-      margin: 0;
+      margin-bottom: 0;
+
+      &:after {
+        content: "";
+        display: block;
+        border-bottom: 1px solid rgba($gray, .25);
+        max-width: 100%;
+        margin-left: $containerMarginMobile;
+        margin-right: $containerMarginMobile;
+        margin-top: 30px;
+
+        @media (min-width: $tablet) {
+          margin-left: $containerMarginTablet;
+          margin-right: $containerMarginTablet;
+          margin-top: 30px;
+        }
+
+        @media (min-width: $desktop) {
+          max-width: $container;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 49px;
+        }
+
+        @media (min-width: $desktopWide) {
+          max-width: $containerWide;
+        }
+
+        @media (min-width: $desktopWideLarge) {
+          max-width: $containerWideLarge;
+        }
+
+        @media (min-width: $desktopSupperLarge) {
+          max-width: $containerSuperWide;
+        }
+
+        @media (min-width: $desktopSupperWideLarge) {
+          max-width: $containerSupperWideLarge;
+          margin-top: 66px;
+        }
+      }
     }
   }
 
   &__body {
-    padding: 27px 0 0 0;
+    padding: 25px 0;
     border-top: 1px solid rgba($gray, .25);
 
     @media only screen and (min-width: $tablet) {
-      padding: 24px 0 0;
+      padding: 30px 0;
     }
 
     @media only screen and (min-width: $desktop) {
-      padding: 47px 0;
+      padding: 49px 0;
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {
-      padding: 65px 0 68px;
+      padding: 66px 0;
     }
   }
 
@@ -75,19 +115,10 @@
   }
 
   &__content {
-    padding-right: 30px;
-    margin-bottom: 25px;
+    padding-right: 15px;
 
     @media only screen and (min-width: $tablet) {
-      margin-bottom: 30px;
-    }
-
-    @media only screen and (min-width: $desktop) {
-      margin-bottom: 0;
-    }
-
-    @media only screen and (min-width: $desktopSupperLarge) {
-      margin-bottom: 0;
+      padding-right: 0;
     }
 
     p {
@@ -109,7 +140,7 @@
     img {
       width: 100%;
       height: auto;
-      margin-bottom: 9px;
+      margin-bottom: 10px;
 
       &:last-of-type {
         margin: 0;

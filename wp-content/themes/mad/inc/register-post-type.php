@@ -4,15 +4,15 @@
     array(
       'labels' => array(
         'add_new_item'        => __('Add Artistry', 'ssvmad'),
-        'name'                => __('Artistrys', 'ssvmad'),
-        'singular_name'       => __('Artistrys', 'ssvmad'),
-        'edit_item'           => __('Edit Artistrys', 'ssvmad'),
+        'name'                => __('Artistry', 'ssvmad'),
+        'singular_name'       => __('Artistry', 'ssvmad'),
+        'edit_item'           => __('Edit Artistry', 'ssvmad'),
         'view_item'           => __('View Artistry', 'ssvmad'),
-        'view_items'          => __('View Artistrys', 'ssvmad'),
-        'search_items'        => __('Search Artistrys', 'ssvmad'),
-        'not_found'           => __('No Artistrys Found', 'ssvmad'),
-        'not_found_in_trash'  => __(' No Artistrys found in Trash', 'ssvmad'),
-        'all_items'            => __('All Artistrys', 'ssvmad')
+        'view_items'          => __('View Artistry', 'ssvmad'),
+        'search_items'        => __('Search Artistry', 'ssvmad'),
+        'not_found'           => __('No Artistry Found', 'ssvmad'),
+        'not_found_in_trash'  => __(' No Artistry found in Trash', 'ssvmad'),
+        'all_items'            => __('All Artistry', 'ssvmad')
       ),
       'public' => true,
       'has_archive' => true,
