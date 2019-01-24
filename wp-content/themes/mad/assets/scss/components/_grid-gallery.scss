@@ -44,8 +44,9 @@
     }
   
     img {
-      width: 100%;
+      width: 101%;
       height: auto;
+      max-width: inherit;
     }
   }
 
@@ -57,9 +58,31 @@
   &__logo {
     line-height: 0;
 
+    @media only screen and (min-width: $desktopSupperLarge) {
+      margin-top: 32px;
+    }
+
     img {
       width: 250px;
       height: auto;
+
+      @media only screen and (min-width: $desktopSupperLarge) {
+        width: 340px;
+      }
+    }
+
+    &.logo-1 {
+      text-align: right;
+
+      @media only screen and (min-width: $desktopSupperLarge) {
+        margin-top: 34px;
+      }
+
+      img {
+        @media only screen and (min-width: $desktopSupperLarge) {
+          width: 298px;
+        }
+      }
     }
   }
 
@@ -190,6 +213,10 @@
   &__content {
     padding: 30px;
 
+    @media only screen and (min-width: $desktopSupperLarge) {
+      padding: 81px 51px;
+    }
+
     p:last-of-type {
       margin: 0;
     }
@@ -203,6 +230,7 @@
     font-family: Georgia;
     font-style: italic;
     font-size: 17px;
+    font-weight: 400;
     
 
     @media only screen and (min-width: $tablet) {
@@ -217,11 +245,22 @@
       min-width: 229px;
       font-size: 28px;
     }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      font-size: 36px;
+      line-height: 1.222222;
+      min-width: 320px;
+    }
+
+    p:last-of-type {
+      margin: 0;
+    }
   }
 
   &__title {
     text-transform: capitalize;
     font-size: 15px;
+    line-height: 1.2;
     margin: 0;
     position: absolute;
     top: 50%;
@@ -241,10 +280,21 @@
       transform: none;
       margin-bottom: 15px;
     }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      font-size: 39px;
+      margin-bottom: 21px;
+    }
   }
 
   &__subtitle {
     margin-bottom: 20px;
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      font-size: 24px;
+      line-height: 1.083333;
+      font-size: normal;
+    }
   }
 
   &__description {
@@ -256,6 +306,18 @@
 
     @media only screen and (min-width: $desktop) {
       display: block;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      font-size: 24px;
+      line-height: 1.5;
+      font-style: normal;
+      font-weight: 400;
+      padding-left: 21px;
+    }
+
+    p {
+      font-style: italic;
     }
   }
 

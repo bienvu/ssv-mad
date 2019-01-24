@@ -133,76 +133,60 @@ class Mad_Import_Admin_Importers {
 			'start_pos'       => isset( $_POST['position'] ) ? absint( $_POST['position'] ) : 0, // PHPCS: input var ok.
 			'mapping'         => isset( $_POST['mapping'] ) ? (array) wc_clean( wp_unslash( $_POST['mapping'] ) ) : array(), // PHPCS: input var ok.
 			'update_existing' => isset( $_POST['update_existing'] ) ? (bool) $_POST['update_existing'] : false, // PHPCS: input var ok.
-			'lines'           => apply_filters( 'woocommerce_product_import_batch_size', 1 ),
+			'lines'           => apply_filters( 'woocommerce_product_import_batch_size', 15 ),
 			'parse'           => true,
       'post_type'       => isset( $_POST['post_type'] ) ? wc_clean( wp_unslash( $_POST['post_type'] ) ) : '',
-      'list_sku'       => isset( $_POST['list_sku'] ) ? (array) wc_clean( wp_unslash( $_POST['list_sku'] ) ) : '',
-      'related'       => isset( $_POST['related'] ) ? (array) wc_clean( wp_unslash( $_POST['related'] ) ) : '',
+      // 'all_sku'       => isset( $_POST['all_sku'] ) ? (array) wc_clean( wp_unslash( $_POST['all_sku'] ) ) : '',
 		);
 
 		// Log failures.
 		if ( 0 !== $params['start_pos'] ) {
-			$error_log = array_filter( 'error start position' );
+      $error_log = array_filter( (array) get_user_option( 'product_import_error_log' ) );
 		} else {
-			$error_log = array();
+      $error_log = array();
+      update_user_option( get_current_user_id(), 'product_import_list_sku', array() );
+      update_user_option( get_current_user_id(), 'product_import_related', array() );
 		}
 
 		$importer         = Mad_Import_Product_CSV_Importer_Controller::get_importer( $file, $params );
 		$results          = $importer->import();
 		$percent_complete = $importer->get_percent_complete();
-		$error_log        = array_merge( $error_log, $results['failed'], $results['skipped'] );
+
+    if (!empty($results['failed'])) {
+      $error_log        = array_merge( $error_log, $results['failed'] );
+      update_user_option( get_current_user_id(), 'product_import_error_log', $error_log );
+    }
+    
 
 		if ( 100 === $percent_complete ) {
-			// save related
-			$results['related'] = array_merge($params['related'], $results['related']);
-			$results['list_sku'] = array_merge($params['list_sku'], $results['list_sku']);
-			$importer->import_related($results['related'], $results['list_sku']);
+      $status_related = $importer->import_related();
 
-			// @codingStandardsIgnoreStart.
-			$wpdb->delete( $wpdb->postmeta, array( 'meta_key' => '_original_id' ) );
-			$wpdb->delete( $wpdb->posts, array(
-				'post_type'   => 'product',
-				'post_status' => 'importing',
-			) );
-			$wpdb->delete( $wpdb->posts, array(
-				'post_type'   => 'product_variation',
-				'post_status' => 'importing',
-			) );
-			// @codingStandardsIgnoreEnd.
-
-			// Clean up orphaned data.
-			$wpdb->query( "
-				DELETE {$wpdb->posts}.* FROM {$wpdb->posts}
-				LEFT JOIN {$wpdb->posts} wp ON wp.ID = {$wpdb->posts}.post_parent
-				WHERE wp.ID IS NULL AND {$wpdb->posts}.post_type = 'product_variation'
-			" );
-			$wpdb->query( "
-				DELETE {$wpdb->postmeta}.* FROM {$wpdb->postmeta}
-				LEFT JOIN {$wpdb->posts} wp ON wp.ID = {$wpdb->postmeta}.post_id
-				WHERE wp.ID IS NULL
-			" );
-			// @codingStandardsIgnoreStart.
-			$wpdb->query( "
-				DELETE tr.* FROM {$wpdb->term_relationships} tr
-				LEFT JOIN {$wpdb->posts} wp ON wp.ID = tr.object_id
-				LEFT JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
-				WHERE wp.ID IS NULL
-				AND tt.taxonomy IN ( '" . implode( "','", array_map( 'esc_sql', get_object_taxonomies( 'product' ) ) ) . "' )
-			" );
-			// @codingStandardsIgnoreEnd.
-
-			// Send success.
-			wp_send_json_success(
-				array(
-					'position'   => 'done',
-					'percentage' => 100,
-					'url'        => add_query_arg( array( 'nonce' => wp_create_nonce( 'product-csv' ) ), admin_url( 'tools.php?page=product_importer&step=done' ) ),
-					'imported'   => count( $results['imported'] ),
-					'failed'     => count( $results['failed'] ),
-					'updated'    => count( $results['updated'] ),
-					'skipped'    => count( $results['skipped'] ),
-				)
-			);
+      if($status_related == 'done') {
+        wp_send_json_success(
+          array(
+            'position'   => 'done',
+            'percentage' => 100,
+            'url'        => add_query_arg( array( 'nonce' => wp_create_nonce( 'product-csv' ) ), admin_url( 'tools.php?page=product_importer&step=done' ) ),
+            'imported'   => count( $results['imported'] ),
+            'failed'     => count( $results['failed'] ),
+            'updated'    => count( $results['updated'] ),
+            'skipped'    => count( $results['skipped'] ),
+            'status_related' => $status_related,
+          )
+        );
+      } else {
+        wp_send_json_success(
+          array(
+            'position'   => $importer->get_file_position(),
+            'percentage' => 100,
+            'imported'   => count( $results['imported'] ),
+            'failed'     => count( $results['failed'] ),
+            'updated'    => count( $results['updated'] ),
+            'skipped'    => count( $results['skipped'] ),
+            'status_related' => $status_related,
+          )
+        );
+      }
 		} else {
 			wp_send_json_success(
 				array(
@@ -212,8 +196,6 @@ class Mad_Import_Admin_Importers {
 					'failed'     => count( $results['failed'] ),
 					'updated'    => count( $results['updated'] ),
 					'skipped'    => count( $results['skipped'] ),
-					'related'		 => array_merge($params['related'], $results['related']),
-					'list_sku'	 => array_merge($params['list_sku'], $results['list_sku']),
 				)
 			);
 		}

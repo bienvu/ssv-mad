@@ -82,12 +82,20 @@ class Mad_Import_Product_CSV_Importer_Controller {
 	protected $related = array();
 
 
+  /**
+   * list sku by id
+   *
+   * 
+   */
+  protected $list_sku_by_id = array();
+
+
 	/**
 	 * list sku by id
 	 *
 	 * 
 	 */
-	protected $list_sku = array();
+	protected $all_sku = array();
 
 	/**
 	 * Get importer instance.
@@ -449,8 +457,9 @@ class Mad_Import_Product_CSV_Importer_Controller {
 				'update_existing' => $this->update_existing,
 				'delimiter'       => $this->delimiter,
         'post_type'       => $this->type,
-        'list_sku'        => array(0),
-        'related'       	=> array(0),
+        // 'list_sku_by_id'        => array(0),
+        // 'all_sku'        => array(0),
+        // 'related'       	=> array(0),
 			)
 		);
 		wp_enqueue_script( 'mad-import-product-import' );
