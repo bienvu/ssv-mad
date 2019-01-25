@@ -34,7 +34,7 @@ function mad_add_styles() {
 function alter_main_query_archive_page($query) {
     //gets the global query var object
     global $wp_query;
-    if ($query->is_main_query() && is_archive() && !is_admin()) {
+    if ($query->is_main_query() && is_post_type_archive( 'work' ) && !is_admin()) {
         $query->set('post_type', 'work');
         $query->set('posts_per_page', 15);
         $query->set('meta_key', 'weight');
@@ -167,6 +167,14 @@ function my_custom_upload_mimes($mimes = array()) {
   return $mimes;
 }
 
+add_filter('query_vars', function( $vars ){
+    //!!SUPER IMPORTANT!! - always *APPEND* $vars array (NOT re-assign)
+    $vars[] = 'page';
+    $vars[] = 'paged';
+
+    //!!SUPER IMPORTANT!! - always return $vars
+    return $vars;
+});
 /*------------------------------------*\
     Actions + Filters + ShortCodes
 \*------------------------------------*/
@@ -178,7 +186,8 @@ add_action('wp_enqueue_scripts', 'mad_add_styles'); // Add Theme Stylesheet
 add_action('init', 'mad_pagination'); // Add our sentius Pagination
 add_action('wp_footer', 'mad_add_scripts'); // Add Custom Scripts to wp_head
 add_action('upload_mimes', 'my_custom_upload_mimes'); // add csv file upload
-add_action('pre_get_posts','alter_main_query_archive_page');
+// add_action('pre_get_posts','alter_main_query_archive_page');
+// add_filter('request', 'mad_remove_page_from_query_string');
 
 // Remove Actions
 remove_action('wp_head', 'feed_links_extra', 3); // Display the links to the extra feeds such as category feeds

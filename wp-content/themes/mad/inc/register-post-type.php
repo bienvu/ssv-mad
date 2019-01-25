@@ -15,7 +15,7 @@
         'all_items'            => __('All Artistry', 'ssvmad')
       ),
       'public' => true,
-      'has_archive' => true,
+      'has_archive' => false,
       'show_in_menu' => true,
       'supports' => array('title','editor','custom-fields', 'revisions'),
       'show_in_nav_menus' => true,
