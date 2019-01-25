@@ -58,6 +58,14 @@
   &__logo {
     line-height: 0;
 
+    @media only screen and (min-width: $tablet) {
+      margin-top: 10px;
+    }
+
+    @media only screen and (min-width: $desktop) {
+      margin-top: 23px;
+    }
+
     @media only screen and (min-width: $desktopSupperLarge) {
       margin-top: 32px;
     }
@@ -65,6 +73,14 @@
     img {
       width: 250px;
       height: auto;
+
+      @media only screen and (min-width: $tablet) {
+        width: 136px;
+      }
+
+      @media only screen and (min-width: $desktop) {
+        width: 242px;
+      }
 
       @media only screen and (min-width: $desktopSupperLarge) {
         width: 340px;
@@ -74,11 +90,19 @@
     &.logo-1 {
       text-align: right;
 
+      @media only screen and (min-width: $desktop) {
+        margin-top: 24px;
+      }
+
       @media only screen and (min-width: $desktopSupperLarge) {
         margin-top: 34px;
       }
 
       img {
+        @media only screen and (min-width: $desktop) {
+          width: 213px;
+        }
+
         @media only screen and (min-width: $desktopSupperLarge) {
           width: 298px;
         }
@@ -213,6 +237,10 @@
   &__content {
     padding: 30px;
 
+    @media only screen and (min-width: $desktop) {
+      padding: 58px 35px;
+    }
+
     @media only screen and (min-width: $desktopSupperLarge) {
       padding: 81px 51px;
     }
@@ -231,19 +259,21 @@
     font-style: italic;
     font-size: 17px;
     font-weight: 400;
+    line-height: 1.2;
     
 
     @media only screen and (min-width: $tablet) {
+      font-size: 15px;
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      min-width: 150px;
+      min-width: 136px;
     }
 
     @media only screen and (min-width: $desktop) {
-      min-width: 229px;
-      font-size: 28px;
+      min-width: 242px;
+      font-size: 26px;
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {
@@ -278,7 +308,7 @@
     @media only screen and (min-width: $desktop) {
       position: static;
       transform: none;
-      margin-bottom: 15px;
+      margin-bottom: 11px;
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {
@@ -289,11 +319,17 @@
 
   &__subtitle {
     margin-bottom: 20px;
+    font-style: normal;
+
+    @media only screen and (min-width: $desktop) {
+      font-size: 17px;
+      line-height: 1.529;
+      margin-bottom: 10px;
+    }
 
     @media only screen and (min-width: $desktopSupperLarge) {
       font-size: 24px;
       line-height: 1.083333;
-      font-size: normal;
     }
   }
 
@@ -306,6 +342,7 @@
 
     @media only screen and (min-width: $desktop) {
       display: block;
+      padding-left: 15px;
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {
@@ -318,6 +355,22 @@
 
     p {
       font-style: italic;
+    }
+  }
+
+  &__link {
+    @media only screen and (min-width: $desktopSupperLarge) {
+      a {
+        margin-top: 49px;
+        margin-right: 29px;
+      }
+    }
+
+    @media only screen and (min-width: $desktop) {
+      a {
+        margin-top: 50px;
+        margin-right: 30px;
+      }
     }
   }
 
