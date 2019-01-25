@@ -83,7 +83,7 @@
                     "key": "field_5c4ab873bc6a6",
                     "label": "MultiLink",
                     "name": "multilink",
-                    "type": "repeater",
+                    "type": "group",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -92,17 +92,13 @@
                         "class": "",
                         "id": ""
                     },
-                    "collapsed": "",
-                    "min": 0,
-                    "max": 0,
-                    "layout": "table",
-                    "button_label": "",
+                    "layout": "block",
                     "sub_fields": [
                         {
-                            "key": "field_5c4ab88cbc6a7",
-                            "label": "Link",
-                            "name": "link",
-                            "type": "link",
+                            "key": "field_5c4ab97e0059f",
+                            "label": "Item",
+                            "name": "item",
+                            "type": "repeater",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -111,26 +107,52 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "return_format": "array"
-                        },
-                        {
-                            "key": "field_5c4ab8c2bc6a8",
-                            "label": "Classs Modifier",
-                            "name": "classs_modifier",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": ""
+                            "collapsed": "",
+                            "min": 0,
+                            "max": 0,
+                            "layout": "table",
+                            "button_label": "",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5c4ab98a005a0",
+                                    "label": "Link",
+                                    "name": "link",
+                                    "type": "link",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array"
+                                },
+                                {
+                                    "key": "field_5c4ab998005a1",
+                                    "label": "Class modifier",
+                                    "name": "class_modifier",
+                                    "type": "select",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "hidden-on-desktoponly": "Hidden On Desktop Only"
+                                    },
+                                    "default_value": [],
+                                    "allow_null": 1,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "return_format": "value",
+                                    "ajax": 0,
+                                    "placeholder": ""
+                                }
+                            ]
                         }
                     ]
                 }
@@ -154,5 +176,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1548400857
+    "modified": 1548401067
 }
