@@ -256,16 +256,6 @@ class Mad_Import_Post_Types {
             'parent' => 'mad_import_product_123'
           ));
         }
-        /*add field featured image if empty*/
-        if(empty(acf_get_fields('mad_import_product_featured_image_123'))) {
-          acf_add_local_field(array(
-            'key' => 'mad_import_product_featured_image_123',
-            'label' => 'Featured Image',
-            'name' => 'featured_image',
-            'type' => 'image',
-            'parent' => 'mad_import_product_123'
-          ));
-        }
         /*add field gallery if empty*/
         if(empty(acf_get_fields('mad_import_product_gallery_123'))) {
           acf_add_local_field(array(
@@ -290,7 +280,7 @@ class Mad_Import_Post_Types {
         if(empty(acf_get_fields('mad_import_product_related_123'))) {
           acf_add_local_field(array(
             'key' => 'mad_import_product_related_123',
-            'label' => 'You may also like',
+            'label' => 'Related Product',
             'name' => 'product_realted',
             'type' => 'post_object',
             'parent' => 'mad_import_product_123',

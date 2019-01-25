@@ -15,8 +15,7 @@
 		this.delimiter       = mad_import_product_import_params.delimiter;
 		this.security        = mad_import_product_import_params.import_nonce;
     this.post_type       = mad_import_product_import_params.post_type;
-    this.list_sku        = mad_import_product_import_params.list_sku;
-    this.related         = mad_import_product_import_params.related;
+    // this.all_sku        = mad_import_product_import_params.all_sku;
 
 		// Number of import successes/failures.
 		this.imported = 0;
@@ -51,25 +50,24 @@
 				delimiter       : $this.delimiter,
 				security        : $this.security,
         post_type       : $this.post_type,
-        list_sku				: $this.list_sku,
-        related				  : $this.related
+        // all_sku				: $this.all_sku,
 			},
 			dataType: 'json',
 			success: function( response ) {
-				window.console.log( response );
+        window.console.log( response );
 				if ( response.success ) {
 					$this.position  = response.data.position;
 					$this.imported += response.data.imported;
 					$this.failed   += response.data.failed;
 					$this.updated  += response.data.updated;
 					$this.skipped  += response.data.skipped;
-					$this.list_sku  = response.data.list_sku;
-					$this.related   = response.data.related;
 					$this.$form.find('.woocommerce-importer-progress').val( response.data.percentage );
 
-					if ( 'done' === response.data.position ) {
+					if ( 'done' === response.data.position && response.data.status_related == 'done' ) {
+						window.console.log ( response.data.status_related );
 						window.location = response.data.url + '&products-imported=' + parseInt( $this.imported, 10 ) + '&products-failed=' + parseInt( $this.failed, 10 ) + '&products-updated=' + parseInt( $this.updated, 10 ) + '&products-skipped=' + parseInt( $this.skipped, 10 );
-					} else {window.console.log( $this.related );
+					} else {
+            window.console.log( 1 );
 						$this.run_import();
 					}
 				}

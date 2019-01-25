@@ -206,7 +206,7 @@
     <div class="grid-gallery--mobile">
       <div class="container">
         <?php if($content_cener ): ?>
-          <div class="grid-gallery__quote hidden-on-desktop">
+          <div class="grid-gallery__quote hidden-on-tablet">
             <q><?php echo $content_cener; ?></q>
           </div>
         <?php endif; ?>
@@ -222,6 +222,20 @@
             <?php endif; ?>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="grid-gallery__link">
+        <?php 
+          $next_post = get_next_post();
+          $prev_post = get_previous_post();
+          $next_post_class = (empty($next_post)) ? 'disable' : "";
+          $prev_post_class = (empty($prev_post)) ? 'disable' : "";
+        ?>
+        
+        <a href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>" class="btn btn--large <?php echo $prev_post_class; ?>"><?php _e('prev', 'ssvmad'); ?></a>
+        <a href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>" class="btn btn--large <?php echo $next_post_class; ?>"><?php _e('next', 'ssvmad'); ?></a>
       </div>
     </div>
   </div>

@@ -29,12 +29,18 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
 	 */
 	protected $file = '';
 
+  /**
+   * The file position after the last read.
+   *
+   * @var int
+   */
+  public $file_position = 0;
+
 	/**
 	 * The file position after the last read.
 	 *
 	 * @var int
 	 */
-	protected $file_position = 0;
 
 	/**
 	 * Importer parameters.
@@ -164,201 +170,265 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
 	 * @return array|WC_Error
 	 */
 	protected function process_item( $data, $post_type ) {
-		global $wpdb;
-    if($post_type == 'work') {
-      $id = $wpdb->get_var($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_value = %s AND meta_key = 'weight' ", $data['weight']));
-    }
-    elseif ($post_type == 'product') {
-      $id = $wpdb->get_var($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_value = %s AND meta_key = 'sku' ", $data['sku']));
-    }
-
-    if ($data['category']) {
-      foreach ($data['category'] as $key => $value) {
-        $category_name = "";
-        $category_slug = "";
-        $category_name = explode('_', $value);
-        $category_name = ucwords(implode($category_name, " "));
-        $category_slug = explode('&', $value);
-        $category_slug = implode($category_slug, "");
-        if($post_type == 'product') {
-          $term_id = term_exists($category_slug, 'category');
-
-          if(empty($term_id)) {
-            $term_id_parent = !empty(term_exists($data['category'][$key-1])) ? term_exists($data['category'][$key-1]) : 0;
-            $term_id = wp_insert_term(
-              $category_name,
-              'category',
-              array(
-                'parent' => $term_id_parent['term_id'],
-                'slug'   => $category_slug,
-              )
-            );
-          } else {
-            $term_id_parent = !empty(term_exists($data['category'][$key-1], 'category')) ? term_exists($data['category'][$key-1], 'category') : 0;
-            $term_id = wp_update_term(
-              $term_id['term_id'],
-              'category',
-              array(
-                'parent' => $term_id_parent['term_id'],
-                'slug'   => $category_slug,
-              )
-            );
-          }
-        } elseif ($post_type == 'work') {
-          $term_id = term_exists($category_slug, 'product_filter');
-
-          if(empty($term_id)) {
-            $term_id_parent = !empty(term_exists($data['category'][$key-1], 'product_filter')) ? term_exists($data['category'][$key-1], 'product_filter') : 0;
-            $term_id = wp_insert_term(
-              $category_name,
-              'product_filter',
-              array(
-                'parent' => $term_id_parent['term_id'],
-                'slug'   => $category_slug,
-              )
-            );
-          } else {
-            $term_id_parent = !empty(term_exists($data['category'][$key-1], 'product_filter')) ? term_exists($data['category'][$key-1], 'product_filter') : 0;
-            $term_id = wp_update_term(
-              $term_id['term_id'],
-              'product_filter',
-              array(
-                'parent' => $term_id_parent['term_id'],
-                'slug'   => $category_slug,
-              )
-            );
-          }
-        }
-      }
-    }
-
-    unset($term_parent);
-    unset($category_name);
-    unset($category_slug);
-
-    if(empty($id)) {
-      $id = wp_insert_post(array(
-        'post_title' => $data['title'],
-        'post_content' => $data['description'],
-        'post_type' => $post_type,
-        'post_status'  => 'publish'
-      ));
-    } else {
-      $id = wp_update_post(array(
-        'ID' => $id,
-        'post_title' => $data['title'],
-        'post_content' => $data['description'],
-        'post_type' => $post_type,
-      ));
-
-      $updated = 'updated';
-    }
-
-    // instert term last to post
-    if($post_type == 'product') {
-      wp_set_post_terms( $id, $term_id['term_id'], 'category' );
-    } elseif($post_type == 'work') {
-      wp_set_post_terms( $id, $term_id['term_id'], 'product_filter' );
-    }
-    
-
-    // update weight
-    if(!empty($data['weight'])) {
-      if($post_type == 'product') {
-        update_field( 'mad_import_product_weight_123', $data['weight'], $id );
-      } elseif ($post_type == 'work') {
-        update_field( 'mad_import_work_weight_123', $data['weight'], $id );
-      }
-    } else {
+    try {
+  		global $wpdb;
       if($post_type == 'work') {
-        return new WP_Error( 'mad_import_weight',  __( 'Weight not found in post type work.', 'ssvmad' ) . ' ' . sprintf( __( 'Error: %s.', 'ssvmad' ), $response->get_error_message() ), array( 'status' => 400 ) );
+        $id = $wpdb->get_var($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_value = %s AND meta_key = 'weight' ", $data['weight']));
       }
-    }
+      elseif ($post_type == 'product') {
+        $id = $wpdb->get_var($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_value = %s AND meta_key = 'sku' ", $data['sku']));
+      }
 
-    // update SKU
-    if(!empty($data['sku'])) {
+      // save sku 
       if($post_type == 'product') {
-        update_field( 'mad_import_product_sku_123', $data['sku'], $id );
-      }
-    } else {
-      if($post_type == 'product') {
-        return new WP_Error( 'mad_import_sku',  __( 'SKU not found in post type product.', 'ssvmad' ) . ' ' . sprintf( __( 'Error: %s.', 'ssvmad' ), $response->get_error_message() ), array( 'status' => 400 ) );
-      }
-    }
-    // update Featured image
-    if(!empty($data['featured_image'])) {
+        $list_sku = array_filter( (array) get_user_option( 'product_import_list_sku' ) );
 
-    	$upload = $this->set_image_data($data['featured_image']);
-      // checl featured image exit or error
-      if(!($upload[0] instanceof WP_Error)) {
-        $images = $this->set_field_image(array($upload), $id);
-
-        if($post_type == 'product') {
-          update_field( 'mad_import_product_featured_image_123', $images[0], $id );
-        } elseif ($post_type == 'work') {
-          update_field( 'mad_import_work_featured_image_123', $images[0], $id );
+        if(in_array($data['sku'], $list_sku)) {
+          return new WP_Error( 'sku_repeated', sprintf( __( 'Sku repeated: %s.', 'ssvmad' ), $data['sku'] ), array(
+            'title'     => $data['title'],
+            'status' => 401,
+            'position' => $this->get_percent_complete(),
+          ) );
         }
-      }
-    }
-    // update gallery
-    if(!empty($data['gallery'])) {
-    	foreach ($data['gallery'] as $image) {
-    		if($image) {
-		    	$gallery[] = $this->set_image_data($image);
-		    }
-    	}
-      // check gallery exits or error
-      $i = 1;
-      foreach ($gallery as $value) {
-        if ($value instanceof WP_Error) {
-          $i = 0;
-        }
-      }
-      // check $i = 1 => gallery processing success
-      if($i) {
-        $images = $this->set_field_image($gallery, $id);
 
-        if($post_type == 'product') {
-          update_field( 'mad_import_product_gallery_123', $images, $id );
-        } elseif ($post_type == 'work') {
-          update_field( 'mad_import_work_gallery_123', $images, $id );
-        }
+        $list_sku   = array_merge( $list_sku, array($data['sku']) );
+        update_user_option( get_current_user_id(), 'product_import_list_sku', $list_sku );
       }
 
-      unset($i);
-    }
-    // update you may also like
-    if(!empty($data['related'])) {
-      if($post_type == 'product') {
-        foreach ($data['related'] as $image) {
-          if($image) {
-            $related[$id] = $data['related'];
+      if ($data['category']) {
+        foreach ($data['category'] as $key => $value) {
+          $category_name = "";
+          $category_slug = "";
+          $category_name = explode('_', $value);
+          $category_name = ucwords(implode($category_name, " "));
+          $category_slug = explode('&', $value);
+          $category_slug = implode($category_slug, "");
+          if($post_type == 'product') {
+            $term_id = term_exists($category_slug, 'category');
+
+            if(empty($term_id)) {
+              $term_id_parent = !empty(term_exists($data['category'][$key-1], 'category')) ? term_exists($data['category'][$key-1], 'category') : 0;
+              $term_id = wp_insert_term(
+                $category_name,
+                'category',
+                array(
+                  'parent' => $term_id_parent['term_id'],
+                  'slug'   => $category_slug,
+                )
+              );
+            } else {
+              $term_id_parent = !empty(term_exists($data['category'][$key-1], 'category')) ? term_exists($data['category'][$key-1], 'category') : 0;
+              $term_id = wp_update_term(
+                $term_id['term_id'],
+                'category',
+                array(
+                  'parent' => $term_id_parent['term_id'],
+                  'slug'   => $category_slug,
+                )
+              );
+            }
+          } elseif ($post_type == 'work') {
+            $term_id = term_exists($category_slug, 'product_filter');
+
+            if(empty($term_id)) {
+              $term_id_parent = !empty(term_exists($data['category'][$key-1], 'product_filter')) ? term_exists($data['category'][$key-1], 'product_filter') : 0;
+              $term_id = wp_insert_term(
+                $category_name,
+                'product_filter',
+                array(
+                  'parent' => $term_id_parent['term_id'],
+                  'slug'   => $category_slug,
+                )
+              );
+            } else {
+              $term_id_parent = !empty(term_exists($data['category'][$key-1], 'product_filter')) ? term_exists($data['category'][$key-1], 'product_filter') : 0;
+              $term_id = wp_update_term(
+                $term_id['term_id'],
+                'product_filter',
+                array(
+                  'parent' => $term_id_parent['term_id'],
+                  'slug'   => $category_slug,
+                )
+              );
+            }
           }
         }
       }
-    }
-    // update filter post type product
-    if(!empty($data['filter'])) {
-      if($post_type == 'product') {
-        $term_id = term_exists($data['filter'], 'product_filter');
 
-        if(empty($term_id)) {
-          $term_id = wp_insert_term($data['filter'], 'product_filter');
+      unset($term_parent);
+      unset($category_name);
+      unset($category_slug);
+      unset($term_id_parent);
+
+      if(empty($id)) {
+        $id = wp_insert_post(array(
+          'post_title' => $data['title'],
+          'post_content' => $data['description'],
+          'post_type' => $post_type,
+          'post_status'  => 'publish'
+        ));
+      } else {
+        $id = wp_update_post(array(
+          'ID' => $id,
+          'post_title' => $data['title'],
+          'post_content' => $data['description'],
+          'post_type' => $post_type,
+        ));
+
+        $updated = 'updated';
+      }
+
+      // instert term last to post
+      if($post_type == 'product') {
+        wp_set_post_terms( $id, $term_id['term_id'], 'category' );
+      } elseif($post_type == 'work') {
+        wp_set_post_terms( $id, $term_id['term_id'], 'product_filter' );
+      }
+      
+
+      // update weight
+      if(!empty($data['weight'])) {
+        if($post_type == 'product') {
+          update_field( 'mad_import_product_weight_123', $data['weight'], $id );
+        } elseif ($post_type == 'work') {
+          update_field( 'mad_import_work_weight_123', $data['weight'], $id );
+        }
+      } else {
+        if($post_type == 'work') {
+          return new WP_Error( 'mad_import_weight',  __( 'Weight not found in post type work.', 'ssvmad' ) . ' ' . sprintf( __( 'Error: %s.', 'ssvmad' ), $response->get_error_message() ), array(
+            'title'     => $data['title'],
+            'status' => 400,
+            'position' => $this->get_percent_complete(),
+          ) );
+        }
+      }
+
+      // update SKU
+      if(!empty($data['sku'])) {
+        if($post_type == 'product') {
+          update_field( 'mad_import_product_sku_123', $data['sku'], $id );
+        }
+      } else {
+        if($post_type == 'product') {
+          return new WP_Error( 'mad_import_sku',  __( 'SKU not found in post type product.', 'ssvmad' ) . ' ' . sprintf( __( 'Error: %s.', 'ssvmad' ), $response->get_error_message() ), array(
+            'title'     => $data['title'],
+            'status' => 401,
+            'position' => $this->get_percent_complete(),
+          ) );
+        }
+      }
+
+      // update Featured image
+      if(!empty($data['featured_image'])) {
+
+      	$upload = $this->set_image_data($data['featured_image']);
+
+        // checl featured image exit or error
+        if(!is_wp_error($upload ) || !empty($upload)) {
+          $images = $this->set_field_image(array($upload), $id);
+
+          if($images) {
+            if($post_type == 'product') {
+              update_field( 'mad_import_product_featured_image_123', $images[0], $id );
+            } elseif ($post_type == 'work') {
+              update_field( 'mad_import_work_featured_image_123', $images[0], $id );
+            }
+          }
+        } else {
+          // return new WP_Error( 'image_not_found', sprintf( __( 'Image Not Found: %s.', 'ssvmad' ), $data['featured_image'] ) );
+        }
+      }
+
+      // check gallery
+      if (empty($data['gallery'])) {
+        if ($post_type == 'product') {
+          if (!empty($data['featured_image'])) {
+            $data['gallery'] = array();
+            array_unshift($data['gallery'], $data['featured_image']);
+          }
+        }
+      }
+
+      // update gallery
+      if(!empty($data['gallery'])) {
+        if ($post_type == 'product') {
+          if (!empty($data['featured_image'])) {
+            array_unshift($data['gallery'], $data['featured_image']);
+          }
         }
 
-        // insert term for post
-        wp_set_post_terms( $id, $term_id, 'product_filter' );
-      }
-    }
-    // save sku by id
-    $list_sku[$data['sku']] = $id;
+        if(!empty($data['featured_image'])) {
+          $data['featured_image'] = array_unique($data['featured_image']);
+        }
 
-		return array(
-			'id'      => $id,
-      'updated' => $updated,
-      'related' => $related,
-      'list_sku'     => $list_sku
-		);
+      	foreach ($data['gallery'] as $image) {
+      		if($image) {
+            $gallery_item = $this->set_image_data($image);
+            if (!empty($gallery_item)) {
+              $gallery[] = $gallery_item;
+            }
+  		    }
+      	}
+
+        unset($gallery_item);
+
+        // check gallery exits or error
+        if(!empty($gallery)) {
+          $i = 1;
+          foreach ($gallery as $value) {
+            if (is_wp_error($value)) {
+              $i = 0;
+              break;
+            }
+          }
+          // check $i = 1 => gallery processing success
+          if($i) {
+            $images = $this->set_field_image($gallery, $id);
+
+            if($post_type == 'product') {
+              update_field( 'mad_import_product_gallery_123', $images, $id );
+            } elseif ($post_type == 'work') {
+              update_field( 'mad_import_work_gallery_123', $images, $id );
+            }
+          } else {
+            // $gallery = implode(",", $gallery);
+            // return new WP_Error( 'mad_import_image_not_found', sprintf( __( 'Image Not Found: %s.', 'ssvmad' ), $gallery ), array( 'status' => 400 ) );
+          }
+
+          unset($i);
+        }
+      }
+
+      // update user option related products
+      if(!empty($data['related'])) {
+        $related = array_filter( (array) get_user_option( 'product_import_related' ) );
+        $related   = $related + array($id => $data['related']);
+        update_user_option( get_current_user_id(), 'product_import_related', $related );
+      }
+
+      // update filter post type product
+      if(!empty($data['filter'])) {
+        if($post_type == 'product') {
+          $term_id = term_exists($data['filter'], 'product_filter');
+
+          if(empty($term_id)) {
+            $term_id = wp_insert_term($data['filter'], 'product_filter');
+          }
+
+          // insert term for post
+          wp_set_post_terms( $id, $term_id, 'product_filter' );
+        }
+      }
+
+  		return array(
+  			'id'      => $id,
+        'updated' => $updated,
+        'list_sku' => $data['sku'],
+  		);
+    } catch ( Exception $e ) {
+      return new WP_Error( 'mad_import_product_importer_error', $e->getMessage(), array( 'status' => $e->getCode(),'title'     => $data['title'],
+            'position' => $this->get_percent_complete(), ) );
+    }
 	}
 
 	/**
@@ -377,13 +447,22 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
       $image_uri = '%/'.$image_name;
       $image_id = $wpdb->get_var($wpdb->prepare("SELECT ID from $wpdb->posts WHERE guid LIKE %s", $image_uri));
 
+      // test
       if($image_id) {
-        wp_delete_attachment($image_id);
+        $upload['file'] = $upload_arr['path'].'/'.$image_name;
+        $upload['url']  = $upload_arr['url'].'/'.$image_name;
+        $upload['type']  = 'image/jpeg';
+
+        return $upload;
+      }
+
+      if ($image_id) {
+        unlink($upload_arr['path'].'/'.$image_name);
       }
 		}
 
-    if (empty(file_exists($upload_arr['path'].'/import/'.$image_name))) {
-      return new WP_Error( 'mad_import_image_not_found', sprintf( __( 'Image Not Found: %s.', 'ssvmad' ), $image_url ), array( 'status' => 400 ) );
+    if (!file_exists($upload_arr['path'].'/import/'.$image_name)) {
+      return "";
     }
 
 		$response = wp_safe_remote_get(
@@ -393,9 +472,11 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
 	  );
 
 		if ( is_wp_error( $response ) ) {
-        return new WP_Error( 'mad_import_rest_invalid_remote_image_url', sprintf( __( 'Error getting remote image %s.', 'ssvmad' ), $image_url ) . ' ' . sprintf( __( 'Error: %s.', 'ssvmad' ), $response->get_error_message() ), array( 'status' => 400 ) );
+        return new WP_Error( 'mad_import_rest_invalid_remote_image_url', sprintf( __( 'Error getting remote image %s.', 'ssvmad' ), $image_url ) . ' ' . sprintf( __( 'Error: %s.', 'ssvmad' ), $response->get_error_message() ), array( 'status' => 400,'title'     => $image_name,
+            'position' => $this->get_percent_complete(), ) );
     } elseif ( 200 !== wp_remote_retrieve_response_code( $response ) ) {
-        return new WP_Error( 'mad_import_rest_invalid_remote_image_url', sprintf( __( 'Error getting remote image %s.', 'ssvmad' ), $image_url ), array( 'status' => 400 ) );
+        return new WP_Error( 'mad_import_rest_invalid_remote_image_url', sprintf( __( 'Error getting remote image %s.', 'ssvmad' ), $image_url ), array( 'status' => 400,'title'     => $image_name,
+            'position' => $this->get_percent_complete(),  ) );
     }
 
 		$upload = wp_upload_bits( $image_name, '', wp_remote_retrieve_body( $response ) );
@@ -407,7 +488,8 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
         @unlink( $upload['file'] );
         unset( $upload );
 
-        return new WP_Error( 'mad_import_rest_image_upload_file_error', __( 'Zero size file downloaded.', 'ssvmad' ), array( 'status' => 400 ) );
+        return new WP_Error( 'mad_import_rest_image_upload_file_error', __( 'Zero size file downloaded.', 'ssvmad' ), array( 'status' => 400,'title'     => $image_name,
+            'position' => $this->get_percent_complete(),  ) );
     }
 
     return $upload;
@@ -468,6 +550,9 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
         $images[] = $attach_id;
         unset($attach_id);
       } else {
+        // update_attached_file( $image_id, $value['url'] );
+        // $attach_data = wp_generate_attachment_metadata( $image_id, $value['url'] );
+        // wp_update_attachment_metadata( $image_id, $attach_data );
         $images[] = $image_id;
       }
     }

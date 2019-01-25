@@ -52,7 +52,7 @@ class Mad_Import_Product_CSV_Importer extends Mad_Import_Product_Importer {
 		$this->params    = wp_parse_args( $params, $default_args );
 		$this->file      = $file;
     $this->type      = $this->params['post_type'];
-    $this->list_sku  = $this->params['list_sku'];
+    $this->all_sku  = $this->params['all_sku'];
     $this->related   = $this->params['related'];
 
 		if ( isset( $this->params['mapping']['from'], $this->params['mapping']['to'] ) ) {
@@ -299,61 +299,46 @@ class Mad_Import_Product_CSV_Importer extends Mad_Import_Product_Importer {
         $data['imported'][] = $result['id'];
       }
 
-      // save relateds import last
-      $data['related'][] = $result['related'];
-      $data['list_sku'][]     = $result['list_sku'];
-
       $index++;
+
+      if ( $this->params['prevent_timeouts'] && ( $this->time_exceeded() || $this->memory_exceeded() ) ) {
+        $this->file_position = $this->file_positions[ $index ];
+        break;
+      }
     }
 
     return $data;
   }
-  // import related
-	public function import_related($related, $list_sku) {
-    // remove element first
-    array_shift($related);
-    array_shift($list_sku);
-    
-    $skus = array();
-    $relateds = array();
-    // process sku
-    foreach ($list_sku as $value) {
-      foreach ($value as $sku => $id) {
-        if(empty($sku)) {
+
+  public function import_related()
+  {
+    global $wpdb;
+
+    $related = array_filter( (array) get_user_option( 'product_import_related' ) );
+    $related_row =  get_user_option( 'product_import_related_row' );
+    foreach ($related as $id => $sku_by_id) {
+      if(!empty($related_row)) {
+        if($id != $related_row) {
           continue;
         }
-        
-        $skus[$sku] = $id;
       }
-    }
-    unset($list_sku);
-    // process related
-    foreach ($related as $value) {
-      foreach ($value as $id => $sku) {
-        if(empty($sku)) {
-          continue;
-        }
 
-        $relateds[$id] = $sku;
-      }
-    }
-    unset($related);
-    // processing related by sku
-    foreach ($relateds as $id => $value) {
-      $related_id = array();
-      foreach ($value as $id_child => $sku) {
-        $id_by_sku = !empty($skus[$sku]) ? $skus[$sku] : '';
+      foreach ($sku_by_id as $value) {
+        $list_id_by_sku[] = $wpdb->get_var($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_value = %s AND meta_key = 'sku' ", $value));
 
-        if(!empty($id_by_sku)) {
-          $related_id[] = $id_by_sku;
+        if ( $this->params['prevent_timeouts'] && ( $this->time_exceeded() || $this->memory_exceeded() ) ) {
+          update_user_option( get_current_user_id(), 'product_import_related_row', $id );
+          return "process1";
         }
       }
+      update_field('mad_import_product_related_123',$list_id_by_sku, $id);
+      unset($list_id_by_sku);
 
-      // update field
-      update_field( 'mad_import_product_related_123', $related_id, $id);
+      if ( $this->params['prevent_timeouts'] && ( $this->time_exceeded() || $this->memory_exceeded() ) ) {
+        update_user_option( get_current_user_id(), 'product_import_related_row', $id );
+        return "process2";
+      }
     }
-
-    unset($relateds);
-    unset($skus);
-	}
+    return "done";
+  }
 }

@@ -44,8 +44,9 @@
     }
   
     img {
-      width: 100%;
+      width: 101%;
       height: auto;
+      max-width: inherit;
     }
   }
 
@@ -57,9 +58,31 @@
   &__logo {
     line-height: 0;
 
+    @media only screen and (min-width: $desktopSupperLarge) {
+      margin-top: 32px;
+    }
+
     img {
       width: 250px;
       height: auto;
+
+      @media only screen and (min-width: $desktopSupperLarge) {
+        width: 340px;
+      }
+    }
+
+    &.logo-1 {
+      text-align: right;
+
+      @media only screen and (min-width: $desktopSupperLarge) {
+        margin-top: 34px;
+      }
+
+      img {
+        @media only screen and (min-width: $desktopSupperLarge) {
+          width: 298px;
+        }
+      }
     }
   }
 
@@ -68,7 +91,7 @@
   }
 
   &__top {
-    $width: 25.15%;
+    $width: 25.0366%;
     display: flex;
     flex-wrap: wrap;
     margin-left: $width;
@@ -82,17 +105,17 @@
     
     > .grid-gallery__item {
       &:nth-child(2n) {
-        width: 57.815%;
+        width: 57.8125%;
       }
 
       &:nth-child(2n+1) {
-        width: calc(100% - 57.815%);
+        width: calc(100% - 57.8125%);
       }
     }
   }
 
   &__bottom {
-    $width: 32.675%;
+    $width: 32.57687%;
     display: flex;
     flex-wrap: wrap;
     margin-left: $width;
@@ -106,16 +129,16 @@
 
     > .grid-gallery__item {
       &:nth-child(5n+2) {
-        width: 39.304%;
+        width: calc(100% - 60.6948968%);
       }
       &:nth-child(5n+3) {
-        width: calc(100% - 39.304%);
+        width: 60.6948968%;
       }
       &:nth-child(5n+4) {
-        width: 48.425%;
+        width: 48.4256243%;
       }
       &:nth-child(5n+5) {
-        width: calc(100% - 48.425%);
+        width: calc(100% - 48.4256243%);
       }
     }
   }
@@ -190,6 +213,10 @@
   &__content {
     padding: 30px;
 
+    @media only screen and (min-width: $desktopSupperLarge) {
+      padding: 81px 51px;
+    }
+
     p:last-of-type {
       margin: 0;
     }
@@ -203,9 +230,10 @@
     font-family: Georgia;
     font-style: italic;
     font-size: 17px;
+    font-weight: 400;
     
 
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: $tablet) {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -213,38 +241,60 @@
       min-width: 150px;
     }
 
-    @media only screen and (min-width: 1024px) {
+    @media only screen and (min-width: $desktop) {
       min-width: 229px;
       font-size: 28px;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      font-size: 36px;
+      line-height: 1.222222;
+      min-width: 320px;
+    }
+
+    p:last-of-type {
+      margin: 0;
     }
   }
 
   &__title {
     text-transform: capitalize;
     font-size: 15px;
+    line-height: 1.2;
     margin: 0;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     
-    @media only screen and (min-width: 480px) {
+    @media only screen and (min-width: $mobileLandScape) {
       font-size: 21px;
     }
     
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: $tablet) {
       font-size: 28px;
     }
 
-    @media only screen and (min-width: 1366px) {
+    @media only screen and (min-width: $desktop) {
       position: static;
       transform: none;
       margin-bottom: 15px;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      font-size: 39px;
+      margin-bottom: 21px;
     }
   }
 
   &__subtitle {
     margin-bottom: 20px;
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      font-size: 24px;
+      line-height: 1.083333;
+      font-size: normal;
+    }
   }
 
   &__description {
@@ -254,29 +304,45 @@
     padding-left: 20px;
     display: none;
 
-    @media only screen and (min-width: 1366px) {
+    @media only screen and (min-width: $desktop) {
       display: block;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      font-size: 24px;
+      line-height: 1.5;
+      font-style: normal;
+      font-weight: 400;
+      padding-left: 21px;
+    }
+
+    p {
+      font-style: italic;
     }
   }
 
   &--mobile {
+    @media only screen and (min-width: $desktop) {
+      display: none;
+    }
+
     .grid-gallery__description {
       display: none;
 
-      @media only screen and (max-width: 1365px) {
+      @media only screen and (max-width: $tabletOnly) {
         display: block;
         padding: 0;
       }
     }
 
     .grid-gallery__content {
-      @media only screen and (max-width: 1365px) {
+      @media only screen and (max-width: $tabletOnly) {
         padding: 20px 0;
       }
     }
 
     .grid-gallery__quote {
-      @media only screen and (max-width: 767px) {
+      @media only screen and (max-width: $mobileOnly) {
         padding: 0;
         padding-top: 20px;
       }
