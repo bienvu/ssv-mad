@@ -18,8 +18,8 @@
                   </div>
 
                   <div class="footer__image">
-                    <p><a href="<?php echo $footer_contact['link']['url']; ?>" target="<?php echo $footer_contact['link']['target']; ?>"><?php _e('Click through to', 'madtheme') ?></a></p>
-                    <p><a href="<?php echo $footer_contact['link']['url']; ?>" target="<?php echo $footer_contact['link']['target']; ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/frenchtables_logo.svg" alt=""></a></p>
+                    <p><a href="<?php echo $footer_contact['link_image']['url']; ?>" target="<?php echo $footer_contact['link_image']['target']; ?>"><?php _e('Click through to', 'madtheme') ?></a></p>
+                    <p><a href="<?php echo $footer_contact['link_image']['url']; ?>" target="<?php echo $footer_contact['link_image']['target']; ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/frenchtables_logo.svg" alt=""></a></p>
                   </div>
                 </div>
               </div>

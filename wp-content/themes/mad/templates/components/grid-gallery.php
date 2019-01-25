@@ -46,21 +46,23 @@
 
         <div class="grid-gallery__item">
           <div class="grid-gallery__content">
-            <?php if($content_top['title']): ?>
-              <h1 class="grid-gallery__title"><?php echo $content_top['title']; ?></h1>
-            <?php endif; ?>
-            
-            <div class="grid-gallery__description">
-              <?php if($content_top['subtitle']): ?>
-                <h4 class="grid-gallery__subtitle">Artisan’s vision statement</h4>
+            <div class="grid-gallery__body">
+              <?php if($content_top['title']): ?>
+                <h1 class="grid-gallery__title"><?php echo $content_top['title']; ?></h1>
               <?php endif; ?>
               
-              <?php if($content_top['body']): ?>
-                <?php echo $content_top['body']; ?>
-              <?php endif; ?>
+              <div class="grid-gallery__description">
+                <?php if($content_top['subtitle']): ?>
+                  <h4 class="grid-gallery__subtitle">Artisan’s vision statement</h4>
+                <?php endif; ?>
+                
+                <?php if($content_top['body']): ?>
+                  <?php echo $content_top['body']; ?>
+                <?php endif; ?>
 
-              <div class="grid-gallery__logo logo-1">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/markalexander.svg" alt="">
+                <div class="grid-gallery__logo logo-1">
+                  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/markalexander.svg" alt="">
+                </div>
               </div>
             </div>
           </div>
@@ -212,14 +214,16 @@
         <?php endif; ?>
 
         <div class="grid-gallery__content">
-          <div class="grid-gallery__description">
-            <?php if($content_top['subtitle']): ?>
-              <h4 class="grid-gallery__subtitle">Artisan’s vision statement</h4>
-            <?php endif; ?>
+          <div class="grid-gallery__body">
+            <div class="grid-gallery__description">
+              <?php if($content_top['subtitle']): ?>
+                <h4 class="grid-gallery__subtitle">Artisan’s vision statement</h4>
+              <?php endif; ?>
 
-            <?php if($content_top['body']): ?>
-              <?php echo $content_top['body']; ?>
-            <?php endif; ?>
+              <?php if($content_top['body']): ?>
+                <?php echo $content_top['body']; ?>
+              <?php endif; ?>
+            </div>
           </div>
         </div>
       </div>
@@ -230,12 +234,11 @@
         <?php 
           $next_post = get_next_post();
           $prev_post = get_previous_post();
-          $next_post_class = (empty($next_post)) ? 'disable' : "";
-          $prev_post_class = (empty($prev_post)) ? 'disable' : "";
+          $next_post_class = (empty($next_post)) ? 'disable btn--light-gray' : "btn--gray";
+          $prev_post_class = (empty($prev_post)) ? 'disable btn--light-gray' : "btn--gray";
         ?>
         
-        <a href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>" class="btn btn--large <?php echo $prev_post_class; ?>"><?php _e('prev', 'ssvmad'); ?></a>
-        <a href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>" class="btn btn--large <?php echo $next_post_class; ?>"><?php _e('next', 'ssvmad'); ?></a>
+        <a href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>" class="btn btn--large  <?php echo $prev_post_class; ?>"><?php _e('previous', 'ssvmad'); ?></a><a href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>" class="btn btn--large <?php echo $next_post_class; ?>"><?php _e('next', 'ssvmad'); ?></a>
       </div>
     </div>
   </div>
