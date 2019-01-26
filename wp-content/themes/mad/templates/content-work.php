@@ -1,7 +1,21 @@
+<?php
+  $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+  
+  $args = array(
+          'post_type'       => 'work',
+          'taxonomy'        => 'product_filter',
+          'posts_per_page'  => '15',
+          'meta_key'        => 'weight',
+          'orderby'         => array('meta_value_num' => 'ASC', 'ID' => 'ASC'),
+          'paged'           => $paged,
+  );
+
+  $wp_query = new WP_Query($args);
+?>
 <div class="masonry-wrap">
   <div class="container">
     <ul class="masonry js-mas">
-      <?php if (have_posts()): while (have_posts()) : the_post(); 
+      <?php if ($wp_query->have_posts()): while ($wp_query->have_posts()) : $wp_query->the_post(); 
         $image = get_field('featured_image');
         $custom_mansonry_class = $image['sizes']['large-height'] > $image['sizes']['large-width'] ? 'masonry__item--2rows' : '';
       ?>
@@ -17,7 +31,7 @@
           </div>
         </div>
       </li>
-      <?php endwhile; ?>
+      <?php endwhile; wp_reset_postdata(); ?>
 
       <?php else: ?>
 
@@ -31,3 +45,11 @@
     </ul>
   </div>
 </div>
+
+<?php
+
+  get_template_part('templates/pagination');
+
+  // Reset main query object
+  wp_reset_query();
+?>

@@ -1516,6 +1516,13 @@
                 "operator": "==",
                 "value": "artistry"
             }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-work.php"
+            }
         ]
     ],
     "menu_order": 0,
@@ -1528,5 +1535,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1548235270
+    "modified": 1548482842
 }
