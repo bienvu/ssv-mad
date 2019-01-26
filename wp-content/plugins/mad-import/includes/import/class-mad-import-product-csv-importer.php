@@ -313,29 +313,27 @@ class Mad_Import_Product_CSV_Importer extends Mad_Import_Product_Importer {
   public function import_related()
   {
     global $wpdb;
+    $this->start_time = time();
+    $index = 0;
 
     $related = array_filter( (array) get_user_option( 'product_import_related' ) );
     $related_row =  get_user_option( 'product_import_related_row' );
     foreach ($related as $id => $sku_by_id) {
+      $index++;
       if(!empty($related_row)) {
-        if($id != $related_row) {
+        if($index <= (int) $related_row) {
           continue;
         }
       }
 
       foreach ($sku_by_id as $value) {
         $list_id_by_sku[] = $wpdb->get_var($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_value = %s AND meta_key = 'sku' ", $value));
-
-        if ( $this->params['prevent_timeouts'] && ( $this->time_exceeded() || $this->memory_exceeded() ) ) {
-          update_user_option( get_current_user_id(), 'product_import_related_row', $id );
-          return "process1";
-        }
       }
       update_field('mad_import_product_related_123',$list_id_by_sku, $id);
       unset($list_id_by_sku);
 
       if ( $this->params['prevent_timeouts'] && ( $this->time_exceeded() || $this->memory_exceeded() ) ) {
-        update_user_option( get_current_user_id(), 'product_import_related_row', $id );
+        update_user_option( get_current_user_id(), 'product_import_related_row', $index );
         return "process2";
       }
     }

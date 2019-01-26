@@ -133,10 +133,9 @@ class Mad_Import_Admin_Importers {
 			'start_pos'       => isset( $_POST['position'] ) ? absint( $_POST['position'] ) : 0, // PHPCS: input var ok.
 			'mapping'         => isset( $_POST['mapping'] ) ? (array) wc_clean( wp_unslash( $_POST['mapping'] ) ) : array(), // PHPCS: input var ok.
 			'update_existing' => isset( $_POST['update_existing'] ) ? (bool) $_POST['update_existing'] : false, // PHPCS: input var ok.
-			'lines'           => apply_filters( 'woocommerce_product_import_batch_size', 15 ),
+			'lines'           => apply_filters( 'woocommerce_product_import_batch_size', 5 ),
 			'parse'           => true,
       'post_type'       => isset( $_POST['post_type'] ) ? wc_clean( wp_unslash( $_POST['post_type'] ) ) : '',
-      // 'all_sku'       => isset( $_POST['all_sku'] ) ? (array) wc_clean( wp_unslash( $_POST['all_sku'] ) ) : '',
 		);
 
 		// Log failures.
@@ -146,6 +145,8 @@ class Mad_Import_Admin_Importers {
       $error_log = array();
       update_user_option( get_current_user_id(), 'product_import_list_sku', array() );
       update_user_option( get_current_user_id(), 'product_import_related', array() );
+      update_user_option( get_current_user_id(), 'product_import_related_row', 0 );
+      update_user_option( get_current_user_id(), 'product_import_error_log', array() );
 		}
 
 		$importer         = Mad_Import_Product_CSV_Importer_Controller::get_importer( $file, $params );

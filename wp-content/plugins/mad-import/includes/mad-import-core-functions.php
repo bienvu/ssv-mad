@@ -19,8 +19,3 @@
           return is_scalar( $var ) ? sanitize_text_field( $var ) : $var;
       }
   }
-
-  function mad_import_get_product_id_by_sku( $sku ) {
-    $data_store = Mad_Import_Data_Store::load( 'product' );
-    return $data_store->get_product_id_by_sku( $sku );
-  }

@@ -141,13 +141,17 @@
         </div>
 
         <div class="grid-gallery__item">
-          <div class="grid-gallery__quote hidden-on-mobile">
+          <div class="grid-gallery__quote">
             <?php if($content_cener ): ?>
-              <q><?php echo $content_cener; ?></q>
+              <q  class="hidden-on-mobile"><?php echo $content_cener; ?></q>
             <?php endif; ?>
 
-            <div class="grid-gallery__logo">
+            <div class="grid-gallery__logo hidden-on-mobile">
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/mad_logo.svg" alt="">
+            </div>
+
+            <div class="grid-gallery__logo logo-2 hidden-on-tablet">
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/mad_logo_2.svg" alt="">
             </div>
           </div>
         </div>
@@ -238,7 +242,7 @@
           $prev_post_class = (empty($prev_post)) ? 'disable btn--light-gray' : "btn--gray";
         ?>
         
-        <a href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>" class="btn btn--large  <?php echo $prev_post_class; ?>"><?php _e('previous', 'ssvmad'); ?></a><a href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>" class="btn btn--large <?php echo $next_post_class; ?>"><?php _e('next', 'ssvmad'); ?></a>
+        <a href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>" class="btn btn--paged  <?php echo $prev_post_class; ?>"><?php _e('previous', 'ssvmad'); ?></a><a href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>" class="btn btn--paged <?php echo $next_post_class; ?>"><?php _e('next', 'ssvmad'); ?></a>
       </div>
     </div>
   </div>
