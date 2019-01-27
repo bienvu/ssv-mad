@@ -74,6 +74,18 @@
     }
   }
 
+  &--paged {
+    min-width: auto;
+
+    @media only screen and (min-width: $tablet) {
+      min-width: 184px;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      min-width: 263px;
+    }
+  }
+
   &--no-change {
     @media only screen and (min-width: $desktop) {
       font-size: 14px;

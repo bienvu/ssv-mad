@@ -324,7 +324,7 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
       	$upload = $this->set_image_data($data['featured_image']);
 
         // checl featured image exit or error
-        if(!is_wp_error($upload ) || !empty($upload)) {
+        if(!is_wp_error($upload ) && !empty($upload)) {
           $images = $this->set_field_image(array($upload), $id);
 
           if($images) {
@@ -364,7 +364,7 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
       	foreach ($data['gallery'] as $image) {
       		if($image) {
             $gallery_item = $this->set_image_data($image);
-            if (!empty($gallery_item)) {
+            if (!empty($gallery_item) && !is_wp_error($gallery_item )) {
               $gallery[] = $gallery_item;
             }
   		    }
@@ -374,28 +374,16 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
 
         // check gallery exits or error
         if(!empty($gallery)) {
-          $i = 1;
-          foreach ($gallery as $value) {
-            if (is_wp_error($value)) {
-              $i = 0;
-              break;
-            }
-          }
-          // check $i = 1 => gallery processing success
-          if($i) {
-            $images = $this->set_field_image($gallery, $id);
+          $images = $this->set_field_image($gallery, $id);
 
-            if($post_type == 'product') {
-              update_field( 'mad_import_product_gallery_123', $images, $id );
-            } elseif ($post_type == 'work') {
-              update_field( 'mad_import_work_gallery_123', $images, $id );
-            }
-          } else {
-            // $gallery = implode(",", $gallery);
-            // return new WP_Error( 'mad_import_image_not_found', sprintf( __( 'Image Not Found: %s.', 'ssvmad' ), $gallery ), array( 'status' => 400 ) );
+          if($post_type == 'product') {
+            update_field( 'mad_import_product_gallery_123', $images, $id );
+          } elseif ($post_type == 'work') {
+            update_field( 'mad_import_work_gallery_123', $images, $id );
           }
-
-          unset($i);
+        } else {
+          // $gallery = implode(",", $gallery);
+          // return new WP_Error( 'mad_import_image_not_found', sprintf( __( 'Image Not Found: %s.', 'ssvmad' ), $gallery ), array( 'status' => 400 ) );
         }
       }
 
@@ -423,7 +411,6 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
   		return array(
   			'id'      => $id,
         'updated' => $updated,
-        'list_sku' => $data['sku'],
   		);
     } catch ( Exception $e ) {
       return new WP_Error( 'mad_import_product_importer_error', $e->getMessage(), array( 'status' => $e->getCode(),'title'     => $data['title'],
@@ -443,23 +430,17 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
 		$image_url = $upload_arr['url'].'/import/'.$image_name;
 
 		// return if file exits
-		if(file_exists($upload_arr['path'].'/'.$image_name)) {
-      $image_uri = '%/'.$image_name;
-      $image_id = $wpdb->get_var($wpdb->prepare("SELECT ID from $wpdb->posts WHERE guid LIKE %s", $image_uri));
+    $image_uri = '%/'.$image_name;
+    $image_id = $wpdb->get_var($wpdb->prepare("SELECT ID from $wpdb->posts WHERE guid LIKE %s", $image_uri));
 
-      // test
-      if($image_id) {
-        $upload['file'] = $upload_arr['path'].'/'.$image_name;
-        $upload['url']  = $upload_arr['url'].'/'.$image_name;
-        $upload['type']  = 'image/jpeg';
+    // no update image exist
+    if($image_id) {
+      $upload['file'] = $upload_arr['path'].'/'.$image_name;
+      $upload['url']  = $upload_arr['url'].'/'.$image_name;
+      $upload['type']  = 'image/jpeg';
 
-        return $upload;
-      }
-
-      if ($image_id) {
-        unlink($upload_arr['path'].'/'.$image_name);
-      }
-		}
+      return $upload;
+    }
 
     if (!file_exists($upload_arr['path'].'/import/'.$image_name)) {
       return "";
@@ -608,7 +589,7 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
 	 * @return bool
 	 */
 	protected function time_exceeded() {
-		$finish = $this->start_time + apply_filters( 'mad_import_product_importer_default_time_limit', 20 ); // 20 seconds
+		$finish = $this->start_time + apply_filters( 'mad_import_product_importer_default_time_limit', 10 ); // 10 seconds
 		$return = false;
 		if ( time() >= $finish ) {
 			$return = true;

@@ -190,12 +190,25 @@ label {
 
 blockquote,
 q {
-  p:first-of-type:before {
-    content: '\201c';
+  p:first-of-type {
+    position: relative;
+
+    &:before {
+      content: '\201c';
+      position: absolute;
+      right: 100%;
+      top: 0;
+    }
   }
 
-  p:last-of-type:after {
-    content: '\201d';
+  p:last-of-type {
+    position: relative;
+
+    &:after {
+      content: '\201d';
+      position: absolute;
+      bottom: 0;
+    }
   }
 }
 
