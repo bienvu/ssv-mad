@@ -3,12 +3,24 @@
   
   $args = array(
           'post_type'       => 'work',
-          'taxonomy'        => 'product_filter',
           'posts_per_page'  => '15',
           'meta_key'        => 'weight',
           'orderby'         => array('meta_value_num' => 'ASC', 'ID' => 'ASC'),
           'paged'           => $paged,
   );
+
+  $style = get_query_var('style', '');
+  // Taxonomy Parameters
+  if(!empty($style)) {
+    $args['tax_query'] = array(
+      array(
+        'taxonomy'          => 'product_filter',
+        'field'             => 'slug',
+        'terms'             => array(get_query_var('style')),
+        'operator'          => 'IN',
+      )
+    );
+  }
 
   $wp_query = new WP_Query($args);
 ?>
