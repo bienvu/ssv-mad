@@ -28,6 +28,11 @@ function mad_add_styles() {
     wp_enqueue_style('styles');
 }
 
+function add_query_vars_filter( $vars ) {
+  $vars[] = "style";
+  return $vars;
+}
+
 /**
  * Function alter main query of category page.
  */
@@ -206,6 +211,7 @@ remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 /*----------*\
     Filters
 \*----------*/
+add_filter( 'query_vars', 'add_query_vars_filter' );
 add_filter('body_class', 'add_slug_to_body_class'); // Add slug to body class (Starkers build)
 add_filter('widget_text', 'do_shortcode'); // Allow shortcodes in Dynamic Sidebar
 add_filter('widget_text', 'shortcode_unautop'); // Remove <p> tags in Dynamic Sidebars (better!)
