@@ -14,7 +14,7 @@
 
               <div class="grid-image__item">
                 <?php if(!empty($link)): ?>
-                  <a href="#">
+                  <a href="<?php echo $link['url'] ?>">
                 <?php endif; ?>
 
                     <?php if(!empty($image)): ?>
@@ -30,7 +30,7 @@
                       
                       <?php if(!empty($link)): ?>
                         <div class="grid-image__link">
-                          <span href="<?php echo $link['url'] ?>" class="btn btn--white btn--small" blank="<?php echo $link['blank'] ?>"><?php echo $link['title'] ?></span>
+                          <span  class="btn btn--white btn--small" blank="<?php echo $link['blank'] ?>"><?php echo $link['title'] ?></span>
                         </div>
                       <?php endif; ?>
                     </div>
