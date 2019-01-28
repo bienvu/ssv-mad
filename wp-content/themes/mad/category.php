@@ -4,13 +4,16 @@
   $termId = $object->term_id;
   $childrenData = get_terms('category', array( 'parent' => $termId, 'hide_empty' => false ));
 ?>
-
-  <h1 class="page-title">
-    <?php if (function_exists('mad_breadcrumb')) {
-      mad_breadcrumb();
-    } ?>
-    <?php single_cat_title(); ?>
-    </h1>
+  <div class="page-title page-title--has-breadcrumb">
+    <?php 
+      if (!empty($object->parent)) {
+        if (function_exists('mad_breadcrumb')) {
+          mad_breadcrumb();
+        }
+      }
+    ?>
+    <h1><?php single_cat_title(); ?></h1>
+  </div>
 
   <main role="main" class="<?php if(!empty($childrenData)):?>category-page<?php else: ?>sub-category-page<?php endif; ?>">
     <?php if(!empty($childrenData)): ?>
