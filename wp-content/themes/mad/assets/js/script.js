@@ -6,15 +6,15 @@
     mobileLandscape = "(min-width:30em)", // 480px.
     tablet = "(min-width:48em)"; // 768px.
   // Contact form 7 redirect after submit.
-  // document.addEventListener( 'wpcf7mailsent', function( event ) {
-  //   if ( '5' == event.detail.contactFormId ) {
-  //       window.location.href = window.location.protocol + '//' + window.location.hostname + '/thank-you-subscribe/';
-  //   }else if('204' == event.detail.contactFormId){
-  //       window.location.href = window.location.protocol + '//' + window.location.hostname + '/thank-you-contact/';
-  //   }else if('210' == event.detail.contactFormId) {
-  //       window.location.href = window.location.protocol + '//' + window.location.hostname + '/thank-you-request/';
-  //   }
-  // }, false );
+  document.addEventListener( 'wpcf7submit', function( event ) { console.log(1);
+    if ( '85' == event.detail.contactFormId ) {
+        window.location.href = window.location.protocol + '//' + window.location.hostname + '/thank-you/';
+    }else if('204' == event.detail.contactFormId){
+        window.location.href = window.location.protocol + '//' + window.location.hostname + '/thank-you-contact/';
+    }else if('210' == event.detail.contactFormId) {
+        window.location.href = window.location.protocol + '//' + window.location.hostname + '/thank-you-request/';
+    }
+  }, false );
 
   // Function here.
   // $('.box-faq__question').each(function() {

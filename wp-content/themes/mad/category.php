@@ -5,7 +5,12 @@
   $childrenData = get_terms('category', array( 'parent' => $termId, 'hide_empty' => false ));
 ?>
 
-  <h1 class="page-title"><?php single_cat_title(); ?></h1>
+  <h1 class="page-title">
+    <?php if (function_exists('mad_breadcrumb')) {
+      mad_breadcrumb();
+    } ?>
+    <?php single_cat_title(); ?>
+    </h1>
 
   <main role="main" class="<?php if(!empty($childrenData)):?>category-page<?php else: ?>sub-category-page<?php endif; ?>">
     <?php if(!empty($childrenData)): ?>

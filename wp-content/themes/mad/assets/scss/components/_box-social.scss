@@ -1,5 +1,13 @@
 .box-social {
-  padding: 7px 0;
+  padding: 20px 0;
+
+  @media only screen and (min-width: $tablet) {
+    padding: 35px 0;
+  }
+
+  @media only screen and (min-width: $desktop) {
+    padding: 65px 0;
+  }
 
   &__title {
     margin-bottom: 44px;
@@ -8,24 +16,26 @@
   &__list {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -14px;
+    margin: 0 -5px;
     justify-content: center;
     align-items: center;
+
+    @media only screen and (min-width: $tablet) {
+      margin: 0 -15px;
+    }
   }
 
   &__item {
-    width: 60%;
-    position: relative;
-    margin-bottom: 20px;
-
-    @media only screen and (min-width: $mobileLandScape) {
-      width: 50%;
-      padding: 0 14px;
-      margin-bottom: 0;
-    }
+    width: 50%;
+    padding: 0 5px;
 
     @media only screen and (min-width: $tablet) {
-      width: 25.5%;
+      width: 35%;
+      padding: 0 15px;
+    }
+
+    @media only screen and (min-width: $desktop) {
+      width: 28.45%;
     }
   }
 

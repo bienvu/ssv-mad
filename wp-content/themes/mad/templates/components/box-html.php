@@ -3,10 +3,11 @@
 
     $body = get_sub_field('body');
     $video = get_sub_field('video');
+    $class = (is_page('thank-you')) ? 'thankyou-page' : "";
 
     if ($body):
 ?>
-      <div class="box-html">
+      <div class="box-html <?php echo $class; ?>">
         <div class="container">
           <?php echo $body; ?>
         </div>

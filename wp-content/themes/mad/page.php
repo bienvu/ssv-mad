@@ -1,5 +1,8 @@
 <?php get_header(); ?>
-<?php if(!is_front_page()): ?>
+<?php if(is_page('thank-you')): ?>
+<?php
+  elseif(!is_front_page()):
+?>
   <h1 class="page-title"><?php the_title(); ?></h1>
 <?php endif; ?>
 <main role="main" class="main">
