@@ -110,7 +110,7 @@
 @mixin grid($cols: 2, $margin-right: 10px, $margin-bottom: $margin-right, $margin-right-tablet: $margin-right, $margin-bottom-tablet: $margin-bottom,$margin-right-desktop: $margin-right, $margin-bottom-desktop: $margin-bottom,$margin-right-desktopSupperLarge: $margin-right, $margin-bottom-desktopSupperLarge: $margin-bottom, $align: center) {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: $align;
 
   > div,
@@ -147,6 +147,10 @@
       &:nth-of-type(#{$cols}n) {
         margin-right: 0;
       }
+
+      &:nth-last-of-type(3) {
+        margin-bottom: 0;
+      }
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {
@@ -167,7 +171,7 @@
 @mixin grid-padding($cols: 2, $padding-mobile : 20px, $padding-desktop: $padding-mobile, $align: center) {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: $align;
   margin: 0 -#{$padding-mobile};
 

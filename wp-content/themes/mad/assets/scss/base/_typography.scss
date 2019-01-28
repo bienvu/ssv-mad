@@ -17,11 +17,11 @@ h6 {
 h1,
 .h1 {
   font-size: 28px;
-  margin-bottom: 42px;
+  margin-bottom: 30px;
 
   @media only screen and (min-width: $tablet) {
     font-size: 28px;
-    margin-bottom: 42px;
+    margin-bottom: 35px;
   }
 
   @media only screen and (min-width: $desktop) {
@@ -37,8 +37,17 @@ h1,
 
 h2,
 .h2 {
-  font-size: 32px;
-  margin-bottom: 35px;
+  font-size: 28px;
+  margin-bottom: 20px;
+
+  @media only screen and (min-width: $tablet) {
+    margin-bottom: 30px;
+  }
+
+  @media only screen and (min-width: $desktop) {
+    font-size: 32px;
+    margin-bottom: 35px;
+  }
 
   @media only screen and (min-width: $desktopSupperLarge) {
     font-size: 45px;
@@ -53,16 +62,20 @@ h2,
 h3,
 .h3 {
   font-size: 21px;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 
   @media only screen and (min-width: $tablet) {
     font-size: 28px;
     margin-bottom: 27px;
   }
 
+  @media only screen and (min-width: $desktop) {
+    margin-bottom: 30px;
+  }
+
   @media only screen and (min-width: $desktopSupperLarge) {
     font-size: 40px;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
   }
 
   &--second {
@@ -74,10 +87,14 @@ h3,
 h4,
 .h4 {
   font-size: 21px;
-  margin-bottom: 21px;
+  margin-bottom: 20px;
 
   @media only screen and (min-width: $tablet) {
     margin-bottom: 24px;
+  }
+
+  @media only screen and (min-width: $desktop) {
+    margin-bottom: 25px;
   }
 
   @media only screen and (min-width: $desktopSupperLarge) {
@@ -91,6 +108,14 @@ h5,
   font-size: 18px;
   margin-bottom: 20px;
 
+  @media only screen and (min-width: $tablet) {
+    margin-bottom: 22px;
+  }
+
+  @media only screen and (min-width: $desktop) {
+    margin-bottom: 23px;
+  }
+
   @media only screen and (min-width: $desktopSupperLarge) {
     font-size: 25px;
     margin-bottom: 25px;
@@ -101,6 +126,14 @@ h6,
 .h6 {
   font-size: 16px;
   margin-bottom: 15px;
+
+  @media only screen and (min-width: $tablet) {
+    margin-bottom: 17px;
+  }
+
+  @media only screen and (min-width: $desktop) {
+    margin-bottom: 20px;
+  }
 
   @media only screen and (min-width: $desktopSupperLarge) {
     font-size: 20px;

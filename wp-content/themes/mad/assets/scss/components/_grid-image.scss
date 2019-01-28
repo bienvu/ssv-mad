@@ -30,6 +30,14 @@ $margin: 15px;
 
   &__item {
     position: relative;
+
+    &:hover {
+      .grid-image__content {
+        @media only screen and (min-width: $tablet) {
+          opacity: 1;
+        }
+      }
+    }
   }
 
   &__image {
@@ -54,6 +62,7 @@ $margin: 15px;
     overflow: hidden;
     background-color: rgba($black, .4);
     margin: 10px;
+    padding: 0 10px;
 
     @media only screen and (min-width: $tablet) {
       opacity: 0;
@@ -62,42 +71,33 @@ $margin: 15px;
     }
 
     @media only screen and (min-width: $desktopSupperWideLarge) {
-      margin-top: 21px;
-    }
-
-    &:hover {
-      @media only screen and (min-width: $desktop) {
-        opacity: 1;
-      }
+      margin: 21px;
     }
   }
 
   &__title {
     text-align: center;
     width: 100%;
-    @extend .h3;
     z-index: 1;
     transition: .5s;
 
     @media only screen and (min-width: $tablet) {
-      margin-bottom: 59px;
-      font-size: 32px;
-      margin-top: 42px;
+      margin-bottom: 15px;
+    }
+
+    @media only screen and (min-width: $desktop) {
+      margin-bottom: 37px;
     }
 
     @media only screen and (min-width: $desktopSupperWideLarge) {
       font-size: 45px;
-      margin-top: 42px;
+      margin-bottom: 48px;
     }
   }
 
   &__link {
     z-index: 1;
     transition: .5s;
-
-    @media only screen and (min-width: $desktopSupperWideLarge) {
-      padding-top: 27px;
-    }
   }
 
   &--no-link {
@@ -117,17 +117,36 @@ $margin: 15px;
   }
 
   &--large {
+    padding: 30px 0 0 0;
+
+    @media only screen and (min-width: $desktop) {
+      padding: 40px 0 0 0;
+    }
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      padding:  56px 0 0 0;
+    }
     .grid-image__list {
       @include grid(3, 10px, 10px, 20px, 20px, 13px, 13px, 18px, 18px, flex-start);
-      padding: 30px 0;
+      padding: 0 0 30px 0;
       border-bottom: 1px solid rgba($gray, .25);
 
       @media only screen and (min-width: $desktop) {
-        padding: 40px 0;
+        padding:  0 0 40px 0;
       }
 
       @media only screen and (min-width: $desktopSupperWideLarge) {
-        padding: 56px 0;
+        padding:  0 0 56px 0;
+      }
+    }
+  }
+
+  &--border-hidden {
+
+    .grid-image__list {
+      @media only screen and (max-width: $tabletOnly) {
+        border: 0;
+        padding: 0;
       }
     }
   }
