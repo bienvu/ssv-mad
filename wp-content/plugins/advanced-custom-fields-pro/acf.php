@@ -10,7 +10,7 @@ Copyright: Elliot Condon
 Text Domain: acf
 Domain Path: /lang
 */
-
+ 
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 if( ! class_exists('ACF') ) :
