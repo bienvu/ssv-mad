@@ -12,10 +12,6 @@
   margin: 0;
   padding: 24px 20px;
 
-  @media only screen and (min-width: $tablet) {
-    padding: 24px 20px;
-  }
-
   @media only screen and (min-width: $desktop) {
     padding: 63px 20px;
   }

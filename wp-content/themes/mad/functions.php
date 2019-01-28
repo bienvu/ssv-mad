@@ -172,6 +172,34 @@ function my_custom_upload_mimes($mimes = array()) {
   return $mimes;
 }
 
+// add breadcrumb
+function mad_breadcrumb()
+{
+  $delimiter = '/';
+  $name = 'HOME'; //text for the 'Home' link
+  $currentBefore = '<span class="current">';
+  $currentAfter = '</span>';
+  
+  // dont change info below
+  global $post;
+  $home = get_bloginfo('url');
+
+  echo '<a class="home" href="' . $home . '">' . $name . '</a> '. $delimiter . ' ';
+
+  // show on category page
+  if ( is_category() ) {
+    global $wp_query;
+    $cat_obj = $wp_query->get_queried_object();
+    $thisCat = $cat_obj->term_id;
+    $thisCat = get_category($thisCat);
+    $parentCat = get_category($thisCat->parent);
+    if ($thisCat->parent != 0) echo(get_category_parents($parentCat, TRUE, ' ' . $delimiter . ' '));
+    echo $currentBefore;
+    single_cat_title();
+    echo $currentAfter;
+  }
+}
+
 add_filter('query_vars', function( $vars ){
     //!!SUPER IMPORTANT!! - always *APPEND* $vars array (NOT re-assign)
     $vars[] = 'page';

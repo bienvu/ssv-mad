@@ -47,6 +47,9 @@
 
       // Box Image
       get_template_part( 'templates/components/box-image' );
+
+      // Box Social
+      get_template_part( 'templates/components/box-social' );
     endwhile;
   endif;
 ?>
