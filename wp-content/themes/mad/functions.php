@@ -176,15 +176,13 @@ function my_custom_upload_mimes($mimes = array()) {
 function mad_breadcrumb()
 {
   $delimiter = '/';
-  $name = 'HOME'; //text for the 'Home' link
-  $currentBefore = '<span class="current">';
-  $currentAfter = '</span>';
+  $name = 'Home'; //text for the 'Home' link;
   
   // dont change info below
   global $post;
   $home = get_bloginfo('url');
 
-  echo '<a class="home" href="' . $home . '">' . $name . '</a> '. $delimiter . ' ';
+  echo '<div class="breadcum"><a class="home" href="' . $home . '">' . $name . '</a> '.$delimiter. ' ';
 
   // show on category page
   if ( is_category() ) {
@@ -193,11 +191,16 @@ function mad_breadcrumb()
     $thisCat = $cat_obj->term_id;
     $thisCat = get_category($thisCat);
     $parentCat = get_category($thisCat->parent);
-    if ($thisCat->parent != 0) echo(get_category_parents($parentCat, TRUE, ' ' . $delimiter . ' '));
-    echo $currentBefore;
-    single_cat_title();
-    echo $currentAfter;
+    if ($thisCat->parent != 0) {
+      $parent_string = get_category_parents($parentCat, TRUE, ' '.$delimiter. ' ');
+      $parent_array = explode($delimiter, $parent_string);
+      array_pop($parent_array);
+      $parent_string = implode($delimiter, $parent_array);
+
+      echo $parent_string;
+    }
   }
+  echo '</div>';
 }
 
 add_filter('query_vars', function( $vars ){

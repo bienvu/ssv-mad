@@ -9,8 +9,11 @@
 .page-title {
   text-align: center;
   background-color: $light-gray;
-  margin: 0;
   padding: 24px 20px;
+
+  h1 {
+    margin: 0;
+  }
 
   @media only screen and (min-width: $desktop) {
     padding: 63px 20px;
@@ -20,6 +23,15 @@
     padding: 88px 20px;
     margin-top: 59px;
   }
+
+  &--has-breadcrumb {
+    @media only screen and (min-width: $desktop) {
+      padding: 40.5px 20px;
+    }
+    @media only screen and (min-width: $desktopSupperLarge) {
+      padding: 56.5px 20px;
+    }
+  }
 }
 
 div.wpcf7 .ajax-loader {
@@ -28,4 +40,27 @@ div.wpcf7 .ajax-loader {
 
 span.wpcf7-not-valid-tip {
   margin: 15px 0;
+}
+
+.breadcum {
+  display: none;
+
+  @media only screen and (min-width: $desktop) {
+    display: block;
+    margin-bottom: 23px;
+  }
+
+  @media only screen and (min-width: $desktopSupperLarge) {
+    margin-bottom: 36px;
+  }
+
+  a {
+    @media only screen and (min-width: $desktop) {
+      margin: 0 4px;
+    }
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
 }
