@@ -7,7 +7,7 @@
     tablet = "(min-width:48em)"; // 768px.
   // Contact form 7 redirect after submit.
   document.addEventListener( 'wpcf7submit', function( event ) { console.log(1);
-    if ( '85' == event.detail.contactFormId ) {
+    if ( '98' == event.detail.contactFormId ) {
         window.location.href = window.location.protocol + '//' + window.location.hostname + '/thank-you/';
     }else if('204' == event.detail.contactFormId){
         window.location.href = window.location.protocol + '//' + window.location.hostname + '/thank-you-contact/';
