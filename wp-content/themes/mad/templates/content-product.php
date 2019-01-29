@@ -1,45 +1,4 @@
 <?php
-  // $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-  
-  // $args = array(
-  //         'post_type'       => 'product',
-  //         'posts_per_page'  => '18',
-  //         'meta_key'        => 'weight',
-  //         'orderby'         => array('meta_value_num' => 'ASC', 'ID' => 'ASC'),
-  //         'paged'           => $paged,
-  // );
-
-  // $style = get_query_var('style', '');
-  // $term = get_queried_object();
-  // // Taxonomy Parameters
-  // if(!empty($style)) {
-  //   $args['tax_query'] = array(
-  //     'relation' => 'AND',
-  //     array(
-  //       'taxonomy'          => 'product_filter',
-  //       'field'             => 'slug',
-  //       'terms'             => array(get_query_var('style')),
-  //       'operator'          => 'IN',
-  //     ),
-  //     array(
-  //       'taxonomy'          => 'category',
-  //       'field'             => 'slug',
-  //       'terms'             => array($term->slug),
-  //       'operator'          => 'IN',
-  //     )
-  //   );
-  // } else {
-  //   $args['tax_query'] = array(
-  //     array(
-  //       'taxonomy'          => 'category',
-  //       'field'             => 'slug',
-  //       'terms'             => array($term->slug),
-  //       'operator'          => 'IN',
-  //     )
-  //   );
-  // }
-
-  // $wp_query = new WP_Query($args);
   if(have_posts()):
 ?>
     <div class="grid-image grid-image--has-paged">
@@ -78,7 +37,4 @@
 <?php
 
   get_template_part('templates/pagination');
-
-  // Reset main query object
-  // wp_reset_query();
 ?>

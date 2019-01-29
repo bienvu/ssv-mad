@@ -44,6 +44,27 @@ function alter_main_query_category_page($query) {
         $query->set('posts_per_page', 18);
         $query->set('meta_key', 'weight');
         $query->set('orderby', array('meta_value_num' => 'ASC', 'ID' => 'ASC'));
+        $style = isset($_GET['style']) ? $_GET['style'] : array();
+        $term = get_queried_object();
+        
+        $tax_query[] = array(
+          'taxonomy' => 'category',
+          'field' => 'slug',
+          'terms' => $term->name,
+        );
+
+        if (!empty($style)) {
+          $style_tax_query = array(
+              'taxonomy' => 'product_filter',
+              'field' => 'slug',
+              'terms' => $style,
+          );
+          $tax_query[] = $style_tax_query;
+        }
+
+        if (!empty($tax_query)) {
+          $query->set('tax_query', $tax_query);
+        }
     }
 }
 
