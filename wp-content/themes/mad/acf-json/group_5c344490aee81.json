@@ -78,83 +78,6 @@
                     "toolbar": "full",
                     "media_upload": 1,
                     "delay": 0
-                },
-                {
-                    "key": "field_5c4ab873bc6a6",
-                    "label": "MultiLink",
-                    "name": "multilink",
-                    "type": "group",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "layout": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_5c4ab97e0059f",
-                            "label": "Item",
-                            "name": "item",
-                            "type": "repeater",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "collapsed": "",
-                            "min": 0,
-                            "max": 0,
-                            "layout": "table",
-                            "button_label": "",
-                            "sub_fields": [
-                                {
-                                    "key": "field_5c4ab98a005a0",
-                                    "label": "Link",
-                                    "name": "link",
-                                    "type": "link",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "return_format": "array"
-                                },
-                                {
-                                    "key": "field_5c4ab998005a1",
-                                    "label": "Class modifier",
-                                    "name": "class_modifier",
-                                    "type": "select",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "choices": {
-                                        "hidden-on-desktoponly": "Hidden On Desktop Only"
-                                    },
-                                    "default_value": [],
-                                    "allow_null": 1,
-                                    "multiple": 0,
-                                    "ui": 0,
-                                    "return_format": "value",
-                                    "ajax": 0,
-                                    "placeholder": ""
-                                }
-                            ]
-                        }
-                    ]
                 }
             ]
         }
@@ -176,5 +99,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1548401067
+    "modified": 1548749089
 }

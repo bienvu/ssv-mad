@@ -98,3 +98,40 @@ span.wpcf7-not-valid-tip {
     }
   }
 }
+
+.page-search {
+  .form-search-default__input {
+    margin-bottom: 20px;
+
+    input {
+      width: 100%;
+
+      @media only screen and (min-width: $desktop) {
+        min-width: 600px;
+        width: auto;
+      }
+    }
+  }
+
+  .form-search-default__submit {
+    margin-bottom: 20px;
+  }
+
+  .pager {
+    ul {
+      padding-bottom: 48px;
+      
+      @media only screen and (min-width: $tablet) {
+        padding-bottom: 47.5px;
+      }
+
+      @media only screen and (min-width: $desktop) {
+        padding-bottom: 55px;
+      }
+
+      @media only screen and (min-width: $desktopSupperLarge) {
+        padding-bottom: 77px;
+      }
+    }
+  }
+}
