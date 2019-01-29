@@ -49,7 +49,7 @@
         </div>
       </div>
     <?php endif; ?>
-    <?php if(!empty($object->parent)): ?>
+    <?php if(!empty($object->parent) && !empty($childrenData)): ?>
       <div class="grid-image grid-image--large grid-image--border-hidden">
         <div class="container">
           <h2 class="main-title"><?php _e( 'View Latest Styles', 'ssvmad' );  ?></h2>
@@ -110,6 +110,10 @@
           </div>
         </div>
       </div>
+    <?php endif; ?>
+    <?php if(empty($childrenData)): ?>
+      <?php get_template_part('templates/components/box-filter'); ?>
+      <?php get_template_part('templates/content-product'); ?>
     <?php endif; ?>
     <?php if(have_rows('seo', $object)): the_row();
         $title = get_sub_field('title');
