@@ -1,5 +1,6 @@
 .box-filter {
   padding: 30px 0;
+  position: relative;
 
   @media only screen and (min-width: $tablet) {
     padding: 28px 0;
@@ -54,6 +55,20 @@
           color: $btn-color;
         }
       }
+    }
+  }
+
+  .anchor {
+    position: absolute;
+    bottom: 100%;
+    height: 66px;
+
+    @media only screen and (min-width: $tablet) {
+      height: 140px;
+    }
+
+    @media only screen and (min-width: $desktop) {
+      height: 86px;
     }
   }
 }

@@ -8,6 +8,10 @@
             while(have_posts()): the_post();
               $gallery = get_field('gallery');
               $featured_image = $gallery[0];
+              if(empty($featured_image)) {
+                $featured_image['url'] = '/wp-content/themes/mad/assets/images/placeholder.jpg';
+              }
+
               if(!empty($featured_image)):
           ?>
             <div class="grid-image__item">
@@ -35,6 +39,5 @@
   <?php endif; ?>
 
 <?php
-
   get_template_part('templates/pagination');
 ?>

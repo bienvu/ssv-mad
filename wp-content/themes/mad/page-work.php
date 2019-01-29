@@ -4,7 +4,9 @@
  */ 
   get_header();
   ?>
-<h1 class="page-title"><?php the_title(); ?></h1>
+<div class="page-title">
+  <h1><?php the_title(); ?></h1>
+</div>
 <main role="main">
   <?php get_template_part('templates/components/box-filter'); ?>
   <?php get_template_part('templates/content-work'); ?>
