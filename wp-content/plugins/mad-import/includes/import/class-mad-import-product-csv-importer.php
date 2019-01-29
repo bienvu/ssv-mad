@@ -217,7 +217,7 @@ class Mad_Import_Product_CSV_Importer extends Mad_Import_Product_Importer {
       foreach ($category_arr as $key => $value_child) {
         $category_arr[$key] = trim($value_child);
       }
-      $categorys[] = implode('_', $category_arr);
+      $categorys[] = implode('-', $category_arr);
     }
 
     return $categorys;
