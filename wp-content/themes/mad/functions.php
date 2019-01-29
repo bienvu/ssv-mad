@@ -50,7 +50,7 @@ function alter_main_query_category_page($query) {
         $tax_query[] = array(
           'taxonomy' => 'category',
           'field' => 'slug',
-          'terms' => $term->name,
+          'terms' => $term->slug,
         );
 
         if (!empty($style)) {

@@ -141,6 +141,7 @@ class Mad_Import_Product_CSV_Importer extends Mad_Import_Product_Importer {
       'category'           => array( $this, 'parse_category_field' ),
       'related'           => array( $this, 'parse_images_field' ),
       'featured_image'    => array( $this, 'parse_skip_field' ),
+      'filter'            => array( $this, 'parse_category_field' ),
     );
 
     $callbacks = array();
@@ -211,13 +212,8 @@ class Mad_Import_Product_CSV_Importer extends Mad_Import_Product_Importer {
     $value = explode('>', $value);
 
     foreach ( $value as $category ) {
-      $category = wc_clean( wp_unslash( strtolower(trim($category)) ) );
-      $category_arr = explode(" ", $category);
-
-      foreach ($category_arr as $key => $value_child) {
-        $category_arr[$key] = trim($value_child);
-      }
-      $categorys[] = implode('-', $category_arr);
+      $category = sanitize_title(wc_clean( wp_unslash( strtolower(trim($category)) ) ));
+      $categorys[] = $category;
     }
 
     return $categorys;

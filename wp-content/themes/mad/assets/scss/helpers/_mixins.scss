@@ -46,6 +46,29 @@
   font-family: "Georgia", Helvetica, Arial, sans-serif;
 }
 
+@mixin container-header {
+  @media only screen and (min-width: $desktop) and (max-width: $desktopOnly) {
+    max-width: 100%;
+    margin-left: $containerMarginDesktop2;
+    margin-right: $containerMarginDesktop2;
+  }
+
+  @media only screen and (min-width: $desktopWideLarge) {
+    max-width: $containerdesktopWideLarge2;
+    margin: auto;
+  }
+
+  @media only screen and (min-width: $desktopSupperLarge) and (max-width: $desktopSupperWideLargeOnly) {
+    max-width: 100%;
+    margin-left: $containerMarginDesktopSupperLarge2;
+    margin-right: $containerMarginDesktopSupperLarge2;        
+  }
+
+  @media only screen and (min-width: $desktopSupperWideLarge) {
+    max-width: $containerdesktopSupperWideLarge2;
+  }
+}
+
 //Single image background with retina support
 //USAGE:  @include background-image-retina('preloader', 'GIF', rem(20px), rem(20px));
 @mixin background-image-retina($image-1x, $image-2x, $width, $height) {

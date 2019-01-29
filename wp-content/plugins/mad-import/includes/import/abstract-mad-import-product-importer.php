@@ -396,15 +396,17 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
 
       // update filter post type product
       if(!empty($data['filter'])) {
-        if($post_type == 'product') {
-          $term_id = term_exists($data['filter'], 'product_filter');
+        foreach ($data['filter'] as $value) {
+          if($post_type == 'product') {
+            $term_id = term_exists($value, 'product_filter');
 
-          if(empty($term_id)) {
-            $term_id = wp_insert_term($data['filter'], 'product_filter');
+            if(empty($term_id)) {
+              $term_id = wp_insert_term($value, 'product_filter');
+            }
+
+            // insert term for post
+            wp_set_post_terms( $id, $term_id, 'product_filter' );
           }
-
-          // insert term for post
-          wp_set_post_terms( $id, $term_id, 'product_filter' );
         }
       }
 

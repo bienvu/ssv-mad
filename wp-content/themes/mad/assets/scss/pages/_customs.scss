@@ -77,3 +77,24 @@ span.wpcf7-not-valid-tip {
     margin-bottom: 56px;
   }
 }
+
+.sub-category-page {
+  .pager {
+    ul {
+      border-bottom: 1px solid rgba($gray, .25);
+      padding-bottom: 26px;
+
+      @media only screen and (min-width: $tablet) {
+        padding-bottom: 26.5px;
+      }
+
+      @media only screen and (min-width: $desktop) {
+        padding-bottom: 0 0 34px;
+      }
+
+      @media only screen and (min-width: $desktopSupperLarge) {
+        padding-bottom: 48px;
+      }
+    }
+  }
+}

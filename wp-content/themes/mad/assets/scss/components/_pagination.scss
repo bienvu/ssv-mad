@@ -1,13 +1,38 @@
 .pager {
-  padding: 35px 0 47px;
+  .container {
+    @include container-header;
+  }
+
   ul {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    padding: 26px 0 0;
+
+    @media only screen and (min-width: $tablet) {
+      padding: 26.5px 0 0;
+    }
+
+    @media only screen and (min-width: $desktop) {
+      padding: 34px 0 0;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      padding: 48px 0 0;
+    }
   }
 
   li {
-    margin-right: 16px;
+    margin-right: 14px;
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      margin-right: 19px;
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
 
     &:nth-of-type {
       margin: 0;
@@ -16,29 +41,59 @@
     .icon-arrow-right,
     .icon-arrow-left {
       &:before {
-        font-size: 15px;
+        font-size: 11px;
+        vertical-align: middle;
+
+        @media only screen and (min-width: $desktopSupperLarge) {
+          font-size: 14px;
+        }
       }
     }
 
     span,
     a {
-      padding: 4.2px;
+      padding: 2px;
       display: inline-block;
-      font-size: 19px;
-      line-height: 1.578947;
       border-bottom: 1px solid transparent;
+
+      @media only screen and (min-width: $desktopSupperLarge) {
+        padding: 4px;
+      }
 
       &.next,
       &.prev {
-        margin-bottom: 3px;
+        margin-bottom: 0;
+        line-height: 22px;
+
+        @media only screen and (min-width: $desktop) {
+          margin-bottom: 2px;
+        }
+
+        @media only screen and (min-width: $desktopSupperLarge) {
+          margin-bottom: 3px;
+        }
       }
 
       &.next {
-        margin-left: 14px;
+        margin-left: 25px;
+
+
+        @media only screen and (min-width: $desktop) {
+          margin-left: 11px;
+        }
       }
 
       &.prev {
-        margin-right: 14px;
+        margin-right: 25px;
+
+        @media only screen and (min-width: $desktop) {
+          margin-right: 11px;
+        }
+      }
+
+      span {
+        padding: 0;
+        line-height: 0;
       }
     }
 
