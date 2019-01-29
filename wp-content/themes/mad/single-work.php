@@ -16,7 +16,7 @@
         <div class="box-gallery__left js-height">
           <div class="paginginfo text--bold"></div>
           <?php if(!empty($gallery)): ?>
-          <div class="box-gallery__slider js-slide-product js-pagination js-lightbox-product">
+          <div class="box-gallery__slider js-slide-product-paged js-pagination js-lightbox-product">
             <?php
               foreach ($gallery as $key => $value):
                 $class_modifier = ($value['height'] > $value['width']) ? 'height-large' : "";

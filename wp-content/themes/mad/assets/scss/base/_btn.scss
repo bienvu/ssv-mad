@@ -134,8 +134,12 @@
 
   &--icon {
     &:before {
-      line-height: 10px;
+      line-height: 12px;
       vertical-align: middle;
+
+      @media  only screen and (min-width: $desktopSupperLarge) {
+        line-height: 17px;
+      }
     }
   }
 }

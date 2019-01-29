@@ -285,8 +285,8 @@
         },
         {
             "key": "field_5c41754b5e1b8",
-            "label": "Product Link extra",
-            "name": "product_link_extra",
+            "label": "Product button",
+            "name": "product_button",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -304,9 +304,9 @@
             "sub_fields": [
                 {
                     "key": "field_5c4176215e1b9",
-                    "label": "Item",
-                    "name": "item",
-                    "type": "link",
+                    "label": "Button Text",
+                    "name": "button_text",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -315,7 +315,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "array"
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         },
@@ -409,5 +413,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1548749368
+    "modified": 1548755784
 }

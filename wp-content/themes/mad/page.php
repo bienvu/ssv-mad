@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?php if(is_page('thank-you')): ?>
+<?php if(is_page('thank-you-contact') || is_page('thank-you-subscribe')): ?>
 <?php
   elseif(!is_front_page()):
 ?>
