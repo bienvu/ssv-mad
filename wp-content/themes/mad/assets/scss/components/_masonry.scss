@@ -27,12 +27,32 @@
 
   li {
     cursor: pointer;
-    width: calc((100% - 1px) / 3);
+    width: 100%;
+
+    @media only screen and (min-width: $desktop) {
+      width: calc((100% - 1px) / 2);
+    }
+
+    @media only screen and (min-width: $tablet) {
+      width: calc((100% - 1px) / 3);
+    }
 
     > div {
       position: relative;
       margin-bottom: 2.7907%;
       margin-left: 2.7907%;
+    }
+  }
+
+  &__item {
+    > div {
+      &:hover {
+        .masonry__bg {
+          @media only screen and (min-width: $tablet) {
+            opacity: 1;
+          }
+        }
+      }
     }
   }
 
@@ -42,7 +62,7 @@
     top: 0;
     right: 0;
     bottom: 0;
-    background-color: transparent;
+    background-color: rgba($black, .4);
     transition: .5s;
     display: flex;
     align-items: center;
@@ -50,43 +70,17 @@
     flex-direction: column;
     flex: 0 0 auto;
     overflow: hidden;
+    margin: 10px;
+    padding: 0 10px;
 
-    &:before,
-    &:after {
-      content: "";
-      width: 100%;
-      height: 100%;
-      background: rgba($black, .1);
-      position: absolute;
+    @media only screen and (min-width: $tablet) {
+      opacity: 0;
+      transition: .5s;
+      margin: 15px;
     }
 
-    &:before {
-      top: 100%;
-      left: 100%;
-      transition: all .3s ease-out 0s;
-    }
-
-    &:after {
-      bottom: 100%;
-      right: 100%;
-      transition: all .3s ease-out 0s;
-    }
-
-    &:hover {
-      .masonry__title,
-      .masonry__link {
-        opacity: 1;
-      }
-
-      &:before {
-        top: 0;
-        left: 0;
-      }
-
-      &:after {
-        bottom: 0;
-        right: 0;
-      }
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      margin: 21px;
     }
   }
 
@@ -102,7 +96,6 @@
   &__title {
     padding: 0 20px;
     text-align: center;
-    opacity: 0;
     transition: .5s;
     z-index: 1;
     
@@ -122,7 +115,6 @@
 
   &__link {
     position: relative;
-    opacity: 0;
     transition: .5s;
     z-index: 1;
 

@@ -118,6 +118,7 @@
     <?php if(have_rows('seo', $object)): the_row();
         $title = get_sub_field('title');
         $body  = get_sub_field('body');
+        $category_link = get_field('category_link_extra', 'option');
     ?>
         <div class="box-text">
         <div class="container">
@@ -132,9 +133,13 @@
               </div>
             <?php endif; ?>
             
-            <div class="box-text__link">
-              <a href="/contact/" class="btn btn--large hidden-on-desktoponly" blank="">Book a Consultation</a><a href="/services/" class="btn btn--large " blank="">Our Services</a>
-            </div>
+            <?php if(!empty($category_link)): ?>
+              <div class="box-text__link">
+                <?php foreach ($category_link as $value): ?>
+                  <a href="<?php echo $value['item']['url']; ?>" class="btn btn--large hidden-on-desktoponly" blank="<?php echo $value['item']['blank']; ?>"><?php echo $value['item']['title']; ?></a>
+                <?php endforeach; ?>
+              </div>
+            <?php endif; ?>
           </div>
         </div>
       </div>
