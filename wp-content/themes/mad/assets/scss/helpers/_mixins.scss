@@ -226,7 +226,7 @@ $j : 1;
     $total : $items * $duration + $items * $fade;
 
     &:first-child {
-      animation-name: animation_slide#{$j};
+      // animation-name: animation_slide#{$j};
       animation-duration: $total;
       animation-timing-function: linear;
       animation-iteration-count: infinite;
@@ -235,7 +235,7 @@ $j : 1;
     }
 
     &:not(:first-child) {
-      animation-name: animation_slide#{$j + 1};
+      // animation-name: animation_slide#{$j + 1};
       animation-duration: $total;
       animation-timing-function: linear;
       animation-iteration-count: infinite;

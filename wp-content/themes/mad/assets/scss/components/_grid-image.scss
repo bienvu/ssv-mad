@@ -1,6 +1,16 @@
 $margin: 15px;
 
 .grid-image {
+  padding: 0 0 30px;
+
+  @media only screen and (min-width: $desktop) {
+    padding: 22px 0;
+  }
+
+  @media only screen and (min-width: $desktopSupperLarge) {
+    padding: 28px 0;
+  }
+
   .container {
     @media only screen and (min-width: $desktop) and (max-width: $desktopOnly) {
       max-width: 100%;
@@ -25,7 +35,7 @@ $margin: 15px;
   }
   
   &__list {
-    @include grid(3, 8px, 8px, 6px, 6px, 13px, 13px, 16px, 16px);
+    @include grid(3, 10px, 10px, 20px, 20px, 13px, 13px, 16px, 16px);
   }
 
   &__item {
@@ -64,7 +74,7 @@ $margin: 15px;
     margin: 10px;
     padding: 0 10px;
 
-    @media only screen and (min-width: $tablet) {
+    @media only screen and (min-width: $desktop) {
       opacity: 0;
       transition: .5s;
       margin: 15px;
@@ -101,6 +111,8 @@ $margin: 15px;
   }
 
   &--no-link {
+    padding: 0;
+
     .grid-image__content {
       &:hover {
         .grid-image__title,
@@ -142,6 +154,7 @@ $margin: 15px;
   }
 
   &--border-hidden {
+  padding: 0;
 
     .grid-image__list {
       @media only screen and (max-width: $tabletOnly) {

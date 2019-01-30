@@ -22,18 +22,18 @@
                         <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
                       </div>
                     <?php endif; ?>
-
-                    <div class="grid-image__content">
-                      <?php if($label): ?>
+                    
+                    <?php if($label): ?>
+                      <div class="grid-image__content">
                         <h2 class="grid-image__title text--white"><?php echo $label; ?></h2>
-                      <?php endif; ?>
-                      
-                      <?php if(!empty($link)): ?>
-                        <div class="grid-image__link">
-                          <span  class="btn btn--white btn--small" blank="<?php echo $link['blank'] ?>"><?php echo $link['title'] ?></span>
-                        </div>
-                      <?php endif; ?>
-                    </div>
+                        
+                        <?php if(!empty($link)): ?>
+                          <div class="grid-image__link">
+                            <span  class="btn btn--white btn--small" blank="<?php echo $link['blank'] ?>"><?php echo $link['title'] ?></span>
+                          </div>
+                        <?php endif; ?>
+                      </div>
+                    <?php endif; ?>
                 <?php if(!empty($link)): ?>
                   </a>
                 <?php endif; ?>

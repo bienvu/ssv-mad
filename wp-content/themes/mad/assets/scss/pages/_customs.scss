@@ -1,6 +1,6 @@
 .home {
   .header__fixed {
-    @media only screen and (min-width: $tablet) {
+    @media only screen and (min-width: $desktop) {
       display: none;
     }
   }

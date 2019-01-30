@@ -5,7 +5,6 @@
   $class_modifier = ($class_modifier) ? 'box-quocte-default--'.$class_modifier : "";
 ?>
 <div class="box-quocte-default <?php if($class_modifier) { echo $class_modifier; } ?>">
-  <div class="container">
     <div class="box-quocte-default__body">
     
       <?php if($body): ?>
@@ -22,6 +21,5 @@
         </div>
       <?php endif; ?>
     </div>
-  </div>
 </div>
 <?php endif; ?>

@@ -15,8 +15,8 @@
       // Box Image Video
       get_template_part( 'templates/components/box-image-video' );
 
-      // Product Category
-      get_template_part( 'templates/components/product-category' );
+      // Select Post
+      get_template_part( 'templates/components/select-post' );
 
       // Box Contact
       get_template_part( 'templates/components/box-contact' );
