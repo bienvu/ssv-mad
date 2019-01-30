@@ -28,11 +28,6 @@ function mad_add_styles() {
     wp_enqueue_style('styles');
 }
 
-function add_query_vars_filter( $vars ) {
-  $vars[] = "style";
-  return $vars;
-}
-
 /**
  * Function alter main query of category page.
  */
@@ -208,10 +203,14 @@ function mad_breadcrumb()
   // show on category page
   if ( is_category() ) {
     global $wp_query;
+    // get term on category page
     $cat_obj = $wp_query->get_queried_object();
     $thisCat = $cat_obj->term_id;
+    // get category
     $thisCat = get_category($thisCat);
+    // get parent category
     $parentCat = get_category($thisCat->parent);
+    // if parent category exist
     if ($thisCat->parent != 0) {
       $parent_string = get_category_parents($parentCat, TRUE, ' '.$delimiter. ' ');
       $parent_array = explode($delimiter, $parent_string);
@@ -220,7 +219,25 @@ function mad_breadcrumb()
 
       echo $parent_string;
     }
+  } elseif(is_single()) { // shown on single page
+    // get array category post
+    $thisCat = get_the_category();
+    // get category post
+    if(!is_wp_error( $$thisCat )) {
+      $thisCat = $thisCat[0];
+    }
+
+    // check if parent category exits
+    if(!empty($thisCat)) {
+      $category_string = get_category_parents($thisCat, TRUE, ' '.$delimiter. ' ');
+      $category_array = explode($delimiter, $category_string);
+      array_pop($category_array);
+      $category_string = implode($delimiter, $category_array);
+
+      echo $category_string;
+    }
   }
+
   echo '</div>';
 }
 
@@ -228,6 +245,7 @@ add_filter('query_vars', function( $vars ){
     //!!SUPER IMPORTANT!! - always *APPEND* $vars array (NOT re-assign)
     $vars[] = 'page';
     $vars[] = 'paged';
+    $vars[] = "style";
 
     //!!SUPER IMPORTANT!! - always return $vars
     return $vars;
@@ -263,7 +281,6 @@ remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 /*----------*\
     Filters
 \*----------*/
-add_filter( 'query_vars', 'add_query_vars_filter' );
 add_filter('body_class', 'add_slug_to_body_class'); // Add slug to body class (Starkers build)
 add_filter('widget_text', 'do_shortcode'); // Allow shortcodes in Dynamic Sidebar
 add_filter('widget_text', 'shortcode_unautop'); // Remove <p> tags in Dynamic Sidebars (better!)

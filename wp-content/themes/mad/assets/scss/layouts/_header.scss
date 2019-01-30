@@ -2,8 +2,6 @@
   $height-mobile: 66px;
   $height-tablet: 140px;
   $height-sticky: 86px;
-  $height-between-desktop-desktopOnly: 100px;
-
   position: relative;
 
   &__wrap {
@@ -161,10 +159,6 @@
       @media only screen and (min-width: $tablet) {
         height: $height-tablet;
       }
-
-      @media only screen and (min-width: $desktop) and (max-width: $desktopOnly) {
-        height: $height-between-desktop-desktopOnly;
-      }
     }
   }
 
@@ -319,10 +313,6 @@
 
     @media only screen and (min-width: $tablet) {
       height: $height-tablet;
-    }
-
-    @media only screen and (min-width: $desktop) and (max-width: $desktopOnly) {
-      height: $height-between-desktop-desktopOnly;
     }
   }
 

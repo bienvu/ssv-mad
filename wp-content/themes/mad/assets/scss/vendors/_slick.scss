@@ -63,7 +63,6 @@
 }
 .slick-slide {
     float: left;
-    height: 100%;
     min-height: 1px;
     [dir="rtl"] & {
   float: right;
@@ -111,53 +110,105 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 43px;
+    font-size: 45px;
     color: #fff;
 
     @media only screen and (max-width: $mobileOnly) {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: bold;
     }
 
+    @media only screen and (min-width: $desktop) {
+      font-size: 35px;
+    }
+
     @media only screen and (min-width: $desktopSupperLarge) {
-      font-size: 60px;
+      font-size: 49px;
     }
   }
 }
 
 .slick-prev {
     @extend .icon-arrow-left;
-    left: 12px;
+    left: 10px;
 
-    @media only screen and (max-width: $mobileOnly) {
-      left: 11px;
-      margin-top: -3px;
+    @media only screen and (min-width: $tablet) {
+      left: 18px;
+    }
+
+    @media only screen and (min-width: $desktop) {
+      left: 21px;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      left: 32px;
     }
 }
 
 .slick-next {
     @extend .icon-arrow-right;
-    right: 32px;
+    right: 22px;
 
-    @media only screen and (max-width: $mobileOnly) {
-      right: 21px;
-      margin-top: -3px;
+    @media only screen and (min-width: $tablet) {
+      right: 42px;
+    }
+
+    @media only screen and (min-width: $desktop) {
+      right: 39px;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      right: 58px;
     }
 }
 
 .slick-dots {
   display: flex !important;
   position: absolute;
-  bottom: 21px;
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
 
+  @media only screen and (min-width: $tablet) {
+    bottom: 21px;
+  }
+
+  @media only screen and (min-width: $desktop) {
+    bottom: 19px;
+  }
+
+  @media only screen and (min-width: $desktopSupperLarge) {
+    bottom: 28px;
+  }
+
   li {
     background-color: rgba($white, .5);
-    width: 14px;
-    height: 14px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 5px;
+
+    @media only screen and (min-width: $tablet) {
+      width: 12px;
+      height: 12px;
+      margin-right: 10px;
+    }
+
+    @media only screen and (min-width: $desktop) {
+      width: 9px;
+      height: 9px;
+      margin-right: 8px;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      width: 13px;
+      height: 13px;
+      margin-right: 12px;
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
 
     button {
       min-width: inherit;

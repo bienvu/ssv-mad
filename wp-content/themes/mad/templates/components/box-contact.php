@@ -13,7 +13,9 @@
             <div class="container">
               <?php
                 echo $content_left;
-                echo do_shortcode( '[contact-form-7 id="'.$form->ID.'" title="'.$form->post_title.'"]' ); ?>
+                echo '<div class="enquire-now">';
+                echo do_shortcode( '[contact-form-7 id="'.$form->ID.'" title="'.$form->post_title.'"]' );
+                echo '</div>'; ?>
             </div>
           </div>
         <?php

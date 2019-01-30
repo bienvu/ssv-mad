@@ -6,13 +6,11 @@
     mobileLandscape = "(min-width:30em)", // 480px.
     tablet = "(min-width:48em)"; // 768px.
   // Contact form 7 redirect after submit.
-  document.addEventListener( 'wpcf7submit', function( event ) { console.log(1);
-    if ( '98' == event.detail.contactFormId ) {
-        window.location.href = window.location.protocol + '//' + window.location.hostname + '/thank-you/';
-    }else if('204' == event.detail.contactFormId){
+  document.addEventListener( 'wpcf7mailsent', function( event ) { console.log(1);
+    if ( '85' == event.detail.contactFormId ) {
         window.location.href = window.location.protocol + '//' + window.location.hostname + '/thank-you-contact/';
-    }else if('210' == event.detail.contactFormId) {
-        window.location.href = window.location.protocol + '//' + window.location.hostname + '/thank-you-request/';
+    }else if('98' == event.detail.contactFormId){
+        window.location.href = window.location.protocol + '//' + window.location.hostname + '/thank-you-subscribe/';
     }
   }, false );
 
@@ -52,17 +50,6 @@
     //   var aid = $(this).attr("href");
     //   $('html,body').animate({scrollTop: $(aid).offset().top - 20 },'slow');
     // });
-
-    // js height box gallery
-    if($('.js-height').length) {
-      $(this).find('.box-gallery__item').each(function(index, el) {
-        if(!$(this).hasClass('height-large')) {
-          $height = $(this).height();
-          $('.height-large').css('height', $height);
-          return false;
-        }
-      });
-    }
 
     // js light box product icon
     if($('.js-lightbox-product-icon').length) {
@@ -158,12 +145,36 @@
       $status.html( i + '<span> / ' + slick.slideCount + '</span>');
     });
 
-    // js slide product
+    // js slide product paged
+    if($('.js-slide-product-paged').length) {
+      $('.js-slide-product-paged').slick({
+        prevArrow: '<span class="slick-prev">Previous</span>',
+        nextArrow: '<span class="slick-next">Next</span>',
+        adaptiveHeight: true,
+      });
+    }
+
+    // js slide product default
     if($('.js-slide-product').length) {
       $('.js-slide-product').slick({
         prevArrow: '<span class="slick-prev">Previous</span>',
         nextArrow: '<span class="slick-next">Next</span>',
-        adaptiveHeight: true,
+        dots: true,
+      })
+      .on('setPosition', function (event, slick) {
+        $('.box-gallery__item').each(function(index, el) {
+          if(!$(this).hasClass('height-large')) {
+            $height = $(this).find('img').height();
+            console.log($height);
+            return false;
+          }
+        });
+
+        $('.box-gallery__item').each(function(index, el) {
+          $(this).css('height', $height + 'px');;
+        });
+
+        $('.box-gallery__item').find('img').addClass('set-height');
       });
     }
 
@@ -198,6 +209,7 @@
     // js lightbox form
     if($('.js-lightbox-form').length) {
       $('.js-lightbox-form').click(function(event) {
+        event.preventDefault();
         $('.is-lightbox-form').toggleClass('active');
         $('body').toggleClass('no-scroll');
       });
@@ -207,6 +219,7 @@
       $('.is-lightbox-form').click(function(event) {
         if($(this).is(event.target)) {
           $(this).toggleClass('active');
+          $('body').toggleClass('no-scroll');
         }
       });
     }

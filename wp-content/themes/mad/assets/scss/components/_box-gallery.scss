@@ -2,13 +2,11 @@
   padding: 30px 0;
 
   @media only screen and (min-width: $desktop) {
-    padding-top: 0;
-    padding-bottom: 50px;
+    padding: 39px 0;
   }
 
   @media only screen and (min-width: $desktopSupperLarge) {
-    padding-top: 56px;
-    padding-bottom: 68px;
+    padding: 54px 0;
   }
 
   .container {
@@ -34,12 +32,10 @@
   &__item {
     position: relative;
     cursor: pointer;
+    height: 100%;
 
     &.height-large {
       .box-gallery__image {
-        text-align: center;
-        height: 100%;
-
         img {
           height: 100%;
           width: auto;
@@ -50,6 +46,25 @@
 
   &__image {
     line-height: 0;
+    text-align: center;
+    height: 100%;
+    overflow: hidden;
+
+    @media only screen and (min-width: $mobileLandScape) {
+      // height: 350px;
+    }
+
+    @media only screen and (min-width: $tablet) {
+      // height: 473px;
+    }
+
+    @media only screen and (min-width: $desktop) {
+      // height: 595px;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      // height: 838px;
+    }
 
     img {
       width: 100%;
@@ -60,6 +75,7 @@
   &__wrap {
     @media only screen and (min-width: $desktop) {
       display: flex;
+      align-items: flex-start;
     }
   }
 
@@ -67,63 +83,73 @@
     margin-bottom: 24px;
     position: relative;
 
-    i {
-      font-size: 0;
-      position: absolute;
-      bottom: 19px;
-      right: 19px;
-      cursor: pointer;
-
-      @media only screen and (min-width: $desktopSupperLarge) {
-        bottom: 24px;
-        right: 16px;
-      }
-
-      &:before {
-        font-size: 36px;
-        color: $white;
-
-        @media only screen and (max-width: $mobileOnly) {
-          font-size: 20px;
-        }
-
-        @media only screen and (min-width: $desktopSupperLarge) {
-          font-size: 42px;
-        }
-      }
-    }
-
-    @media only screen and (min-width: $desktop) and (max-width: $desktopwideOnly) {
-      width: 65%;
-    }
-
-    @media only screen and (min-width: $desktopWide) {
-      width: 75.695%;
+    @media only screen and (min-width: $desktop) {
+      width: 65.23%;
       margin-bottom: 0;
     }
 
+    @media only screen and (min-width: $desktopWide) {
+      // width: 75.695%;
+      // margin-bottom: 0;
+    }
+
     @media only screen and (min-width: $desktopSupperWideLarge) {
-      width: 75.625%;
+      // width: 75.625%;
+    }
+
+    i {
+      font-size: 0;
+      position: absolute;
+      bottom: 9px;
+      right: 9px;
+      cursor: pointer;
+
+      @media only screen and (min-width: $tablet) {
+        bottom: 20px;
+        right: 20px;
+      }
+
+      @media only screen and (min-width: $desktopSupperLarge) {
+        bottom: 28px;
+        right: 28px;
+      }
+
+      &:before {
+        font-size: 17px;
+        color: $white;
+
+        @media only screen and (min-width: $tablet) {
+          font-size: 34px;
+        }
+      }
     }
   }
 
   &__right {
+    width: 100%;
+
+    @media only screen and (min-width: $desktop) {
+      padding-right: $containerMarginDesktop2;
+      padding-left: 30px;
+    }
+
+    @media only screen and (min-width: $desktopWideLarge) {
+      padding-right: calc((100% - #{$containerdesktopWideLarge2}) / 2);
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      padding-right: $containerMarginDesktopSupperLarge2;
+    }
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      padding-right: calc((100% - #{$containerdesktopSupperWideLarge2}) / 2);
+      padding-left: 40px;
+    }
+
     > a {
       @media only screen and (max-width: $tabletOnly) {
         display: none;
       }
-    }
-
-    @media only screen and (min-width: $desktop) and (max-width: $desktopwideOnly) {
-      width: 65%;
-    }
-
-    @media only screen and (min-width: $desktopWide) {
-      width: calc(100% - 75.695%);
-    }
-
-    @media only screen and (min-width: $desktopSupperWideLarge) {
-      width: calc(100% - 75.625%);
     }
 
     .back-to {
@@ -136,8 +162,15 @@
     }
   }
 
+  &__slider {
+  }
+
   &__link {
-    margin-top: -5px;
+    margin-top: 24px;
+
+    @media only screen and (min-width: $desktop) {
+      margin: 0;
+    }
 
     .btn--icon {
       &:before {
@@ -147,7 +180,7 @@
     }
 
     .btn {
-      margin-right: 19px;
+      margin-right: 0;
       margin-top: 20px; 
 
       @media only screen and (max-width: $mobileOnly) {
@@ -160,23 +193,28 @@
       }
 
       @media only screen and (min-width: $desktop) {
-        margin-top: 15px;
-        margin-right: 0;
+        margin: 24px 19px 0 0;
       }
 
       @media only screen and (min-width: $desktopSupperLarge) {
-        margin-top: 21px;
+        margin: 42px 27px 0 0;
       }
 
       &:last-of-type {
         margin-right: 0;
+      }
+
+      &:first-of-type {
+        @media only screen and (min-width: $desktopOnly) {
+          margin-top: 0;
+        }
       }
     }
   }
 
   &__content {
     @media only screen and (min-width: $desktop) {
-      margin-bottom: 23px;
+      // margin-bottom: 23px;
     }
 
     p:last-of-type {
@@ -239,24 +277,21 @@
 
     .box-gallery__right {
       @media only screen and (min-width: $desktop) {
-        padding-left: calc((100% - 960px) / 2);
-        padding-right: 33px;
-      }
+      padding-left: $containerMarginDesktop2;
+      padding-right: 33px;
+    }
 
-      @media only screen and (min-width: $desktopWide) {
-        padding-left: calc((100% - 1144px) / 2);
-        padding-right: 33px;
-      }
+    @media only screen and (min-width: $desktopWideLarge) {
+      padding-left: calc((100% - #{$containerdesktopWideLarge2}) / 2);
+    }
 
-      @media only screen and (min-width: $desktopWideLarge) {
-        padding-left: calc((100% - 1306px) / 2);
-        padding-right: 33px;
-      }
+    @media only screen and (min-width: $desktopSupperLarge) {
+      padding-left: $containerMarginDesktopSupperLarge2;
+    }
 
-      @media only screen and (min-width: $desktopSupperWideLarge) {
-        padding-left: calc((100% - 1836px) / 2);
-        padding-right: 62px;
-      }
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      padding-left: calc((100% - #{$containerdesktopSupperWideLarge2}) / 2);
+    }
     }
   }
 }
