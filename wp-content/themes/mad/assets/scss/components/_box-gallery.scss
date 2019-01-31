@@ -203,12 +203,6 @@
       &:last-of-type {
         margin-right: 0;
       }
-
-      &:first-of-type {
-        @media only screen and (min-width: $desktopOnly) {
-          margin-top: 0;
-        }
-      }
     }
   }
 
@@ -277,21 +271,21 @@
 
     .box-gallery__right {
       @media only screen and (min-width: $desktop) {
-      padding-left: $containerMarginDesktop2;
-      padding-right: 33px;
-    }
+        padding-left: $containerMarginDesktop2;
+        padding-right: 33px;
+      }
 
-    @media only screen and (min-width: $desktopWideLarge) {
-      padding-left: calc((100% - #{$containerdesktopWideLarge2}) / 2);
-    }
+      @media only screen and (min-width: $desktopWideLarge) {
+        padding-left: calc((100% - #{$containerdesktopWideLarge2}) / 2);
+      }
 
-    @media only screen and (min-width: $desktopSupperLarge) {
-      padding-left: $containerMarginDesktopSupperLarge2;
-    }
+      @media only screen and (min-width: $desktopSupperLarge) {
+        padding-left: $containerMarginDesktopSupperLarge2;
+      }
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
-      padding-left: calc((100% - #{$containerdesktopSupperWideLarge2}) / 2);
-    }
+      @media only screen and (min-width: $desktopSupperWideLarge) {
+        padding-left: calc((100% - #{$containerdesktopSupperWideLarge2}) / 2);
+      }
     }
   }
 }

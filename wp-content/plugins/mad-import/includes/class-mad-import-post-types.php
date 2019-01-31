@@ -118,7 +118,7 @@ class Mad_Import_Post_Types {
 			'description'         => 'description',
 			'taxonomies'          => array('product_filter'),
 			'public'              => true,
-			'has_archive'         => false,
+			'has_archive'         => true,
 			'can_export'          => true,
 			'capability_type'     => 'post',
 			'supports'            => $supports,
