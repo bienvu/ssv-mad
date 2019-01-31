@@ -38,7 +38,7 @@ h1,
 h2,
 .h2 {
   font-size: 28px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 
   @media only screen and (min-width: $tablet) {
     margin-bottom: 30px;
@@ -62,7 +62,7 @@ h2,
 h3,
 .h3 {
   font-size: 21px;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 
   @media only screen and (min-width: $tablet) {
     font-size: 28px;
@@ -229,7 +229,7 @@ q {
     &:before {
       content: '\201c';
       position: absolute;
-      right: 100%;
+      transform: translateX(-6px);
       top: 0;
     }
   }

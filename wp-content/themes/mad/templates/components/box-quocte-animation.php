@@ -4,7 +4,7 @@
 ?>
 <div class="box-quocte">
   <div class="box-quocte__video">
-    <video autoplay="autoplay" loop="loop" >
+    <video autoplay="autoplay" loop="loop" muted="muted">
         <source src="<?php echo $video; ?>" type="video/mp4">
     </video>
   </div>
@@ -20,18 +20,20 @@
             ?>
 
             <div class="quocte">
-              <?php if($comment): ?>
-                <div class="quocte__content"><?php echo $comment; ?></div>
-              <?php endif; ?>
-              
-              <?php if($author): ?>
-                <div class="quocte__author"><?php echo $author; ?></div>
+              <div class="container">
+                <?php if($comment): ?>
+                  <div class="quocte__content"><?php echo $comment; ?></div>
+                <?php endif; ?>
+                
+                <?php if($author): ?>
+                  <div class="quocte__author"><?php echo $author; ?></div>
 
-              <?php else: ?>
-                <div class="box-quocte__image">
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/mad_logo.svg" alt="">
-                </div>
-              <?php endif; ?>
+                <?php else: ?>
+                  <div class="box-quocte__image">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/mad_logo.svg" alt="">
+                  </div>
+                <?php endif; ?>
+              </div>
             </div>
           <?php endwhile; ?>
         <?php endif; ?>

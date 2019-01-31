@@ -17,7 +17,7 @@
       'public' => true,
       'has_archive' => false,
       'show_in_menu' => true,
-      'supports' => array('title','editor','custom-fields', 'revisions'),
+      'supports' => array('title','editor','custom-fields', 'revisions', 'thumbnail'),
       'show_in_nav_menus' => true,
       'exclude_from_search' => true,
       'publicly_queryable' => true,
