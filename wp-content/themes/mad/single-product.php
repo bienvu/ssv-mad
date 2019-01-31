@@ -55,13 +55,9 @@
             <?php echo $product_extra; ?>
           </div>
           
-          <?php if(!empty($product_button)): ?>
             <div class="box-gallery__link">
-              <?php if(!empty($product_button[0])): ?>
-                <a href="" class="btn js-lightbox-form"><?php echo $product_button[0]['button_text']; ?></a><?php endif; ?><?php if(!empty($product_button[1])): ?><a href="<?php echo 'https://www.facebook.com/sharer/sharer.php?u'.$link_fb; ?>" class="btn btn--icon icon-share"><?php echo $product_button[1]['button_text']; ?></a>
-              <?php endif; ?>
+                <a href="" class="btn js-lightbox-form"><?php _e( 'Enquire Now', 'ssvmad' ); ?></a>  <a href="<?php echo 'https://www.facebook.com/sharer/sharer.php?u='.$link_fb; ?>" class="btn btn--icon icon-share"><?php echo _e( 'SHARE', 'ssvmad' ); ?></a>
             </div>
-          <?php endif; ?>
         </div>
       </div>
     </div>
