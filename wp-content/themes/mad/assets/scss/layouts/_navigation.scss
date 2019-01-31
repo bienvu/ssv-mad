@@ -252,12 +252,11 @@
       li {
         @media only screen and (min-width: $desktop) {
           margin-bottom: 17px;
-          padding-right: 55px;
+          padding-right: 0;
         }
 
         @media only screen and (min-width: $desktopSupperLarge) {
           margin-bottom: 25px;
-          padding-right: 85px;
         }
         
         span {
@@ -358,6 +357,13 @@
     }
 
     > .sub-menu {
+      > li > span {
+        i {
+          @media only screen and (max-width: $tabletOnly) {
+            display: none;
+          }
+        }
+      }
       @media only screen and (min-width: $desktop) {
         > li {
           padding-right: 103px;
