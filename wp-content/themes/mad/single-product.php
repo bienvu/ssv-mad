@@ -13,6 +13,7 @@
     $featured_image = get_field('featured_image');
     $sku = get_field('sku');
     $gallery = get_field('gallery');
+    $related = get_field('related');
     $product_extra = get_field('product_extra', 'option');
     $product_button = get_field('product_button', 'option');
     $sitewide = get_field('sitewide', 'option');

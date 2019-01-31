@@ -16,6 +16,10 @@
             $page_thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $page->ID ), 'single-post-thumbnail' );
             $page_link = get_page_link($page->ID);
           }
+
+          if($page->post_type == 'artistry') {
+            $page_link = get_post_permalink( $page->ID );
+          }
         }
 
         if(!empty($taxonomy)) {
