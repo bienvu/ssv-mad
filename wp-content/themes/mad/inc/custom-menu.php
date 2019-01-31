@@ -76,14 +76,14 @@
    */
   class header_nav_walker extends Walker_Nav_Menu
   {
-      public function end_el( &$output, $item, $depth = 0, $args = array() ) {
-    //Only add class to 'top level' items on the 'header' menu.
-    $hasChildren = (in_array('menu-item-has-children', $item->classes));
+    public function end_el( &$output, $item, $depth = 0, $args = array() ) {
+      //Only add class to 'top level' items on the 'header' menu.
+      $hasChildren = (in_array('menu-item-has-children', $item->classes));
 
-    //get field image menu item
-    $image = get_field('image', $item);
+      //get field image menu item
+      $image = get_field('image', $item);
 
-    if('header-menu' == $args->theme_location && $hasChildren ) {
+      if('header-menu' == $args->theme_location && $hasChildren ) {
         if($depth == 0) {
           // search form data
           $searchform = mad_string_termplate_part();
@@ -99,8 +99,12 @@
                           <li class="text"><a href="">'.$sitewidedata['header_text'].'</a></li>
                           <li><a href="" class="btn btn--large btn--no-change">Book a Consultation</a></li>
                         </ul>
-                      </div>
-                    </div>
+                      </div>';
+          if(!empty($image)) {
+            $output .= '<div class="image-custom"><img src="'.$image['sizes']['menu-first'].'" alt="'.$image['alt'].'"></div>';
+          }
+          
+          $output .= '</div>
                   </div>
                 </div>
               </li>';
@@ -119,25 +123,29 @@
                           <li class="text"><a href="" class="">'.$sitewidedata['header_text'].'</a></li>
                           <li><a href="" class="btn btn--large btn--no-change">Book a Consultation</a></li>
                         </ul>
-                      </div>
-                  </div>
+                      </div>';
+          if(!empty($image)) {
+            $output .= '<div class="image-custom"><img src="'.$image['sizes']['menu-second'].'" alt="'.$image['alt'].'"></div>';
+          }
+
+          $output .=  '</div>
               </div>
             </div>';
         }
-    }
-
-    if($depth > 0 ) {
-        if (!empty($image)) {
-      $output .= '<div class="main-menu__image">
-            <a href=""><img src="'.$image['url'].'" alt="'.$image['alt'].'"></a>
-              </div>';
-        }
-
-        if($depth == 1) {
-      $output .= '</li>';
-        }
-    }
       }
+
+      if($depth > 0 ) {
+          if (!empty($image)) {
+        $output .= '<div class="main-menu__image">
+              <a href=""><img src="'.$image['url'].'" alt="'.$image['alt'].'"></a>
+                </div>';
+          }
+
+          if($depth == 1) {
+        $output .= '</li>';
+          }
+      }
+    }
   }
 
   add_filter( 'walker_nav_menu_start_el', 'mad_add_arrow',10,4);

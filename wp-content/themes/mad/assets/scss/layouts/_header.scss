@@ -165,10 +165,6 @@
   &__top {
     order: 2;
 
-    @media only screen and (min-width: $tablet) and (max-width: $tabletOnly) {
-      display: none;
-    }
-
     @media only screen and (min-width: $desktop) {
       order: inherit;
       margin-bottom: 14px;
@@ -271,7 +267,8 @@
 
     @media only screen and (max-width: $tabletOnly) {
       position: relative;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto; 
     }
 
     @media only screen and (min-width: $tablet) {

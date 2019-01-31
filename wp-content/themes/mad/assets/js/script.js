@@ -224,5 +224,18 @@
       });
     }
 
+    // add class to li element in menu wordpress
+    $('.menu-item').mouseenter(function(event) {
+      $(this).parent().addClass('active');
+    });
+
+    $('.menu-item-has-children').mouseleave(function(event) {
+      $(this).parent().removeClass('active');
+    });
+
+    $('.menu-item').mouseleave(function(event) {
+      $(this).parent().removeClass('active');
+    });
+
   });
 })(this, this.document, this.jQuery);

@@ -9,7 +9,6 @@ if( function_exists('acf_add_options_page') ) {
     'redirect'    => false
   ));
 }
-
 // Theme support
 if (function_exists('add_theme_support')) {
     // Woocommerce support theme.
@@ -20,9 +19,9 @@ if (function_exists('add_theme_support')) {
 
     // Add Thumbnail Theme Support
     add_theme_support('post-thumbnails');
-    // add_image_size('large', 700, '', true); // Large Thumbnail
-    // add_image_size('medium', 250, '', true); // Medium Thumbnail
-    // add_image_size('small', 120, '', true); // Small Thumbnail
+    add_image_size('menu-first', 1100, 513, true); // menu first
+    add_image_size('menu-second', 750, 500, true); // menu second
+    add_image_size('banner', 2732, 1600, true); // image for banner
 }
 
 // Allow SVG through WordPress Media Uploader

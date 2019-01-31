@@ -14,7 +14,7 @@
       pointer-events: none;
     }
 
-    @media only screen and (min-width: $desktopWide) {
+    @media only screen and (min-width: $desktop) {
       position: absolute;
       top: 50%;
       left: 0;
@@ -35,7 +35,7 @@
     @media only screen and (min-width: $tablet) {
     }
 
-    @media only screen and (min-width: $desktopWide) {
+    @media only screen and (min-width: $desktop) {
       float: right;
       max-width: 400px;
       text-align: center;
@@ -62,7 +62,7 @@
   &__item {
     position: relative;
 
-    @media only screen and (min-width: $desktopWideLarge) {
+    @media only screen and (min-width: $desktop) {
       height: 100vh;
       overflow: hidden;
     }
@@ -71,28 +71,31 @@
       width: 100%;
       height: auto;
 
-      @media only screen and (min-width: $desktopWide) {
-        max-width: 100%;
+      @media only screen and (min-width: $desktop) {
         max-height: 100%;
         width: auto;
         height: auto;
+        max-width: inherit;
+      }
+
+      @media only screen and (min-width: $desktop) and (max-height: 58.565vw) {
+        width: 100%;
+        max-height: inherit;
       }
 
       @media only screen and (min-width: $desktopSupperLarge) {
         width: 100%;
-        height: auto;
         max-height: inherit;
-        max-width: inherit;
       }
     }
 
     .banner__description {
-      @media only screen and (max-width: $desktopwideOnly) {
+      @media only screen and (max-width: $tabletOnly) {
         display: none;
       }
 
       .author {
-        @media only screen and (min-width: $desktopWide) {
+        @media only screen and (min-width: $desktop) {
           display: none;
         }
 
@@ -112,14 +115,16 @@
 
   &__wrap {
     > .banner__description {
-      @media only screen and (min-width: $desktopWide) {
+      @media only screen and (min-width: $desktop) {
         display: none;
       }
     }
   }
 
   &__image {
+    height: 100%;
     a {
+      height: 100%;
       line-height: 0;
       display: block;
     }
