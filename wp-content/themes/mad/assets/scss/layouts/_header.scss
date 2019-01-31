@@ -267,8 +267,7 @@
 
     @media only screen and (max-width: $tabletOnly) {
       position: relative;
-      overflow-x: hidden;
-      overflow-y: auto; 
+      overflow: hidden;
     }
 
     @media only screen and (min-width: $tablet) {
@@ -282,6 +281,13 @@
       overflow: visible;
       margin-top: 9px;
       background-color: transparent;
+    }
+
+    > .container {
+      @media only screen and (max-width: $tabletOnly) {
+        max-height: 100%;
+        overflow-y: auto; 
+      }
     }
 
     &__wrap {
