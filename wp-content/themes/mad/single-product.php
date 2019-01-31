@@ -15,6 +15,7 @@
     $gallery = get_field('gallery');
     $product_realted = get_field('product_realted');
     $product_extra = get_field('product_extra', 'option');
+    $product_seo_extra = get_field('product_seo_extra', 'option');
     $product_button = get_field('product_button', 'option');
     $sitewide = get_field('sitewide', 'option');
     $link_fb = $sitewide['social']['item'][0]['link']["url"];
@@ -136,5 +137,15 @@
     endwhile;
   endif;
   ?>
+
+  <?php if($product_seo_extra): ?>
+    <div class="box-text">
+    <div class="container">
+      <div class="box-text__body">
+        <?php echo $product_seo_extra; ?>
+      </div>
+    </div>
+  </div>
+  <?php endif; ?>
 </main>
 <?php get_footer(); ?>
