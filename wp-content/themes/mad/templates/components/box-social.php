@@ -28,7 +28,7 @@
           
           <?php if($class): ?>
             <div class="box-social__icon">
-              <a href="<?php if($link) { echo $link; } ?>" class="<?php echo $class; ?>"></a>
+              <a href="<?php if(!empty($link)) { echo $link['url']; } ?>" class="<?php echo $class; ?>"></a>
             </div>
           <?php endif; ?>
         </div>
