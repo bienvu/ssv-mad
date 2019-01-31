@@ -28,7 +28,7 @@
     //Only add class to 'top level' items on the 'header' menu.
     $hasChildren = (in_array('menu-item-has-children', $item->classes));
 
-    if('header-menu' == $args->theme_location && ( $hasChildren || $depth == 1 ) ){
+    if('header-menu' == $args->theme_location && $hasChildren ){
       $item_output = '<span>'.$item_output.'<i class="icon-arrow-right"></i></span>';
     } else {
       $item_output = '<span>'.$item_output.'</span>';

@@ -184,6 +184,9 @@
         prevArrow: '<span class="slick-prev">Previous</span>',
         nextArrow: '<span class="slick-next">Next</span>',
         adaptiveHeight: true,
+        autoplay: true,
+        fade: true,
+        infinite: true, 
       });
     }
 
