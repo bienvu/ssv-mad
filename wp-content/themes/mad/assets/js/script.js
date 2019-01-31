@@ -60,7 +60,7 @@
 
     //scroll to next section
     $('.js-scroll-down').click(function() {
-      var $next = $(this).parent().next().offset().top;
+      var $next = $(this).parent().next().offset().top - 86;console.log($next);
       $('html, body').animate({
         scrollTop: $next
       }, 'slow');
