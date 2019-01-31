@@ -28,7 +28,7 @@
     //Only add class to 'top level' items on the 'header' menu.
     $hasChildren = (in_array('menu-item-has-children', $item->classes));
 
-    if('header-menu' == $args->theme_location && $hasChildren ){
+    if('header-menu' == $args->theme_location && ( $hasChildren || $depth == 1 ) ){
       $item_output = '<span>'.$item_output.'<i class="icon-arrow-right"></i></span>';
     } else {
       $item_output = '<span>'.$item_output.'</span>';
@@ -135,15 +135,17 @@
       }
 
       if($depth > 0 ) {
-          if (!empty($image)) {
-        $output .= '<div class="main-menu__image">
-              <a href=""><img src="'.$image['url'].'" alt="'.$image['alt'].'"></a>
-                </div>';
-          }
-
+        if (!empty($image)) {
           if($depth == 1) {
-        $output .= '</li>';
+            $output .= '<div class="main-menu__image">
+                <a href=""><img src="'.$image['sizes']['menu-first'].'" alt="'.$image['alt'].'"></a>
+                  </div></li>';
+          } else {
+            $output .= '<div class="main-menu__image">
+                <a href=""><img src="'.$image['sizes']['menu-second'].'" alt="'.$image['alt'].'"></a>
+                  </div></li>';
           }
+        }
       }
     }
   }
