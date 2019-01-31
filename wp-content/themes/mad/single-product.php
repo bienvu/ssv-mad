@@ -13,7 +13,7 @@
     $featured_image = get_field('featured_image');
     $sku = get_field('sku');
     $gallery = get_field('gallery');
-    $related = get_field('related');
+    $product_realted = get_field('product_realted');
     $product_extra = get_field('product_extra', 'option');
     $product_button = get_field('product_button', 'option');
     $sitewide = get_field('sitewide', 'option');
@@ -99,6 +99,39 @@
       </div>
     <?php endif; ?>
   </div>
+  
+  <?php if(!empty($product_realted)): ?>
+    <div class="grid-image grid-image--with-bg bg--light-gray ?>">
+      <div class="container">
+        <h2 class="grid-image__title">You May Also Like</h2>
+        <div class="grid-image__list">
+          <?php  foreach($product_realted as $produc_id):
+              $post_object = get_post( $produc_id );
+              $gallery  = get_field('gallery', $post_object);
+              $post_url = get_permalink( $post_object );
+              $gallery = $gallery[0]; ?>
+
+              <div class="grid-image__item">
+                <?php if(!empty($post_url)): ?>
+                  <a href="<?php echo $post_url; ?>">
+                <?php endif; ?>
+
+                    <?php if(!empty($gallery)): ?>
+                      <div class="grid-image__image">
+                        <img src="<?php echo $gallery['url']; ?>" alt="<?php echo $gallery['alt']; ?>">
+                      </div>
+                    <?php endif; ?>
+                <?php if(!empty($post_url)): ?>
+                  </a>
+                <?php endif; ?>
+              </div>
+
+          <?php endforeach; ?>
+        </div> 
+      </div>
+    </div>
+  <?php endif; ?>
+
   <?php 
     endwhile;
   endif;

@@ -164,4 +164,36 @@ $margin: 15px;
       }
     }
   }
+
+  &--with-bg {
+    padding: 25px 0 22px;
+
+    @media only screen and (min-width: $tablet) {
+      padding: 25px 0 32px;
+    }
+
+    @media only screen and (min-width: $desktop) {
+      padding: 43px 0 50px;
+    }
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      padding: 62px 0 67px;
+    }
+
+    .grid-image__title {
+      margin-bottom: 20px;
+
+      @media only screen and (min-width: $tablet) {
+        margin-bottom: 20px;
+      }
+
+      @media only screen and (min-width: $desktop) {
+        margin-bottom: 44px;
+      }
+
+      @media only screen and (min-width: $desktopSupperWideLarge) {
+        margin-bottom: 59px;
+      }
+    }
+  }
 }
