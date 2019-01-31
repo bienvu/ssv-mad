@@ -64,14 +64,11 @@
       </div>
     </div>
     
-    <?php if(!empty($product_button)): ?>
       <div class="box-gallery__lightbox-form is-lightbox-form">
         <div class="container">
           <div class="lightbox-form">
             <div class="lightbox-form__wrap">
-              <?php if(!empty($product_button[0])): ?>
-                <h2 class="lightbox-form__title text--center"><?php echo $product_button[0]['button_text']; ?></h2>
-              <?php endif; ?>
+              <h2 class="lightbox-form__title text--center">Enquire Now</h2>
 
               <div class="lightbox-form__body">
                 <div class="lightbox-form__left">
@@ -98,7 +95,6 @@
           </div>
         </div>
       </div>
-    <?php endif; ?>
   </div>
   
   <?php if(!empty($product_realted)): ?>
