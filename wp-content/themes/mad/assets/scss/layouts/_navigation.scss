@@ -28,6 +28,7 @@
           .main-menu__wrap {
             opacity: 1;
             visibility: visible;
+            z-index: 1;
           }
 
           > span {
@@ -156,17 +157,27 @@
       margin-bottom: 0;
     }
 
+    @media only screen and (min-width: $desktopSupperLarge) {
+      width: 324px;
+    }
+
     > li {
       @media only screen and (min-width: $desktop) {
+        &:first-of-type > span > a {
+          padding-top: 0;
+        }
+
         &:hover {
           > .main-menu__image {
             visibility: visible;
             opacity: 1;
+            z-index: 1;
           }
 
           .sub-menu__wrap {
             visibility: visible;
             opacity: 1;
+            z-index: 1;
 
             + .main-menu__image {
               display: none;
@@ -203,7 +214,18 @@
       > span {
         > a {
           @media only screen and (min-width: $desktop) {
-            padding: 12px 0;
+            @include miller-display;
+            font-weight: 400;
+            font-size: 21px;
+            color: #808080;
+            transition: .5s;
+            text-transform: capitalize;
+            padding: 12px 10px 12px 0;
+          }
+
+          @media only screen and (min-width: $desktopSupperLarge) {
+            font-size: 29px;
+            padding: 18px 10px 18px 0;
           }
         }
       }
@@ -216,35 +238,43 @@
       left: 100%;
       width: 100%;
       height: 100vh;
-      z-index: 1;
       transition: .5s;
       overflow: hidden auto;
 
        @media only screen and (min-width: $desktop) {
         top: 0;
         right: 0;
+        bottom: 0;
         left: inherit;
-        width: 70%;
+        width: calc(100% - 224px);
         height: auto;
         overflow: visible;
         opacity: 0;
         visibility: hidden;
-        margin-top: 14px;
-        padding-left: 7px;
+        padding-left: 111px;
         background-color: transparent;
-       }
+      }
 
-       @media only screen and (min-width: $desktopSupperLarge) {
-          margin-top: 20px;
-          padding-left: 11px;
-       }
+      @media only screen and (min-width: $desktopSupperLarge) {
+        width: calc(100% - 324px);
+      }
 
       &.is-show {
         left: 0%;
       }
 
-      .sub-menu > li:hover > span > a > i {
-        display: none;
+      .sub-menu {
+        @media only screen and (min-width: $desktop) {
+          width: 293px;
+
+          .main-menu__image {
+            padding-left: 30px;
+          }
+        }
+
+        & > li:hover > span > a > i {
+          display: none;
+        }
       }
     }
 
@@ -253,6 +283,10 @@
         @media only screen and (min-width: $desktop) {
           margin-bottom: 17px;
           padding-right: 0;
+
+          &:last-of-type {
+            margin: 0;
+          }
         }
 
         @media only screen and (min-width: $desktopSupperLarge) {
@@ -306,6 +340,12 @@
           }
         }
       }
+
+      .main-menu__image {
+        @media only screen and (min-width: $desktop) {
+          width: calc(100% - 293px - 111px);
+        }
+      }
     }
   }
 
@@ -332,10 +372,6 @@
 
     .container {
       @media only screen and (min-width: $desktop) {
-        max-width: 900px;
-      }
-
-      @media only screen and (min-width: $desktopWideLarge) {
         max-width: 1085px;
       }
 
@@ -353,6 +389,15 @@
     @media only screen and (min-width: $desktop) {
       position: relative;
       min-height: 350px;
+      overflow: hidden;
+
+      @media only screen and (min-width: $desktopSupperLarge) {
+        min-height: 508px;
+      }
+
+      .image-custom {
+        padding-left: 111px;
+      }
     }
 
     > .sub-menu {
@@ -365,19 +410,7 @@
       }
       @media only screen and (min-width: $desktop) {
         > li {
-          // padding-right: 0;
           cursor: pointer;
-          
-          > span {
-            > a {
-              @include miller-display;
-              font-weight: 400;
-              font-size: 21px;
-              color: #808080;
-              transition: .5s;
-              text-transform: capitalize;
-            }
-          }
 
           &:hover {
             > span {
@@ -387,20 +420,6 @@
             }
           }
         }
-      }
-
-      @media only screen and (min-width: $desktopSupperLarge) {
-        > li {
-          padding-right: 145px;
-          
-          > span {
-            > a {
-              font-size: 29px;
-              padding: 18px 0;
-              
-            }
-          }
-        } 
       }
     }
   }
@@ -424,11 +443,16 @@
       bottom: 0;
       overflow: hidden;
       width: calc(100% - 224px);
-      padding: 0 0 0 111px;
+      padding: 0;
       display: block;
       opacity: 0;
       visibility: hidden;
       transition: .5s;
+      padding-left: 111px;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      width: calc(100% - 324px);
     }
 
     img {
@@ -502,14 +526,21 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 70%;
+  width: calc(100% - 224px);
   line-height: 0;
-  z-index: -1;
-  padding: 0 3px;
   transition: .5s;
   opacity: 1;
 
-  @media only screen and (max-width: $desktopOnly) {
+  @media only screen and (min-width: $desktopSupperLarge) {
+    width: calc(100% - 324px);
+  }
+
+  @media only screen and (max-width: $tabletOnly) {
     display: none;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
   }
 }

@@ -19,7 +19,7 @@ if (function_exists('add_theme_support')) {
 
     // Add Thumbnail Theme Support
     add_theme_support('post-thumbnails');
-    add_image_size('menu-first', 750, 350, true); // menu first
+    add_image_size('menu-first', 1100, 513, true); // menu first
     add_image_size('menu-second', 750, 500, true); // menu second
     add_image_size('banner', 2732, 1600, true); // image for banner
 }
