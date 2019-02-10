@@ -69,6 +69,19 @@
 
     &__author {
       text-align: right;
+      margin-top: 20px;
+
+      @media only screen and (min-width: $tablet) {
+        font-size: 20px;
+      }
+
+      @media only screen and (min-width: $desktop) {
+        font-size: 30px;
+      }
+
+      @media only screen and (min-width: $desktopSupperLarge) {
+        font-size: 40px;
+      }
     }
 
     @media only screen and (min-width: $tablet) {

@@ -105,11 +105,11 @@ class Mad_Import_Post_Types {
 			'description'         => 'description',
 			'taxonomies'          => array('category', 'product_filter'),
 			'public'              => true,
-			'has_archive'         => true,
+			'has_archive'         => false,
 			'can_export'          => true,
 			'capability_type'     => 'post',
 			'supports'            => $supports,
-      'rewrite'             => false,
+      'rewrite'             => true,
 		);
 	
 		$args[] = array(
@@ -122,7 +122,7 @@ class Mad_Import_Post_Types {
 			'can_export'          => true,
 			'capability_type'     => 'post',
 			'supports'            => $supports,
-      'rewrite'             => false,
+      'rewrite'             => true,
 		);
 	
 		register_post_type( 'product', $args[0] );

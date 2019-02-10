@@ -26,7 +26,7 @@
                 <?php endif; ?>
                 
                 <?php if($author): ?>
-                  <div class="quocte__author"><?php echo $author; ?></div>
+                  <div class="quocte__author"><strong><?php echo $author; ?></strong></div>
 
                 <?php else: ?>
                   <div class="box-quocte__image">

@@ -60,7 +60,7 @@
 
     //scroll to next section
     $('.js-scroll-down').click(function() {
-      var $next = $(this).parent().next().offset().top;
+      var $next = $(this).parent().next().offset().top - 86;console.log($next);
       $('html, body').animate({
         scrollTop: $next
       }, 'slow');
@@ -184,6 +184,9 @@
         prevArrow: '<span class="slick-prev">Previous</span>',
         nextArrow: '<span class="slick-next">Next</span>',
         adaptiveHeight: true,
+        autoplay: true,
+        fade: true,
+        infinite: true, 
       });
     }
 
@@ -223,6 +226,19 @@
         }
       });
     }
+
+    // add class to li element in menu wordpress
+    $('.menu-item').mouseenter(function(event) {
+      $(this).parent().addClass('active');
+    });
+
+    $('.menu-item-has-children').mouseleave(function(event) {
+      $(this).parent().removeClass('active');
+    });
+
+    $('.menu-item').mouseleave(function(event) {
+      $(this).parent().removeClass('active');
+    });
 
   });
 })(this, this.document, this.jQuery);

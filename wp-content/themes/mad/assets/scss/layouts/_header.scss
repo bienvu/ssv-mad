@@ -147,7 +147,7 @@
     @media only screen and (max-width: $tabletOnly) {
       box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     &__wrap {
@@ -164,10 +164,6 @@
 
   &__top {
     order: 2;
-
-    @media only screen and (min-width: $tablet) and (max-width: $tabletOnly) {
-      display: none;
-    }
 
     @media only screen and (min-width: $desktop) {
       order: inherit;
@@ -285,6 +281,13 @@
       overflow: visible;
       margin-top: 9px;
       background-color: transparent;
+    }
+
+    > .container {
+      @media only screen and (max-width: $tabletOnly) {
+        max-height: 100%;
+        overflow-y: auto; 
+      }
     }
 
     &__wrap {

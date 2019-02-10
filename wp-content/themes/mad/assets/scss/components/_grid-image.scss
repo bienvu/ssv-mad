@@ -90,6 +90,7 @@ $margin: 15px;
     width: 100%;
     z-index: 1;
     transition: .5s;
+    text-transform: capitalize;
 
     @media only screen and (min-width: $tablet) {
       margin-bottom: 15px;
@@ -160,6 +161,38 @@ $margin: 15px;
       @media only screen and (max-width: $tabletOnly) {
         border: 0;
         padding: 0;
+      }
+    }
+  }
+
+  &--with-bg {
+    padding: 25px 0 22px;
+
+    @media only screen and (min-width: $tablet) {
+      padding: 25px 0 32px;
+    }
+
+    @media only screen and (min-width: $desktop) {
+      padding: 43px 0 50px;
+    }
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      padding: 62px 0 67px;
+    }
+
+    .grid-image__title {
+      margin-bottom: 20px;
+
+      @media only screen and (min-width: $tablet) {
+        margin-bottom: 20px;
+      }
+
+      @media only screen and (min-width: $desktop) {
+        margin-bottom: 44px;
+      }
+
+      @media only screen and (min-width: $desktopSupperWideLarge) {
+        margin-bottom: 59px;
       }
     }
   }

@@ -14,7 +14,7 @@
         ?>
             <div class="banner__item">
               <div class="banner__image">
-                <a href="<?php echo $link['url']; ?>" target="<?php $link['target']; ?>"><img src="<?php echo $image_desktop['url']; ?>" alt="" class="hidden-on-mobile"></a>
+                <a href="<?php echo $link['url']; ?>" target="<?php $link['target']; ?>"><img src="<?php echo $image_desktop['sizes']['banner']; ?>" alt="" class="hidden-on-mobile"></a>
                 <a href="<?php echo $link['url']; ?>" target="<?php $link['target']; ?>"><img src="<?php echo $image_mobile['url']; ?>" alt="" class="hidden-on-tablet"></a>
               </div>
 
@@ -40,7 +40,7 @@
           ?>
               <div class="banner__item">
                 <div class="banner__image">
-                  <a href="<?php echo $link['url']; ?>" target="<?php $link['target']; ?>"><img src="<?php echo $image_desktop['url']; ?>" alt="" class="hidden-on-mobile"></a>
+                  <a href="<?php echo $link['url']; ?>" target="<?php $link['target']; ?>"><img src="<?php echo $image_desktop['sizes']['banner']; ?>" alt="" class="hidden-on-mobile"></a>
                   <a href="<?php echo $link['url']; ?>" target="<?php $link['target']; ?>"><img src="<?php echo $image_mobile['url']; ?>" alt="" class="hidden-on-tablet"></a>
                 </div>
               </div>

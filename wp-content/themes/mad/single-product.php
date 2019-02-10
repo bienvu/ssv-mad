@@ -13,7 +13,9 @@
     $featured_image = get_field('featured_image');
     $sku = get_field('sku');
     $gallery = get_field('gallery');
+    $product_realted = get_field('product_realted');
     $product_extra = get_field('product_extra', 'option');
+    $product_seo_extra = get_field('product_seo_extra', 'option');
     $product_button = get_field('product_button', 'option');
     $sitewide = get_field('sitewide', 'option');
     $link_fb = $sitewide['social']['item'][0]['link']["url"];
@@ -55,25 +57,18 @@
             <?php echo $product_extra; ?>
           </div>
           
-          <?php if(!empty($product_button)): ?>
             <div class="box-gallery__link">
-              <?php if(!empty($product_button[0])): ?>
-                <a href="" class="btn js-lightbox-form"><?php echo $product_button[0]['button_text']; ?></a><?php endif; ?><?php if(!empty($product_button[1])): ?><a href="<?php echo 'https://www.facebook.com/sharer/sharer.php?u'.$link_fb; ?>" class="btn btn--icon icon-share"><?php echo $product_button[1]['button_text']; ?></a>
-              <?php endif; ?>
+                <a href="" class="btn js-lightbox-form"><?php _e( 'Enquire Now', 'ssvmad' ); ?></a>  <a href="<?php echo 'https://www.facebook.com/sharer/sharer.php?u='.$link_fb; ?>" class="btn btn--icon icon-share"><?php echo _e( 'SHARE', 'ssvmad' ); ?></a>
             </div>
-          <?php endif; ?>
         </div>
       </div>
     </div>
     
-    <?php if(!empty($product_button)): ?>
       <div class="box-gallery__lightbox-form is-lightbox-form">
         <div class="container">
           <div class="lightbox-form">
             <div class="lightbox-form__wrap">
-              <?php if(!empty($product_button[0])): ?>
-                <h2 class="lightbox-form__title text--center"><?php echo $product_button[0]['button_text']; ?></h2>
-              <?php endif; ?>
+              <h2 class="lightbox-form__title text--center">Enquire Now</h2>
 
               <div class="lightbox-form__body">
                 <div class="lightbox-form__left">
@@ -100,11 +95,53 @@
           </div>
         </div>
       </div>
-    <?php endif; ?>
   </div>
+  
+  <?php if(!empty($product_realted)): ?>
+    <div class="grid-image grid-image--with-bg bg--light-gray ?>">
+      <div class="container">
+        <h2 class="grid-image__title">You May Also Like</h2>
+        <div class="grid-image__list">
+          <?php  foreach($product_realted as $produc_id):
+              $post_object = get_post( $produc_id );
+              $gallery  = get_field('gallery', $post_object);
+              $post_url = get_permalink( $post_object );
+              $gallery = $gallery[0]; ?>
+
+              <div class="grid-image__item">
+                <?php if(!empty($post_url)): ?>
+                  <a href="<?php echo $post_url; ?>">
+                <?php endif; ?>
+
+                    <?php if(!empty($gallery)): ?>
+                      <div class="grid-image__image">
+                        <img src="<?php echo $gallery['url']; ?>" alt="<?php echo $gallery['alt']; ?>">
+                      </div>
+                    <?php endif; ?>
+                <?php if(!empty($post_url)): ?>
+                  </a>
+                <?php endif; ?>
+              </div>
+
+          <?php endforeach; ?>
+        </div> 
+      </div>
+    </div>
+  <?php endif; ?>
+
   <?php 
     endwhile;
   endif;
   ?>
+
+  <?php if($product_seo_extra): ?>
+    <div class="box-text">
+    <div class="container">
+      <div class="box-text__body">
+        <?php echo $product_seo_extra; ?>
+      </div>
+    </div>
+  </div>
+  <?php endif; ?>
 </main>
 <?php get_footer(); ?>

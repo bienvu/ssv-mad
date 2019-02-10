@@ -394,6 +394,25 @@
                     "return_format": "array"
                 }
             ]
+        },
+        {
+            "key": "field_5c527be994921",
+            "label": "Product Seo Extra",
+            "name": "product_seo_extra",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         }
     ],
     "location": [
@@ -413,5 +432,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1548755784
+    "modified": 1548909581
 }
