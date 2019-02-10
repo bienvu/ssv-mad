@@ -126,8 +126,8 @@
     margin-bottom: 30px;
 
     @media only screen and (min-width: $desktop) {
-      width: 30%;
-      margin-bottom: 20px;
+      width: 224px;
+      margin-bottom: 0;
     }
 
     > li {
@@ -282,9 +282,7 @@
       opacity: 0;
       visibility: hidden;
       height: auto;
-      padding-top: 20px;
-      padding-bottom: 7px;
-      min-height: 410px;
+      padding: 30px 0;
       background-color: rgba($white, .95);
     }
 
@@ -310,12 +308,13 @@
   &__body {
     @media only screen and (min-width: $desktop) {
       position: relative;
+      min-height: 350px;
     }
 
     > .sub-menu {
       @media only screen and (min-width: $desktop) {
         > li {
-          padding-right: 103px;
+          // padding-right: 0;
           cursor: pointer;
           
           > span {
@@ -371,8 +370,10 @@
       position: absolute;
       top: 0;
       right: 0;
-      width: 70%;
-      padding: 0 3px;
+      bottom: 0;
+      overflow: hidden;
+      width: calc(100% - 224px);
+      padding: 0 0 0 111px;
       display: block;
       opacity: 0;
       visibility: hidden;
