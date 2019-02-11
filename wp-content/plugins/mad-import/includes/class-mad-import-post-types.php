@@ -84,7 +84,7 @@ class Mad_Import_Post_Types {
 		);
 		
 		$labels[] = array(
-			'name'               => __( 'Work', 'ssvmad' ),
+			'name'               => __( 'Works', 'ssvmad' ),
 			'singular_name'      => __( 'Work', 'ssvmad' ),
 			'add_new'            => _x( 'Add New', 'ssvmad', 'ssvmad' ),
 			'add_new_item'       => __( 'Add New', 'ssvmad' ),
@@ -122,7 +122,7 @@ class Mad_Import_Post_Types {
 			'can_export'          => true,
 			'capability_type'     => 'post',
 			'supports'            => $supports,
-      'rewrite'             => true,
+      'rewrite'             => array('slug' => 'works'),
 		);
 	
 		register_post_type( 'product', $args[0] );

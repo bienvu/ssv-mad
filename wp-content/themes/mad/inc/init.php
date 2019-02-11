@@ -20,4 +20,9 @@ require get_template_directory() . '/inc/register-post-type.php';
  */
 require get_template_directory() . '/inc/theme-support.php';
 
+/**
+ * Adding A Custom Form-Tag in Contact Form 7
+ */
+require get_template_directory() . '/inc/add-mail-tag.php';
+
 ?>

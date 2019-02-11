@@ -260,3 +260,16 @@ span.wpcf7-list-item {
     }
   }
 }
+
+.search-wrap,
+.page-404 {
+  padding: 30px 0;
+
+  @media only screen and (min-width: $desktop) {
+    padding: 40px 0;
+  }
+
+  @media only screen and (min-width: $desktopSupperLarge) {
+    padding: 56px 0;
+  }
+}
