@@ -1,18 +1,5 @@
 .box-quocte-default {
   text-align: center;
-  padding: 39px 0 15px;
-
-  @media only screen and (min-width: $tablet) {
-    padding: 39px 33px 22px;
-  }
-
-  @media only screen and (min-width: $desktop) {
-    padding: 53px 0 21px;
-  }
-
-  @media only screen and (min-width: $desktopSupperLarge) {
-    padding: 75px 0 21px;
-  }
 
   blockquote {
     @include miller-display;
@@ -31,11 +18,28 @@
     }
   }
 
+  &__content {
+    @media only screen and (max-width: $mobileOnly) {
+      padding: 0 1px;
+    }
+  }
+
   &__body {
     margin: auto;
+    padding: 39px 0;
+
+    @media only screen and (min-width: $tablet) {
+      padding: 39px 33px;
+      border-bottom: 1px solid rgba($gray, .25);
+    }
+
+    @media only screen and (min-width: $desktop) {
+      padding: 53px 0;
+    }
 
     @media only screen and (min-width: $desktopSupperLarge) {
-      // max-width: 960px;
+      padding: 75px 0;
+      max-width: 1500px;
     }
   }
 
@@ -49,28 +53,25 @@
 
   &--no-mark {
     background-color: $light-gray;
-    padding: 35px 0;
-    margin-bottom: 30px;
 
-    @media only screen and (min-width: $tablet) {
-      padding: 49px 0;
-      margin-bottom: 40px;
-    }
+    .box-quocte-default__body {
+      padding: 35px 0;
+      margin-bottom: 30px;
 
-    @media only screen and (min-width: $desktop) {
-      padding: 65.5px 0;
-      margin-bottom: 49px;
-    }
+      @media only screen and (min-width: $tablet) {
+        padding: 49px 0;
+        margin-bottom: 40px;
+        border-bottom: 0;
+      }
 
-    @media only screen and (min-width: $desktopSupperLarge) {
-      padding: 92.5px 0;
-      margin-bottom: 68px;
-    }
-
-    .container {
       @media only screen and (min-width: $desktop) {
-        max-width: 100%;
-        margin: 0 20px;
+        padding: 65.5px 0;
+        margin-bottom: 49px;
+      }
+
+      @media only screen and (min-width: $desktopSupperLarge) {
+        padding: 92.5px 0;
+        margin-bottom: 68px;
       }
     }
 
@@ -91,15 +92,9 @@
       }
 
       br {
-        @media only screen and (max-width: $mobilePortraitOnly) {
-          display: inline;
+        @media only screen and (max-width: $desktopwideOnly) {
+          display: none;
         }
-      }
-    }
-
-    .box-quocte-default__body {
-      @media only screen and (min-width: $desktopSupperLarge) {
-        max-width: 1500px;
       }
     }
   }

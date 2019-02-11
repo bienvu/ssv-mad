@@ -47,7 +47,7 @@
               }
 
               &:after {
-                transform: scale(1);
+                transform: translateX(-50%) scale(1);
               }
             }
           }
@@ -113,12 +113,12 @@
               content: "";
               position: absolute;
               bottom: 0;
-              left: 0;
-              width: 100%;
+              left: 50%;
+              width: 90%;
               height: 1px;
               transition: .5s;
               transform-origin: 50% 50%;
-              transform: scale(0);
+              transform: translateX(-50%) scale(0);
               background-color: #d6d6d6;
             }
           }
@@ -241,6 +241,7 @@
       height: 100vh;
       transition: .5s;
       overflow: hidden auto;
+      z-index: 1;
 
        @media only screen and (min-width: $desktop) {
         top: 0;
@@ -254,6 +255,7 @@
         visibility: hidden;
         padding-left: 111px;
         background-color: transparent;
+        z-index: inherit;
       }
 
       @media only screen and (min-width: $desktopSupperLarge) {
@@ -364,9 +366,9 @@
     left: 100%;
     width: 100%;
     height: 100vh;
-    pointer-events: none;
     transition: .3s;
     overflow: hidden auto;
+    z-index: 1;
 
     @media only screen and (min-width: $desktop) {
       left: 0;
@@ -376,6 +378,8 @@
       height: auto;
       padding: 30px 0;
       background-color: rgba($white, .95);
+      pointer-events: none;
+      z-index: inherit;
     }
 
     .container {
@@ -409,13 +413,6 @@
     }
 
     > .sub-menu {
-      > li > span {
-        i {
-          @media only screen and (max-width: $tabletOnly) {
-            display: none;
-          }
-        }
-      }
       @media only screen and (min-width: $desktop) {
         > li {
           cursor: pointer;

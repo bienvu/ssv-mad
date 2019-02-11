@@ -324,17 +324,22 @@
     font-size: 12px;
     line-height: 1.5;
     color: #787878;
-    padding: 26px 0 0;
+    padding: 26px 0;
     margin-bottom: 36px;
+
+    br {
+      display: none;
+    }
 
     @media only screen and (min-width: $tablet) {
       padding: 26px 71px 27px;
       font-size: 11px;
       line-height: 1.63636;
-    }
-
-    @media only screen and (min-width: $mobileLandScape) {
       text-align: center;
+
+      br {
+        display: inline;
+      }
     }
 
     @media only screen and (min-width: $desktop) {

@@ -187,7 +187,7 @@
       }
 
       @media only screen and (min-width: $desktop) {
-        margin-right: 24px;
+        margin-right: 17px;
       }
 
       @media only screen and (min-width: $desktopSupperLarge) {
@@ -206,13 +206,13 @@
 
 
     .box-image-text__content {
-      @media only screen and (min-width: $tablet) {
+      @media only screen and (min-width: $desktop) {
         display: flex;
         flex-wrap: wrap;
       }
 
       ul {
-        @media only screen and (min-width: $tablet) {
+        @media only screen and (min-width: $desktop) {
           width: calc((100% - 101px) / 2);
           margin-right: 50px;
 
@@ -221,7 +221,7 @@
           }
         }
 
-        @media only screen and (min-width: $desktop) {
+        @media only screen and (min-width: $desktopWide) {
           width: calc((100% - 165px) / 3);
           margin-right: 82px;
 

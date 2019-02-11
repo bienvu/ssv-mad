@@ -56,7 +56,7 @@
                               while(have_rows('item')): the_row();
                                 $link   = get_sub_field('link');
                                 $class  = get_sub_field('class');
-                                if($link):
+                                if($class):
                           ?>
                                 <li><a href="<?php echo $link['url']; ?>" class="<?php echo $class; ?>" target="<?php echo $link['target']; ?>"><?php echo $link['title']; ?></a></li>
                           <?php

@@ -2,7 +2,7 @@
 <html <?php language_attributes(); ?> class="no-js">
 	<head>
 		<meta charset="<?php bloginfo('charset'); ?>">
-		<title><?php wp_title(''); ?><?php if(wp_title('', false)) { echo ' :'; } ?> <?php bloginfo('name'); ?></title>
+		<title><?php wp_title(''); ?><?php if(wp_title('', false)) { echo ' |'; } ?> <?php bloginfo('name'); ?></title>
 
 		<link href="//www.google-analytics.com" rel="dns-prefetch">
 		<link href="<?php echo get_template_directory_uri(); ?>/assets/favicons/favicon-32x32.png" rel="shortcut icon">
@@ -32,7 +32,7 @@
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?>>
-
+	<?php $siteWideData = get_field('sitewide', 'option'); ?>
 		<!-- wrapper -->
 		<div class="wrapper">
 			<header class="header js-header">
@@ -54,7 +54,7 @@
 			                  <li class="form-header">
 			                    <?php get_template_part('templates/searchform'); ?>
 			                  </li>
-			                  <li><a href="" class="btn"><?php _e( 'Book a Consultation', 'madtheme' ); ?></a></li> 
+			                  <li><a target="<?php echo $siteWideData['header_link_button']['target']; ?>" href="<?php echo $siteWideData['header_link_button']['url']; ?>" class="btn"><?php _e( 'Book a Consultation', 'madtheme' ); ?></a></li> 
 			                </ul>
 
 			                <div class="header__phone">
@@ -79,8 +79,8 @@
 			                  <li class="form-header">
 			                    <?php get_template_part('templates/searchform'); ?>
 			                  </li>
-			                  <li class="text"><span><?php $siteWideData = get_field('sitewide', 'option'); echo $siteWideData['header_text']; ?></span></li>
-			                  <li><a href="" class="btn btn--large"><?php _e( 'Book a Consultation', 'madtheme' ); ?></a></li>
+			                  <li class="text"><span><?php echo $siteWideData['header_text']; ?></span></li>
+			                  <li><a target="<?php echo $siteWideData['header_link_button']['target']; ?>" href="<?php echo $siteWideData['header_link_button']['url']; ?>" class="btn btn--large"><?php _e( 'Book a Consultation', 'madtheme' ); ?></a></li>
 			                </ul>
 			              </div>
 

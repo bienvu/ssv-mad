@@ -28,10 +28,16 @@
     //Only add class to 'top level' items on the 'header' menu.
     $hasChildren = (in_array('menu-item-has-children', $item->classes));
 
-    if('header-menu' == $args->theme_location && ( $hasChildren || $depth == 1 ) ){
-      $item_output = '<span>'.$item_output.'<i class="icon-arrow-right"></i></span>';
-    } else {
-      $item_output = '<span>'.$item_output.'</span>';
+    if('header-menu' == $args->theme_location ){
+      if ($hasChildren) {
+        $item_output = '<span>'.$item_output.'<i class="icon-arrow-right"></i></span>';
+      } else {
+        $item_output = '<span>'.$item_output.'</span>';
+      }
+
+      if (!$hasChildren && $depth == 1) {
+        $item_output = '<span>'.$item_output.'<i class="icon-arrow-right hidden-on-mobile"></i></span>';
+      }
     }
 
     return $item_output;
@@ -52,7 +58,7 @@
                                     <span><span> &lt; </span> BACK</span>
                                   </div>
 
-                                  <h3 class="main-menu__title">'.$item->post_title.'</h3>
+                                  <h3 class="main-menu__title">'.$item->title.'</h3>
                                 </div>';
         } elseif($depth == 1) {
           $item_output .= '<div class="sub-menu__wrap">
@@ -63,7 +69,7 @@
                                     <span><span> &lt; </span> BACK</span>
                                   </div>
 
-                                  <h3 class="main-menu__title">'.$item->post_title.'</h3>
+                                  <h3 class="main-menu__title">'.$item->title.'</h3>
                                 </div>';
         }
     }
@@ -97,7 +103,7 @@
                             '.$searchform.'
                           </li>
                           <li class="text"><a href="">'.$sitewidedata['header_text'].'</a></li>
-                          <li><a href="" class="btn btn--large btn--no-change">Book a Consultation</a></li>
+                          <li><a target="'.$sitewidedata['header_link_button']['target'].'" href="'.$sitewidedata['header_link_button']['url'].'" class="btn btn--large btn--no-change">Book a Consultation</a></li>
                         </ul>
                       </div>';
           if(!empty($image)) {
@@ -121,7 +127,7 @@
                             '.$searchform.'
                           </li>
                           <li class="text"><a href="" class="">'.$sitewidedata['header_text'].'</a></li>
-                          <li><a href="" class="btn btn--large btn--no-change">Book a Consultation</a></li>
+                          <li><a target="'.$sitewidedata['header_link_button']['target'].'" href="'.$sitewidedata['header_link_button']['url'].'" class="btn btn--large btn--no-change">Book a Consultation</a></li>
                         </ul>
                       </div>';
           if(!empty($image)) {

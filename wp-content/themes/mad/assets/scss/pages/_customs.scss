@@ -273,3 +273,10 @@ span.wpcf7-list-item {
     padding: 56px 0;
   }
 }
+
+[class^='thank-you-'],
+[class*=' thank-you-'] {
+  .box-html  {
+    background-color: $light-gray ; 
+  }
+}

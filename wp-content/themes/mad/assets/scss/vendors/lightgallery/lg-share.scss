@@ -85,7 +85,7 @@
             color: #333;
             display: inline-block;
             float: none;
-            font-size: 20px;
+            font-size: 0;
             height: auto;
             line-height: 1;
             margin-right: 8px;
@@ -105,7 +105,7 @@
         .lg-icon{
             color: #3b5998;
             &:after {
-                content: "\e901";
+                content: "\e903";
                 font-size: 15px;
             }
         }   
@@ -114,7 +114,7 @@
         .lg-icon{
             color: #00aced;
             &:after {
-                content: "\e904";
+                content: "\e90d";
                 font-size: 15px;
             }
         }  
@@ -132,7 +132,7 @@
         .lg-icon{
             color: #cb2027;
             &:after {
-                content: "\e903";
+                content: "\e902";
                 font-size: 15px;
             }
         }  

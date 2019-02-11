@@ -134,6 +134,13 @@
       });
     }, 1000);
 
+    // js gallery
+    if($('.js-lightbox-product').length) {
+      $('.js-lightbox-product').lightGallery({
+        mode: 'lg-fade',
+        download: false
+      });
+    }
 
     // js pagingInfo for js-slider
     var $status = $('.paginginfo');
@@ -155,13 +162,12 @@
         $('.box-gallery__item').each(function(index, el) {
           if(!$(this).hasClass('height-large')) {
             $height = $(this).find('img').height();
-            console.log($height);
             return false;
           }
         });
 
         $('.box-gallery__item').each(function(index, el) {
-          $(this).css('height', $height + 'px');;
+          $(this).css('height', $height + 'px');
         });
 
         $('.box-gallery__item').find('img').addClass('set-height');
@@ -179,7 +185,6 @@
         $('.box-gallery__item').each(function(index, el) {
           if(!$(this).hasClass('height-large')) {
             $height = $(this).find('img').height();
-            console.log($height);
             return false;
           }
         });
@@ -199,6 +204,8 @@
         nextArrow: '<span class="slick-next">Next</span>',
         adaptiveHeight: true,
         autoplay: true,
+        speed: 2000,
+        autoplaySpeed: 2000,
         fade: true,
         infinite: true, 
       });
@@ -211,14 +218,6 @@
         itemSelector: '.masonry__item',
       });
     });
-
-    // js gallery
-    if($('.js-lightbox-product').length) {
-      $('.js-lightbox-product .slick-track').lightGallery({
-        mode: 'lg-fade',
-        download: false
-      });
-    }
 
     //js form
     $('.wpcf7-quiz').attr('placeholder','To help prevent spam, please type the word ‘artistry’.');
