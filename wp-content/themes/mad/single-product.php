@@ -58,7 +58,7 @@
           </div>
           
             <div class="box-gallery__link">
-                <a href="" class="btn js-lightbox-form"><?php _e( 'Enquire Now', 'ssvmad' ); ?></a>  <a href="<?php echo 'https://www.facebook.com/sharer/sharer.php?u='.$link_fb; ?>" class="btn btn--icon icon-share"><?php echo _e( 'SHARE', 'ssvmad' ); ?></a>
+                <a href="" class="btn js-lightbox-form"><?php _e( 'Enquire Now', 'ssvmad' ); ?></a>  <a href="<?php echo 'https://www.facebook.com/sharer/sharer.php?u='.get_permalink(); ?>" class="btn btn--icon icon-share"><?php echo _e( 'SHARE', 'ssvmad' ); ?></a>
             </div>
         </div>
       </div>

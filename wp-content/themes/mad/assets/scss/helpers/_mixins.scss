@@ -220,10 +220,9 @@
 
 // animation slide
 $j : 1;
-@mixin animation_slide($items ,$duration, $fade: .5s, $delay: 0s) {
+@mixin animation_slide($items ,$duration, $fade: .5s, $delay: 0s, $total: $items * $duration + $items * $fade) {
   > div {
     position: absolute;
-    $total : $items * $duration + $items * $fade;
 
     &:first-child {
       animation-name: animation_slide#{$j};

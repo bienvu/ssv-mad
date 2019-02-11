@@ -3,8 +3,10 @@
     $content_top = get_sub_field('content_top');
     $content_cener = get_sub_field('content_center');
     $item = get_sub_field('item');
+    $total_animation = empty(get_sub_field('total_animation')) ? 3 : get_sub_field('total_animation');
+    $delay = $total_animation;
 ?>
-  <div class="grid-gallery">
+  <div class="grid-gallery <?php echo 'total-slide-'.$total_animation; ?>">
     <div class="grid-gallery__wrap">
       <div class="grid-gallery__top">
         <div class="grid-gallery__position">
@@ -199,7 +201,7 @@
           }
         ?>
 
-        <div class="grid-gallery__item">
+        <div class="grid-gallery__item <?php echo $class; ?>">
           <?php foreach ($item[8]['image'] as $key => $value): ?>
             <div class="grid-gallery__image">
               <img src="<?php echo $value['url']; ?>" alt="<?php echo $value['alt']; ?>">
@@ -235,14 +237,15 @@
 
     <div class="container">
       <div class="grid-gallery__link">
-        <?php 
-          $next_post = get_next_post();
-          $prev_post = get_previous_post();
-          $next_post_class = (empty($next_post)) ? 'disable btn--light-gray' : "btn--gray";
-          $prev_post_class = (empty($prev_post)) ? 'disable btn--light-gray' : "btn--gray";
+        <?php
+          $wpb_all_query = new WP_Query(array('post_type'=>'artistry', 'post_status'=>'publish', 'posts_per_page'=>-1));
+          $all_posts = $wpb_all_query->get_posts();
+          $next_post = empty(get_next_post()) ? $all_posts[count($all_posts) - 1] : get_next_post();
+          $prev_post = empty(get_previous_post()) ? $all_posts[0] : get_previous_post();
+          wp_reset_postdata();
         ?>
         
-        <a href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>" class="btn btn--paged  <?php echo $prev_post_class; ?>"><?php _e('previous', 'ssvmad'); ?></a><a href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>" class="btn btn--paged <?php echo $next_post_class; ?>"><?php _e('next', 'ssvmad'); ?></a>
+        <a href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>" class="btn btn--paged"><?php _e('previous', 'ssvmad'); ?></a><a href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>" class="btn btn--paged"><?php _e('next', 'ssvmad'); ?></a>
       </div>
     </div>
   </div>

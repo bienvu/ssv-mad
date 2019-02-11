@@ -50,22 +50,6 @@
     height: 100%;
     overflow: hidden;
 
-    @media only screen and (min-width: $mobileLandScape) {
-      // height: 350px;
-    }
-
-    @media only screen and (min-width: $tablet) {
-      // height: 473px;
-    }
-
-    @media only screen and (min-width: $desktop) {
-      // height: 595px;
-    }
-
-    @media only screen and (min-width: $desktopSupperLarge) {
-      // height: 838px;
-    }
-
     img {
       width: 100%;
       height: auto;
@@ -86,15 +70,6 @@
     @media only screen and (min-width: $desktop) {
       width: 65.23%;
       margin-bottom: 0;
-    }
-
-    @media only screen and (min-width: $desktopWide) {
-      // width: 75.695%;
-      // margin-bottom: 0;
-    }
-
-    @media only screen and (min-width: $desktopSupperWideLarge) {
-      // width: 75.625%;
     }
 
     i {
@@ -159,6 +134,10 @@
       @media only screen and (min-width: $desktopSupperLarge) {
         margin: 16px 0 42px;
       }
+
+      @media only screen and (max-width: $tabletOnly) {
+        display: none;
+      }
     }
   }
 
@@ -207,10 +186,6 @@
   }
 
   &__content {
-    @media only screen and (min-width: $desktop) {
-      // margin-bottom: 23px;
-    }
-
     p:last-of-type {
       margin: 0;
     }
@@ -265,14 +240,32 @@
   }
 
   &--image-right {
+    padding-top: 0;
+
+    @media only screen and (min-width: $desktop) {
+      padding-bottom: 50px;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      padding-bottom: 69px;
+    }
+
     .box-gallery__left {
       order: 2;
+
+      @media only screen and (min-width: $desktop) {
+        width: 75.7%;
+      }
+
+      @media only screen and (min-width: $desktopSupperLarge) {
+        width: 75.625%;
+      }
     }
 
     .box-gallery__right {
       @media only screen and (min-width: $desktop) {
         padding-left: $containerMarginDesktop2;
-        padding-right: 33px;
+        padding-right: 39px;
       }
 
       @media only screen and (min-width: $desktopWideLarge) {
@@ -285,6 +278,7 @@
 
       @media only screen and (min-width: $desktopSupperWideLarge) {
         padding-left: calc((100% - #{$containerdesktopSupperWideLarge2}) / 2);
+        padding-right: 62px;
       }
     }
   }
