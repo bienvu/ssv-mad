@@ -159,7 +159,7 @@
       }
     }
 
-    @media only screen and (min-width: 1024px) {
+    @media only screen and (min-width: 1280px) {
       width: calc((100% - (#{$margin-right-desktop} * (#{$cols} - 1) + 1px)) / #{$cols});
       margin: 0 $margin-right-desktop $margin-bottom-desktop 0;
 

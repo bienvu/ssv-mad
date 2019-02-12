@@ -135,6 +135,7 @@
         bottom: 0;
         padding: 85px;
         overflow: hidden;
+        text-align: center;
 
         @media only screen and (max-width: $mobileOnly) {
           padding: 0;
@@ -163,12 +164,6 @@
         max-height: 100%;
         width: auto !important;
         height: auto !important;
-
-        @media only screen and (max-width: $mobileOnly) {
-          width: auto !important;
-          height: 100% !important;
-          max-width: inherit;
-        }
     }
 
     &.lg-show-after-load {

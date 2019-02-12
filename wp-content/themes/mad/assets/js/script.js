@@ -138,7 +138,8 @@
     if($('.js-lightbox-product').length) {
       $('.js-lightbox-product').lightGallery({
         mode: 'lg-fade',
-        download: false
+        download: false,
+        zoom: false,
       });
     }
 
@@ -151,51 +152,6 @@
       var i = (currentSlide ? currentSlide : 0) + 1;
       $status.html( i + '<span> / ' + slick.slideCount + '</span>');
     });
-
-    // js slide product paged
-    if($('.js-slide-product-paged').length) {
-      $('.js-slide-product-paged').slick({
-        prevArrow: '<span class="slick-prev">Previous</span>',
-        nextArrow: '<span class="slick-next">Next</span>',
-        adaptiveHeight: true,
-      }).on('setPosition', function (event, slick) {
-        $('.box-gallery__item').each(function(index, el) {
-          if(!$(this).hasClass('height-large')) {
-            $height = $(this).find('img').height();
-            return false;
-          }
-        });
-
-        $('.box-gallery__item').each(function(index, el) {
-          $(this).css('height', $height + 'px');
-        });
-
-        $('.box-gallery__item').find('img').addClass('set-height');
-      });
-    }
-
-    // js slide product default
-    if($('.js-slide-product').length) {
-      $('.js-slide-product').slick({
-        prevArrow: '<span class="slick-prev">Previous</span>',
-        nextArrow: '<span class="slick-next">Next</span>',
-        dots: true,
-      })
-      .on('setPosition', function (event, slick) {
-        $('.box-gallery__item').each(function(index, el) {
-          if(!$(this).hasClass('height-large')) {
-            $height = $(this).find('img').height();
-            return false;
-          }
-        });
-
-        $('.box-gallery__item').each(function(index, el) {
-          $(this).css('height', $height + 'px');;
-        });
-
-        $('.box-gallery__item').find('img').addClass('set-height');
-      });
-    }
 
     // js slide
     if($('.js-slide').length) {
@@ -263,6 +219,52 @@
           $(this).addClass('paused');
           $(this).children()[0].pause();
         }
+      });
+    }
+
+    // js slide product paged
+    if($('.js-slide-product-paged').length) {
+      $('.js-slide-product-paged').slick({
+        prevArrow: '<span class="slick-prev">Previous</span>',
+        nextArrow: '<span class="slick-next">Next</span>',
+        adaptiveHeight: true,
+      }).on('setPosition', function (event, slick) {
+        $('.box-gallery__item').each(function(index, el) {
+          if(!$(this).hasClass('height-large')) {
+            $height = $(this).find('img').height();
+            console.log($height);
+            return false;
+          }
+        });
+
+        $('.box-gallery__item').each(function(index, el) {
+          $(this).css('height', $height + 'px');
+        });
+
+        $('.box-gallery__item').find('img').addClass('set-height');
+      });
+    }
+
+    // js slide product default
+    if($('.js-slide-product').length) {
+      $('.js-slide-product').slick({
+        prevArrow: '<span class="slick-prev">Previous</span>',
+        nextArrow: '<span class="slick-next">Next</span>',
+        dots: true,
+      })
+      .on('setPosition', function (event, slick) {
+        $('.box-gallery__item').each(function(index, el) {
+          if(!$(this).hasClass('height-large')) {
+            $height = $(this).find('img').height();
+            return false;
+          }
+        });
+
+        $('.box-gallery__item').each(function(index, el) {
+          $(this).css('height', $height + 'px');;
+        });
+
+        $('.box-gallery__item').find('img').addClass('set-height');
       });
     }
 

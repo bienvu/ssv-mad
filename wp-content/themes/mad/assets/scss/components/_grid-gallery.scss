@@ -1,5 +1,13 @@
 .grid-gallery {
 
+  @media only screen and (min-width: $desktop) {
+    padding-top: 20px;
+  }
+
+  @media only screen and (min-width: $desktopSupperLarge) {
+    padding-top: 57px;
+  }
+
   &__wrap {
     position: relative;
   }

@@ -15,25 +15,7 @@
   }
 
   .container {
-    @media only screen and (min-width: $desktop) and (max-width: $desktopOnly) {
-      max-width: 100%;
-      margin-left: $containerMarginDesktop2;
-      margin-right: $containerMarginDesktop2;
-    }
-
-    @media only screen and (min-width: $desktopWideLarge) {
-      max-width: $containerdesktopWideLarge2;
-    }
-
-    @media only screen and (min-width: $desktopSupperLarge) and (max-width: $desktopSupperWideLargeOnly) {
-      max-width: 100%;
-      margin-left: $containerMarginDesktopSupperLarge2;
-      margin-right: $containerMarginDesktopSupperLarge2;        
-    }
-
-    @media only screen and (min-width: $desktopSupperWideLarge) {
-      max-width: $containerdesktopSupperWideLarge2;
-    }
+    @include container-header;
   }
 
   > .container {
