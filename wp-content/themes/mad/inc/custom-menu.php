@@ -56,7 +56,7 @@
                                     <span><span> &lt; </span> BACK</span>
                                   </div>
 
-                                  <h3 class="main-menu__title">'.$item->title.'</h3>
+                                  <h3 class="main-menu__title"><a href="'.$item->url.'">'.$item->title.'</a></h3>
                                 </div>';
         } elseif($depth == 1) {
           $item_output .= '<div class="sub-menu__wrap">
@@ -67,7 +67,7 @@
                                     <span><span> &lt; </span> BACK</span>
                                   </div>
 
-                                  <h3 class="main-menu__title">'.$item->title.'</h3>
+                                  <h3 class="main-menu__title"><a href="'.$item->url.'">'.$item->title.'</a></h3>
                                 </div>';
         }
     }
@@ -142,11 +142,11 @@
         if (!empty($image)) {
           if($depth == 1) {
             $output .= '<div class="main-menu__image">
-                <a href=""><img src="'.$image['sizes']['menu-first'].'" alt="'.$image['alt'].'"></a>
+                <a href="'.$item->url.'"><img src="'.$image['sizes']['menu-first'].'" alt="'.$image['alt'].'"></a>
                   </div></li>';
           } else {
             $output .= '<div class="main-menu__image">
-                <a href=""><img src="'.$image['sizes']['menu-second'].'" alt="'.$image['alt'].'"></a>
+                <a href="'.$item->url.'"><img src="'.$image['sizes']['menu-second'].'" alt="'.$image['alt'].'"></a>
                   </div></li>';
           }
         }

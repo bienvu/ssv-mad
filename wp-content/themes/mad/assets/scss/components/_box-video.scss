@@ -4,6 +4,11 @@
     overflow: hidden;
     height: auto;
     position: relative;
+    margin-top: 30px;
+
+    @media only screen and (min-width: $tablet) {
+      margin-top: 0;
+    }
 
     &.paused {
       .box-video__icon {
@@ -43,7 +48,7 @@
 
       &:before {
         color: $white;
-        font-size: 130px;
+        font-size: 100px;
 
         @media only screen and (min-width: $tablet) {
           font-size: 250px;

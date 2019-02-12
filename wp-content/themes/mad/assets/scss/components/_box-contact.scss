@@ -137,8 +137,13 @@
   }
 
   &__list {
+    @media only screen and (min-width: $tablet) {
+      margin-left: 47px;
+    }
+
     @media only screen and (min-width: $desktopWideLarge) {
       margin-top: -8px;
+      margin-left: 0;
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {

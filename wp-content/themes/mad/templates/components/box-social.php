@@ -22,15 +22,17 @@
       ?>
       
         <div class="box-social__item">
-          <div class="box-social__image">
-            <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" /> 
-          </div>
-          
-          <?php if($class): ?>
-            <div class="box-social__icon">
-              <a href="<?php if(!empty($link)) { echo $link['url']; } ?>" class="<?php echo $class; ?>"></a>
+          <a href="<?php if(!empty($link)) { echo $link['url']; } ?>" target="<?php if(!empty($link)) { echo $link['target']; } ?>" class="<?php echo $class; ?>">
+            <div class="box-social__image">
+              <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" /> 
             </div>
-          <?php endif; ?>
+            
+            <?php if($class): ?>
+              <div class="box-social__icon">
+                <span class="<?php echo $class; ?>"></span>
+              </div>
+            <?php endif; ?>
+          </a>
         </div>
       <?php
                     endif;

@@ -66,7 +66,11 @@
     </div>
 
     <div class="scroll-down js-scroll-down">
-      <span><i class="icon-arrow-down">arrow down</i></span>
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="15px" height="9px" class="icon icon-chevron " viewBox="0 0 15 9">
+          <path fill="#FFFFFF" d="M7.5 5.7L2.2 0 .5 1.5l6.2 6.6.8.9.8-.9 6.1-6.6L12.8 0z"></path>
+        </svg>
+      </span>
     </div>
   </div>
 <?php endif; ?>

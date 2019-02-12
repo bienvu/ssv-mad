@@ -10,7 +10,7 @@
     left: 0;
     width: 100%;
     background-color: rgba($white , .9);
-    z-index: 2;
+    z-index: 3;
 
     > .container {
       max-width: 100%;
@@ -80,10 +80,6 @@
   &__image {
     @media only screen and (max-width: $mobileOnly) {
       margin-top: 6px;
-    }
-
-    @media only screen and (min-width: $desktopSupperLarge) {
-      margin-top: 8px;
     }
 
     a {

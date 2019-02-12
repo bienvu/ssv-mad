@@ -38,6 +38,11 @@
     @media only screen and (min-width: $desktop) {
       width: 28.45%;
     }
+
+    a {
+      position: relative;
+      display: block;
+    }
   }
 
   &__image {
@@ -56,11 +61,17 @@
 
     .icon-facebook,
     .icon-instagram {
-      font-size: 25px;
+      &:before {
+        font-size: 25px;
+      }
     }
 
-    a {
+    span {
       color: $white;
+
+      &:after {
+
+      }
     }
   }
 }

@@ -338,7 +338,9 @@
         &:hover {
           span {
             a {
-              border-color: transparent;
+              @media only screen and (min-width: $desktopLarge) {
+                border-color: transparent;
+              }
 
               &:after {
                 transform: scale(1);
@@ -421,7 +423,7 @@
             > span {
               i {
                 display: block;
-              }
+                z-index: -1;              }
             }
           }
         }

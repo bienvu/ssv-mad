@@ -77,7 +77,8 @@
     });
 
     // js menu mobile
-    $('li > span > i').click(function(event) {
+    $('li > span > i').prev().click(function(event) {
+      event.preventDefault();
       $(this).parent().next().addClass('is-show');
     });
 
@@ -268,5 +269,10 @@
       });
     }
 
+    $(window).load(function() {
+      if ($('.js-scroll-down').length) {
+        $('.js-scroll-down').addClass('run');
+      }
+    });
   });
 })(this, this.document, this.jQuery);
