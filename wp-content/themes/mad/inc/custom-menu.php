@@ -31,12 +31,10 @@
     if('header-menu' == $args->theme_location ){
       if ($hasChildren) {
         $item_output = '<span>'.$item_output.'<i class="icon-arrow-right"></i></span>';
+      }elseif (!$hasChildren && $depth == 1) {
+        $item_output = '<span>'.$item_output.'<i class="icon-arrow-right hidden-on-mobile"></i></span>';
       } else {
         $item_output = '<span>'.$item_output.'</span>';
-      }
-
-      if (!$hasChildren && $depth == 1) {
-        $item_output = '<span>'.$item_output.'<i class="icon-arrow-right hidden-on-mobile"></i></span>';
       }
     }
 

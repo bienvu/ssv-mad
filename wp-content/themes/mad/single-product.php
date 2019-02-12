@@ -58,7 +58,7 @@
           </div>
           
             <div class="box-gallery__link">
-                <a href="" class="btn js-lightbox-form"><?php _e( 'Enquire Now', 'ssvmad' ); ?></a>  <a href="<?php echo 'https://www.facebook.com/sharer/sharer.php?u='.get_permalink(); ?>" class="btn btn--icon icon-share"><?php echo _e( 'SHARE', 'ssvmad' ); ?></a>
+                <a href="" class="btn js-lightbox-form"><?php _e( 'Enquire Now', 'ssvmad' ); ?></a>  <a href="<?php echo 'https://www.facebook.com/sharer/sharer.php?u='.get_permalink(); ?>" target="_blank" class="btn btn--icon icon-share"><?php echo _e( 'SHARE', 'ssvmad' ); ?></a>
             </div>
         </div>
       </div>
@@ -118,6 +118,14 @@
                         <img src="<?php echo $gallery['url']; ?>" alt="<?php echo $gallery['alt']; ?>">
                       </div>
                     <?php endif; ?>
+
+                    <div class="grid-image__content">
+                      <h2 class="grid-image__title text--white"><?php echo $post_object->post_title; ?></h2>
+                      
+                      <div class="grid-image__link">
+                        <span class="btn btn--white btn--small"><?php _e( 'Explore', 'ssvmad' ); ?></span>
+                      </div>
+                    </div>
                 <?php if(!empty($post_url)): ?>
                   </a>
                 <?php endif; ?>

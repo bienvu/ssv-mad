@@ -41,6 +41,10 @@ function alter_main_query_category_page($query) {
         $query->set('orderby', array('meta_value_num' => 'ASC', 'ID' => 'ASC'));
         $style = isset($_GET['style']) ? $_GET['style'] : array();
         $term = get_queried_object();
+
+        if(empty($term)) {
+          return "";
+        }
         
         $tax_query[] = array(
           'taxonomy' => 'category',
@@ -245,7 +249,7 @@ add_filter('query_vars', function( $vars ){
     //!!SUPER IMPORTANT!! - always *APPEND* $vars array (NOT re-assign)
     $vars[] = 'page';
     $vars[] = 'paged';
-    $vars[] = "style";
+    $vars[] = 'style';
 
     //!!SUPER IMPORTANT!! - always return $vars
     return $vars;

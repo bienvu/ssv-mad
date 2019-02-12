@@ -20,6 +20,16 @@
   }
 }
 
+.icon-pause:before {
+  content: "\e91a";
+}
+.icon-play:before {
+  content: "\e91b";
+}
+.icon-googleplus:before {
+  content: "\e919";
+  color: #dc4e41;
+}
 .icon-phone:before {
   content: "\e906";
 }
