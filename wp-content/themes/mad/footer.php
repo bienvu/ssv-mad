@@ -58,7 +58,7 @@
                                 $class  = get_sub_field('class');
                                 if($class):
                           ?>
-                                <li><a href="<?php echo $link['url']; ?>" class="<?php echo $class; ?>" target="<?php echo $link['target']; ?>"><?php echo $link['title']; ?></a></li>
+                                <li><a href="<?php if(!empty($link)) { echo $link['url']; } ?>" class="<?php echo $class; ?>" target="<?php if(!empty($link)) { echo $link['target']; } ?>"><?php if(!empty($link)) { echo $link['title']; } ?></a></li>
                           <?php
                                 endif;
                               endwhile;

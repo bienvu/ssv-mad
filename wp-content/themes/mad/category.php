@@ -3,8 +3,9 @@
   $object = get_queried_object();
   $termId = $object->term_id;
   $childrenData = get_terms('category', array( 'parent' => $termId, 'hide_empty' => false, 'orderby' => 'term_id', ));
+  $class = $object->parent ? 'page-title--has-breadcrumb' : '';
 ?>
-  <div class="page-title page-title--has-breadcrumb">
+  <div class="page-title <?php echo $class; ?>">
     <?php 
       if (!empty($object->parent)) {
         if (function_exists('mad_breadcrumb')) {
@@ -118,7 +119,6 @@
     <?php if(have_rows('seo', $object)): the_row();
         $title = get_sub_field('title');
         $body  = get_sub_field('body');
-        $category_link = get_field('category_link_extra', 'option');
     ?>
         <div class="box-text">
         <div class="container">
@@ -133,11 +133,19 @@
               </div>
             <?php endif; ?>
             
-            <?php if(!empty($category_link)): ?>
+            <?php if(have_rows('category_link_extra', 'options')): ?>
               <div class="box-text__link">
-                <?php foreach ($category_link as $value): ?>
-                  <a href="<?php echo $value['item']['url']; ?>" class="btn btn--large hidden-on-desktoponly" blank="<?php echo $value['item']['blank']; ?>"><?php echo $value['item']['title']; ?></a>
-                <?php endforeach; ?>
+                <?php while(have_rows('category_link_extra', 'options')): the_row();
+                  if(have_rows('item', 'options')):
+                    while(have_rows('item', 'options')): the_row();
+                  $link = get_sub_field('link');
+                  $class = get_sub_field('class');
+                ?>
+                  <a href="<?php if($link['url']) { echo $link['url']; } ?>" class="btn btn--large <?php if($class) { echo $class; } ?>" target="<?php if($link['target']) { echo $link['target']; } ?>"><?php if($link['title']) { echo $link['title']; } ?></a>
+                <?php 
+                      endwhile;
+                    endif;
+                  endwhile; ?>
               </div>
             <?php endif; ?>
           </div>

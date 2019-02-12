@@ -7,7 +7,7 @@
     height: 420px;
   }
   
-  @media only screen and (min-width: $desktop) {
+  @media only screen and (min-width: $desktopLarge) {
     height: 755px;
   }
   
@@ -23,7 +23,22 @@
       width: 120%;
       height: auto;
       display: block;
+
+      @media only screen and (min-width: $desktopLarge) and (max-width: 943.5px) {
+        height: 100%;
+        width: auto;
+      }
     }
+  }
+
+  &__link {
+    font-size: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
   }
 
   &__image {
@@ -34,7 +49,7 @@
       margin-top: 40px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       margin-top: 52px;
     }
 
@@ -50,7 +65,7 @@
         width: 267px;
       }
 
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         width: 314px;
       }
 
@@ -75,7 +90,7 @@
         font-size: 20px;
       }
 
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         font-size: 30px;
       }
 
@@ -115,7 +130,7 @@
       font-size: 37px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       font-size: 46px;
     }
 

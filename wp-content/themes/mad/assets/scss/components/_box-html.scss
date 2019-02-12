@@ -5,7 +5,7 @@
     padding: 24px 0;
   }
 
-  @media only screen and (min-width: $desktop) {
+  @media only screen and (min-width: $desktopLarge) {
     padding: 45px 0;
   }
 
@@ -23,7 +23,7 @@
     background-color: $light-gray;
     padding: 24px 0;
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       padding: 49.5px 0;
     }
 

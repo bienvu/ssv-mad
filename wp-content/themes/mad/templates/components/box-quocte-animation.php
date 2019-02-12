@@ -1,6 +1,7 @@
 <?php if(get_row_layout() == 'box_quocte_animation'):
   $video = get_sub_field('video');
   $total = count(get_sub_field('item'));
+  $link = get_sub_field('link');
 ?>
 <div class="box-quocte">
   <div class="box-quocte__video">
@@ -40,5 +41,9 @@
       </div>
     </div>
   </div>
+
+  <?php if($link): ?>
+    <a href="<?php echo $link['url']; ?>" target="<?php echo $link['target']; ?>" class="box-quocte__link">link to page</a>
+  <?php endif; ?>
 </div>
 <?php endif; ?>

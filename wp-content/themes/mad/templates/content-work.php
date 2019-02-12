@@ -55,13 +55,12 @@
 
       <?php endif; ?>
     </ul>
+    
+    <?php get_template_part('templates/pagination'); ?>
   </div>
 </div>
 
 <?php
-
-  get_template_part('templates/pagination');
-
   // Reset main query object
   wp_reset_query();
 ?>

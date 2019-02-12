@@ -6,13 +6,13 @@
   &__content {
     padding: 20px 0;
 
-    @media  only screen and (min-width: $desktop) {
+    @media  only screen and (min-width: $desktopLarge) {
       position: absolute;
       top: 0;
       left: 0;
       max-height: 500px;
       width: 31.26%;
-      padding: 46px 63px;
+      padding: 38px 63px;
       overflow-y: auto;
       background: $white;
       z-index: 2;
@@ -25,12 +25,12 @@
 
     @media  only screen and (min-width: $desktopSupperLarge) {
       max-height: 935px;
-      padding: 74px 89px 87px;
+      padding: 74px 89px 65px;
       width: 605px;
     }
 
     .container {
-      @media  only screen and (min-width: $desktop) {
+      @media  only screen and (min-width: $desktopLarge) {
         width: 100%;
         margin: 0;
         padding: 0;
@@ -44,7 +44,7 @@
     &:nth-child(2) {
       $width: 40.40%;
 
-      @media  only screen and (min-width: $desktop) {
+      @media  only screen and (min-width: $desktopLarge) {
         width: calc(100% - 1px - 31.26%);
         margin-left: 31.26%;
       }
@@ -60,24 +60,58 @@
       }
 
       .box-image-video__item:first-child {
-        width: $width;
+        width: 44.533%;
+
+        @media  only screen and (min-width: $desktopLarge) {
+          width: $width;
+        }
       }
 
       .box-image-video__item:last-child {
-        width: calc(100% - 1px - #{$width});
+        width: calc(100%  - 44.533%);
+        @media  only screen and (min-width: $desktopLarge) {
+          width: calc(100%  - #{$width});
+        }
       }
     }
 
     &:nth-child(3) {
-      $width: 65.10%;
+      $width: 65.106%;
+      $width-tablet: 52.533%;
       width: 100%;
 
       .box-image-video__item:first-child {
         width: $width;
+
+        @media only screen and (max-width: $desktopLargeOnly) {
+          width: $width-tablet;
+        }
+
+        .box-image-video__image {
+          @media only screen and (max-width: $desktopLargeOnly) {
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+          }
+
+          img {
+            @media only screen and (max-width: $desktopLargeOnly) {
+              position: absolute;
+              width: 169%;
+              top: 0;
+              right: 0;
+              max-width: inherit;
+            }
+          }
+        }
       }
 
       .box-image-video__item:last-child {
-        width: calc(100% - 1px - #{$width});
+        width: calc(100% - #{$width});
+
+        @media only screen and (max-width: $desktopLargeOnly) {
+          width: calc(100% - #{$width-tablet});
+        }
       }
     }
   }
@@ -95,9 +129,17 @@
     height: 100%;
     z-index: 1;
 
+    @media only screen and (max-width: $desktopLargeOnly) {
+      right: -7%;
+    }
+
     img {
       width: 50%;
       height: auto;
+
+      @media only screen and (max-width: $desktopLargeOnly) {
+        width: 85%;
+      }
     }
   }
 
@@ -110,8 +152,10 @@
   }
 
   &__title {
-    @media only screen and (min-width: $desktop) {
-      margin-bottom: 14px;
+    @extend .h3;
+    
+    @media only screen and (min-width: $desktopLarge) {
+      margin-bottomom: 14px;
     }
   }
 

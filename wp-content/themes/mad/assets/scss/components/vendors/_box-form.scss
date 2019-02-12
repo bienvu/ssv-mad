@@ -10,7 +10,7 @@ $margin: 11px;
   .form-item {
     margin-bottom: $margin;
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $desktopSupperLarge) {
       margin-bottom: 14px;
     }
 
@@ -27,7 +27,7 @@ $margin: 11px;
       margin-top: 22px;
     }
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $desktopSupperLarge) {
       margin-top: 31px;
     }
   }
@@ -49,9 +49,14 @@ $margin: 11px;
 
     @media only screen and (min-width: $tablet) {
       margin-bottom: 26px;
+      padding-right: 10px;
     }
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $desktop) {
+      padding-right: 0;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
       margin-bottom: 35px;
     }
   }

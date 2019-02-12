@@ -117,7 +117,13 @@
 }
 
 .hidden-on-desktoponly {
-  @media only screen and (max-width: $tabletOnly) {
+  @media only screen and (max-width: $desktopLargeOnly) {
+    display: none;
+  }
+}
+
+.hidden-on-desktopLarge {
+  @media only screen and (min-width: $desktopLarge) {
     display: none;
   }
 }
@@ -154,11 +160,15 @@
 
 .scroll-down {
   position: absolute;
-  bottom: 10px;
+  bottom: 15px;
   left: 50%;
   transform: translateX(-50%);
 
-  @media only screen and (max-width: $tabletOnly) {
+  @media only screen and (min-width: $desktopSupperLarge) {
+    bottom: 23px;
+  }
+
+  @media only screen and (max-width: $desktopLargeOnly) {
     display: none;
   }
 
@@ -169,45 +179,47 @@
   span {
     border: 2px solid $white;
     display: inline-block;
-    width: 29px;
-    height: 48px;
-    border-radius: 29px;
+    width: 23px;
+    height: 37px;
+    border-radius: 23px;
     position: relative;
     cursor: pointer;
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      width: 26px;
+      height: 43px;
+      border-radius: 26px;
+    }
 
     svg {
       font-size: 0;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      bottom: 12px;
+      bottom: 6px;
       width: 15px;
     }
   }
 
   @keyframes animation-scrol-down {
     5% {
-      bottom: 12px;
+      bottom: 6px;
     }
 
     20% {
-      bottom: 12px;
+      bottom: 6px;
     }
 
     50% {
-      bottom: 22px;
-    }
-
-    50% {
-      bottom: 23px;
+      bottom: 17px;
     }
 
     80% {
-      bottom: 12px;
+      bottom: 6px;
     }
 
     100% {
-      bottom: 12px;
+      bottom: 6px;
     }
   }
 }

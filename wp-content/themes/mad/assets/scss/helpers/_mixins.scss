@@ -145,7 +145,7 @@
       margin-bottom: 0;
     }
 
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: $tablet) {
       width: calc((100% - (#{$margin-right-tablet} + 1px)) / 2);
       margin: 0 $margin-right-tablet $margin-bottom-tablet 0;
 
@@ -159,7 +159,7 @@
       }
     }
 
-    @media only screen and (min-width: 1280px) {
+    @media only screen and (min-width: $desktopLarge) {
       width: calc((100% - (#{$margin-right-desktop} * (#{$cols} - 1) + 1px)) / #{$cols});
       margin: 0 $margin-right-desktop $margin-bottom-desktop 0;
 

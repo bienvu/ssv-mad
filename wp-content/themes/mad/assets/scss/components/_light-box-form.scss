@@ -1,23 +1,42 @@
 .lightbox-form {
-  padding: 25.5px 0 32px;
-  background-color: $white;
   position: absolute;
-  top: 50%;
+  top: 30px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  bottom: 30px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   @media only screen and (max-width: $mobileOnly) {
     width: 100%;
-    overflow: auto;
-    max-height: 100%;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    span {
+      font-size: 0;
+
+      &:before {
+        font-size: 20px;
+      }
+    }
   }
 
   &__wrap {
+    background: $white;
+    padding: 25.5px 0 32px;
+    max-height: 100%;
+    overflow: auto;
+    
     @media only screen and (min-width: $tablet) {
       min-width: 700px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       min-width: 922px;
     }
 

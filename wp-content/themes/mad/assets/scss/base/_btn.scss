@@ -53,7 +53,7 @@
       min-width: 335px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       min-width: 188px;
     }
 
@@ -91,7 +91,7 @@
   }
 
   &--no-change {
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       font-size: 14px;
       padding: 12px 24px 12px 26px;
     }

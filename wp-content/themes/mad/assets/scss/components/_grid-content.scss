@@ -8,7 +8,7 @@
       margin: 0 -19px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       display: block;
       margin: 0;
       overflow: visible;
@@ -27,7 +27,7 @@
       border: 0;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -50,7 +50,7 @@
     }
 
     &.is-show {
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         align-items: flex-start;
 
         .grid-content__body {
@@ -72,7 +72,7 @@
       margin-bottom: 16px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       width: 37.59%;
       margin-bottom: 0;
     }
@@ -88,7 +88,7 @@
   }
 
   &__body {
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       width: calc(100% - 37.59%);
       padding: 0 0 0 46px;
     }
@@ -106,7 +106,7 @@
       margin-bottom: 17px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       margin-bottom: 19px;
     }
 
@@ -124,7 +124,7 @@
       margin-bottom: 21px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       padding: 0;
     }
 

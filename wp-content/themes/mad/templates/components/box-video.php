@@ -19,7 +19,7 @@
               </video>
 
               <div class="box-video__icon">
-                <i class="icon-play"></i>
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Play.png">
               </div>
             </div>
           </div>

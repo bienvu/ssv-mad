@@ -6,7 +6,7 @@
     padding: 28px 0;
   }
 
-  @media only screen and (min-width: $desktop) {
+  @media only screen and (min-width: $desktopLarge) {
     padding: 40.5px 0;
   }
 
@@ -15,7 +15,7 @@
   }
 
   &__list {
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -26,7 +26,7 @@
     margin-bottom: 10px;
     text-align: center;
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       margin: 0 20px 0 0;
     }
 
@@ -35,7 +35,7 @@
     }
 
     .btn {
-      @media only screen and (max-width: $tabletOnly) {
+      @media only screen and (max-width: $desktopLargeOnly) {
         min-width: 335px;
       }
 
@@ -67,7 +67,7 @@
       height: 140px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       height: 86px;
     }
   }

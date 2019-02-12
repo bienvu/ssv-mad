@@ -105,7 +105,7 @@
                         </ul>
                       </div>';
           if(!empty($image)) {
-            $output .= '<div class="image-custom"><img src="'.$image['sizes']['menu-first'].'" alt="'.$image['alt'].'"></div>';
+            $output .= '<div class="image-custom"><a href="'.$item->url.'"><img src="'.$image['sizes']['menu-first'].'" alt="'.$image['alt'].'"></a></div>';
           }
           
           $output .= '</div>
@@ -129,7 +129,7 @@
                         </ul>
                       </div>';
           if(!empty($image)) {
-            $output .= '<div class="image-custom"><img src="'.$image['sizes']['menu-second'].'" alt="'.$image['alt'].'"></div>';
+            $output .= '<div class="image-custom"><a href="'.$item->url.'"><img src="'.$image['sizes']['menu-second'].'" alt="'.$image['alt'].'"></a></div>';
           }
 
           $output .=  '</div>

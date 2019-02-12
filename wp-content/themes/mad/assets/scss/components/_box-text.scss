@@ -2,30 +2,34 @@
   padding: 29px 0;
 
   @media only screen and (min-width: $tablet) {
-    padding: 30px 0;
+    padding: 24px 0 29px;
   }
 
-  @media only screen and (min-width: $desktop) {
+  @media only screen and (min-width: $desktopLarge) {
     padding: 45px 0;
   }
 
   @media only screen and (min-width: $desktopSupperLarge) {
-    padding: 70px 0;
+    padding: 65px 0;
   }
 
   &__title {
     margin-bottom: 21px;
+    font-size: 21px;
 
     @media only screen and (min-width: $tablet) {
-      margin-bottom: 22px;
+      margin-bottom: 19px;
+      font-size: 28px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       margin-bottom: 20px;
+      font-size: 21px;
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {
-      margin-bottom: 33px;
+      margin-bottom: 31px;
+      font-size: 29px;
     }
   }
 
@@ -40,16 +44,16 @@
   &__link {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 19px;
+    margin-top: 24px;
 
     @media only screen and (min-width: $tablet) {
       margin-right: 17px;
       margin-bottom: 0;
-      margin-top: 37px;
+      margin-top: 25px;
       width: auto;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       margin-top: 38px;
     }
 
@@ -63,7 +67,7 @@
         margin-right: 20px;
       }
       
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         margin-right: 19px;
       }
 

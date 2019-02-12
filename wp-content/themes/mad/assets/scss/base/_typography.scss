@@ -24,7 +24,7 @@ h1,
     margin-bottom: 35px;
   }
 
-  @media only screen and (min-width: $desktop) {
+  @media only screen and (min-width: $desktopLarge) {
     font-size: 37px;
     margin-bottom: 42px;
   }
@@ -44,7 +44,7 @@ h2,
     margin-bottom: 30px;
   }
 
-  @media only screen and (min-width: $desktop) {
+  @media only screen and (min-width: $desktopLarge) {
     font-size: 32px;
     margin-bottom: 35px;
   }
@@ -69,7 +69,7 @@ h3,
     margin-bottom: 27px;
   }
 
-  @media only screen and (min-width: $desktop) {
+  @media only screen and (min-width: $desktopLarge) {
     margin-bottom: 30px;
   }
 
@@ -93,7 +93,7 @@ h4,
     margin-bottom: 24px;
   }
 
-  @media only screen and (min-width: $desktop) {
+  @media only screen and (min-width: $desktopLarge) {
     margin-bottom: 25px;
   }
 
@@ -112,7 +112,7 @@ h5,
     margin-bottom: 22px;
   }
 
-  @media only screen and (min-width: $desktop) {
+  @media only screen and (min-width: $desktopLarge) {
     margin-bottom: 23px;
   }
 
@@ -131,7 +131,7 @@ h6,
     margin-bottom: 17px;
   }
 
-  @media only screen and (min-width: $desktop) {
+  @media only screen and (min-width: $desktopLarge) {
     margin-bottom: 20px;
   }
 
@@ -224,23 +224,15 @@ label {
 blockquote,
 q {
   p:first-of-type {
-    position: relative;
-
     &:before {
       content: '\201c';
-      position: absolute;
-      transform: translateX(-6px);
-      top: 0;
+      margin-left: -6px;
     }
   }
 
   p:last-of-type {
-    position: relative;
-
     &:after {
       content: '\201d';
-      position: absolute;
-      bottom: 0;
     }
   }
 }

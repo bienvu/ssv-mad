@@ -1,13 +1,5 @@
 .grid-gallery {
 
-  @media only screen and (min-width: $desktop) {
-    padding-top: 20px;
-  }
-
-  @media only screen and (min-width: $desktopSupperLarge) {
-    padding-top: 57px;
-  }
-
   &__wrap {
     position: relative;
   }
@@ -70,7 +62,7 @@
       margin-top: 10px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       margin-top: 23px;
     }
 
@@ -86,7 +78,7 @@
     &.logo-1 {
       text-align: right;
 
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         margin-top: 24px;
       }
 
@@ -95,7 +87,7 @@
       }
 
       img {
-        @media only screen and (min-width: $desktop) {
+        @media only screen and (min-width: $desktopLarge) {
           width: 213px;
         }
 
@@ -251,7 +243,7 @@
       padding: 25px 0 23px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       padding: 0;
       margin: 58px 35px;
       height: calc(33.9vw - 58px - 57px);
@@ -269,7 +261,7 @@
   }
 
   &__body {
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       height: 100%;
       overflow-y: auto;
       width: calc(100% + 30px);
@@ -301,7 +293,7 @@
       margin: 0;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       padding: 0 60px;
       font-size: 26px;
     }
@@ -335,7 +327,7 @@
       font-size: 28px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       position: static;
       transform: none;
       margin-bottom: 11px;
@@ -354,7 +346,7 @@
     font-size: 17px;
     line-height: 1.529;
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       margin-bottom: 10px;
     }
 
@@ -371,7 +363,7 @@
     line-height: 1.5294;
     display: none;
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       display: block;
       padding-left: 15px;
     }
@@ -414,7 +406,7 @@
         margin-right: 30px;
       }
 
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         margin-top: 50px;
       }
 
@@ -426,7 +418,7 @@
   }
 
   &--mobile {
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       display: none;
     }
 

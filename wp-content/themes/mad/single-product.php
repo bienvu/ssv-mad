@@ -21,7 +21,7 @@
     $link_fb = $sitewide['social']['item'][0]['link']["url"];
 
     if(empty($gallery)) {
-      $gallery[]['url'] = '/wp-content/themes/mad/assets/images/placeholder.jpg';;
+      $gallery[]['url'] = '/wp-content/themes/mad/assets/images/placeholder.jpg';
     }
 
     if(have_posts()):
@@ -92,6 +92,10 @@
                 </div>
               </div>
             </div>
+
+            <div class="lightbox-form__icon">
+              <span class="icon-close"></span>
+            </div>
           </div>
         </div>
       </div>
@@ -106,7 +110,7 @@
               $post_object = get_post( $produc_id );
               $gallery  = get_field('gallery', $post_object);
               $post_url = get_permalink( $post_object );
-              $gallery = $gallery[0]; ?>
+              $gallery = (!empty($gallery)) ? $gallery[0] : array('sizes' => array( 'product-image' => '/wp-content/themes/mad/assets/images/placeholder.jpg')); ?>
 
               <div class="grid-image__item">
                 <?php if(!empty($post_url)): ?>
@@ -115,7 +119,7 @@
 
                     <?php if(!empty($gallery)): ?>
                       <div class="grid-image__image">
-                        <img src="<?php echo $gallery['url']; ?>" alt="<?php echo $gallery['alt']; ?>">
+                        <img src="<?php echo $gallery['sizes']['product-image']; ?>" alt="<?php echo $gallery['alt']; ?>">
                       </div>
                     <?php endif; ?>
 

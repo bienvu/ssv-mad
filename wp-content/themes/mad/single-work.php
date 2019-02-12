@@ -8,7 +8,7 @@
     if(have_posts()):
       while(have_posts()): the_post();
   ?>
-  <h1 class="page-title hidden-on-desktop"><?php the_title(); ?></h1>
+  <h1 class="page-title hidden-on-desktopLarge"><?php the_title(); ?></h1>
 
   <div class="box-gallery box-gallery--image-right">
     <div class="container">
@@ -34,7 +34,7 @@
         </div>
 
         <div class="box-gallery__right">
-          <a href="<?php echo get_post_type_archive_link('work') ?>" class="back-to text--small">< Back to Work</a>
+          <a href="/work" class="back-to text--small">< Back to Work</a>
           <h2 class="box-gallery__title"><?php the_title(); ?></h2>
 
           <div class="box-gallery__content">

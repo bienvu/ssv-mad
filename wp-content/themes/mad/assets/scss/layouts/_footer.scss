@@ -11,14 +11,21 @@
 
   > .container {
     @include container-header;
+
+    .container {
+      max-width: inherit;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
   }
 
   &__description {
-    margin-bottom: 18px;
-    padding-right: 67px;
+    margin-bottom: 17px;
+    padding-right: 49px;
 
     @media only screen and (min-width: $tablet) {
-      margin-bottom: 23px;
+      margin-bottom: 22px;
       padding-right: 0;
     }
 
@@ -64,7 +71,7 @@
 
     @media only screen and (min-width: $tablet) {
       border: 0;
-      padding-bottom: 39px;
+      padding-bottom: 40px;
     }
 
     @media only screen and (min-width: $desktopLarge) {
@@ -107,13 +114,13 @@
   }
 
   &__contact {
-    padding: 37px 0 0 0;
+    padding: 35px 0 0 0;
 
     @media only screen and (min-width: $tablet) {
       width: $width-tablet;
       border-bottom: 1px solid rgba($gray, .25);
       border-right: 1px solid rgba($gray, .25);
-      padding: 26px 73px 0 10px;
+      padding: 25px 73px 0 10px;
     }
 
     @media only screen and (min-width: $desktopLarge) {
@@ -125,15 +132,6 @@
 
     @media only screen and (min-width: $desktopSupperLarge) {
       padding: 0 43px;
-    }
-
-    .container {
-      @media only screen and (min-width: $tablet) {
-        max-width: inherit;
-        width: 100%;
-        padding: 0;
-        margin: 0;
-      }
     }
   }
 
@@ -155,15 +153,6 @@
 
     @media only screen and (min-width: $desktopSupperLarge) {
       padding: 0 25px 0 13px;
-    }
-
-    .container {
-      @media only screen and (min-width: $tablet) {
-        max-width: inherit;
-        width: 100%;
-        padding: 0;
-        margin: 0;
-      }
     }
 
     .fsubs {
@@ -235,18 +224,9 @@
       padding: 0 52px;
     }
 
-    .container {
-      @media only screen and (min-width: $tablet) {
-        max-width: inherit;
-        width: 100%;
-        padding: 0;
-        margin: 0;
-      }
-    }
-
     .soc {
       border-bottom: 1px solid rgba($gray, .25);
-      padding: 27px 0 37px;
+      padding: 26px 0 35px;
 
       @media only screen and (min-width: $tablet) {
         border: 0;
@@ -256,7 +236,7 @@
   }
 
   &__menu {
-    padding: 17px 0 29px;
+    padding: 15px 0 29px;
 
     @media only screen and (min-width: $tablet) {
       width: $width-tablet;
@@ -274,20 +254,20 @@
       padding: 0 45px;
     }
 
-    .footer__title {
-      margin-bottom: 20px;
-
-      @media only screen and (min-width: $desktopSupperLarge) {
-        margin-bottom: 30px;
+    li {
+      &:nth-of-type(1),
+      &:nth-of-type(2) {
+        a {
+          padding-top: 0;
+        }
       }
-    }
 
-    .container {
-      @media only screen and (min-width: $tablet) {
-        max-width: inherit;
-        width: 100%;
-        padding: 0;
-        margin: 0;
+      &:nth-of-type(2n) {
+        padding-left: 20px;
+
+        @media only screen and (min-width: $tablet) {
+          padding-left: 0;
+        }
       }
     }
   }
@@ -364,21 +344,23 @@
     @media only screen and (min-width: $tablet) {
       display: flex;
       flex-wrap: wrap;
-      padding: 21px 0 28px;
+      padding: 21px 0 32px;
     }
 
     @media only screen and (min-width: $desktopLarge) {
-      padding: 46px 0 37px;
+      padding: 46px 0 45px;
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {
-      padding: 68px 0 57px 0;
+      padding: 68px 0 67px 0;
     }
   }
 
   &__title {
+    margin-bottom: 23px;
+
     @media only screen and (min-width: $desktopSupperLarge) {
-      margin-bottom: 32px;
+      margin-bottom: 30px;
     }
   }
 

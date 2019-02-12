@@ -1,7 +1,5 @@
 <!-- pagination -->
 <div class="pager">
-  <div class="container">
-	  <?php mad_pagination(); ?>
-  </div>
+	<?php mad_pagination(); ?>
 </div>
 <!-- /pagination -->

@@ -4,7 +4,7 @@ table {
   margin-bottom: rem(15px);
   width: 100%;
 
-  @media (min-width: $desktop) {
+  @media (min-width: $desktopLarge) {
     min-width: 100%;
   }
 }

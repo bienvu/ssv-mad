@@ -1,6 +1,6 @@
 .home {
   .header__fixed {
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       display: none;
     }
   }
@@ -15,17 +15,16 @@
     margin: 0;
   }
 
-  @media only screen and (min-width: $desktop) {
+  @media only screen and (min-width: $desktopLarge) {
     padding: 63px 20px;
   }
 
   @media only screen and (min-width: $desktopSupperLarge) {
     padding: 88px 20px;
-    margin-top: 59px;
   }
 
   &--has-breadcrumb {
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       padding: 40.5px 20px;
     }
     @media only screen and (min-width: $desktopSupperLarge) {
@@ -45,7 +44,7 @@ span.wpcf7-not-valid-tip {
 .breadcum {
   display: none;
 
-  @media only screen and (min-width: $desktop) {
+  @media only screen and (min-width: $desktopLarge) {
     display: block;
     margin-bottom: 23px;
   }
@@ -55,7 +54,7 @@ span.wpcf7-not-valid-tip {
   }
 
   a {
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       margin: 0 4px;
     }
 
@@ -67,29 +66,49 @@ span.wpcf7-not-valid-tip {
 
 .main-title {
   text-align: center;
-  margin-bottom: 30px;
+  margin: 25px 0;
 
-  @media only screen and (min-width: $desktop) {
-    margin-bottom: 40px;
+  @media only screen and (min-width: $tablet) {
+    margin: 25px 0 20px;
   }
 
-  @media only screen and (min-width: $desktopSupperWideLarge) {
-    margin-bottom: 56px;
+  @media only screen and (min-width: $desktopLarge) {
+    margin-bottom: 43px;
+    margin-top: 45px;
+  }
+
+  @media only screen and (min-width: $desktopSupperLarge) {
+    margin-bottom: 60px;
+    margin-top: 63px;
   }
 }
 
 .sub-category-page {
   .pager {
+    border-bottom: 1px solid rgba($gray, .25);
+    padding: 26px 0 0;
+
+    @media only screen and (min-width: $tablet) {
+      padding: 26.5px 0 0;
+    }
+
+    @media only screen and (min-width: $desktopLarge) {
+      padding: 34px 0 0;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      padding: 48px 0 0;
+    }
+    
     ul {
-      border-bottom: 1px solid rgba($gray, .25);
       padding-bottom: 26px;
 
       @media only screen and (min-width: $tablet) {
         padding-bottom: 26.5px;
       }
 
-      @media only screen and (min-width: $desktop) {
-        padding-bottom: 0 0 34px;
+      @media only screen and (min-width: $desktopLarge) {
+        padding-bottom: 34px;
       }
 
       @media only screen and (min-width: $desktopSupperLarge) {
@@ -106,7 +125,7 @@ span.wpcf7-not-valid-tip {
     input {
       width: 100%;
 
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         min-width: 600px;
         width: auto;
       }
@@ -125,7 +144,7 @@ span.wpcf7-not-valid-tip {
         padding-bottom: 47.5px;
       }
 
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         padding-bottom: 55px;
       }
 
@@ -152,7 +171,7 @@ span.wpcf7-list-item {
       margin-bottom: 15px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       margin-bottom: 21px;
     }
 
@@ -171,7 +190,7 @@ span.wpcf7-list-item {
         margin-bottom: 15px;
       }
 
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         margin-bottom: 11px;
       }
 
@@ -184,12 +203,12 @@ span.wpcf7-list-item {
       }
 
       input[name="quiz"] {
-        @media only screen and (max-width: $tabletOnly ) {
+        @media only screen and (max-width: $desktopLargeOnly ) {
           font-size: 12px;
           line-height: 1.833333333;
         }
 
-        @media only screen and (min-width: $desktop ) and (max-width: 1251px) {
+        @media only screen and (min-width: $desktopLarge ) and (max-width: 1251px) {
           
         }
       }
@@ -198,13 +217,10 @@ span.wpcf7-list-item {
       textarea,
       input[name="quiz"] {
         width: 100%;
+        min-width: inherit;
 
         @media only screen and (min-width: $tablet) {
           padding-left: 14px;
-        }
-
-        @media only screen and (min-width: $desktopSupperLarge) {
-          // padding: 16px 19px 8px;
         }
       }
 
@@ -223,7 +239,7 @@ span.wpcf7-list-item {
   .form-actions {
     margin-bottom: 0;
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       margin-top: 30px;
     }
 
@@ -232,7 +248,7 @@ span.wpcf7-list-item {
     }
 
     input[type="submit"] {
-      @media only screen and (max-width: $tabletOnly) {
+      @media only screen and (max-width: $desktopLargeOnly) {
         width: 100%;
       }
     }
@@ -247,7 +263,7 @@ span.wpcf7-list-item {
     }
 
   .wpcf7-textarea {
-    @media only screen and (max-width: $tabletOnly) {
+    @media only screen and (max-width: $desktopLargeOnly) {
       max-height: 105px;
     }
   }
@@ -255,7 +271,7 @@ span.wpcf7-list-item {
 
 .menu-item-243 {
   a {
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       letter-spacing: -.25px;
     }
   }
@@ -265,7 +281,7 @@ span.wpcf7-list-item {
 .page-404 {
   padding: 30px 0;
 
-  @media only screen and (min-width: $desktop) {
+  @media only screen and (min-width: $desktopLarge) {
     padding: 40px 0;
   }
 

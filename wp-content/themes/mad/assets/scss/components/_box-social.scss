@@ -5,12 +5,28 @@
     padding: 35px 0;
   }
 
-  @media only screen and (min-width: $desktop) {
-    padding: 65px 0;
+  @media only screen and (min-width: $desktopLarge) {
+    padding: 45px 0 50px;
+  }
+
+  @media only screen and (min-width: $desktopSupperLarge) {
+    padding: 65px 0 67px;
   }
 
   &__title {
-    margin-bottom: 44px;
+    margin-bottom: 20px;
+
+    @media only screen and (min-width: $tablet) {
+      margin-bottom: 35px;
+    }
+
+    @media only screen and (min-width: $desktopLarge) {
+      margin-bottom: 44px;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      margin-bottom: 62px;
+    }
   }
 
   &__list {
@@ -35,8 +51,13 @@
       padding: 0 15px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       width: 28.45%;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      width: 28%;
+      margin-right: 10px;
     }
 
     a {
@@ -56,13 +77,32 @@
 
   &__icon {
     position: absolute;
-    top: 18px;
-    left: 40px;
+    top: 15px;
+    left: 15px;
+
+    @media only screen and (min-width: $tablet) {
+      top: 20px;
+      left: 20px;
+    }
+
+    @media only screen and (min-width: $desktopLarge) {
+      top: 23px;
+      left: 26px;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      top: 28px;
+      left: 35px;
+    }
 
     .icon-facebook,
     .icon-instagram {
       &:before {
-        font-size: 25px;
+        font-size: 26px;
+
+        @media only screen and (min-width: $desktopSupperLarge) {
+          font-size: 40px;
+        }
       }
     }
 

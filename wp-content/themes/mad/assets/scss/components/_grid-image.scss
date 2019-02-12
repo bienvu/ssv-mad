@@ -3,7 +3,7 @@ $margin: 15px;
 .grid-image {
   padding: 0 0 30px;
 
-  @media only screen and (min-width: $desktop) {
+  @media only screen and (min-width: $desktopLarge) {
     padding: 22px 0;
   }
 
@@ -16,9 +16,9 @@ $margin: 15px;
   }
   
   &__list {
-    @include grid(3, 10px, 10px, 20px, 20px, 13px, 13px, 16px, 16px);
+    @include grid(3, 10px, 10px, 20px, 20px, 13px, 13px, 16px, 16px, flex-start);
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       margin: 0 -5px;
     }
 
@@ -85,7 +85,7 @@ $margin: 15px;
       margin-bottom: 15px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       margin-bottom: 37px;
     }
 
@@ -121,7 +121,7 @@ $margin: 15px;
   &--large {
     padding: 30px 0 0 0;
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       padding: 40px 0 0 0;
     }
 
@@ -133,7 +133,7 @@ $margin: 15px;
       padding: 0 0 30px 0;
       border-bottom: 1px solid rgba($gray, .25);
 
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         padding:  0 0 40px 0;
       }
 
@@ -147,7 +147,7 @@ $margin: 15px;
   padding: 0;
 
     .grid-image__list {
-      @media only screen and (max-width: $tabletOnly) {
+      @media only screen and (max-width: $desktopLargeOnly) {
         border: 0;
         padding: 0;
       }
@@ -161,7 +161,7 @@ $margin: 15px;
       padding: 25px 0 32px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       padding: 43px 0 50px;
     }
 
@@ -176,7 +176,7 @@ $margin: 15px;
         margin-bottom: 20px;
       }
 
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         margin-bottom: 44px;
       }
 
@@ -184,5 +184,9 @@ $margin: 15px;
         margin-bottom: 59px;
       }
     }
+  }
+
+  &--has-paged {
+    padding: 0;
   }
 }

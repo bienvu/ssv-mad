@@ -174,7 +174,7 @@
     bottom: 21px;
   }
 
-  @media only screen and (min-width: $desktop) {
+  @media only screen and (min-width: $desktopLarge) {
     bottom: 19px;
   }
 
@@ -195,7 +195,7 @@
       margin-right: 10px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       width: 9px;
       height: 9px;
       margin-right: 8px;

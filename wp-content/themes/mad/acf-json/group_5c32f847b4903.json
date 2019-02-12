@@ -357,7 +357,7 @@
                     "key": "field_5c5009d9b657c",
                     "label": "Item",
                     "name": "item",
-                    "type": "link",
+                    "type": "group",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -366,7 +366,48 @@
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "array"
+                    "layout": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5c63ad199dadb",
+                            "label": "Link",
+                            "name": "link",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array"
+                        },
+                        {
+                            "key": "field_5c63ad249dadc",
+                            "label": "Class",
+                            "name": "class",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "hidden-on-desktoponly": "Hidden On Desktop Only"
+                            },
+                            "default_value": [],
+                            "allow_null": 1,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -407,5 +448,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1549903739
+    "modified": 1550037035
 }

@@ -124,7 +124,6 @@
         if($st > 240) {
           if($st >= $lastScrollTop ) {
             $('.js-footer').addClass('is-show');
-            console.log('123');
           } else {
             $('.js-footer').removeClass('is-show');
           }
@@ -139,7 +138,6 @@
       $('.js-lightbox-product').lightGallery({
         mode: 'lg-fade',
         download: false,
-        zoom: false,
       });
     }
 
@@ -193,6 +191,11 @@
           $(this).toggleClass('active');
           $('body').toggleClass('no-scroll');
         }
+      });
+
+      $('.lightbox-form__icon').click(function (event) {
+        $(this).parents('.is-lightbox-form').toggleClass('active');
+        $('body').toggleClass('no-scroll');
       });
     }
 

@@ -5,21 +5,11 @@
     }
 
     > li {
-      @media only screen and (min-width: $desktopLarge) {
-        margin-left: 27px;
-      }
-
-      @media only screen and (min-width: $desktopLarge) and (max-width: $desktopOnly) {
-        margin-left: 15px;
-      }
-
-      @media only screen and (min-width: $desktopSupperLarge) {
-        margin-left: 31px;
-      }
-
-      &:first-of-type {
+      &:last-of-type {
         @media only screen and (min-width: $desktopLarge) {
-          margin-left: 0;         
+          a {
+            padding-right: 0; 
+          }   
         }
       }
 
@@ -38,9 +28,9 @@
 
               &:before {
                 content: "";
-                width: 100%;
+                width: 200vw;
                 top: 100%;
-                left: 0;
+                left: -50vw;
                 height: 41px;
                 background-color: transparent;
                 position: absolute;
@@ -114,10 +104,14 @@
           @media only screen and (min-width: $desktopLarge) {
             border: 0;
             position: relative;
+            padding-left: 13.5px;
+            padding-right: 13.5px;
           }
 
           @media only screen and (min-width: $desktopSupperLarge) {
             font-size: 15px;
+            padding-left: 15.5px;
+            padding-right: 15.5px;
           }
 
           &:after {
@@ -126,12 +120,16 @@
               position: absolute;
               bottom: 0;
               left: 50%;
-              width: 90%;
+              width: calc(90% - 13.5px - 13.5px);
               height: 1px;
               transition: .5s;
               transform-origin: 50% 50%;
               transform: translateX(-50%) scale(0);
               background-color: #d6d6d6;
+            }
+
+            @media only screen and (min-width: $desktopSupperLarge) {
+              width: calc(90% - 15.5px - 15.5px);
             }
           }
         }
@@ -266,12 +264,15 @@
       top: 0;
       left: 100%;
       width: 100%;
-      height: 100vh;
+      height: calc(100vh - 66px);
       transition: .5s;
-      overflow: hidden auto;
       z-index: 1;
 
-       @media only screen and (min-width: $desktopLarge) {
+      @media only screen and (min-width: $tablet) {
+        height: calc(100vh - 140px);
+      }
+
+      @media only screen and (min-width: $desktopLarge) {
         top: 0;
         right: 0;
         bottom: 0;
@@ -292,6 +293,13 @@
 
       &.is-show {
         left: 0%;
+      }
+
+      > .container {
+        @media only screen and (max-width: $desktopLargeOnly) {
+          max-height: 100%;
+          overflow: hidden auto;
+        }
       }
 
       .sub-menu {
@@ -395,10 +403,13 @@
     top: 0;
     left: 100%;
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 66px);
     transition: .3s;
-    overflow: hidden auto;
     z-index: 1;
+
+    @media only screen and (min-width: $tablet) {
+      height: calc(100vh - 140px);
+    }
 
     @media only screen and (min-width: $desktopLarge) {
       left: 0;
@@ -413,6 +424,11 @@
     }
 
     .container {
+      @media only screen and (max-width: $desktopLargeOnly) {
+        max-height: 100%;
+        overflow: hidden auto;
+      }
+
       @media only screen and (min-width: $desktopLarge) {
         max-width: 1085px;
       }
@@ -439,6 +455,9 @@
 
       .image-custom {
         padding-left: 111px;
+      }
+      > .image-custom {
+        z-index: 0;
       }
     }
 
@@ -563,6 +582,7 @@
   line-height: 0;
   transition: .5s;
   opacity: 1;
+  z-index: -1;
 
   @media only screen and (min-width: $desktopSupperLarge) {
     width: calc(100% - 324px);

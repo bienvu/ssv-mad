@@ -9,7 +9,7 @@
               $gallery = get_field('gallery');
               $featured_image = $gallery[0];
               if(empty($featured_image)) {
-                $featured_image['url'] = '/wp-content/themes/mad/assets/images/placeholder.jpg';
+                $featured_image['sizes']['product-image'] = '/wp-content/themes/mad/assets/images/placeholder.jpg';
               }
 
               if(!empty($featured_image)):
@@ -17,7 +17,7 @@
             <div class="grid-image__item">
               <a href="<?php echo get_post_permalink(); ?>">
                 <div class="grid-image__image">
-                  <img src="<?php echo $featured_image['url']; ?>" alt="<?php echo $featured_image['alt']; ?>">
+                  <img src="<?php echo $featured_image['sizes']['product-image']; ?>" alt="<?php echo $featured_image['alt']; ?>">
                 </div>
 
                 <div class="grid-image__content">
@@ -34,10 +34,9 @@
             endwhile;
           ?>
         </div>
+      <?php
+        get_template_part('templates/pagination');
+      ?>
       </div>
     </div>
   <?php endif; ?>
-
-<?php
-  get_template_part('templates/pagination');
-?>

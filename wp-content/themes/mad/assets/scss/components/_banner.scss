@@ -14,7 +14,7 @@
       pointer-events: none;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       position: absolute;
       top: 50%;
       left: 0;
@@ -35,20 +35,20 @@
     @media only screen and (min-width: $tablet) {
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       float: right;
       max-width: 400px;
       text-align: center;
     }
 
     br {
-      @media only screen and (max-width: $tabletOnly) {
+      @media only screen and (max-width: $desktopLargeOnly) {
         display: none;
       }
     }
 
     p {
-      @media only screen and (max-width: $tabletOnly) {
+      @media only screen and (max-width: $desktopLargeOnly) {
         margin-bottom: 0
       }
     }
@@ -62,7 +62,7 @@
   &__item {
     position: relative;
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       height: 100vh;
       overflow: hidden;
     }
@@ -71,36 +71,41 @@
       width: 100%;
       height: auto;
 
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         max-height: 100%;
         width: auto;
         height: auto;
         max-width: inherit;
       }
 
-      @media only screen and (min-width: $desktop) and (max-height: 58.565vw) {
+      @media only screen and (min-aspect-ratio: 2732/1600) {
+        width: 100%;
+        max-height: inherit;
+      }
+
+      @media only screen and (min-width: $desktopLarge) and (max-height: 58.565vw) {
         width: 100%;
         max-height: inherit;
       }
     }
 
     .banner__description {
-      @media only screen and (max-width: $tabletOnly) {
+      @media only screen and (max-width: $desktopLargeOnly) {
         display: none;
       }
 
       .author {
-        @media only screen and (min-width: $desktop) {
+        @media only screen and (min-width: $desktopLarge) {
           display: none;
         }
 
-        @media only screen and (max-width: $tabletOnly) {
+        @media only screen and (max-width: $desktopLargeOnly) {
           margin-top: 0;
           padding: 0 10px;
         }
 
         img {
-          @media only screen and (max-width: $tabletOnly) {
+          @media only screen and (max-width: $desktopLargeOnly) {
             width: 18%;
           }
         }
@@ -110,7 +115,7 @@
 
   &__wrap {
     > .banner__description {
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         display: none;
       }
     }
