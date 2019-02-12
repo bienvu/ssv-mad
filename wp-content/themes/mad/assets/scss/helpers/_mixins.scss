@@ -47,7 +47,7 @@
 }
 
 @mixin container-header {
-  @media only screen and (min-width: $desktop) and (max-width: $desktopOnly) {
+  @media only screen and (min-width: $desktopLarge) and (max-width: $desktopOnly) {
     max-width: 100%;
     margin-left: $containerMarginDesktop2;
     margin-right: $containerMarginDesktop2;

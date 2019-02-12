@@ -67,7 +67,7 @@
       padding-bottom: 39px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       padding-bottom: 25px;
     }
 
@@ -116,7 +116,7 @@
       padding: 26px 73px 0 10px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       width: 23.8%;
       border: 0;
       order: 4;
@@ -146,7 +146,7 @@
       padding: 27px 60px 0 31px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       width: 24%;
       border-bottom: 0;
       border-right: 1px solid rgba($gray, .25);
@@ -174,7 +174,7 @@
         border: 0;
       }
 
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         padding: 0;
       }
 
@@ -225,7 +225,7 @@
       padding: 28px 90px 0 9px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       width: 26%;
       border-bottom: 0;
       padding: 0px 55px 0 37px;
@@ -263,7 +263,7 @@
       padding: 27px 0px 0px 31px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       width: 26.2%;
       border-bottom: 0;
       border-right: 1px solid rgba($gray, .25);
@@ -316,7 +316,7 @@
       }
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       padding: 27px;
       margin: 0;
 
@@ -348,7 +348,7 @@
         &:nth-of-type(3) {
           margin: 0 1px 0 2px;
           
-          @media only screen and (min-width: $desktop) {
+          @media only screen and (min-width: $desktopLarge) {
             margin: 0 1px 0 5px;
           }
         }
@@ -367,7 +367,7 @@
       padding: 21px 0 28px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       padding: 46px 0 37px;
     }
 
@@ -392,7 +392,7 @@
     bottom: -36px;
     transition: .5s;
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       display: none;
     }
 

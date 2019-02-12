@@ -1,15 +1,15 @@
 .main-menu {
   > ul{
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       display: flex;
     }
 
     > li {
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         margin-left: 27px;
       }
 
-      @media only screen and (min-width: $desktop) and (max-width: $desktopOnly) {
+      @media only screen and (min-width: $desktopLarge) and (max-width: $desktopOnly) {
         margin-left: 15px;
       }
 
@@ -18,13 +18,13 @@
       }
 
       &:first-of-type {
-        @media only screen and (min-width: $desktop) {
+        @media only screen and (min-width: $desktopLarge) {
           margin-left: 0;         
         }
       }
 
       &:hover {
-        @media only screen and (min-width: $desktop) {
+        @media only screen and (min-width: $desktopLarge) {
           .main-menu__wrap {
             opacity: 1;
             visibility: visible;
@@ -67,11 +67,11 @@
           border-bottom: 1px solid #d6d6d6;
           text-transform: uppercase;
 
-          @media only screen and (max-width: $tabletOnly) {
+          @media only screen and (max-width: $desktopLargeOnly) {
             padding: 18px 8px;
           }
 
-          @media only screen and (min-width: $desktop) and (max-width: $desktopOnly) {
+          @media only screen and (min-width: $desktopLarge) and (max-width: $desktopOnly) {
             font-size: 12px;
           }
         }
@@ -83,7 +83,7 @@
           transform: translateY(-50%);
           padding: 0 0 0 15px;
 
-          @media only screen and (min-width: $desktop) {
+          @media only screen and (min-width: $desktopLarge) {
             display: none;
           }
 
@@ -99,7 +99,7 @@
       
       > span {
         > a {
-          @media only screen and (min-width: $desktop) {
+          @media only screen and (min-width: $desktopLarge) {
             border: 0;
             position: relative;
           }
@@ -109,7 +109,7 @@
           }
 
           &:after {
-            @media only screen and (min-width: $desktop) {
+            @media only screen and (min-width: $desktopLarge) {
               content: "";
               position: absolute;
               bottom: 0;
@@ -153,7 +153,7 @@
   .sub-menu {
     margin-bottom: 30px;
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       width: 224px;
       margin-bottom: 0;
     }
@@ -163,7 +163,7 @@
     }
 
     > li {
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         &:first-of-type > span > a {
           padding-top: 0;
         }
@@ -214,7 +214,7 @@
       
       > span {
         > a {
-          @media only screen and (min-width: $desktop) {
+          @media only screen and (min-width: $desktopLarge) {
             @include miller-display;
             font-weight: 400;
             font-size: 21px;
@@ -243,7 +243,7 @@
       overflow: hidden auto;
       z-index: 1;
 
-       @media only screen and (min-width: $desktop) {
+       @media only screen and (min-width: $desktopLarge) {
         top: 0;
         right: 0;
         bottom: 0;
@@ -267,7 +267,7 @@
       }
 
       .sub-menu {
-        @media only screen and (min-width: $desktop) {
+        @media only screen and (min-width: $desktopLarge) {
           width: 193px;
 
           .main-menu__image {
@@ -287,7 +287,7 @@
 
     &__body {
       li {
-        @media only screen and (min-width: $desktop) {
+        @media only screen and (min-width: $desktopLarge) {
           margin-bottom: 17px;
           padding-right: 0;
 
@@ -302,7 +302,7 @@
         
         span {
           a {
-            @media only screen and (min-width: $desktop) {
+            @media only screen and (min-width: $desktopLarge) {
               @include muli;
               text-transform: capitalize;
               color: $primary-color;
@@ -349,7 +349,7 @@
       }
 
       .main-menu__image {
-        @media only screen and (min-width: $desktop) {
+        @media only screen and (min-width: $desktopLarge) {
           width: calc(100% - 193px - 111px);
         }
         @media only screen and (min-width: $desktopSupperLarge) {
@@ -370,7 +370,7 @@
     overflow: hidden auto;
     z-index: 1;
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       left: 0;
       top: 100%;
       opacity: 0;
@@ -383,7 +383,7 @@
     }
 
     .container {
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         max-width: 1085px;
       }
 
@@ -398,7 +398,7 @@
   }
 
   &__body {
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       position: relative;
       min-height: 350px;
       overflow: hidden;
@@ -413,7 +413,7 @@
     }
 
     > .sub-menu {
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         > li {
           cursor: pointer;
 
@@ -433,7 +433,7 @@
     padding: 27px 8px 15px;
     border-bottom: 1px solid #d6d6d6;
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       display: none;
     }
   }
@@ -441,7 +441,7 @@
   &__image {
     display: none;
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       position: absolute;
       top: 0;
       right: 0;
@@ -473,7 +473,7 @@
   }
 
   .header__top {
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       display: none;
     }
   }
@@ -489,7 +489,7 @@
     li {
       width: 50%;
 
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         width: 100%;
       }
 
@@ -502,7 +502,7 @@
           padding-left: 11px;
         }
 
-        @media only screen and (min-width: $desktop) {
+        @media only screen and (min-width: $desktopLarge) {
           order: 1;
           padding: 0;
         }
@@ -538,7 +538,7 @@
     width: calc(100% - 324px);
   }
 
-  @media only screen and (max-width: $tabletOnly) {
+  @media only screen and (max-width: $desktopLargeOnly) {
     display: none;
   }
 

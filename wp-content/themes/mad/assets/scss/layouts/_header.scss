@@ -21,7 +21,7 @@
   }
 
   &__body {
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -36,14 +36,14 @@
       margin-top: 2px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       display: none;
     }
 
     ul {
       display: none;
 
-      @media only screen and (min-width: $tablet) and (max-width: $tabletOnly) {
+      @media only screen and (min-width: $tablet) and (max-width: $desktopLargeOnly) {
         display: flex;
         align-items: center;
       }
@@ -97,7 +97,7 @@
           width: 336px;
         }
 
-        @media only screen and (min-width: $desktop) and (max-width: $desktopOnly) {
+        @media only screen and (min-width: $desktopLarge) and (max-width: $desktopOnly) {
           width: 240px;
         }
         
@@ -125,7 +125,7 @@
   }
 
   &__logo {
-    @media only screen and (max-width: $tabletOnly) {
+    @media only screen and (max-width: $desktopLargeOnly) {
       box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
       position: relative;
       z-index: 2;
@@ -146,7 +146,7 @@
   &__top {
     order: 2;
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       order: inherit;
       margin-bottom: 14px;
     }
@@ -159,7 +159,7 @@
       display: flex;
       flex-direction: column;
 
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         flex-direction: inherit;
         align-items: center;
         justify-content: flex-end;
@@ -168,7 +168,7 @@
       li {
         margin-bottom: 20px;
 
-        @media only screen and (min-width: $desktop) {
+        @media only screen and (min-width: $desktopLarge) {
           margin: 0 0 0 31px;
         }
 
@@ -180,7 +180,7 @@
           text-align: center;
           order: 3;
 
-          @media only screen and (min-width: $desktop) {
+          @media only screen and (min-width: $desktopLarge) {
             order: inherit;
             margin-left: 28px;
           }
@@ -213,11 +213,11 @@
         &.form-header {
           order: 2;
 
-          @media only screen and (max-width: $tabletOnly) {
+          @media only screen and (max-width: $desktopLargeOnly) {
             margin-bottom: 23px;
           }
 
-          @media only screen and (min-width: $desktop) {
+          @media only screen and (min-width: $desktopLarge) {
             order: inherit;
           }
         }
@@ -225,7 +225,7 @@
         .btn {
           transition: none;
 
-          @media only screen and (max-width: $tabletOnly) {
+          @media only screen and (max-width: $desktopLargeOnly) {
             width: 100%;
           }
 
@@ -246,7 +246,7 @@
     background-color: $white;
     padding-top: 10px;
 
-    @media only screen and (max-width: $tabletOnly) {
+    @media only screen and (max-width: $desktopLargeOnly) {
       position: relative;
       overflow: hidden;
     }
@@ -256,7 +256,7 @@
       padding: 0;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       height: auto;
       display: block !important;
       overflow: visible;
@@ -265,7 +265,7 @@
     }
 
     > .container {
-      @media only screen and (max-width: $tabletOnly) {
+      @media only screen and (max-width: $desktopLargeOnly) {
         max-height: 100%;
         overflow-y: auto; 
       }
@@ -275,7 +275,7 @@
       display: flex;
       flex-direction: column;
 
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         display: block;
       }
 
@@ -283,7 +283,7 @@
         margin-bottom: 30px;
         flex: 0 0 auto;
 
-        @media only screen and (min-width: $desktop) {
+        @media only screen and (min-width: $desktopLarge) {
           margin-bottom: -1px;
           margin-right: 2px;
         }
@@ -306,13 +306,8 @@
     }
 
     .main-menu > ul > li {
-      @media only screen and (min-width: $desktop) {
-        margin-left: 24px;        
-      }
-
-
-      @media only screen and (min-width: $desktop) and (max-width: $desktopOnly) {
-        margin-left: 9px;
+      @media only screen and (min-width: $desktopLarge) and (max-width: $desktopOnly) {
+        margin-left: 24px;
       }
 
       @media only screen and (min-width: $desktopSupperLarge) {
@@ -320,7 +315,7 @@
       }
 
       &:first-of-type {
-        @media only screen and (min-width: $desktop) {
+        @media only screen and (min-width: $desktopLarge) {
           margin-left: 0;
         }
       }
@@ -328,27 +323,27 @@
 
     .header__logo {
       &__wrap {
-        @media only screen and (min-width: $desktop) {
+        @media only screen and (min-width: $desktopLarge) {
           height: $height-sticky;
         }
       }
     }
 
     .header__menu {
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         margin-top: 0;
         overflow: visible;
       }
 
       &__wrap {
-        @media only screen and (min-width: $desktop) {
+        @media only screen and (min-width: $desktopLarge) {
           display: flex;
           flex-direction: row-reverse;
           align-items: center;
         }
 
         > .main-menu {
-          @media only screen and (min-width: $desktop) {
+          @media only screen and (min-width: $desktopLarge) {
             margin: 0;
           }
         }
@@ -359,7 +354,7 @@
       a {
         img {
           &.sticky {
-            @media only screen and (min-width: $desktop) {
+            @media only screen and (min-width: $desktopLarge) {
               width: 85px;
               display: block;
             }
@@ -370,7 +365,7 @@
           }
 
           &.hidden-when-sticky {
-            @media only screen and (min-width: $desktop) {
+            @media only screen and (min-width: $desktopLarge) {
               display: none;
             }
           }
@@ -379,7 +374,7 @@
     }
 
     .header__top {
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         margin-bottom: 0;
       }
 
@@ -389,12 +384,8 @@
 
       ul {
         li {
-          @media only screen and (min-width: $desktop) {
+          @media only screen and (min-width: $desktopLarge) and (max-width: $desktopOnly) {
             margin: 0 0 0 20px;
-          }
-
-          @media only screen and (min-width: $desktop) and (max-width: $desktopOnly) {
-            margin: 0 0 0 5px;
           }
 
           @media only screen and (min-width: $desktopSupperLarge) {
@@ -402,13 +393,13 @@
           }
 
           &.text {
-            @media only screen and (min-width: $desktop) {
+            @media only screen and (min-width: $desktopLarge) {
               display: none;
             }
           }
 
           &.form-header {
-            @media only screen and (min-width: $desktop) {
+            @media only screen and (min-width: $desktopLarge) {
               order: 2;
 
               .form-header__submit {
@@ -440,7 +431,7 @@
           }
 
           a.btn {
-            @media only screen and (min-width: $desktop) and (max-width: $desktopOnly) {
+            @media only screen and (min-width: $desktopLarge) and (max-width: $desktopOnly) {
               padding: 12px;
             }
           }
@@ -493,7 +484,7 @@
   position: relative;
 
   &:hover {
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       .form-header__input {
         display: block;
       }
@@ -513,7 +504,7 @@
       background-color: transparent;
       color: inherit;
 
-      @media only screen and (max-width: $tabletOnly) {
+      @media only screen and (max-width: $desktopLargeOnly) {
         width: auto;
         right: 17px;
       }
@@ -521,7 +512,7 @@
       &:before {
         font-size: 19px;
 
-        @media only screen and (min-width: $desktop) {
+        @media only screen and (min-width: $desktopLarge) {
           font-size: 19px;
         }
 
@@ -542,7 +533,7 @@
       border: 1px solid rgba($black, .75);
       width: 100%;
 
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         width: auto;
         min-width: 188px;
         padding: 7.5px 14px;
@@ -554,7 +545,7 @@
       }
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       display: none;
     }
 
