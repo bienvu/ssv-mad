@@ -1208,6 +1208,25 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_5c623dc681d5a",
+                            "label": "Body",
+                            "name": "body",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0
+                        },
+                        {
                             "key": "field_5c467acfa95d2",
                             "label": "Url",
                             "name": "url",
@@ -1575,5 +1594,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1549858793
+    "modified": 1549942227
 }

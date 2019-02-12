@@ -507,20 +507,18 @@
           padding: 0;
         }
       }
-      
-      span {
-        a {
-          display: inline-block;
-          padding: 5px 4px 2px 0;
 
-          @media only screen and (min-width: $tablet) {
-            padding: 5px 5px 4px 0;
-          }
+      a {
+        display: inline-block;
+        padding: 5px 4px 2px 0;
 
-          @media only screen and (min-width: $desktopSupperLarge) {
-            font-size: 17px;
-            line-height: 1.3241;
-          }
+        @media only screen and (min-width: $tablet) {
+          padding: 5px 5px 4px 0;
+        }
+
+        @media only screen and (min-width: $desktopSupperLarge) {
+          font-size: 17px;
+          line-height: 1.3241;
         }
       }
     }

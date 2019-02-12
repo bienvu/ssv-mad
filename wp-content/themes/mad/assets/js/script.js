@@ -253,5 +253,18 @@
       $(this).parent().removeClass('active');
     });
 
+    if($('.js-video').length) {
+      $('.js-video').click(function(event) {
+        if ($(this).children()[0].paused) {
+          $(this).removeClass('paused');
+          $(this).children()[0].play();
+          
+        } else {
+          $(this).addClass('paused');
+          $(this).children()[0].pause();
+        }
+      });
+    }
+
   });
 })(this, this.document, this.jQuery);
