@@ -32,7 +32,7 @@
       if ($hasChildren) {
         $item_output = '<span>'.$item_output.'<i class="icon-arrow-right"></i></span>';
       }elseif (!$hasChildren && $depth == 1) {
-        $item_output = '<span>'.$item_output.'<i class="icon-arrow-right hidden-on-mobile"></i></span>';
+        $item_output = '<span>'.$item_output.'<i class="icon-arrow-right hidden-on-desktopLargeOnly"></i></span>';
       } else {
         $item_output = '<span>'.$item_output.'</span>';
       }

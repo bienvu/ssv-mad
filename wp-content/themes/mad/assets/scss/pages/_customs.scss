@@ -272,6 +272,12 @@ span.wpcf7-list-item {
   @media only screen and (min-width: $desktopSupperLarge) {
     padding: 56px 0;
   }
+
+  i {
+    &:before {
+      
+    }
+  }
 }
 
 [class^='thank-you-'],

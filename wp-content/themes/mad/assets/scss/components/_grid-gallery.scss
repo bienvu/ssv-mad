@@ -252,12 +252,15 @@
     }
 
     @media only screen and (min-width: $desktop) {
-      padding: 58px 35px;
-      height: 33.9vw;
+      padding: 0;
+      margin: 58px 35px;
+      height: calc(33.9vw - 58px - 57px);
+      overflow: hidden;
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {
-      padding: 81px 51px;
+      margin: 81px 51px;
+      height: calc(33.9vw - 81px - 80px);
     }
 
     p:last-of-type {
@@ -269,6 +272,8 @@
     @media only screen and (min-width: $desktop) {
       height: 100%;
       overflow-y: auto;
+      width: calc(100% + 30px);
+      padding-right: 30px;
     }
   }
 

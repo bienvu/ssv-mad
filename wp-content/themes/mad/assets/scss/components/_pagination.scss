@@ -64,14 +64,6 @@
       &.prev {
         margin-bottom: 0;
         line-height: 22px;
-
-        @media only screen and (min-width: $desktop) {
-          margin-bottom: 2px;
-        }
-
-        @media only screen and (min-width: $desktopSupperLarge) {
-          margin-bottom: 3px;
-        }
       }
 
       &.next {

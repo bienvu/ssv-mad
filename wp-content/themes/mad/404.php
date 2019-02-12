@@ -7,7 +7,7 @@
     <div class="container">
       <h2>Sorry...</h2>
       <p>Page not found or didn't exist!</p>
-      <p><a href="/"><i class="icon-arrow-left"></i>  back to home</a></p>
+      <p><a href="/"><  back to home</a></p>
     </div>
   </main>
 <?php get_footer();?>

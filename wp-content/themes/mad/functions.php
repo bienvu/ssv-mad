@@ -67,6 +67,14 @@ function alter_main_query_category_page($query) {
     }
 }
 
+// get year current
+function mad_get_year()
+{
+  return date('Y');
+}
+
+add_shortcode( 'year', 'mad_get_year' );
+
 // Add script to footer.
 function mad_add_scripts() {
     global $wp_query;

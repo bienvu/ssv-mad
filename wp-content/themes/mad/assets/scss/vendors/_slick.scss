@@ -131,35 +131,35 @@
 
 .slick-prev {
     @extend .icon-arrow-left;
-    left: 10px;
+    left: 8px;
 
     @media only screen and (min-width: $tablet) {
-      left: 18px;
-    }
-
-    @media only screen and (min-width: $desktop) {
       left: 21px;
     }
 
+    @media only screen and (min-width: $desktopLarge) {
+      left: 30px;
+    }
+
     @media only screen and (min-width: $desktopSupperLarge) {
-      left: 32px;
+      left: 42px;
     }
 }
 
 .slick-next {
     @extend .icon-arrow-right;
-    right: 22px;
+    right: 20px;
 
     @media only screen and (min-width: $tablet) {
-      right: 42px;
+      right: 45px;
     }
 
-    @media only screen and (min-width: $desktop) {
-      right: 39px;
+    @media only screen and (min-width: $desktopLarge) {
+      right: 49px;
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {
-      right: 58px;
+      right: 68px;
     }
 }
 

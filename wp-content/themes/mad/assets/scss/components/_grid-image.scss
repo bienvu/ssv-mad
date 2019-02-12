@@ -17,6 +17,14 @@ $margin: 15px;
   
   &__list {
     @include grid(3, 10px, 10px, 20px, 20px, 13px, 13px, 16px, 16px);
+
+    @media only screen and (min-width: $desktop) {
+      margin: 0 -5px;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      margin: 0 -8px;
+    }
   }
 
   &__item {
@@ -55,13 +63,13 @@ $margin: 15px;
     margin: 10px;
     padding: 0 10px;
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge ) {
       opacity: 0;
       transition: .5s;
       margin: 15px;
     }
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $desktopSupperLarge) {
       margin: 21px;
     }
   }
@@ -81,7 +89,7 @@ $margin: 15px;
       margin-bottom: 37px;
     }
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $desktopSupperLarge) {
       font-size: 45px;
       margin-bottom: 48px;
     }
@@ -117,7 +125,7 @@ $margin: 15px;
       padding: 40px 0 0 0;
     }
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $desktopSupperLarge) {
       padding:  56px 0 0 0;
     }
     .grid-image__list {
@@ -129,7 +137,7 @@ $margin: 15px;
         padding:  0 0 40px 0;
       }
 
-      @media only screen and (min-width: $desktopSupperWideLarge) {
+      @media only screen and (min-width: $desktopSupperLarge) {
         padding:  0 0 56px 0;
       }
     }
@@ -157,7 +165,7 @@ $margin: 15px;
       padding: 43px 0 50px;
     }
 
-    @media only screen and (min-width: $desktopSupperWideLarge) {
+    @media only screen and (min-width: $desktopSupperLarge) {
       padding: 62px 0 67px;
     }
 
@@ -172,7 +180,7 @@ $margin: 15px;
         margin-bottom: 44px;
       }
 
-      @media only screen and (min-width: $desktopSupperWideLarge) {
+      @media only screen and (min-width: $desktopSupperLarge) {
         margin-bottom: 59px;
       }
     }

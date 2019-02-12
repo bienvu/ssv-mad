@@ -77,8 +77,7 @@
     });
 
     // js menu mobile
-    $('li > span > i').prev().click(function(event) {
-      event.preventDefault();
+    $('li > span > i').click(function(event) {
       $(this).parent().next().addClass('is-show');
     });
 
