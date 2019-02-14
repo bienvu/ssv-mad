@@ -302,17 +302,35 @@
     }
 
     .main-menu > ul > li {
-      @media only screen and (min-width: $desktopLarge) and (max-width: $desktopOnly) {
-        margin-left: 24px;
+      & > span {
+        & > a {
+          @media only screen and (min-width: $desktopLarge) {
+            padding-left: 12px;
+            padding-right: 12px;
+          }
+
+          @media only screen and (min-width: $desktopSupperLarge) {
+            padding-left: 15.5px;
+            padding-right: 15.5px;
+          }
+
+          &:after {
+            @media only screen and (min-width: $desktopLarge) {
+              width: calc(90% - 12px - 12px);
+            }
+
+            @media only screen and (min-width: $desktopSupperLarge) {
+              width: calc(90% - 15.5px - 15.5px);
+            }
+          }
+        }
       }
 
-      @media only screen and (min-width: $desktopSupperLarge) {
-        margin-left: 31px;
-      }
-
-      &:first-of-type {
-        @media only screen and (min-width: $desktopLarge) {
-          margin-left: 0;
+      &:last-of-type {
+        & > span > a {
+          @media only screen and (min-width: $desktopLarge) {
+            padding-right: 0;
+          }
         }
       }
     }

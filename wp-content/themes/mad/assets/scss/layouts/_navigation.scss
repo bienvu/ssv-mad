@@ -7,7 +7,7 @@
     > li {
       &:last-of-type {
         @media only screen and (min-width: $desktopLarge) {
-          a {
+          > span > a {
             padding-right: 0; 
           }   
         }

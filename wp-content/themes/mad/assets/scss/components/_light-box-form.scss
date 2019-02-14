@@ -17,6 +17,11 @@
     top: 10px;
     right: 10px;
 
+    @media only screen and (min-width: $tablet) {
+      top: 20px;
+      right: 15px;
+    }
+
     span {
       font-size: 0;
 

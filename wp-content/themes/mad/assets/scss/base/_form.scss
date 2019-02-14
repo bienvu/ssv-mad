@@ -45,27 +45,31 @@ input[type='submit'] {
     opacity: 1;
     text-transform: capitalize;
     white-space:pre-line; 
+    line-height: normal;
   }
 
   &::-moz-placeholder {
     color: $primary-color;
     opacity: 1;
     text-transform: capitalize;
-    white-space:pre-line;  
+    white-space:pre-line;
+    line-height: normal;  
   }
 
   &:-ms-input-placeholder {
     color: $primary-color;
     opacity: 1;
     text-transform: capitalize;
-    white-space:pre-line;  
+    white-space:pre-line;
+    line-height: normal;  
   }
 
   &:-moz-placeholder {
     color: $primary-color;
     opacity: 1;
     text-transform: capitalize;
-    white-space:pre-line;  
+    white-space:pre-line;
+    line-height: normal;  
   }
 
   &:focus {
@@ -78,18 +82,22 @@ input[type='submit'] {
 
     &::-webkit-input-placeholder {
       color: $red;
+      line-height: normal;
     }
 
     &::-moz-placeholder {
       color: $red;
+      line-height: normal;
     }
 
     &:-ms-input-placeholder {
       color: $red;
+      line-height: normal;
     }
 
     &:-moz-placeholder {
       color: $red;
+      line-height: normal;
     }
 
     &:focus {

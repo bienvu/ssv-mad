@@ -38,7 +38,8 @@ div.wpcf7 .ajax-loader {
 }
 
 span.wpcf7-not-valid-tip {
-  margin: 15px 0;
+  margin: 5px 0 0;
+  line-height: 1;
 }
 
 .breadcum {
@@ -205,11 +206,17 @@ span.wpcf7-list-item {
       input[name="quiz"] {
         @media only screen and (max-width: $desktopLargeOnly ) {
           font-size: 12px;
-          line-height: 1.833333333;
+          line-height: 1.75;
         }
 
-        @media only screen and (min-width: $desktopLarge ) and (max-width: 1251px) {
-          
+        &::placeholder {
+          @media only screen and (max-width: 413px ) {
+            transform: translateY(-7px);
+          }
+
+          @media only screen and (min-width: $tablet ) and (max-width: $desktopLargeOnly) {
+            transform: translateY(-7px);
+          }
         }
       }
 
@@ -300,5 +307,31 @@ span.wpcf7-list-item {
 [class*=' thank-you-'] {
   .box-html  {
     background-color: $light-gray ; 
+  }
+}
+
+.contact {
+  .enquire-now .form-list .form-item input[name="quiz"] {
+    &::placeholder {
+      @media only screen and (max-width: 413px ) {
+        transform: none;
+      }
+
+      @media only screen and (max-width: 349px ) {
+        transform: translateY(-7px);
+      }
+
+      @media only screen and (min-width: $tablet ) and (max-width: $desktopLargeOnly) {
+        transform: none;
+      }
+
+      @media only screen and (min-width: $desktopLarge) and (max-width: 1250px) {
+        transform: translateY(-9px);
+      }
+
+      @media only screen and (min-width: $desktopSupperLarge) and (max-width: 1697px) {
+        transform: translateY(-12px);
+      }
+    }
   }
 }
