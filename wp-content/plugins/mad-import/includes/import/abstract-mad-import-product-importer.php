@@ -437,7 +437,7 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
 
     // no update image exist
     if($guid) {
-      $upload['file'] = parse_url($url, PHP_URL_PATH);
+      $upload['file'] = parse_url($guid, PHP_URL_PATH);
       $upload['url']  = $guid;
       $upload['type']  = 'image/jpeg';
 
