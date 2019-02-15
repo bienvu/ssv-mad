@@ -67,6 +67,22 @@ function alter_main_query_category_page($query) {
     }
 }
 
+/**
+ * Override OG image.
+ */
+function mad_add_opengraph_images(WPSEO_OpenGraph_Image $wpseo_og_image) {
+    if ($wpseo_og_image->has_images()) {
+       return;
+    }
+    if (is_singular('product') || is_singular('work')) {
+       $queried_object = get_queried_object();
+       $images = get_field('gallery', $queried_object->ID);
+       if (!empty($images)) {
+           $wpseo_og_image->add_image( array( 'url' => $images[0]['url']));
+       }
+    }
+}
+
 // get year current
 function mad_get_year()
 {
@@ -270,6 +286,7 @@ add_filter('query_vars', function( $vars ){
     Actions
 \*------------*/
 add_action('wp_enqueue_scripts', 'mad_add_styles'); // Add Theme Stylesheet
+add_action('wpseo_add_opengraph_additional_images', 'mad_add_opengraph_images');
 add_action('init', 'mad_pagination'); // Add our sentius Pagination
 add_action('wp_footer', 'mad_add_scripts'); // Add Custom Scripts to wp_head
 add_action('upload_mimes', 'my_custom_upload_mimes'); // add csv file upload
