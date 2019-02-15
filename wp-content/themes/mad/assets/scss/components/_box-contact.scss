@@ -6,7 +6,7 @@
     margin: 0;
   }
 
-  @media only screen and (min-width: $desktop) {
+  @media only screen and (min-width: $desktopLarge) {
     padding: 50px 0 45px;
   }
 
@@ -38,7 +38,7 @@
         width: calc( 100% / 2 );
       }
 
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         &.box-contact__center {
           width: 30.63%;
         }
@@ -83,7 +83,7 @@
       padding: 0 16px 0 0;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       padding-right: 53px;
     }
 
@@ -119,7 +119,7 @@
     line-height: 0;
     display: none;
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       display: block;
       margin: -10px 0 0;
       padding-left: 53px;
@@ -141,7 +141,7 @@
       margin-left: 47px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       margin-top: -8px;
       margin-left: 0;
     }
@@ -158,7 +158,7 @@
      margin-bottom: 21px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       margin-bottom: 23px;
       font-size: 21px;
     }
@@ -181,7 +181,7 @@
       margin-bottom: 22px;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       margin-bottom: 30px;
     }
 
@@ -237,7 +237,7 @@
       background-color: $white;
     }
 
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       margin-top: -10px;
       padding: 33px 40px 4px;
       background: $light-gray;
@@ -253,7 +253,7 @@
         margin-left: 47px;
       }
 
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         margin-left: 0px;
       }
     }
@@ -265,7 +265,7 @@
         margin-left: 47px;
       }
 
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         margin-left: 0px;
         margin-bottom: 27px;
       }
@@ -285,7 +285,7 @@
         padding-bottom: 31px;
       }
 
-      @media only screen and (min-width: $desktop) {
+      @media only screen and (min-width: $desktopLarge) {
         margin: 0 auto 29px auto;
       }
 
@@ -306,7 +306,7 @@
       // margin-left: 38px;
     }
     
-    @media only screen and (min-width: $desktop) {
+    @media only screen and (min-width: $desktopLarge) {
       // margin-left: 10px;
     }
 

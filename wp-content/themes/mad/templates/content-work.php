@@ -26,8 +26,9 @@
 ?>
 <div class="masonry-wrap">
   <div class="container">
+    <?php if ($wp_query->have_posts()): ?>
     <ul class="masonry js-mas">
-      <?php if ($wp_query->have_posts()): while ($wp_query->have_posts()) : $wp_query->the_post(); 
+      <?php while ($wp_query->have_posts()) : $wp_query->the_post(); 
         $image = get_field('featured_image');
         $custom_mansonry_class = $image['sizes']['large-height'] > $image['sizes']['large-width'] ? 'masonry__item--2rows' : '';
       ?>
@@ -44,7 +45,7 @@
         </div>
       </li>
       <?php endwhile; wp_reset_postdata(); ?>
-
+  </ul>
       <?php else: ?>
 
         <!-- article -->
@@ -54,7 +55,7 @@
         <!-- /article -->
 
       <?php endif; ?>
-    </ul>
+   
     
     <?php get_template_part('templates/pagination'); ?>
   </div>

@@ -148,8 +148,8 @@ $margin: 15px;
 
     .grid-image__list {
       @media only screen and (max-width: $desktopLargeOnly) {
-        border: 0;
-        padding: 0;
+        // border: 0;
+        padding-top: 0;
       }
     }
   }

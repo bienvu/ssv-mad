@@ -433,12 +433,12 @@ abstract class Mad_Import_Product_Importer implements Mad_Import_Importer_Interf
 
 		// return if file exits
     $image_uri = '%/'.$image_name;
-    $image_id = $wpdb->get_var($wpdb->prepare("SELECT ID from $wpdb->posts WHERE guid LIKE %s", $image_uri));
+    $guid = $wpdb->get_var($wpdb->prepare("SELECT guid from $wpdb->posts WHERE guid LIKE %s", $image_uri));
 
     // no update image exist
-    if($image_id) {
-      $upload['file'] = $upload_arr['path'].'/'.$image_name;
-      $upload['url']  = $upload_arr['url'].'/'.$image_name;
+    if($guid) {
+      $upload['file'] = parse_url($url, PHP_URL_PATH);
+      $upload['url']  = $guid;
       $upload['type']  = 'image/jpeg';
 
       return $upload;

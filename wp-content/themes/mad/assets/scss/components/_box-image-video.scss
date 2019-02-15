@@ -1,6 +1,6 @@
 .box-image-video {
-  display: flex;
-  flex-wrap: wrap;
+  // display: flex;
+  // flex-wrap: wrap;
   position: relative;
 
   &__content {
@@ -25,7 +25,7 @@
 
     @media  only screen and (min-width: $desktopSupperLarge) {
       max-height: 935px;
-      padding: 74px 89px 65px;
+      padding: 74px 89px 50px;
       width: 605px;
     }
 
@@ -45,7 +45,7 @@
       $width: 40.40%;
 
       @media  only screen and (min-width: $desktopLarge) {
-        width: calc(100% - 1px - 31.26%);
+        width: calc(100% - 31.26%);
         margin-left: 31.26%;
       }
 
@@ -62,13 +62,34 @@
       .box-image-video__item:first-child {
         width: 44.533%;
 
+        @media only screen and (min-width: $tablet) {
+          width: 47.917%;
+        }
+
         @media  only screen and (min-width: $desktopLarge) {
           width: $width;
+
+          img {
+            width: 100.3%;
+            max-width: inherit;
+          }
+        }
+
+        .box-image-video__image {
+          @media only screen and (min-width: $tablet) and (max-width: $desktopLargeOnly) {
+            height: 42.466vw;
+            overflow: hidden;
+          }
         }
       }
 
       .box-image-video__item:last-child {
         width: calc(100%  - 44.533%);
+
+        @media only screen and (min-width: $tablet) {
+          width: calc(100%  - 47.917%);
+        }
+
         @media  only screen and (min-width: $desktopLarge) {
           width: calc(100%  - #{$width});
         }

@@ -373,6 +373,7 @@
     left: 0;
     bottom: -36px;
     transition: .5s;
+    z-index: 2;
 
     @media only screen and (min-width: $desktopLarge) {
       display: none;

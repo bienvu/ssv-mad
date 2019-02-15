@@ -281,7 +281,7 @@ input[type="radio"] {
       transform: translateY(-50%);
       left: 4px;
       border-radius: 0;
-      background: $primary-color;
+      background: none;
       box-sizing: border-box;
 
       @media only screen and (min-width: $desktopSupperLarge) {
@@ -348,7 +348,7 @@ input[type="checkbox"] {
   &:checked {
     & + label, + span {
       &:after {
-        background: none;  
+        background: $primary-color;  
       }
     }
   }
