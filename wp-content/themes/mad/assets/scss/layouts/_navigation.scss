@@ -466,6 +466,10 @@
         > li {
           cursor: pointer;
 
+          > span > i{
+            margin-top: -2px;
+          }
+
           &:hover {
             > span {
               i {
@@ -473,6 +477,12 @@
                 z-index: -1;              }
             }
           }
+        }
+      }
+
+      @media only screen and (min-width: $desktopSupperLarge) {
+        > li > span > i {
+          margin-top: -4px;
         }
       }
     }
