@@ -73,13 +73,14 @@
   }
 
   &__list {
-    display: flex;
+    // display: flex;
 
     .container {
       @include container-header;
 
       @media only screen and (min-width: $tablet) and (max-width: $desktopLargeOnly) {
         margin: 0;
+        max-width: inherit;
       }
     }
   }

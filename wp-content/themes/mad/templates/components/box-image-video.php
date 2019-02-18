@@ -5,22 +5,24 @@
 ?>
 <div class="box-image-video">
   <div class="box-image-video__content">
-    <div class="container">
-      <?php if($title ): ?>
-        <h1 class="box-image-video__title"><?php echo $title; ?></h1>
-      <?php endif; ?>
-      
-      <?php if($description): ?>
-        <div class="box-image-video__description">
-          <?php echo $description; ?>
-        </div>
-      <?php endif; ?>
-      
-      <?php if($link): ?>
-        <div class="box-image-video__link">
-          <a href="<?php echo $link['url']; ?>" class="btn" target="<?php echo $link['target']; ?>"><?php echo $link['title']; ?></a>
-        </div>
-      <?php endif; ?>
+    <div>
+      <div class="container">
+        <?php if($title ): ?>
+          <h1 class="box-image-video__title"><?php echo $title; ?></h1>
+        <?php endif; ?>
+        
+        <?php if($description): ?>
+          <div class="box-image-video__description">
+            <?php echo $description; ?>
+          </div>
+        <?php endif; ?>
+        
+        <?php if($link): ?>
+          <div class="box-image-video__link">
+            <a href="<?php echo $link['url']; ?>" class="btn" target="<?php echo $link['target']; ?>"><?php echo $link['title']; ?></a>
+          </div>
+        <?php endif; ?>
+      </div>
     </div>
   </div>
 
