@@ -85,6 +85,10 @@
               <img src="<?php echo $value['url']; ?>" alt="<?php echo $value['alt']; ?>">
             </div>
           <?php endforeach; ?>
+
+          <div class="grid-gallery__logoimage">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ma_logo_white.svg" alt="">
+          </div>
         </div>
 
         <?php

@@ -44,7 +44,7 @@
     }
   
     img {
-      width: 101%;
+      width: 101.5%;
       height: auto;
       max-width: inherit;
     }
@@ -137,6 +137,38 @@
       &:nth-child(2n+1) {
         width: calc(100% - 57.8125%);
       }
+    }
+  }
+
+  &__logoimage {
+    position: absolute;
+    top: -29%;
+    right: -5.5%;
+    z-index: 1;
+    pointer-events: none;
+    width: 58.454%;
+
+    @media only screen and (min-width: $tablet) {
+      top: -29.5%;
+      right: -6.5%;
+      width: 59%;
+    }
+
+    @media only screen and (min-width: $desktopLarge) {
+      top: -29%;
+      right: -6%;
+      width: 58.53%;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      top: -29.5%;
+      right: -6.4%;
+      width: 59%;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
     }
   }
 
@@ -271,6 +303,10 @@
 
   &__item {
     position: relative;
+
+    &:nth-of-type(5) {
+      z-index: 1;
+    }
   }
 
   &__quote {
