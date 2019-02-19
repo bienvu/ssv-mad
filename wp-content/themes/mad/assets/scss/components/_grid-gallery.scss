@@ -143,26 +143,26 @@
   &__logoimage {
     position: absolute;
     top: -29%;
-    right: -5.5%;
+    right: -4.5%;
     z-index: 1;
     pointer-events: none;
     width: 58.454%;
 
     @media only screen and (min-width: $tablet) {
       top: -29.5%;
-      right: -6.5%;
+      right: -5.3%;
       width: 59%;
     }
 
     @media only screen and (min-width: $desktopLarge) {
       top: -29%;
-      right: -6%;
+      right: -5%;
       width: 58.53%;
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {
       top: -29.5%;
-      right: -6.4%;
+      right: -5%;
       width: 59%;
     }
 
