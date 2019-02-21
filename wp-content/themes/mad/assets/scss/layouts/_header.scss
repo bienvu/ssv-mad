@@ -463,6 +463,10 @@
 
             @media only screen and (min-width: $desktopSupperLarge) {
               padding-left: 23px;
+
+              .form-header__input {
+                top: 58px;
+              }
             }
           }
 
