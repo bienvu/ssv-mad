@@ -34,7 +34,19 @@
         </div>
 
         <div class="box-gallery__right">
-          <a href="/work" class="back-to text--small">< Back to Work</a>
+          <?php
+            $link = (wp_get_referer()) ? wp_get_referer() : "";
+            if(!empty($link)) {
+              if (strpos($link, '/work/')) {
+                $link = wp_get_referer();
+              } else {
+                $link = '/work';
+              }
+            } else {
+              $link = '/work';
+            }
+          ?>
+          <a href="<?php echo $link; ?>" class="back-to text--small">< Back to Work</a>
           <h2 class="box-gallery__title"><?php the_title(); ?></h2>
 
           <div class="box-gallery__content">

@@ -16,12 +16,16 @@
 
     @media only screen and (min-width: $desktopLarge) {
       position: absolute;
-      top: 50%;
+      top: calc(50% + 70px);
       left: 0;
       width: 100%;
       transform: translateY(-50%);
       color: $white;
       font-size: 28px;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      font-size: 40px;
     }
 
     .author {
@@ -40,13 +44,14 @@
   }
 
   &__content {
-    @media only screen and (min-width: $tablet) {
-    }
-
     @media only screen and (min-width: $desktopLarge) {
       float: right;
       max-width: 400px;
       text-align: center;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      max-width: 600px;
     }
 
     br {

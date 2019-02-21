@@ -178,6 +178,10 @@
 
       @media only screen and (max-width: $mobileOnly) {
         width: 100%;
+
+        &:first-of-type {
+          margin: 0;
+        }
       }
 
       @media only screen and (min-width: $tablet) and (max-width: $desktopLargeOnly) {
@@ -301,6 +305,15 @@
     .box-gallery__item {
       @media only screen and (min-width: $desktopLarge) {
         max-height: calc(100vh - 140px);
+      }
+    }
+
+    .box-gallery__image img {
+      @media only screen and (min-width: $desktopLarge) {
+        height: auto;
+        width: auto;
+        max-width: inherit;
+        max-height: inherit;
       }
     }
 

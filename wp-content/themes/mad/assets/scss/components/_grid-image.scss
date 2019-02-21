@@ -32,9 +32,7 @@ $margin: 15px;
 
     &:hover {
       .grid-image__content {
-        @media only screen and (min-width: $tablet) {
-          opacity: 1;
-        }
+        opacity: 1;
       }
     }
   }
@@ -62,10 +60,10 @@ $margin: 15px;
     background-color: rgba($black, .4);
     margin: 10px;
     padding: 0 10px;
+    opacity: 0;
+    transition: .5s;
 
     @media only screen and (min-width: $desktopLarge ) {
-      opacity: 0;
-      transition: .5s;
       margin: 15px;
       padding: 0 15px;
     }

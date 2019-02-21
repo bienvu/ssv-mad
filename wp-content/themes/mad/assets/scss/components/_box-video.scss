@@ -59,6 +59,7 @@
 
       @media only screen and (max-width: $mobileOnly) {
         order: 2;
+        border-bottom: 1px solid rgba(121, 121, 121, 0.25)
       }
     }
   }

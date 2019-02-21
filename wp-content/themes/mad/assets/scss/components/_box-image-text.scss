@@ -79,8 +79,8 @@
       @include container-header;
 
       @media only screen and (min-width: $tablet) and (max-width: $desktopLargeOnly) {
-        margin: 0;
-        max-width: inherit;
+        margin: 0 30px;
+        max-width: 100%;
       }
     }
   }

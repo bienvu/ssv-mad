@@ -94,6 +94,24 @@
           }
         }
       }
+
+      &:last-of-type {
+        & > span > a {
+          @media only screen and (min-width: $desktopLarge) {
+            padding-right: 0;
+
+            &:after {
+              left: calc(50% + 6.75px);
+            }
+          }
+
+          @media only screen and (min-width: $desktopSupperLarge) {
+            &:after {
+              left: calc(50% + 7.75px);
+            }
+          }
+        }
+      }
       
       > span {
         @media only screen and (max-width: $desktopLargeOnly) {
