@@ -235,7 +235,6 @@
         $('.box-gallery__item').each(function(index, el) {
           if(!$(this).hasClass('height-large')) {
             $height = $(this).find('img').height();
-            console.log($height);
             return false;
           }
         });
@@ -243,8 +242,6 @@
         $('.box-gallery__item').each(function(index, el) {
           $(this).css('height', $height + 'px');
         });
-
-        $('.box-gallery__item').find('img').addClass('set-height');
       });
     }
 
@@ -266,8 +263,6 @@
         $('.box-gallery__item').each(function(index, el) {
           $(this).css('height', $height + 'px');;
         });
-
-        $('.box-gallery__item').find('img').addClass('set-height');
       });
     }
 

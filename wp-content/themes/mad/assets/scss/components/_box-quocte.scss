@@ -83,7 +83,7 @@
     transform: translate(-50%, -50%);
 
     &__author {
-      text-align: right;
+      text-align: center;
       margin-top: 20px;
 
       @media only screen and (min-width: $tablet) {
@@ -92,10 +92,6 @@
 
       @media only screen and (min-width: $desktopLarge) {
         font-size: 30px;
-      }
-
-      @media only screen and (min-width: $desktopLarge) and (max-width: $desktopSupperWideLargeOnly) {
-        text-align: center;
       }
 
       @media only screen and (min-width: $desktopSupperLarge) {

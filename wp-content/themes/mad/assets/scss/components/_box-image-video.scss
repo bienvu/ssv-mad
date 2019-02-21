@@ -11,22 +11,17 @@
       top: 0;
       left: 0;
       // max-height: 500px;
-      width: 31.26%;
+      width: 31.55%;
       padding: 38px 63px;
       overflow: hidden;
       background: $white;
       z-index: 2;
     }
 
-    @media  only screen and (min-width: 1280px) {
-      // max-height: 665px;
-      width: 431px;
-    }
-
     @media  only screen and (min-width: $desktopSupperLarge) {
       // max-height: 935px;
       padding: 74px 89px 50px;
-      width: 605px;
+      width: 31.51%;
     }
 
     > div {
@@ -37,11 +32,15 @@
         padding-right: 100px;
       }
 
-      @media  only screen and (min-width: 1280px) {
+      @media  only screen and (min-width: $desktopWideLarge) {
         max-height: 665px;
       }
 
       @media  only screen and (min-width: $desktopSupperLarge) {
+        max-height: 700px;
+      }
+
+      @media  only screen and (min-width: $desktopSupperWideLarge) {
         max-height: 935px;
       }
     }
@@ -62,18 +61,13 @@
       $width: 40.40%;
 
       @media  only screen and (min-width: $desktopLarge) {
-        width: calc(100% - 31.26%);
-        margin-left: 31.26%;
-      }
-
-      @media  only screen and (min-width: 1280px) {
-        width: calc(100% - 1px - 431px);
-        margin-left: 431px;
+        width: calc(100% - 31.55%);
+        margin-left: 31.55%;
       }
 
       @media  only screen and (min-width: $desktopSupperLarge) {
-        width: calc(100% - 1px - 605px);
-        margin-left: 605px;
+        width: calc(100%  - 31.51%);
+        margin-left: 31.51%;
       }
 
       .box-image-video__item:first-child {
@@ -115,7 +109,8 @@
 
     &:nth-child(3) {
       $width: 65.106%;
-      $width-tablet: 52.533%;
+      $width-tablet: 55.34%;
+      $width-mobile: 52.533%;
       width: 100%;
 
       .box-image-video__item:first-child {
@@ -123,6 +118,10 @@
 
         @media only screen and (max-width: $desktopLargeOnly) {
           width: $width-tablet;
+        }
+
+        @media only screen and (max-width: $mobileOnly) {
+          width: $width-mobile;
         }
 
         .box-image-video__image {
@@ -135,10 +134,14 @@
           img {
             @media only screen and (max-width: $desktopLargeOnly) {
               position: absolute;
-              width: 169%;
+              width: 170%;
               top: 0;
               right: 0;
               max-width: inherit;
+            }
+
+            @media only screen and (max-width: $mobileOnly) {
+              width: 169%;
             }
           }
         }
@@ -149,6 +152,10 @@
 
         @media only screen and (max-width: $desktopLargeOnly) {
           width: calc(100% - #{$width-tablet});
+        }
+
+        @media only screen and (max-width: $mobileOnly) {
+          width: calc(100% - #{$width-mobile});
         }
       }
     }
@@ -161,14 +168,18 @@
   &__logo {
     position: absolute;
     top: -42%;
-    right: -3.8%;
+    right: -5.9%;
     text-align: right;
     width: 100%;
     height: 100%;
     z-index: 1;
 
-    @media only screen and (max-width: $desktopLargeOnly) {
-      right: -7%;
+    @media only screen and (min-width: $tablet) {
+      right: -7.1%;
+    }
+
+    @media only screen and (min-width: $desktopLarge) {
+      right: -3.3%;
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {

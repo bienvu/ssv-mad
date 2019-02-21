@@ -25,7 +25,7 @@
                     
                     <?php if($label): ?>
                       <div class="grid-image__content">
-                        <h3 class="grid-image__title text--white"><?php echo $label; ?></h3>
+                        <h2 class="grid-image__title text--white"><?php echo $label; ?></h2>
                         
                         <?php if(!empty($link)): ?>
                           <div class="grid-image__link">

@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="grid-image__content">
-                  <h2 class="grid-image__title text--white"><?php the_title(); ?></h2>
+                  <h3 class="grid-image__title text--white"><?php the_title(); ?></h3>
                   
                   <div class="grid-image__link">
                     <span class="btn btn--white btn--small"><?php _e( 'VIEW PRODUCT', 'ssvmad' ); ?></span>

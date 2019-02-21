@@ -4,8 +4,8 @@
     $body = get_sub_field('body'); ?>
     <div class="box-video__wrap">
       <?php if($body): ?>
-        <div class="box-html">
-          <div class="container">
+        <div class="container">
+          <div class="box-html">
             <?php echo $body; ?>
           </div>
         </div>

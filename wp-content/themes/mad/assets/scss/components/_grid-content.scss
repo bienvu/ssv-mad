@@ -87,14 +87,14 @@
     @media only screen and (min-width: $tablet) {
       margin-bottom: 16px;
       padding-top: 20px;
-      border-bottom: 1px solid rgba(121, 121, 121, 0.25);
+      border-top: 1px solid rgba(121, 121, 121, 0.25);
     }
 
     @media only screen and (min-width: $desktopLarge) {
       width: 37.59%;
       margin-bottom: 0;
       padding-top: 0;
-      border-bottom: 0;
+      border-top: 0;
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {

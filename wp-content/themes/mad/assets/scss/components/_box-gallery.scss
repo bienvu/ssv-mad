@@ -272,11 +272,19 @@
       order: 2;
 
       @media only screen and (min-width: $desktopLarge) {
-        width: 75.7%;
+        width: calc(100% - (#{$containerMarginDesktop2} + 302px));
+      }
+
+      @media only screen and (min-width: $desktopWideLarge) {
+        width: calc(100% - (((100% - #{$containerdesktopWideLarge2}) / 2) + 302px));
       }
 
       @media only screen and (min-width: $desktopSupperLarge) {
-        width: 75.625%;
+        width: calc(100% - (#{$containerMarginDesktopSupperLarge2} + 426px));
+      }
+
+      @media only screen and (min-width: $desktopSupperWideLarge) {
+        width: calc(100% - (((100% - #{$containerdesktopSupperWideLarge2}) / 2) + 426px));
       }
     }
 
@@ -284,36 +292,51 @@
       @media only screen and (min-width: $desktopLarge) {
         padding-left: $containerMarginDesktop2;
         padding-right: 30px;
-        width: calc(100% - 75.7%);
+        width: calc(#{$containerMarginDesktop2} + 302px);
       }
 
       @media only screen and (min-width: $desktopWideLarge) {
         padding-left: calc((100% - #{$containerdesktopWideLarge2}) / 2);
+        width: calc(((100% - #{$containerdesktopWideLarge2}) / 2) + 302px);
       }
 
       @media only screen and (min-width: $desktopSupperLarge) {
         padding-left: $containerMarginDesktopSupperLarge2;
-        width: calc(100% - 75.625%);
+        padding-right: 51px;
+        width: calc(#{$containerMarginDesktopSupperLarge2} + 426px);
       }
 
       @media only screen and (min-width: $desktopSupperWideLarge) {
         padding-left: calc((100% - #{$containerdesktopSupperWideLarge2}) / 2);
-        padding-right: 51px;
+        width: calc(((100% - #{$containerdesktopSupperWideLarge2}) / 2) + 426px);
       }
     }
 
     .box-gallery__item {
       @media only screen and (min-width: $desktopLarge) {
-        max-height: calc(100vh - 140px);
+        height: calc(100vh - 140px) !important;
       }
     }
 
-    .box-gallery__image img {
+    .box-gallery__image {
       @media only screen and (min-width: $desktopLarge) {
-        height: auto;
-        width: auto;
-        max-width: inherit;
-        max-height: inherit;
+        position: relative;
+        overflow: hidden;
+      }
+
+      img {
+        @media only screen and (min-width: $desktopLarge) {
+          position: absolute;
+          height: auto;
+          width: auto;
+          max-width: inherit;
+          max-height: inherit;
+          min-width: 1000%;
+          min-height: 1000%;
+          left: 50%;
+          top: 50%;
+          transform: translateX(-50%) translateY(-50%) scale(0.1);
+        }
       }
     }
 
