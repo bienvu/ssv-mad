@@ -91,10 +91,10 @@
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div class="lightbox-form__icon">
-              <span class="icon-close"></span>
+              <div class="lightbox-form__icon">
+                <span class="icon-close"></span>
+              </div>
             </div>
           </div>
         </div>

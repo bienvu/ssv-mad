@@ -298,6 +298,12 @@
       }
     }
 
+    .box-gallery__item {
+      @media only screen and (min-width: $desktopLarge) {
+        max-height: calc(100vh - 140px);
+      }
+    }
+
     .box-gallery__link {
       .btn {
         @media only screen and (min-width: $desktopLarge) {

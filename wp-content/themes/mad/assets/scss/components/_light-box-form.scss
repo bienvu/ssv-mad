@@ -16,6 +16,7 @@
     position: absolute;
     top: 10px;
     right: 10px;
+    cursor: pointer;
 
     @media only screen and (min-width: $tablet) {
       top: 20px;
@@ -36,6 +37,7 @@
     padding: 25.5px 0 32px;
     max-height: 100%;
     overflow: auto;
+    position: relative;
     
     @media only screen and (min-width: $tablet) {
       min-width: 700px;

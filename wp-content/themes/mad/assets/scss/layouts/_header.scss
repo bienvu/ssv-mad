@@ -334,6 +334,16 @@
         & > span > a {
           @media only screen and (min-width: $desktopLarge) {
             padding-right: 0;
+
+            &:after {
+              left: calc(50% + 6px);
+            }
+          }
+
+          @media only screen and (min-width: $desktopSupperLarge) {
+            &:after {
+              left: calc(50% + 7.75px);
+            }
           }
         }
       }
@@ -419,6 +429,17 @@
           &.form-header {
             @media only screen and (min-width: $desktopLarge) {
               order: 2;
+              margin: 0;
+              padding-left: 31px;
+
+              &:hover:before {
+                content: "";
+                position: absolute;
+                top: 100%;
+                width: 50px;
+                right: 0;
+                height: 33px;
+              }
 
               .form-header__submit {
                 [type="submit"] {
@@ -433,24 +454,11 @@
                 background-color: rgba($white , .9);
                 padding: 20px;
                 top: 54px;
-
-                &:before {
-                  content: "";
-                  position: absolute;
-                  width: calc(100% + 5px);
-                  height: 15px;
-                  top: 100%;
-                  right: 0;
-                  display: inline;
-                }
-
-                input {
-                  // position: absolute;
-                  // right: 0;
-                  // top: calc(100% + 15px);
-                  // background-color: $white;
-                }
               }
+            }
+
+            @media only screen and (min-width: $desktopSupperLarge) {
+              padding-left: 23px;
             }
           }
 
