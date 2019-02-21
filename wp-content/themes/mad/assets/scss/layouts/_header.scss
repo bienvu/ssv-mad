@@ -428,6 +428,12 @@
               }
 
               .form-header__input {
+                position: absolute;
+                right: 0;
+                background-color: rgba($white , .9);
+                padding: 20px;
+                top: 54px;
+
                 &:before {
                   content: "";
                   position: absolute;
@@ -439,10 +445,10 @@
                 }
 
                 input {
-                  position: absolute;
-                  right: 0;
-                  top: calc(100% + 15px);
-                  background-color: $white;
+                  // position: absolute;
+                  // right: 0;
+                  // top: calc(100% + 15px);
+                  // background-color: $white;
                 }
               }
             }

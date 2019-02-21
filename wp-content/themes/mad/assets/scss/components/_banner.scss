@@ -31,6 +31,14 @@
     }
   }
 
+  &__list {
+    .slick-prev, .slick-next {
+      @media only screen and (min-width: $desktopLarge) {
+        top: calc(50% + 70px);
+      }
+    }
+  }
+
   &__content {
     @media only screen and (min-width: $tablet) {
     }
