@@ -39,6 +39,14 @@
         img {
           height: 100%;
           width: auto;
+          position: inherit;
+          min-width: inherit;
+          min-height: inherit;
+          top: inherit;
+          left: inherit;
+          bottom: inherit;
+          right: inherit;
+          transform: none;
         }
       }
     }
