@@ -588,9 +588,5 @@
     @media only screen and (min-width: $desktopLarge) {
       display: none;
     }
-
-    &:before {
-      content: "";
-    }
   }
 }
