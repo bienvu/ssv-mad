@@ -1,6 +1,11 @@
 .masonry-wrap {
   .container {
     @include container-header;
+
+    @media only screen and (min-width: $desktopSupperWideLarge) {
+      max-width: 100%;
+      margin: 0 42px;
+    }
   }
 }
 
