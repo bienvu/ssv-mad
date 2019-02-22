@@ -116,21 +116,13 @@
     width: 100%;
 
     @media only screen and (min-width: $desktopLarge) {
-      padding-right: $containerMarginDesktop2;
+      padding-right: 22.5px;
       padding-left: 30px;
       width: calc(100% - 65.23%);
     }
 
-    @media only screen and (min-width: $desktopWideLarge) {
-      padding-right: calc((100% - #{$containerdesktopWideLarge2}) / 2);
-    }
-
     @media only screen and (min-width: $desktopSupperLarge) {
-      padding-right: $containerMarginDesktopSupperLarge2;
-    }
-
-    @media only screen and (min-width: $desktopSupperWideLarge) {
-      padding-right: calc((100% - #{$containerdesktopSupperWideLarge2}) / 2);
+      padding-right: 42px;
       padding-left: 40px;
     }
 
@@ -280,43 +272,25 @@
       order: 2;
 
       @media only screen and (min-width: $desktopLarge) {
-        width: calc(100% - (#{$containerMarginDesktop2} + 302px));
-      }
-
-      @media only screen and (min-width: $desktopWideLarge) {
-        width: calc(100% - (((100% - #{$containerdesktopWideLarge2}) / 2) + 302px));
+        width: calc(100% - (22.11% + 22.5px));
       }
 
       @media only screen and (min-width: $desktopSupperLarge) {
-        width: calc(100% - (#{$containerMarginDesktopSupperLarge2} + 426px));
-      }
-
-      @media only screen and (min-width: $desktopSupperWideLarge) {
-        width: calc(100% - (((100% - #{$containerdesktopSupperWideLarge2}) / 2) + 426px));
+        width: calc(100% - (22.1875% + 42px));
       }
     }
 
     .box-gallery__right {
       @media only screen and (min-width: $desktopLarge) {
-        padding-left: $containerMarginDesktop2;
+        padding-left: 22.5px;
         padding-right: 30px;
-        width: calc(#{$containerMarginDesktop2} + 302px);
-      }
-
-      @media only screen and (min-width: $desktopWideLarge) {
-        padding-left: calc((100% - #{$containerdesktopWideLarge2}) / 2);
-        width: calc(((100% - #{$containerdesktopWideLarge2}) / 2) + 302px);
+        width: calc(22.11% + 22.5px);
       }
 
       @media only screen and (min-width: $desktopSupperLarge) {
-        padding-left: $containerMarginDesktopSupperLarge2;
+        padding-left: 42px;
         padding-right: 51px;
-        width: calc(#{$containerMarginDesktopSupperLarge2} + 426px);
-      }
-
-      @media only screen and (min-width: $desktopSupperWideLarge) {
-        padding-left: calc((100% - #{$containerdesktopSupperWideLarge2}) / 2);
-        width: calc(((100% - #{$containerdesktopSupperWideLarge2}) / 2) + 426px);
+        width: calc(22.1875% + 42px);
       }
     }
 
