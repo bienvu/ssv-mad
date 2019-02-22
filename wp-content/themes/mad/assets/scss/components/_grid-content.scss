@@ -86,7 +86,7 @@
 
     @media only screen and (min-width: $tablet) {
       margin-bottom: 16px;
-      padding-top: 20px;
+      padding-top: 30px;
       border-top: 1px solid rgba(121, 121, 121, 0.25);
     }
 
@@ -109,7 +109,7 @@
 
   &__body {
     @media only screen and (min-width: $tablet) {
-      padding-bottom: 15px;
+      padding-bottom: 25px;
     }
 
     @media only screen and (min-width: $desktopLarge) {
