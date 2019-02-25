@@ -335,4 +335,36 @@ span.wpcf7-list-item {
       }
     }
   }
+
+  .footer__fixed {
+    display: none;
+  }
+
+  .footer__bottom {
+    @media only screen and (max-width: $desktopLargeOnly) {
+      margin-bottom: 0;
+    }
+  }
 }
+
+[id^='st-el-'],
+[id*=' st-el-'] {
+  .st-btn[data-network='blogger'],
+  .st-btn[data-network='delicious'],
+  .st-btn[data-network='digg'],
+  .st-btn[data-network='flipboard'],
+  .st-btn[data-network='googleplus'],
+  .st-btn[data-network='livejournal'],
+  .st-btn[data-network='mailru'],
+  .st-btn[data-network='meneame'],
+  .st-btn[data-network='odnoklassniki'],
+  .st-btn[data-network='print'],
+  .st-btn[data-network='vk'],
+  .st-btn[data-network='wechat'],
+  .st-btn[data-network='weibo'],
+  .st-btn[data-network='xing'] {
+    display: none !important;
+  }
+}
+
+

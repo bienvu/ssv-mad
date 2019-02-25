@@ -60,12 +60,13 @@ $margin: 15px;
     background-color: rgba($black, .4);
     margin: 10px;
     padding: 0 10px;
-    opacity: 0;
+    opacity: 1;
     transition: .5s;
 
     @media only screen and (min-width: $desktopLarge ) {
       margin: 15px;
       padding: 0 15px;
+      opacity: 0;
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {
@@ -89,7 +90,6 @@ $margin: 15px;
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {
-      // font-size: 45px;
       margin-bottom: 48px;
     }
   }
@@ -151,6 +151,12 @@ $margin: 15px;
         padding-top: 0;
       }
     }
+
+    .grid-image__content {
+      @media only screen and (max-width: $desktopLargeOnly) {
+        opacity: 0;
+      }
+    }
   }
 
   &--with-bg {
@@ -166,6 +172,12 @@ $margin: 15px;
 
     @media only screen and (min-width: $desktopSupperLarge) {
       padding: 62px 0 67px;
+    }
+
+    .grid-image__content {
+      @media only screen and (max-width: $desktopLargeOnly) {
+        opacity: 0;
+      }
     }
 
     .grid-image__title {
@@ -187,5 +199,11 @@ $margin: 15px;
 
   &--has-paged {
     padding: 0;
+
+    .grid-image__content {
+      @media only screen and (max-width: $desktopLargeOnly) {
+        opacity: 0;
+      }
+    }
   }
 }

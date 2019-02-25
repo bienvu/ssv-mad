@@ -35,15 +35,11 @@
 
         <div class="box-gallery__right">
           <?php
-            $link = (wp_get_referer()) ? wp_get_referer() : "";
-            if(!empty($link)) {
-              if (strpos($link, '/work/')) {
-                $link = wp_get_referer();
-              } else {
-                $link = '/work';
-              }
+            $link = "javascript:history.go(-1)";
+            if(isset($_SERVER['HTTP_REFERER'])) {
+                $link = $_SERVER['HTTP_REFERER'];
             } else {
-              $link = '/work';
+              $link = '/work/';
             }
           ?>
           <a href="<?php echo $link; ?>" class="back-to text--small">< Work</a>

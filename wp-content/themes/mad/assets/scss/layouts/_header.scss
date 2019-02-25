@@ -434,7 +434,7 @@
             @media only screen and (min-width: $desktopLarge) {
               order: 2;
               margin: 0;
-              padding-left: 31px;
+              padding-left: 21px;
 
               &:hover:before {
                 content: "";
@@ -455,9 +455,15 @@
               .form-header__input {
                 position: absolute;
                 right: -30px;
-                background-color: #f4f4f4;
+                background-color: rgba($white , .9);
                 padding: 16px 28px 23px 28px;
                 top: 54px;
+              }
+            }
+
+            @media only screen and (min-width: $desktopWideLarge) {
+              .form-header__input {
+                right: -22px;
               }
             }
 
@@ -466,6 +472,7 @@
 
               .form-header__input {
                 top: 58px;
+                right: -43px;
               }
             }
           }

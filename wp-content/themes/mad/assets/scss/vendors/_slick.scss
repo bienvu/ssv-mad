@@ -121,6 +121,7 @@
 
     @media only screen and (min-width: $desktop) {
       font-size: 35px;
+      padding: 10px;
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {
@@ -138,11 +139,11 @@
     }
 
     @media only screen and (min-width: $desktopLarge) {
-      left: 30px;
+      left: 20px;
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {
-      left: 42px;
+      left: 32px;
     }
 }
 
@@ -155,11 +156,11 @@
     }
 
     @media only screen and (min-width: $desktopLarge) {
-      right: 49px;
+      right: 59px;
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {
-      right: 68px;
+      right: 78px;
     }
 }
 
