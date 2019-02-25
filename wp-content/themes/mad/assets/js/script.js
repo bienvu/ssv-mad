@@ -271,5 +271,12 @@
         $('.js-scroll-down').addClass('run');
       }
     });
+
+    if ($('.share-custom').length) {
+      $('.share-custom').click(function (e) {
+        e.preventDefault();
+        $(".st-btn[data-network='sharethis']").trigger('click');
+      });
+    }
   });
 })(this, this.document, this.jQuery);

@@ -28,8 +28,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="<?php bloginfo('description'); ?>">
-		<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5c73903e9ea706001139fdcc&product=inline-share-buttons' async='async'></script>
-
+		<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5bfbd9989b95fc00123f9b2c&product=inline-share-buttons' async='async'></script>
 
 		<?php wp_head(); ?>
 	</head>

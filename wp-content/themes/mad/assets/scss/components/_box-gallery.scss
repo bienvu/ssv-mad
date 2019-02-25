@@ -158,6 +158,10 @@
       flex-wrap: wrap;
     }
 
+    > div {
+      display: none !important;
+    }
+
     .btn--icon {
       &:before {
         font-size: 20px;
