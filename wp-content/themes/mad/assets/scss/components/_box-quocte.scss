@@ -111,7 +111,7 @@
   &__animation {
     @for $i from 2 through 6 {
       &.slide-#{$i} {
-        @include animation_slide($i, 3s, 2s);
+        @include animation_slide_ver($i, 3s, 2s);
       }
     }
   }

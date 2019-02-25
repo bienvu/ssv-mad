@@ -46,7 +46,7 @@
               $link = '/work';
             }
           ?>
-          <a href="<?php echo $link; ?>" class="back-to text--small">< Back to Work</a>
+          <a href="<?php echo $link; ?>" class="back-to text--small">< Work</a>
           <h2 class="box-gallery__title"><?php the_title(); ?></h2>
 
           <div class="box-gallery__content">

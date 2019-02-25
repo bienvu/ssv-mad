@@ -147,6 +147,8 @@
     z-index: 1;
     pointer-events: none;
     width: 58.454%;
+    animation: none !important;
+    opacity: 1 !important;
 
     @media only screen and (min-width: $tablet) {
       top: -36%;
@@ -283,8 +285,8 @@
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {
-      margin: 81px 51px;
-      height: calc(33.9vw - 81px - 80px);
+      margin: 81px 51px 10px;
+      height: calc(33.9vw - 81px - 10px);
     }
 
     p:last-of-type {
@@ -337,7 +339,7 @@
     @media only screen and (min-width: $desktopSupperLarge) {
       font-size: 36px;
       line-height: 1.222222;
-      padding: 0 94.5px;
+      padding: 0 85.5px;
     }
 
     p:last-of-type {

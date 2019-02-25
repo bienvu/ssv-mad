@@ -104,6 +104,7 @@
     #lg-share-facebook {
         .lg-icon{
             color: #3b5998;
+            margin-bottom: 5px;
             &:after {
                 content: "\e903";
                 font-size: 15px;
@@ -113,6 +114,7 @@
     #lg-share-twitter {
         .lg-icon{
             color: #00aced;
+            margin-bottom: 5px;
             &:after {
                 content: "\e90d";
                 font-size: 15px;
@@ -120,8 +122,10 @@
         }  
     }
     #lg-share-googleplus {
+        display: none;
         .lg-icon{
             color: #dd4b39;
+            margin-bottom: 5px;
             &:after {
                 content: "\e919";
                 font-size: 15px;
@@ -131,6 +135,7 @@
     #lg-share-pinterest {
         .lg-icon{
             color: #cb2027;
+            margin-bottom: 5px;
             &:after {
                 content: "\e902";
                 font-size: 15px;
