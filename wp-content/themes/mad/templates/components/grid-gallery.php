@@ -244,8 +244,8 @@
         <?php
           $wpb_all_query = new WP_Query(array('post_type'=>'artistry', 'post_status'=>'publish', 'posts_per_page'=>-1));
           $all_posts = $wpb_all_query->get_posts();
-          $next_post = empty(get_next_post()) ? $all_posts[count($all_posts) - 1] : get_next_post();
-          $prev_post = empty(get_previous_post()) ? $all_posts[0] : get_previous_post();
+          $prev_post = empty(get_next_post()) ? $all_posts[count($all_posts) - 1] : get_next_post();
+          $next_post = empty(get_previous_post()) ? $all_posts[0] : get_previous_post();
           wp_reset_postdata();
         ?>
         
