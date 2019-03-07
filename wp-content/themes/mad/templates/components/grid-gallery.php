@@ -3,6 +3,7 @@
     $content_top = get_sub_field('content_top');
     $content_cener = get_sub_field('content_center');
     $item = get_sub_field('item');
+    $artistry_title    = get_field('artistry_title', 'options');
     $total_animation = empty(get_sub_field('total_animation')) ? 3 : get_sub_field('total_animation');
     $delay = $total_animation;
 ?>
@@ -240,6 +241,9 @@
     </div>
 
     <div class="container">
+      <?php if($artistry_title): ?>
+        <h4 class="grid-gallery__pagetitle"><?php echo $artistry_title; ?></h4>
+      <?php endif; ?>
       <div class="grid-gallery__link">
         <?php
           $wpb_all_query = new WP_Query(array('post_type'=>'artistry', 'post_status'=>'publish', 'posts_per_page'=>-1));
@@ -249,7 +253,7 @@
           wp_reset_postdata();
         ?>
         
-        <a href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>" class="btn btn--paged"><?php _e('previous', 'ssvmad'); ?></a><a href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>" class="btn btn--paged"><?php _e('next', 'ssvmad'); ?></a>
+        <a href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>" class="btn btn--paged"><?php _e('PREVIOUS STYLE', 'ssvmad'); ?></a><a href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>" class="btn btn--paged"><?php _e('NEXT STYLE', 'ssvmad'); ?></a>
       </div>
     </div>
   </div>

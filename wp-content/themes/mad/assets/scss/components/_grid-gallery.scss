@@ -467,6 +467,24 @@
     }
   }
 
+  &__pagetitle {
+    margin-bottom: 24px;
+
+    @media only screen and (min-width: $tablet) {
+      margin-bottom: 23px;
+    }
+
+    @media only screen and (min-width: $desktopLarge) {
+      margin-bottom: 0;
+      margin-top: 50px;
+    }
+
+    @media only screen and (min-width: $desktopSupperLarge) {
+      margin-bottom: 0;
+      margin-top: 49px;
+    }
+  }
+
   &--mobile {
     @media only screen and (min-width: $desktopLarge) {
       display: none;

@@ -397,7 +397,7 @@
                                 "id": ""
                             },
                             "choices": {
-                                "hidden-on-desktoponly": "Hidden On Desktop Only"
+                                "hidden-on-desktoponly": "hidden-on-desktopLargeOnly"
                             },
                             "default_value": [],
                             "allow_null": 1,
@@ -429,6 +429,25 @@
             "toolbar": "full",
             "media_upload": 1,
             "delay": 0
+        },
+        {
+            "key": "field_5c809c71fad86",
+            "label": "Artistry Title",
+            "name": "artistry_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -448,5 +467,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1550037035
+    "modified": 1551932540
 }
