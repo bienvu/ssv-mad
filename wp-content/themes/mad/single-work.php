@@ -61,6 +61,22 @@
               <?php endwhile; ?>
             </div>
           <?php endif; ?>
+
+          <div class="box-gallery__pagination">
+            <?php
+              $wpb_all_query = new WP_Query(array('post_type'=>'work', 'post_status'=>'publish', 'posts_per_page'=>-1, 'meta_key' => 'weight', 'orderby'=>array('meta_value_num' => 'ASC', 'ID' => 'ASC')));
+              $all_posts = $wpb_all_query->get_posts();
+              $prev_post = empty(get_previous_post()) ? $all_posts[count($all_posts) - 1] : get_previous_post();
+              $next_post = empty(get_next_post()) ? $all_posts[0] : get_next_post();
+              wp_reset_postdata();
+            ?>
+            <div class="box-gallery__previous">
+              <a href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>">< View Previous Interior </a>
+            </div>
+            <div class="box-gallery__next">
+              <a href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>">View Next Interior ></a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -276,25 +276,32 @@
       order: 2;
 
       @media only screen and (min-width: $desktopLarge) {
-        width: calc(100% - (22.11% + 22.5px));
+        width: calc(100% - (22.11% + 100px));
       }
 
       @media only screen and (min-width: $desktopSupperLarge) {
-        width: calc(100% - (22.1875% + 42px));
+        width: calc(100% - (22.1875% + 160px));
       }
+    }
+
+    .box-gallery__pagination {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
     }
 
     .box-gallery__right {
       @media only screen and (min-width: $desktopLarge) {
         padding-left: 22.5px;
         padding-right: 30px;
-        width: calc(22.11% + 22.5px);
+        width: calc(22.11% + 100px);
       }
 
       @media only screen and (min-width: $desktopSupperLarge) {
         padding-left: 42px;
         padding-right: 51px;
-        width: calc(22.1875% + 42px);
+        width: calc(22.1875% + 160px);
       }
     }
 
