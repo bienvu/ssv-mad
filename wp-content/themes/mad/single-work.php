@@ -38,6 +38,18 @@
             $link = "javascript:history.go(-1)";
             if(isset($_SERVER['HTTP_REFERER'])) {
                 $link = $_SERVER['HTTP_REFERER'];
+
+                if(strpos($link, '/works/')) {
+                  $weight = get_field('weight');
+                  $stt = floor($weight / 15);
+
+                  if($stt) {
+                    $stt++;
+                    $link = '/work/page/'.$stt;
+                  } else {
+                    $link = '/work/';
+                  }
+                }
             } else {
               $link = '/work/';
             }

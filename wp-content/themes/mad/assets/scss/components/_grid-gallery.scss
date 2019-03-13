@@ -438,6 +438,10 @@
       justify-content: center;
     }
 
+    @media only screen and (max-width: 360px) {
+      flex-wrap: wrap;
+    }
+
     a {
       &.disable {
         pointer-events: none;
@@ -445,10 +449,17 @@
 
       @media only screen and (max-width: $mobileOnly) {
         width: calc((100% - 22px) / 2);
-        margin-right: 21px;
+        margin: 10px 21px 0 0;
+        min-width: 148px;
 
         &:last-of-type {
-          margin: 0;
+          margin: 10px 0 0;
+        }
+      }
+
+      @media only screen and (max-width: 360px) {
+        &:last-of-type {
+          margin: 10px 21px 0 0;
         }
       }
 
@@ -457,7 +468,7 @@
       }
 
       @media only screen and (min-width: $desktopLarge) {
-        margin-top: 50px;
+        margin-top: 36px;
       }
 
       @media only screen and (min-width: $desktopSupperLarge) {
@@ -468,7 +479,7 @@
   }
 
   &__pagetitle {
-    margin-bottom: 24px;
+    margin-bottom: 14px;
 
     @media only screen and (min-width: $tablet) {
       margin-bottom: 23px;
@@ -476,7 +487,7 @@
 
     @media only screen and (min-width: $desktopLarge) {
       margin-bottom: 0;
-      margin-top: 50px;
+      margin-top: 36px;
     }
 
     @media only screen and (min-width: $desktopSupperLarge) {
